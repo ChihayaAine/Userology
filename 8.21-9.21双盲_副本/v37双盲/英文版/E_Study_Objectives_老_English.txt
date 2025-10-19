@@ -1,0 +1,35 @@
+# Study Objectives - SparkMo v037 Existing Users (English)
+
+## [1] The Ultimate Goal
+Validate the upgrade value of v037 for existing users, and provide the product team with 2–4 key optimization directions (2 must-do, 2 nice-to-have) to ensure iterations stay aligned with real needs of existing users.
+
+## [2] Key Intelligence Pillars
+
+### Pillar 1: Value Perception of New Features
+- Whether existing users noticed the six major new features in v037 (onboarding tutorial, wordbook UI evolution, streak effects, auto reading, personalized settings, sound toggle)
+- The actual value and attractiveness of these features to existing users
+- Overall experience improvement versus the old version (quant: v036 vs v037 rating)
+
+### Pillar 2: Pain-point Resolution
+- Whether v037 effectively addressed core pain points previously reported by existing users
+- Concrete changes in satisfaction after the upgrade and the reasons
+- Which new features are most welcomed; which have low usage or issues
+
+### Pillar 3: Future Direction Insights
+- Expectations and suggestions for future features based on deep usage experience
+- Differentiated value perception of SparkMo versus competitors (Duolingo, Quizlet, Baicizhan, Super WordBank, etc.)
+- Which potential features users are willing to pay for and their acceptance of commercialization
+
+## [3] AI Action Directive
+Act as the team’s “upgrade validation assessor.” During interviews, prioritize deep probing around three pillars: the real value of the upgrade experience, the degree to which old pain points are resolved, and the most important next optimization directions. Collect actionable evidence and examples to finally converge on 2–4 clear version-optimization decisions.
+- Follow-up prioritization & resource allocation: Based on experienced users’ input, which optimization directions are most impactful and feasible? Which should be must-do vs nice-to-have? (Output clear priorities with reasons.)
+
+---
+
+**[4] Quantitative Collection (Existing Users – v037)**
+- v036 overall rating (1–10)
+- v037 overall rating (1–10)
+- Top 3 most recognized new features (feature name + one-sentence value reason)
+- Overall change in satisfaction after upgrade (vs v036: ↑/≈/↓ with reasons)
+- Pain-point resolution list (resolved/partially resolved/unresolved; 1–2 examples each)
+- Top 3 improvement suggestions (problem brief + expected change)

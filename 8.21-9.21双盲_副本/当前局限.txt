@@ -1,0 +1,29 @@
+**访谈体验相关可优化部分：
+1. 大纲输入格式：question v.s.，session（优先级较高但不紧急）
+当前agent配置是单agent模式，且一次性导入“questions”为访谈大纲。当问题更多时，agent遵循大纲访谈的能力会显著下降。不知道是否能实现以下修正（或创建另一条创建study的路径：访谈能够更持久、大纲更精细、执行更可控）：
+- 修改“question generation prompt”，成为“session generation prompt”。返回一个session list作为变量输入给agent
+- 用多agent模式配置retell，搭建prompt tree：模块数量==session数量。每个模块添加system prompt：接收相应的session变量以进行高精度访谈（每个session都包含必要的context）
+- 搭建prompt tree：模块数量==section数量
+- 每个模块添加system prompt：接收相应的section变量以进行高精度访谈
+
+系统问题：
+foloup中设置的问题是被打包传递给agent的。无法数组索引或分别传递，需要修改foloup代码
+用户设置的追问Depth Level完全没有传递给Agent
+无法配置retell ai 的multi-prompt agent，需要改动代码
+
+
+
+**研究者部分可优化部分：
+1. 主页的study显示有问题（每次刷新主页后，现有study要创建新的study后才显示
+2. 访谈分析：分析的内容还是从一个job interview的视角来做的（尤其是图表）
+
+
+
+
+
+
+
+
+
+
+

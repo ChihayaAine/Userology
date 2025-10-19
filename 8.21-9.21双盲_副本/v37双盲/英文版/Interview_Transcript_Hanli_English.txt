@@ -1,0 +1,133 @@
+Participant: (at 0.00) ~~ Section 1 starts ~~
+Moderator: (at 0.27) Hello, Hanli. Thank you very much for participating in this interview. I'm Nova from the SparkMo team. Today I'd like to talk about your experience using SparkMo, especially your impressions of the new version. This interview will take about 30 minutes. Feel free to ask questions or share any thoughts at any time. How's your day going?
+Participant: (at 20.58) Great.
+Moderator: (at 25.51) That's great. First, what are your vocabulary-learning needs?
+Participant: (at 31.76) I'm planning to prepare for an exam.
+Moderator: (at 36.52) I see. Which exam are you preparing for?
+Participant: (at 42.13) [inaudible]
+Moderator: (at 46.35) Sorry, the audio wasn't clear. Could you repeat which exam?
+Participant: (at 52.82) [inaudible]
+Moderator: (at 59.37) Sorry, I still couldn't hear clearly—maybe a technical issue. Could you tell me what type of exam—for example, a language test or something else?
+Participant: (at 69.81) [unclear]
+Moderator: (at 69.68) So, a language exam?
+Participant: (at 71.56) [unclear]
+Moderator: (at 76.43) It seems the connection is unstable and your audio keeps breaking up. Could you move to a place with better signal so we can communicate more clearly?
+Participant: (at 86.56) A language exam, yes.
+Moderator: (at 92.40) Got it—a language exam. Next…
+Participant: (at 99.18) [unclear]
+Moderator: (at 99.05) How long have you been using SparkMo? When did you start?
+Participant: (at 101.41) Almost 15 days, a bit more.
+Moderator: (at 106.02) Understood. Then…
+Moderator: (at 107.91) Before using SparkMo, had you used other vocabulary apps?
+Participant: (at 111.27) I used Duolingo in the past.
+Moderator: (at 119.14) I see. Why did you switch to SparkMo?
+Participant: (at 125.59) Because of a promotion/activity.
+Moderator: (at 128.60) Okay, understood. Since we now know your background and usage, let's move on to the next topic.
+Participant: (at 135.18) ~~ Section 1 ends ~~
+Participant: (at 135.18) ~~ Section 2 starts ~~
+Moderator: (at 139.76) Let's talk about your experience learning vocabulary with SparkMo. In your process, what matters most to you? Or, which method is most effective for you?
+Participant: (at 154.71) Back when I studied, repetition under constraints worked best for me.
+Moderator: (at 164.53) You mean repeated…
+Moderator: (at 168.89) …review works best for you?
+Participant: (at 171.33) Yes—writing by hand again and again to memorize works best for me.
+Moderator: (at 182.50) Understood. Could you describe in what situations that approach is particularly effective for you?
+Participant: (at 195.17) In pretty much all situations—from before to now.
+Moderator: (at 202.05) I see. Then…
+Moderator: (at 206.26) When and where do you usually use SparkMo?
+Participant: (at 207.96) Mostly during my commute.
+Moderator: (at 215.59) Commute time—could you share specific settings where you use it?
+Participant: (at 222.26) Mostly on the metro; sometimes on the bus or in a taxi.
+Moderator: (at 233.35) Understood. In those scenarios, do you have any special needs for the app? For example, anything specific when using it on the metro?
+Participant: (at 242.84) I need to wear headphones when I go out. Other than that, nothing.
+Moderator: (at 251.54) Got it. During your time using SparkMo, have you had any troubles or dissatisfactions?
+Participant: (at 263.66) Not being able to memorize words.
+Moderator: (at 271.28) So, difficulty remembering words—how does that affect your learning? How do you handle it?
+Participant: (at 279.52) Just review them more times.
+Moderator: (at 283.26) Understood. For vocabulary apps, which functions or features do you value most?
+Participant: (at 304.99) I want all the meanings of a word to be clearly marked.
+Participant: (at 312.07) That's basic but very important.
+Moderator: (at 315.69) Understood. So you value complete definitions. To summarize: you mainly study during commutes, value comprehensive word meanings, and sometimes face memory challenges. Is that correct? Anything to add?
+Participant: (at 340.60) Nothing to add.
+Participant: (at 348.68) ~~ Section 2 ends ~~
+Participant: (at 348.68) ~~ Section 3 starts ~~
+Moderator: (at 352.64) Let's talk about recent updates. Did you notice any changes? What was your first impression of the new version?
+Participant: (at 361.43) I'm happy the system switched to a daily progress style—it lets me more clearly feel my effort over time.
+Moderator: (at 376.52) I see—you mean the calendar-like mode helps you see your learning progress more clearly. Which changes made you feel that way?
+Participant: (at 387.79) The calendar mode.
+Moderator: (at 395.28) Got it—the calendar mode. Now, what score would you give the old version (1–10; 1 = worst, 10 = best)?
+Moderator: (at 404.67) 
+Participant: (at 405.91) 6–7.
+Moderator: (at 410.48) Understood. What reasons led to that score? Which aspects satisfied you, and which still need improvement?
+Participant: (at 419.33) It used to lack reminders. Now there are reminders, so that adds a lot of points back.
+Moderator: (at 429.54) And what about the new version, still on a 1–10 scale?
+Participant: (at 435.23) I'd give the new version an 8.
+Moderator: (at 440.50) I see you rated the new version 1–2 points higher. Besides reminders, what else makes it better?
+Participant: (at 451.26) Reminders—as mentioned.
+Moderator: (at 458.64) Overall, compared to the old version, what left you with a deep impression? Any changes are fine to mention.
+Participant: (at 470.40) These days I noticed there's a new thing—after clearing a level, some messages pop up.
+Moderator: (at 485.54) Ah, you mean notification messages appear. Is that good or not so good for you? Why?
+Participant: (at 492.88) Not that—it's the congratulatory message after passing a stage.
+Moderator: (at 501.88) I see—you mean a congratulatory message after clearing a stage. Does that affect your motivation? How do you feel about that design?
+Participant: (at 511.65) It helps me feel happier, but the wording is a bit odd—people don't usually talk like that.
+Moderator: (at 526.49) Understood—you feel the wording is unnatural.
+Moderator: (at 534.12) During use of the new version, were there any experiences that failed to meet expectations or were particularly bad?
+Participant: (at 537.55) During questions, it reads out the pronunciation of the English word. That's good. But if I haven't chosen the answer yet, it repeats the audio—even while I'm still reading—and that affects my answering speed a bit.
+Participant: (at 561.75) It slows my answering speed.
+Moderator: (at 568.53) I see—so the timing of repeated audio isn't ideal and interferes with your thinking. To summarize: you noticed the calendar mode and stage-congrats messages; your score rose from 6–7 to 8; but the timing of audio prompts can be improved. Is that correct? Anything to add?
+Moderator: (at 609.74) 
+Participant: (at 610.59) Nothing more.
+Participant: (at 615.07) ~~ Section 3 ends ~~
+Participant: (at 615.07) ~~ Section 4 starts ~~
+Participant: (at 619.46) Nothing more.
+Moderator: (at 621.01) Or when previewing wordbooks?
+Participant: (at 624.08) Nope.
+Moderator: (at 628.05) Okay. Let me introduce: the wordbook page now has categories and you can preview word content. Have you used these new features?
+Participant: (at 637.60) Not yet.
+Moderator: (at 641.55) Understood. During learning, did you notice any changes in sounds or audio?
+Participant: (at 649.20) Yes.
+Moderator: (at 654.15) What changes did you notice? Do they help your learning?
+Participant: (at 661.57) The sound when getting 10 correct is different—there's a new congratulatory message. Sometimes it affects my answering rhythm, but it's optional/okay.
+Moderator: (at 687.02) I see—you mean the congratulatory sound for streaks can sometimes affect rhythm. Regarding learning settings—like choosing question types or a study plan—any new options you discovered?
+Participant: (at 700.88) I saw you can turn off memorization/spelling items, but when I tried it, I actually remembered worse.
+Moderator: (at 718.27) Understood—you tried adjusting question-type settings, but removing dictation made memory worse. Could you share why you felt that way?
+Participant: (at 728.95) Because without it, I just can't keep up and end up not remembering.
+Moderator: (at 735.30) Got it—without dictation you can't remember as well. Among the new features (audio changes, question-type settings, etc.), did any leave a deep impression?
+Participant: (at 758.05) Not really.
+Moderator: (at 763.05) Okay. Finally, is there any new feature you think isn't necessary, or any issues in use?
+Participant: (at 774.29) I want the wordbook—outside of doing exercises—to be viewable anytime, like when I casually open my phone.
+Moderator: (at 791.89) So you'd like a way to browse wordbooks outside of exercises—could you share scenarios where you'd use it?
+Participant: (at 803.64) I'd like it as a widget so I can use it anytime.
+Moderator: (at 816.28) Got it—you want a small widget to quickly view wordbook content. To summarize: you mentioned audio and question-type changes (dictation matters to you), and you'd like an easier way to browse wordbooks. Did I get that right? Anything to add?
+Moderator: (at 834.51) 
+Participant: (at 835.64) ~~ Section 4 ends ~~
+Participant: (at 835.64) ~~ Section 5 starts ~~
+Participant: (at 834.66) That's all.
+Moderator: (at 839.59) Thanks for the detailed sharing. To recap: your overall rating rose from 6–7 to 8; you find the calendar mode and reminders helpful; but repeated audio can disrupt thinking. First, regarding the repeated audio issue—how should it be improved in the new version?
+Participant: (at 868.21) Increase the interval—or just remove the repetition.
+Participant: (at 875.59) Either is fine.
+Moderator: (at 881.41) Understood. As an existing user, aside from audio timing, what should SparkMo optimize next?
+Participant: (at 888.15) Add more wordbook-related tools/widgets.
+Moderator: (at 896.01) You mean adding a wordbook widget? What kind of content would you like to see?
+Participant: (at 902.45) A small widget feature.
+Moderator: (at 908.22) I see—you want a small tool/widget. Compared with other apps like Duolingo, what is SparkMo's current advantage?
+Participant: (at 924.20) It's more professional.
+Moderator: (at 929.68) Could you elaborate?
+Participant: (at 929.86) Using a memory-curve design helps me really memorize by following it—it makes memorization easier.
+Moderator: (at 952.81) Understood—you feel SparkMo's memory-curve design is more professional and helpful. If SparkMo launched paid advanced features, would you consider paying? What would be worth paying for?
+Participant: (at 971.05) Not sure—if it's paid, there should be more features.
+Moderator: (at 984.51) What kind of features would you expect—any specifics?
+Participant: (at 992.19) If it's paid, it should include speaking-practice features similar to [another app].
+Moderator: (at 1006.24) Got it—you'd expect speaking practice in the paid version. Last question: with limited resources, what would you prioritize, and why?
+Participant: (at 1019.03) A wordbook widget—because it would be genuinely useful.
+Moderator: (at 1029.47) Understood—you think the wordbook widget is most practical and should be prioritized. To summarize: improve audio intervals, add a widget, and for paid plans, include speaking practice. Is that correct? Anything to add?
+Participant: (at 1045.86) ~~ Section 5 ends ~~
+Participant: (at 1045.86) ~~ Section 6 starts ~~
+Participant: (at 1045.06) That's all.
+Moderator: (at 1052.47) Thank you for sharing today. To summarize: your rating rose from 6–7 to 8; you especially like the calendar mode and reminders; and you suggest adjusting audio intervals and adding a wordbook widget. Beyond what we discussed, anything else to add? Any questions?
+Participant: (at 1076.66) Nothing else.
+Moderator: (at 1080.39) If we have future beta testing of new features, would you be willing to participate?
+Participant: (at 1086.17) Yes.
+Moderator: (at 1090.52) Thank you again for participating. We'll consider your suggestions and improve in future iterations. If you have questions or new ideas, feel free to contact us via the in-app feedback. Wishing you happy learning—you may now click “End Conversation.”
+Participant: (at 1112.25) [[User clicked on mic icon to mute]]
+Participant: (at 1112.25) [[User clicked on camera icon and face camera is off]]
+Participant: (at 1145.40) ~~ Section 6 ends ~~

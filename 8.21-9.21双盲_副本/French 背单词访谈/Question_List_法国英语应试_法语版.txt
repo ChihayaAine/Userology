@@ -1,0 +1,77 @@
+# Liste de Questions - Étude des besoins du marché français pour l'apprentissage du vocabulaire anglais en vue des examens
+
+## Section 1: Brise-glace et établissement du contexte (4 questions)
+
+Q1.1: Est-ce que vous pourriez vous présenter un peu ? J'aimerais savoir où vous en êtes actuellement, que ce soit côté boulot ou études.
+
+Q1.2: Au quotidien, que ce soit perso ou pro, vous utilisez l'anglais à quelle fréquence ? Dans quels contextes surtout ?
+
+Q1.3: Où vous situez-vous actuellement en anglais ? Et comment vous vous y prenez habituellement pour apprendre ou entretenir votre anglais ?
+
+Q1.4: Est-ce que vous avez déjà préparé ou passé des examens d'anglais ? Je pense au TOEIC, TOEFL, IELTS, ce genre de choses...
+
+## Section 2: Exploration des besoins et points douloureux de l'apprentissage du vocabulaire (5 questions)
+
+Q2.1: Quand on parle d'apprendre du vocabulaire anglais, qu'est-ce qui vous vient spontanément à l'esprit ?
+
+Q2.2: Pour vous, quelle place occupe le vocabulaire dans la maîtrise de l'anglais ? Qu'est-ce qui vous fait penser ça ?
+
+Q2.3: Dans votre apprentissage des mots, qu'est-ce qui vous pose le plus de difficultés ou vous frustre le plus ?
+
+Q2.4: Dans votre apprentissage du vocabulaire anglais, est-ce que vous êtes déjà tombé sur des mots anglais qui ressemblent au français mais qui veulent dire tout autre chose ?
+
+Q2.5: Sur une échelle de 1 à 10, vous mettriez combien au niveau de difficulté pour mémoriser du vocabulaire ? Et vous y consacrez combien de temps par jour à peu près ?
+
+## Section 3: Évaluation des solutions existantes et identification des lacunes (6 questions)
+
+Q3.1: Quelles applis ou logiciels d'apprentissage de l'anglais vous avez concrètement utilisés ? Vous pourriez me donner les noms ?
+
+Q3.2: Parmi ces outils, lequel vous utilisez le plus régulièrement ? Qu'est-ce qui vous a amené à le choisir ?
+
+Q3.3: Si vous deviez noter cet outil de 1 à 10, vous mettriez quoi ? Qu'est-ce qui justifie cette note ?
+
+Q3.4: Qu'est-ce qui vous plaît le plus dans cet outil ? Quelles fonctionnalités vous trouvez particulièrement utiles ?
+
+Q3.5: À l'inverse, qu'est-ce qui vous satisfait pas dans cet outil ? Qu'est-ce que vous aimeriez qu'il améliore ?
+
+Q3.6: Si vous pouviez concevoir l'appli idéale spécialement conçue pour la préparation aux examens d'anglais comme le TOEIC ou le TOEFL - donc vraiment axée sur l'apprentissage du vocabulaire pour réussir ces tests - quelles fonctionnalités vous aimeriez absolument qu'elle ait ? Vous pourriez m'en citer 3 qui vous sembleraient les plus cruciales pour la réussite à l'examen ?
+
+Q3.6b: En plus des fonctionnalités qu'on vient d'évoquer, qu'est-ce qui pourrait vraiment faire la différence dans cette appli de préparation d'examen pour vous aider à optimiser votre temps de révision et maximiser vos chances de réussite ?
+
+## Section 4: Validation des fonctionnalités SparkMo et test d'adaptabilité (5 questions)
+
+Q4.1: Si une appli pouvait mémoriser votre maîtrise de chaque mot et organiser automatiquement vos révisions en fonction de vos forces et faiblesses, qu'est-ce que vous penseriez de cette fonctionnalité ?
+
+Q4.2: Qu'est-ce que vous pensez des éléments ludiques dans les applis d'apprentissage ? Par exemple, le suivi des jours d'apprentissage consécutifs, l'obtention de récompenses pour accomplir des tâches ?
+
+Q4.3: Si une appli était spécialement conçue pour les examens comme le TOEIC ou le TOEFL avec du contenu vocabulaire dédié, comparée aux applis d'apprentissage anglais généralistes, quels avantages et inconvénients vous y voyez ?
+
+Q4.4: Si une appli pouvait spécialement signaler les mots anglais qui se mélangent facilement avec le français et proposer des exercices de comparaison, vous pensez que ça vous serait utile ?
+
+Q4.5: Si toutes les fonctionnalités que je viens de vous présenter étaient réunies dans une seule appli, de 1 à 10, vous lui donneriez quelle note ? Qu'est-ce qui motive cette évaluation ?
+
+## Section 5: Validation de faisabilité commerciale et test de volonté de paiement (5 questions)
+
+Q5.1: Est-ce que vous avez déjà investi financièrement dans l'apprentissage de l'anglais ou d'autres outils éducatifs ? À peu près quel type de solutions ?
+
+Q5.2: Dans quelles circonstances vous seriez prêt à investir dans une appli d'apprentissage de l'anglais ? Quelles conditions il faudrait réunir ?
+
+Q5.3: S'il existait une appli d'apprentissage du vocabulaire anglais vraiment efficace, combien d'euros vous seriez prêt à investir par mois ? Quelle fourchette de prix vous semblerait raisonnable ?
+
+Q5.4: Vous pourriez généralement consacrer combien de temps chaque jour à l'apprentissage du vocabulaire anglais ? Quels seraient vos créneaux les plus appropriés ?
+
+Q5.5: S'il existait vraiment une appli aussi performante, vous la recommanderiez à vos proches ? Généralement par quels moyens ?
+
+## Section 6: Résumé de confirmation et collecte de retours sur l'entretien IA (3 questions)
+
+Q6.1: Est-ce qu'il y a d'autres réflexions ou expériences concernant l'apprentissage du vocabulaire anglais que vous jugez importantes mais qu'on n'a pas abordées aujourd'hui ?
+
+Q6.2: Si on développe par la suite des solutions liées à ces besoins, je peux vous inviter à les tester et recueillir vos retours ?
+
+Q6.3: Avant de terminer, j'aimerais que vous preniez une minute ou deux pour partager vos impressions sur cet entretien IA lui-même. Durant tout l'entretien, vous avez rencontré des difficultés techniques ? Comment vous avez trouvé la profondeur des relances de l'animateur IA ? Vous avez ressenti une gêne ou un inconfort en dialoguant avec l'IA ? Concernant les entretiens IA sur le marché français, vous avez des suggestions ? Globalement, vous êtes satisfait de cette expérience d'entretien IA ? De 1 à 10, vous donneriez quelle note ?
+
+---
+
+Total: 29 questions réparties en 6 sections
+Durée estimée: 30 minutes
+

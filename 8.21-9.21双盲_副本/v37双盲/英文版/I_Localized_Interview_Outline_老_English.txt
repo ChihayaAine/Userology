@@ -1,0 +1,319 @@
+# SparkMo v037 Existing User Interview Outline (Localized Version I - English Translation)
+
+---
+Troubles:
+Response speed still slow
+Follow-up depth insufficient (are section notes effective?)
+AI sometimes can't hear well (thus it clarified a lot which is bothering to the interviewee)
+
+
+## **Section 1: Ice Breaking & Background Understanding**
+
+### **Section Objective:** 
+Build rapport with existing users and understand their overall situation in vocabulary learning, usage habits, and SparkMo usage background.
+
+### **Section Notes:**
+
+#### **Host Instructions:** 
+If users share any new information relevant to our research objectives, conduct 1-2 follow-up questions to gain deeper understanding (Why/What/How/What impact). If irrelevant to objectives, briefly acknowledge and continue the interview. For questions with preset follow-ups, skip the follow-up if users have already answered it in their main response. When acknowledging user responses, flexibly use different expressions like 'okay', 'mm-hmm', 'I see', 'ah I see', 'I understand', 'got it', 'yeah', 'I get it', 'right right', 'like that', etc., avoiding repetitive use of 'I understand'.
+
+**Localization Language Reminder:** Use "APP" instead of "application", "memorizing vocabulary" instead of "memorizing words", maintaining familiar colloquial expressions for Taiwanese users.
+
+Specific Instructions: If users mention experience with other vocabulary learning apps, briefly record but don't dig deep, focus on their SparkMo usage duration and frequency. When users pause >2 seconds, use brief acknowledgments to guide, avoid interrupting.
+
+#### **Background Information:** 
+- SparkMo is an intelligent vocabulary learning platform with core features including personalized memory algorithms, adventure map progression, and multiple practice question types
+- Existing users refer to users who have used the old version and have tried the new version
+- Users are mainly students with exam preparation needs or general vocabulary learning needs
+- Product uses memory strength scoring system and forgetting curve algorithms to arrange review timing
+- Main competitors include Duolingo, Quizlet, 百词斩, 超级单字库, Epop, etc.
+
+### **Transcript & Follow-up Logic & Host Notes:**
+
+Hello! Thank you very much for participating in this interview. I'm a researcher from the SparkMo team, and today I'd like to chat with you about your experience using SparkMo, especially your feelings about the new version. This interview will take about 30-40 minutes, and you can ask questions or share any thoughts at any time during the process.
+
+First, I'd like to understand your background:
+
+**Q1.1: Could you briefly introduce your vocabulary learning needs? For example, is it for exam preparation or daily learning?**
+
+[Host Notes: Understand users' core motivation for vocabulary learning, which will affect their value judgment of features]
+
+**Q1.2: How long have you been using SparkMo? About when did you start using it?**
+
+Follow-up Logic: If users mention specific usage duration over 3 months, follow up with "During this time, what was your usage frequency like? Did you use it daily or occasionally?" If usage duration is less than 1 month, skip frequency follow-up.
+
+[Host Notes: Usage duration and frequency will affect users' sensitivity and cognitive depth regarding version changes]
+
+**Q1.3: Before using SparkMo, have you used other vocabulary learning apps?**
+
+Follow-up Logic: If users mention specific app names, briefly ask "Why did you choose to switch to SparkMo at that time?" but don't dig deep into experience comparisons. If users say they haven't used other apps, skip follow-up.
+
+[Host Notes: Understand users' app usage background, but focus on why they chose SparkMo, don't go deep into competitor comparisons here]
+
+---
+
+## **Section 2: General Needs & Usage Habits**
+
+### **Section Objective:** 
+Without specifically mentioning new version features, explore existing users' core needs, usage habits, and challenges encountered in vocabulary learning.
+
+### **Section Notes:**
+
+#### **Host Instructions:** 
+If users share any new information relevant to our research objectives, conduct 1-2 follow-up questions to gain deeper understanding (Why/What/How/What impact). If irrelevant to objectives, briefly acknowledge and continue the interview. For questions with preset follow-ups, skip the follow-up if users have already answered it in their main response. When acknowledging user responses, flexibly use different expressions like 'okay', 'mm-hmm', 'I see', 'ah I see', 'I understand', 'got it', 'yeah', 'I get it', 'right right', 'like that', etc., avoiding repetitive use of 'I understand'.
+
+**Localization Language Reminder:** Use "troubles" instead of "difficulties", "expectations" instead of "anticipations", maintaining natural expression habits of Taiwanese users.
+
+Specific Instructions: Focus on users' "pain points" and "expectations" in vocabulary learning process. This information will be used to subsequently verify whether the new version has solved these problems. Collected pain points should be specific, avoiding abstract descriptions.
+
+#### **Background Information:** 
+- Common user pain points include poor memory effects, unreasonable review arrangements, boring learning process, inability to find suitable vocabulary books, complex operations, etc.
+- Common user expectations include personalized learning plans, rich question types, clear progress feedback, interesting learning experiences, authoritative vocabulary content
+- SparkMo's core value lies in intelligent memory algorithms, gamification design, diverse question types
+- User scenarios are mostly fragmented time and concentrated learning time
+
+### **Transcript & Follow-up Logic & Host Notes:**
+
+**Q2.1: In your vocabulary learning process, what do you think is most important? Or what kind of vocabulary learning method is most effective for you?**
+
+Follow-up Logic: If users mention abstract concepts (like "effective", "interesting"), follow up with "Can you specifically describe what situations make you feel it's effective/interesting?" If user responses are already specific, skip follow-up.
+
+[Host Notes: Understand users' definition of "good vocabulary learning experience", which is the benchmark for subsequent evaluation of new feature value]
+
+**Q2.2: When do you usually use SparkMo and in what scenarios?**
+
+Follow-up Logic: If users mention multiple scenarios, follow up with "In these different scenarios, do you have different needs for the app?" If only single scenario mentioned, skip follow-up.
+
+[Host Notes: Usage scenarios will affect feature needs and evaluations, such as importance of sound effects in public places]
+
+**Q2.3: During your time using SparkMo, have you encountered any troubles or things you weren't quite satisfied with?**
+
+Follow-up Logic: If users mention specific problems, follow up with "What impact did this problem have on your learning? How did you handle it at the time?" If users say "no problems" or are very satisfied, follow up with "Is there anything you think could be improved to make it even better?"
+
+[Host Notes: Key pain point collection question. Record specific pain point descriptions, Section 5 will systematically verify the resolution of these pain points]
+
+**Q2.4: For vocabulary learning apps, which functions or features do you value most?**
+
+Follow-up Logic: If users list multiple features, follow up with "Among these features, which is most important to you? Why?" If users only mention 1-2 features, skip follow-up.
+
+[Host Notes: Understand users' feature priorities, helping understand their value perception of new features]
+
+---
+
+## **Section 3: Open Product Experience**
+
+### **Section Objective:** 
+Capture existing users' most direct and authentic initial impressions and overall experience feelings about SparkMo's new version.
+
+### **Section Notes:**
+
+#### **Host Instructions:** 
+If users share any new information relevant to our research objectives, conduct 1-2 follow-up questions to gain deeper understanding (Why/What/How/What impact). If irrelevant to objectives, briefly acknowledge and continue the interview. For questions with preset follow-ups, skip the follow-up if users have already answered it in their main response. When acknowledging user responses, flexibly use different expressions like 'okay', 'mm-hmm', 'I see', 'ah I see', 'I understand', 'got it', 'yeah', 'I get it', 'right right', 'like that', etc., avoiding repetitive use of 'I understand'.
+
+**Localization Language Reminder:** Use "update" instead of "upgrade", "version" instead of "edition", "feelings" instead of "sensations", maintaining Taiwanese users' habitual expressions.
+
+Specific Instructions: Focus on users' "first impressions" and "version comparison feelings". If users haven't noticed changes, don't actively prompt, but explore reasons. Must collect quantitative ratings for v036 and v037.
+
+#### **Background Information:** 
+- New version main updates include beginner tutorial guide, comprehensive vocabulary book interface evolution, streak effect upgrades, automatic sentence reading, personalized learning settings, sound effect toggle functionality
+- New version's core improvement directions are lowering entry barriers, enhancing learning experience, strengthening personalization, optimizing sound experience
+- Existing users may be sensitive to interface changes, or may ignore certain new features due to usage habits
+- Need to collect quantitative ratings for version comparison as key quantitative metrics
+
+### **Transcript & Follow-up Logic & Host Notes:**
+
+**Q3.1: Have you noticed that SparkMo has been updated recently? If so, what were your feelings when you first opened the new version?**
+
+Follow-up Logic: If users say "noticed", follow up with "What specific changes did you notice?" If users say "didn't notice" or "not sure", follow up with "Do you usually pay attention to app updates? How do you usually know when apps are updated?"
+
+[Host Notes: Test users' sensitivity and attention to version updates, which will affect perception of new features]
+
+**Q3.2: If you were to rate the old version of SparkMo, from 1 to 10, what score would you give? Why?**
+
+Follow-up Logic: If users give a score, follow up with "What was this score mainly based on? Which aspects were you satisfied with, and which aspects still had room for improvement?" If users hesitate, you can prompt "You don't need to be too precise, just a general feeling is fine."
+
+[Host Notes: 【Quantitative Collection】Record v036 rating: _points, reason: ___. Note users' rating reasons, which will affect expectations for the new version]
+
+**Q3.3: So for this new version now, what score would you give?**
+
+Follow-up Logic: If score differs from old version, follow up with "What's the main reason for the score change?" If score is the same, follow up with "Although the score is the same, are there any differences in usage feelings?"
+
+[Host Notes: 【Quantitative Collection】Record v037 rating: _points, reason for change: ___. Focus on specific reasons for score changes]
+
+**Q3.4: Overall, compared to the old version, what aspects of the new version left a particularly deep impression on you?**
+
+Follow-up Logic: If users mention specific changes or experiences, follow up with "Is this change good or not so good for you? Why?" If users say "about the same" or "no difference", follow up with "Are there any detailed changes, maybe not very obvious but you felt them?"
+
+[Host Notes: Open exploration of version difference perception and deep impressions, don't guide users to mention specific features]
+
+**Q3.5: During your use of the new version, have there been any experiences that didn't meet optimization expectations or were particularly poor?**
+
+Follow-up Logic: If users mention specific features or experiences, follow up with "Can you describe the situation in detail? What impact did this have on your learning?"
+
+[Host Notes: Capture the gap between users' expected optimization level and actual situation, reflecting the accuracy of product optimization direction]
+
+---
+
+## **Section 4: Guided Feature Exploration**
+
+### **Section Objective:** 
+Deeply explore the six major new features of the new version, verifying existing users' attention, understanding, usage, and value recognition of these features.
+
+### **Section Notes:**
+
+#### **Host Instructions:** 
+If users share any new information relevant to our research objectives, conduct 1-2 follow-up questions to gain deeper understanding (Why/What/How/What impact). If irrelevant to objectives, briefly acknowledge and continue the interview. For questions with preset follow-ups, skip the follow-up if users have already answered it in their main response. When acknowledging user responses, flexibly use different expressions like 'okay', 'mm-hmm', 'I see', 'ah I see', 'I understand', 'got it', 'yeah', 'I get it', 'right right', 'like that', etc., avoiding repetitive use of 'I understand'.
+
+**Localization Language Reminder:** Use "functions" instead of "features", "settings" instead of "configurations", "choices" instead of "selections", maintaining familiar terminology for Taiwanese users.
+
+Specific Instructions: Check each feature in the order of "noticed→understood→used→recognized". If users haven't noticed a feature, appropriate description is okay but don't over-guide. Must collect "most recognized new feature" information before this section ends.
+
+#### **Background Information:** 
+- Beginner tutorial guide provides step-by-step guidance for first-time users, including four steps: book selection, preview, adding, and settings
+- Vocabulary book interface evolution includes adding authoritative vocabulary lists, adding category filtering functions, word preview functionality
+- Streak effect upgrade provides animation effects and exclusive titles during streaks
+- Automatic sentence reading automatically plays word or sentence pronunciation when entering question types
+- Personalized learning settings allow free choice of practice question types, customized learning plans
+- Sound effect toggle allows one-click closure of all sound effects in settings
+
+### **Transcript & Follow-up Logic & Host Notes:**
+
+**Q4.1: Have you noticed any changes on the vocabulary book selection page? For example, when looking for vocabulary books or previewing vocabulary books?**
+
+Follow-up Logic: If users say "noticed", follow up with "What specific changes did you notice? Do these changes help you find vocabulary books?" If users say "didn't notice", you can prompt "Now vocabulary books have categories and you can preview word content. Have you used these features?" If users confirm they haven't used them, skip deep follow-up.
+
+[Host Notes: Verify perception and practicality of vocabulary book interface evolution, especially focus on value of categorization and preview functions]
+
+**Q4.2: During the learning process, have you noticed any changes in sound effects or audio aspects?**
+
+Follow-up Logic: If users mention auto-play, follow up with "Does this auto-play help your learning? In what scenarios is it particularly useful or inconvenient?" If users mention sound effect toggle, follow up with "Have you used the function to turn off sound effects? In what situations would you need to turn them off?" If users haven't noticed sound changes, skip follow-up.
+
+[Host Notes: Verify practicality and usage scenarios of automatic reading and sound effect toggle functions]
+
+**Q4.3: In terms of learning settings, such as choosing question types or learning plans, have you discovered any new options?**
+
+Follow-up Logic: If users have used personalized settings, follow up with "Have you adjusted question type settings? How did it feel after adjustment?" If users haven't used it, follow up with "Do you know you can now choose which question types you want to practice? Is this feature attractive to you?"
+
+[Host Notes: Evaluate usage rate and value perception of personalized settings function]
+
+**Q4.4: During the question-answering process, especially when answering many questions correctly in a row, have you noticed any special effects?**
+
+Follow-up Logic: If users mention streak effects, follow up with "What do these effects mean to you? Do they make you more motivated to continue learning?" If users didn't notice, you can prompt "Now there are special animations when you get 10, 20, 30 questions right in a row. Have you encountered this?" If confirmed they haven't encountered it, skip follow-up.
+
+[Host Notes: Verify motivational effect and user feelings of streak effects]
+
+**Q4.5: Among the features we just discussed, is there anything that left a relatively deep impression on you?**
+
+Follow-up Logic: If users mention specific features, follow up with "Can you tell me specifically how this feature helped you?" If users say they don't have much impression of any, follow up with "Are there any others?" If users mention 2 or more features, follow up with "Among these features, which is most valuable to you?"
+
+[Host Notes: 【Quantitative Collection】Use progressive collection, first collect most impressive features, then naturally extend to other recognized features, record: Most recognized feature 1___ (reason: ___), record others if any]
+
+**Q4.6: Is there any new feature you think is not really needed, or have you encountered any problems using it?**
+
+Follow-up Logic: If users mention specific problems, follow up with "When is this problem most obvious? What impact does it have on your learning?" If users say everything is fine, skip deep follow-up.
+
+[Host Notes: Discover feature problems and improvement points, especially focus on usage habit conflicts of existing users]
+
+---
+
+## **Section 5: Review & Deep Exploration**
+
+### **Section Objective:** 
+Summarize conversation points so far, and conduct deeper exploration of upgrade value, pain point resolution, and future optimization directions.
+
+### **Section Notes:**
+
+#### **Host Instructions:** 
+If users share any new information relevant to our research objectives, conduct 1-2 follow-up questions to gain deeper understanding (Why/What/How/What impact). If irrelevant to objectives, briefly acknowledge and continue the interview. For questions with preset follow-ups, skip the follow-up if users have already answered it in their main response. When acknowledging user responses, flexibly use different expressions like 'okay', 'mm-hmm', 'I see', 'ah I see', 'I understand', 'got it', 'yeah', 'I get it', 'right right', 'like that', etc., avoiding repetitive use of 'I understand'.
+
+**Localization Language Reminder:** Use "improvements" instead of "enhancements", "suggestions" instead of "opinions", "payment" instead of "charging", maintaining Taiwanese users' habitual expressions.
+
+Specific Instructions: Start this section with verbal review of key points, then dig deep around "priority and feasibility", and conduct secondary deep exploration. Must collect pain point resolution assessment and improvement suggestions. Focus on collecting actionable optimization suggestions.
+
+#### **Background Information:** 
+- Need to align three types of concerns: new version upgrade value, old pain point resolution degree, product future development resource priorities
+- Priority judgment dimensions include impact scope, urgency, feasibility
+- Target output is 2-4 key optimization directions
+- Need to collect existing users' attitudes toward potential paid features and commercial acceptance
+- Competitor comparison reference: Duolingo (strong reminders but shallow content), Quizlet (complete flashcards but content needs self-management), 百词斩 (image memory but insufficient depth), 超级单字库 (rich content but outdated interface), Epop (contextual immersion but lower efficiency)
+
+### **Transcript & Follow-up Logic & Host Notes:**
+
+**Review Script Template:**
+"Thank you very much for your detailed sharing. Let me briefly summarize the key points you just mentioned: Your overall evaluation of the new version is [summarize user rating and main feelings], among the new features you think the most valuable is [summarize user-recognized features], the [summarize user pain points] you mentioned before in the new version [summarize resolution status]. I'd like to spend some time discussing these aspects in more depth..."
+
+**Q5.1: (If users didn't mention specific pain points in Q2.3, skip this question.) I'd like to systematically understand the resolution of the troubles you mentioned in Section 2 in the new version. Let's look at them one by one: [mention each pain point users mentioned in Q2.3], have these improved in the new version?**
+
+Follow-up Logic: For each pain point, ask "resolved/partially resolved/not resolved", if partially resolved or not resolved, follow up with "What do you think still needs improvement?"
+
+[Host Notes: 【Quantitative Collection】Pain point resolution list: Pain point 1___ (resolved/partially resolved/unresolved), Pain point 2___ (resolved/partially resolved/unresolved), and so on]
+
+**Q5.2: Based on your experience as an existing user, what do you think SparkMo should optimize next?**
+
+Follow-up Logic: If users mention optimization points, follow up with "Are there any others?" If users mention multiple optimization points, follow up with "Among these optimizations, which do you think is most urgent? Why?" If users' suggestions are abstract, follow up with "Can you specifically describe what the improvement you expect would look like?"
+
+[Host Notes: 【Quantitative Collection】Use progressive collection of improvement suggestions, record: Suggestion 1___ (reason: ___), record others if any]
+
+**Q5.3: Compared to other vocabulary learning apps, like Duolingo, Quizlet, 百词斩, what do you think are SparkMo's current advantages? What areas need to learn from other apps?**
+
+Follow-up Logic: If users mention specific competitors, follow up with "Do you think that app's [某功能] would be helpful to you if added to SparkMo?" If users are unfamiliar with competitors, skip deep comparison.
+
+[Host Notes: Understand competitor comparison cognition and feature expectations, providing reference for product differentiation positioning]
+
+**Q5.4: If SparkMo launches some advanced features that require payment in the future, would you consider it? What kind of features do you think are worth paying for?**
+
+Follow-up Logic: If users express willingness to pay, follow up with "What do you think would be a reasonable price?" If users are unwilling to pay, follow up with "What reasons make you feel paid features aren't needed? Under what conditions might you consider it?"
+
+[Host Notes: Collect payment willingness and price sensitivity, understand user acceptance of product commercialization]
+
+**Q5.5: Last deep question: If you were SparkMo's product manager, with limited development resources, which improvement would you prioritize? Why?**
+
+Follow-up Logic: Follow up with "How many users do you think this improvement would help? Would it be difficult to implement?"
+
+[Host Notes: Collect resource priority judgment, understand users' cognition of impact scope and feasibility]
+
+---
+
+## **Section 6: Interview Conclusion**
+
+### **Section Objective:** 
+Express gratitude to users, ask for final additions, manage their expectations, and end the interview positively.
+
+### **Section Notes:**
+
+#### **Host Instructions:** 
+If users share any new information relevant to our research objectives, conduct 1-2 follow-up questions to gain deeper understanding (Why/What/How/What impact). If irrelevant to objectives, briefly acknowledge and continue the interview. For questions with preset follow-ups, skip the follow-up if users have already answered it in their main response. When acknowledging user responses, flexibly use different expressions like 'okay', 'mm-hmm', 'I see', 'ah I see', 'I understand', 'got it', 'yeah', 'I get it', 'right right', 'like that', etc., avoiding repetitive use of 'I understand'.
+
+**Localization Language Reminder:** Use "beta testing" instead of "internal testing", "contact" instead of "connect", "feedback" instead of "response", maintaining familiar expressions for Taiwanese users.
+
+Specific Instructions: Personalized thanks, reiterate key viewpoints, solicit additions, explain follow-up contact.
+
+#### **Background Information:** 
+- No special background information needed
+
+### **Transcript:**
+
+Thank you very much for spending so much time sharing your usage experience with us today! Your feedback is very valuable to us.
+
+Let me briefly summarize a few key viewpoints you shared today: [Reiterate 1-2 of the user's core viewpoints, such as overall evaluation of the new version and most important improvement suggestions]. This information is very helpful for our product improvements.
+
+**Q6.1: Besides the topics we discussed today, is there anything else you'd like to add? Or any questions you'd like to understand?**
+
+**Q6.2: If we have beta testing for new features in the future, would you be willing to participate in the experience?**
+
+Thank you again for your participation! We will seriously consider all your suggestions and work hard to improve in subsequent product iterations. If you have any questions or new ideas, you're also welcome to contact us anytime through the feedback function in the app.
+
+Wish you happy learning!
+
+---
+
+**Interview End**
+
+---
+
+
+
+
+
+
+

@@ -1,0 +1,290 @@
+# Guide d'entretien localisé - Étude des besoins du marché français pour l'apprentissage du vocabulaire anglais en vue des examens
+
+## Informations générales de l'entretien
+- **Durée estimée**: 30 minutes
+- **Objectifs de collecte principaux**: 3 points douloureux du marché (avec évaluation quantifiée) + 3 lacunes de solutions + 3 fonctionnalités d'adaptabilité SparkMo + données de volonté de paiement (fourchette en euros) + taux d'erreur de confusion franco-anglaise + évaluation d'importance des fonctionnalités
+
+## Section 1: Brise-glace et établissement du contexte
+
+### Objectif de recherche de cette section
+Établir une relation de confiance et recueillir les antécédents d'apprentissage de l'anglais de l'utilisateur, identifier les motivations d'examen et les scénarios d'usage de base, poser les fondations pour une exploration approfondie.
+
+### Notes de section (Section Notes)
+**Instructions pour l'animateur**: "Si l'utilisateur partage des informations nouvelles qui semblent pertinentes pour nos objectifs de recherche, posez 1-2 questions de suivi pour approfondir (pourquoi/quoi/comment/quel impact). Si ce n'est pas pertinent, accusez réception simplement et continuez l'entretien. Pour les questions qui ont des relances prévues, si l'utilisateur a déjà répondu aux relances dans sa réponse principale, passez les relances. Quand vous accusez réception des réponses de l'utilisateur, utilisez de manière flexible différentes expressions comme 'très bien', 'mmh', 'je comprends', 'c'est intéressant', 'je vois', 'parfait', 'oui', 'c'est clair', 'd'accord', 'effectivement', etc., évitez de répéter 'je comprends'." Cette section privilégie l'établissement d'une atmosphère détendue et bienveillante, évite d'aborder trop rapidement les sujets produits, et permet de recueillir les informations de profil essentielles de l'utilisateur.
+
+**Techniques d'expression localisées**: Créez une ambiance chaleureuse mais respectueuse, en gardant le vouvoiement tout au long. Montrez un intérêt sincère pour le parcours de chacun, en évitant les anglicismes sauf pour les termes techniques bien établis (TOEIC, TOEFL, etc.). Utilisez des transitions naturelles comme "Ah, c'est passionnant" ou "Je vois bien" pour maintenir un échange fluide et authentique.
+
+**Informations contextuelles**: 
+- Les principaux examens d'anglais en France incluent le TOEIC (reconnaissance professionnelle maximale), TOEFL/IELTS (indispensables pour les études), examens Cambridge (certification éducative)
+- Les étudiants français ont généralement des compétences d'application pratique de l'anglais relativement faibles, environ 50% des diplômés du collège n'atteignent pas le niveau A2
+- Il existe des différences régionales significatives dans les compétences en anglais, 42% dans la région parisienne ont des capacités de communication, seulement 18% dans les zones rurales
+- Les utilisateurs préfèrent les outils d'apprentissage sérieux et professionnels, avec une acceptation moyenne de la gamification
+
+### Guide d'entretien
+
+**[Introduction]**
+Bonjour ! Je suis vraiment ravi de pouvoir échanger avec vous aujourd'hui. Merci infiniment d'avoir accepté de participer à cet entretien. J'aimerais discuter avec vous de vos expériences concernant la préparation aux examens d'anglais comme le TOEIC, TOEFL ou IELTS, et plus spécifiquement l'apprentissage du vocabulaire pour réussir ces tests. Notre conversation durera environ une demi-heure, et ce qui m'intéresse vraiment, c'est de comprendre votre vécu et vos besoins concrets dans votre préparation à ces examens d'anglais. N'hésitez pas à partager tout ce qui vous passe par la tête - il n'y a vraiment aucune "bonne" réponse attendue. Ça vous va si on commence ?
+
+Q1.1 [Notes animateur: Ouverture détendue pour créer la relation, recueillir les informations de contexte essentielles, utilisez naturellement des expressions comme "ah, c'est intéressant", "ça semble passionnant" selon les réponses de l'utilisateur] [Contexte pertinent: Les niveaux d'anglais varient considérablement selon les régions de France, les motivations d'apprentissage diffèrent selon les tranches d'âge et les contextes professionnels] 
+Question: Est-ce que vous pourriez vous présenter un peu ? J'aimerais savoir où vous en êtes actuellement, que ce soit côté boulot ou études.
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Si l'utilisateur mentionne un métier particulier, creusez l'importance et la fréquence d'utilisation de l'anglais dans son travail
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] S'il s'agit d'un étudiant, renseignez-vous sur ce que sa filière exige concrètement en anglais
+
+Q1.2 [Notes animateur: Comprendre les scénarios et la fréquence d'usage réel de l'anglais, évaluer l'intensité des besoins en anglais de l'utilisateur, utilisez "je vois bien", "d'accord" pour exprimer votre compréhension] [Contexte pertinent: Les Français ont des opportunités limitées de contact quotidien avec l'anglais, apprennent principalement par le système éducatif, il existe un décalage entre application pratique et théorie] 
+Question: Au quotidien, que ce soit perso ou pro, vous utilisez l'anglais à quelle fréquence ? Dans quels contextes surtout ?
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Si la fréquence est faible, demandez s'il y a des projets ou des pressions pour progresser en anglais
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Si la fréquence est élevée, explorez les galères et défis concrets rencontrés
+
+Q1.3 [Notes animateur: Explorer le parcours d'apprentissage de l'anglais et l'auto-évaluation, noter la perception du niveau actuel de l'utilisateur, utilisez "je comprends bien", "parfait" pour confirmer votre compréhension] [Contexte pertinent: Le système éducatif français privilégie la théorie grammaticale mais la formation à l'application pratique est insuffisante, la plupart des étudiants ont un vocabulaire de 3000-5000 mots] 
+Question: Où vous situez-vous actuellement en anglais ? Et comment vous vous y prenez habituellement pour apprendre ou entretenir votre anglais ?
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Si l'utilisateur fait une auto-évaluation, demandez sur quels aspects précis ça se manifeste (compréhension, expression, lecture, écriture)
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Si des méthodes d'apprentissage sont mentionnées, renseignez-vous sur ce qu'il ressent niveau efficacité
+
+Q1.4 [Notes animateur: Confirmer l'expérience et la motivation d'examen, c'est une information de filtrage essentielle, notez en détail le type d'examen et les objectifs, utilisez "très bien", "je vois" pour montrer votre attention] [Contexte pertinent: Le TOEIC a la reconnaissance professionnelle la plus élevée en France, TOEFL/IELTS sont les passeports pour les études, les exigences de vocabulaire varient considérablement selon les examens] 
+Question: Est-ce que vous avez déjà préparé ou passé des examens d'anglais ? Je pense au TOEIC, TOEFL, IELTS, ce genre de choses...
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] S'il y a une expérience d'examen, demandez quel examen précisément, le score visé et pourquoi ce choix
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Si non, explorez s'il y a des projets d'examen ou des besoins de développement professionnel
+
+**Transition entre sections**: Merci pour toutes ces infos, j'ai maintenant une bonne vision de votre contexte. Maintenant j'aimerais qu'on creuse ensemble vos ressentis sur l'apprentissage du vocabulaire anglais plus spécifiquement. Ça vous va ?
+
+---
+
+## Section 2: Exploration des besoins et points douloureux de l'apprentissage du vocabulaire
+
+### Objectif de recherche de cette section
+Recueillir les ressentis réels et les principales difficultés de l'utilisateur concernant l'apprentissage du vocabulaire anglais, vérifier les problèmes d'interférence linguistique franco-anglaise, évaluer l'importance de l'apprentissage du vocabulaire dans la préparation globale.
+
+### Notes de section (Section Notes)
+**Instructions pour l'animateur**: "Si l'utilisateur partage des informations nouvelles qui semblent pertinentes pour nos objectifs de recherche, posez 1-2 questions de suivi pour approfondir (pourquoi/quoi/comment/quel impact). Si ce n'est pas pertinent, accusez réception simplement et continuez l'entretien. Pour les questions qui ont des relances prévues, si l'utilisateur a déjà répondu aux relances dans sa réponse principale, passez les relances. Quand vous accusez réception des réponses de l'utilisateur, utilisez de manière flexible différentes expressions comme 'très bien', 'mmh', 'je comprends', 'c'est intéressant', 'je vois', 'parfait', 'oui', 'c'est clair', 'd'accord', 'effectivement', etc., évitez de répéter 'je comprends'." Cette section se concentre sur la capture des expressions spontanées de difficultés de l'utilisateur, avec une attention particulière aux problèmes de confusion franco-anglaise, en notant les premières réactions et émotions.
+
+**Techniques d'expression localisées**: Montrez de l'empathie face aux galères évoquées, utilisez des expressions de compréhension authentiquement françaises ("Ah oui, je vois bien le problème", "C'est vrai que c'est pas évident"), validez les expériences sans juger. Adoptez un ton rassurant qui normalise les difficultés rencontrées, comme le ferait un ami bienveillant.
+
+**Informations contextuelles**: 
+- Les faux-amis franco-anglais sont un point douloureux majeur, comme library/librairie, actually/actuellement faciles à confondre, taux d'erreur pouvant atteindre 60-70%
+- Les méthodes de mémorisation traditionnelles sont peu efficaces, apprendre-oublier-réapprendre est un phénomène universel
+- Les exigences de vocabulaire d'examen sont élevées (TOEIC 8000+, TOEFL 10000+), mais les opportunités de contact avec le vocabulaire spécialisé au quotidien sont rares
+- Pression temporelle importante, particulièrement pour les utilisateurs professionnels dont le temps d'apprentissage est très fragmenté
+
+### Guide d'entretien
+
+Q2.1 [Notes animateur: Capturer la première réaction de l'utilisateur à l'apprentissage du vocabulaire, noter les expressions émotionnelles et associations spontanées, utilisez "je comprends bien ce ressenti" pour exprimer l'empathie] [Contexte pertinent: La mémorisation du vocabulaire est la plus grande difficulté pour les francophones apprenant l'anglais, la mémorisation traditionnelle est peu efficace et facile à oublier] 
+Question: Quand on parle d'apprendre du vocabulaire anglais, qu'est-ce qui vous vient spontanément à l'esprit ?
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Si l'utilisateur exprime des galères ou frustrations, creusez comment ça se manifeste concrètement et à quelle fréquence
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Si des expériences positives sont mentionnées, demandez ce qui marche bien dans leurs méthodes
+
+Q2.2 [Notes animateur: Explorer la perception de l'utilisateur sur l'importance du vocabulaire, comprendre ses critères de jugement, utilisez "c'est un point de vue très juste" pour valider les réflexions de l'utilisateur] [Contexte pertinent: Les examens exigent un vocabulaire important mais les utilisateurs manquent généralement de méthodes d'apprentissage systématiques, dépendent principalement des manuels traditionnels] 
+Question: Pour vous, quelle place occupe le vocabulaire dans la maîtrise de l'anglais ? Qu'est-ce qui vous fait penser ça ?
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Demandez sur quoi vous vous basez concrètement pour juger de cette importance du vocabulaire
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Si l'impact sur les examens ou le boulot est mentionné, explorez comment ça se manifeste concrètement
+
+Q2.3 [Notes animateur: Approfondir les difficultés d'apprentissage du vocabulaire, porter une attention particulière à la confusion franco-anglaise, recueillir quantitativement la fréquence d'erreurs, utilisez "c'est vrai que c'est galère" pour exprimer la compréhension] [Contexte pertinent: Les faux-amis franco-anglais, transfert de prononciation, différences de structures grammaticales sont les principaux obstacles] 
+Question: Dans votre apprentissage des mots, qu'est-ce qui vous pose le plus de difficultés ou vous frustre le plus ?
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Si l'utilisateur mentionne des problèmes de confusion, demandez quels types de mots se mélangent facilement, à peu près quel pourcentage d'erreurs
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Si des problèmes de mémoire sont mentionnés, comprenez dans quelles situations typiques ça s'oublie et selon quels rythmes
+
+Q2.4 [Notes animateur: Vérifier spécifiquement le point douloureux des faux-amis franco-anglais, c'est un besoin différenciant central, recueillir des exemples concrets, utilisez "ah oui, je vois maintenant" pour exprimer une nouvelle compréhension] [Contexte pertinent: Les faux-amis franco-anglais comme library/librairie, actually/actuellement etc. sont facilement confondus, principal obstacle pour les francophones] 
+Question: Dans votre apprentissage du vocabulaire anglais, est-ce que vous êtes déjà tombé sur des mots anglais qui ressemblent au français mais qui veulent dire tout autre chose ?
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] S'il y a de l'expérience, demandez des exemples concrets et à quelle fréquence ça fait des erreurs aux examens (en pourcentage)
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Si pas remarqué, donnez l'exemple library/librairie pour expliquer, demandez si ça évoque des impressions ou expériences similaires
+
+Q2.5 [Notes animateur: Quantifier la gravité des points douloureux, recueillir les données d'investissement temporel, utilisez "je note bien ça" pour montrer l'importance accordée aux informations de l'utilisateur] [Contexte pertinent: Besoin de recueillir des données quantitatives pour soutenir les décisions commerciales, comprendre la volonté d'investissement des utilisateurs] 
+Question: Sur une échelle de 1 à 10, vous mettriez combien au niveau de difficulté pour mémoriser du vocabulaire ? Et vous y consacrez combien de temps par jour à peu près ?
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Demandez pourquoi cette note précisément et quelles sont les principales galères
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Comprenez pourquoi cette répartition du temps et si vous aimeriez améliorer l'efficacité
+
+**Transition entre sections**: Je vois bien vos ressentis et difficultés concernant l'apprentissage du vocabulaire. Maintenant j'aimerais connaître votre expérience avec les outils qui existent déjà. On peut aborder ça ensemble ?
+
+---
+
+## Section 3: Évaluation des solutions existantes et identification des lacunes
+
+### Objectif de recherche de cette section
+Comprendre en profondeur l'expérience d'usage et l'évaluation de satisfaction des utilisateurs concernant les outils d'apprentissage du vocabulaire existants, identifier les lacunes du marché et les faiblesses de la concurrence, recueillir la liste des fonctionnalités manquantes.
+
+### Notes de section (Section Notes)
+**Instructions pour l'animateur**: "Si l'utilisateur partage des informations nouvelles qui semblent pertinentes pour nos objectifs de recherche, posez 1-2 questions de suivi pour approfondir (pourquoi/quoi/comment/quel impact). Si ce n'est pas pertinent, accusez réception simplement et continuez l'entretien. Pour les questions qui ont des relances prévues, si l'utilisateur a déjà répondu aux relances dans sa réponse principale, passez les relances. Quand vous accusez réception des réponses de l'utilisateur, utilisez de manière flexible différentes expressions comme 'très bien', 'mmh', 'je comprends', 'c'est intéressant', 'je vois', 'parfait', 'oui', 'c'est clair', 'd'accord', 'effectivement', etc., évitez de répéter 'je comprends'." Cette section se concentre sur l'exploration des avantages/inconvénients de la concurrence et de la satisfaction utilisateur, identifier les besoins non satisfaits, recueillir les évaluations quantifiées.
+
+**Techniques d'expression localisées**: Restez neutre face aux différents produits mentionnés, évitez de critiquer ou promouvoir des marques spécifiques, utilisez un langage descriptif plutôt qu'évaluatif ("Ah d'accord, vous avez testé plusieurs solutions"). Encouragez l'expression libre des opinions avec des formules comme "Votre retour m'intéresse vraiment".
+
+**Informations contextuelles**: 
+- Les principaux concurrents incluent Duolingo (gamifié mais orienté vocabulaire quotidien), GlobalExam (professionnel mais cher €39.90/mois), Anki (puissant mais complexe)
+- Les solutions traditionnelles comme les manuels des éditions Hachette, Larousse ont encore un certain marché
+- Les utilisateurs ont des besoins clairs pour le degré de localisation (interface française, fonctionnalité de comparaison franco-anglaise)
+- Sensibilité élevée aux prix, particulièrement pour les étudiants, mais volonté de payer pour des outils efficaces
+
+### Guide d'entretien
+
+Q3.1 [Notes animateur: Comprendre la liste spécifique des produits utilisés par l'utilisateur, noter chaque nom de produit, utilisez "ah oui, je connais" pour montrer la familiarité] [Contexte pertinent: Les principales apps d'apprentissage linguistique sur le marché français incluent Duolingo, Babbel, MosaLingua etc., les outils d'examens professionnels ont GlobalExam, PrepMyFuture etc.] 
+Question: Quelles applis ou logiciels d'apprentissage de l'anglais vous avez concrètement utilisés ? Vous pourriez me donner les noms ?
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Pour chaque produit mentionné, demandez combien de temps d'usage et pour quoi principalement
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Si l'utilisateur ne peut pas donner de noms précis, demandez le type d'usage (appli mobile, site web, bouquins etc.)
+
+Q3.2 [Notes animateur: Approfondir la logique de choix et l'expérience du produit principalement utilisé, utilisez "c'est logique comme choix" pour valider le jugement de l'utilisateur] [Contexte pertinent: Comprendre les facteurs clés de décision de choix produit des utilisateurs, fournir des références pour le positionnement différenciant] 
+Question: Parmi ces outils, lequel vous utilisez le plus régulièrement ? Qu'est-ce qui vous a amené à le choisir ?
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Demandez pourquoi ce choix au départ et ce qui fait que vous continuez
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Comprenez les avantages par rapport aux autres produits
+
+Q3.3 [Notes animateur: Recueillir quantitativement les scores de satisfaction, noter les scores spécifiques et raisons, utilisez "je note votre évaluation" pour montrer l'importance] [Contexte pertinent: Besoin de recueillir les scores de satisfaction 1-10, comprendre l'analyse spécifique des avantages/inconvénients] 
+Question: Si vous deviez noter cet outil de 1 à 10, vous mettriez quoi ? Qu'est-ce qui justifie cette note ?
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Demandez quels sont les trucs précis qui ajoutent des points
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Comprenez les principales raisons qui font perdre des points
+
+Q3.4 [Notes animateur: Identifier les avantages centraux et fonctionnalités valorisées du produit, noter les caractéristiques les plus appréciées par l'utilisateur, utilisez "cette fonctionnalité est effectivement très pratique" pour exprimer l'accord] [Contexte pertinent: Comprendre les caractéristiques fonctionnelles les plus appréciées par les utilisateurs, fournir des références pour la conception produit] 
+Question: Qu'est-ce qui vous plaît le plus dans cet outil ? Quelles fonctionnalités vous trouvez particulièrement utiles ?
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Demandez pourquoi ces fonctionnalités sont utiles, quels problèmes elles règlent
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Comprenez dans quelles situations vous utilisez ces fonctionnalités
+
+Q3.5 [Notes animateur: Explorer les points douloureux et besoins d'amélioration du produit, c'est la clé pour découvrir les opportunités de marché, utilisez "je comprends votre préoccupation" pour exprimer l'empathie] [Contexte pertinent: Identifier les insuffisances des produits existants, découvrir les opportunités de différenciation] 
+Question: À l'inverse, qu'est-ce qui vous satisfait pas dans cet outil ? Qu'est-ce que vous aimeriez qu'il améliore ?
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Si des manques fonctionnels sont mentionnés, demandez comment ça devrait marcher concrètement
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Si des problèmes d'expérience sont mentionnés, comprenez l'impact concret sur l'efficacité d'apprentissage
+
+Q3.6 [Notes animateur: Recueillir les besoins de fonctionnalités de produit idéal orienté préparation d'examen, noter particulièrement les fonctionnalités nécessaires et exceptionnelles pour la réussite aux tests, utilisez "vos idées sont vraiment inspirantes" pour encourager l'expression] [Contexte pertinent: Recueillir 3 fonctionnalités nécessaires et 3 fonctionnalités exceptionnelles spécifiques à la préparation d'examen, comprendre les priorités des utilisateurs dans le contexte de révision] 
+Question: Si vous pouviez concevoir l'appli idéale spécialement conçue pour la préparation aux examens d'anglais comme le TOEIC ou le TOEFL - donc vraiment axée sur l'apprentissage du vocabulaire pour réussir ces tests - quelles fonctionnalités vous aimeriez absolument qu'elle ait ? Vous pourriez m'en citer 3 qui vous sembleraient les plus cruciales pour la réussite à l'examen ?
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Pour chaque fonctionnalité, demandez pourquoi c'est important pour la préparation d'examen, quel problème de révision ça résout
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Si la description de l'utilisateur est générale, demandez comment ça marcherait concrètement pour améliorer les performances à l'examen
+
+Question complémentaire: En plus des fonctionnalités qu'on vient d'évoquer, qu'est-ce qui pourrait vraiment faire la différence dans cette appli de préparation d'examen pour vous aider à optimiser votre temps de révision et maximiser vos chances de réussite ?
+
+**Transition entre sections**: Merci pour tous ces retours super détaillés sur les outils existants. Maintenant j'aimerais connaître vos réactions sur quelques concepts de nouvelles fonctionnalités, ça nous aidera à mieux cerner les besoins des utilisateurs. Ça vous va ?
+
+---
+
+## Section 4: Validation des fonctionnalités SparkMo et test d'adaptabilité
+
+### Objectif de recherche de cette section
+Tester l'acceptation des fonctionnalités centrales de SparkMo sur le marché français, recueillir les retours sur l'algorithme de mémorisation, les éléments de gamification, l'orientation examen, vérifier les besoins de localisation.
+
+### Notes de section (Section Notes)
+**Instructions pour l'animateur**: "Si l'utilisateur partage des informations nouvelles qui semblent pertinentes pour nos objectifs de recherche, posez 1-2 questions de suivi pour approfondir (pourquoi/quoi/comment/quel impact). Si ce n'est pas pertinent, accusez réception simplement et continuez l'entretien. Pour les questions qui ont des relances prévues, si l'utilisateur a déjà répondu aux relances dans sa réponse principale, passez les relances. Quand vous accusez réception des réponses de l'utilisateur, utilisez de manière flexible différentes expressions comme 'très bien', 'mmh', 'je comprends', 'c'est intéressant', 'je vois', 'parfait', 'oui', 'c'est clair', 'd'accord', 'effectivement', etc., évitez de répéter 'je comprends'." Cette section se concentre sur le test de l'acceptation des fonctionnalités centrales de SparkMo, recueillir les suggestions de localisation et évaluations fonctionnelles.
+
+**Techniques d'expression localisées**: Présentez les concepts de fonctionnalités de manière claire et accessible, évitez le jargon technique, utilisez des analogies familières pour expliquer les concepts innovants. Adoptez un ton curieux et ouvert, en invitant l'utilisateur à réagir librement avec des formules comme "Qu'est-ce que ça vous évoque ?" ou "Comment vous réagissez à cette idée ?".
+
+**Informations contextuelles**: 
+- Les fonctionnalités centrales de SparkMo incluent l'algorithme de mémorisation (score MemScore, révision courbe d'oubli), éléments de gamification (récompenses de série, système de badges), bibliothèque de mots orientée examens
+- Besoin de vérifier l'acceptation de la gamification par les utilisateurs français, pourrait nécessiter un ajustement vers un style plus sérieux
+- Besoin d'ajouter la fonctionnalité de comparaison franco-anglaise et exercices de faux-amis
+- La fonctionnalité d'interaction famille-école doit s'adapter à la culture éducative française et aux réglementations de confidentialité
+
+### Guide d'entretien
+
+Q4.1 [Notes animateur: Tester l'acceptation du concept d'algorithme de mémorisation intelligente, noter le niveau de confiance de l'utilisateur envers les recommandations IA, utilisez "cette idée est vraiment innovante" pour exprimer l'intérêt] [Contexte pertinent: Mécanisme de révision intelligente de SparkMo basé sur la courbe d'oubli, organise les révisions selon la justesse des réponses et temps de réaction des utilisateurs] 
+Question: Si une appli pouvait mémoriser votre maîtrise de chaque mot et organiser automatiquement vos révisions en fonction de vos forces et faiblesses, qu'est-ce que vous penseriez de cette fonctionnalité ?
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Demandez à quel point vous feriez confiance aux recommandations intelligentes et quelles seraient vos inquiétudes
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Comprenez si vous souhaiteriez garder un contrôle manuel
+
+Q4.2 [Notes animateur: Tester l'acceptation des éléments de gamification, porter une attention particulière à la préférence des utilisateurs français pour l'apprentissage sérieux, utilisez "je comprends bien votre point de vue" pour exprimer le respect] [Contexte pertinent: Les utilisateurs français pourraient être réservés face à une gamification excessive, besoin de trouver un équilibre approprié] 
+Question: Qu'est-ce que vous pensez des éléments ludiques dans les applis d'apprentissage ? Par exemple, le suivi des jours d'apprentissage consécutifs, l'obtention de récompenses pour accomplir des tâches ?
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Si accepté, demandez quels éléments précis vous appréciez et pourquoi
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Si rejeté, comprenez pourquoi et quelles alternatives de motivation vous attendriez
+
+Q4.3 [Notes animateur: Vérifier la valeur de la spécificité d'examen, comprendre la préférence spécialisation vs généralisation, utilisez "cette distinction est vraiment importante" pour souligner la spécialisation] [Contexte pertinent: SparkMo supporte plusieurs bibliothèques d'examens, ciblé pour différents examens comme TOEIC, TOEFL, IELTS etc.] 
+Question: Si une appli était spécialement conçue pour les examens comme le TOEIC ou le TOEFL avec du contenu vocabulaire dédié, comparée aux applis d'apprentissage anglais généralistes, quels avantages et inconvénients vous y voyez ?
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Demandez combien vous seriez prêt à investir pour cette spécialisation (temps/argent)
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Comprenez à quel point vous avez besoin de l'apprentissage généraliste
+
+Q4.4 [Notes animateur: Tester le besoin de fonctionnalité de comparaison franco-anglaise, c'est la fonctionnalité différenciante centrale, utilisez "c'est vrai que c'est un besoin spécial des apprenants français" pour exprimer la compréhension] [Contexte pertinent: Ciblé pour les besoins spéciaux des francophones, les produits existants manquent de cette fonctionnalité] 
+Question: Si une appli pouvait spécialement signaler les mots anglais qui se mélangent facilement avec le français et proposer des exercices de comparaison, vous pensez que ça vous serait utile ?
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Demandez l'importance de cette fonctionnalité sur une échelle de 1 à 5
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Comprenez comment ça devrait marcher concrètement et quels types d'exercices
+
+Q4.5 [Notes animateur: Recueillir l'évaluation globale du concept produit SparkMo, quantifier le score d'attractivité, utilisez "votre évaluation est vraiment précieuse" pour exprimer la gratitude] [Contexte pertinent: Évaluation globale de l'adaptabilité du modèle produit SparkMo] 
+Question: Si toutes les fonctionnalités que je viens de vous présenter étaient réunies dans une seule appli, de 1 à 10, vous lui donneriez quelle note ? Qu'est-ce qui motive cette évaluation ?
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Demandez les fonctionnalités les plus attrayantes et pourquoi
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Comprenez les aspects à améliorer ou qui vous inquiètent
+
+**Transition entre sections**: Vos retours sur ces fonctionnalités sont vraiment éclairants. Pour finir, j'aimerais connaître vos réflexions sur les aspects pratiques d'usage et d'investissement, c'est important pour nous. On continue ?
+
+---
+
+## Section 5: Validation de faisabilité commerciale et test de volonté de paiement
+
+### Objectif de recherche de cette section
+Tester la volonté de paiement et sensibilité aux prix des utilisateurs, comprendre les préférences de modèle commercial, vérifier la faisabilité commerciale du marché, recueillir la volonté de recommandation et chemins de diffusion.
+
+### Notes de section (Section Notes)
+**Instructions pour l'animateur**: "Si l'utilisateur partage des informations nouvelles qui semblent pertinentes pour nos objectifs de recherche, posez 1-2 questions de suivi pour approfondir (pourquoi/quoi/comment/quel impact). Si ce n'est pas pertinent, accusez réception simplement et continuez l'entretien. Pour les questions qui ont des relances prévues, si l'utilisateur a déjà partagé les informations visées par la relance, passez les relances. Quand vous accusez réception des réponses de l'utilisateur, utilisez de manière flexible différentes expressions comme 'très bien', 'mmh', 'je comprends', 'c'est intéressant', 'je vois', 'parfait', 'oui', 'c'est clair', 'd'accord', 'effectivement', etc., évitez de répéter 'je comprends'." Cette section se concentre sur la collecte de la logique de décision de paiement et fourchettes de prix, éviter les demandes commerciales trop directes, valoriser la perception de valeur de l'utilisateur.
+
+**Techniques d'expression localisées**: Abordez les questions financières avec délicatesse, respectez la pudeur française concernant l'argent, présentez le paiement comme un investissement dans l'éducation plutôt qu'un achat de produit. Utilisez des formules respectueuses comme "Si ça ne vous dérange pas d'aborder ce sujet..." et "C'est tout à fait compréhensible".
+
+**Informations contextuelles**: 
+- Les utilisateurs français sont disposés à payer pour des outils éducatifs de qualité, mais sont sensibles aux prix
+- Besoin de clarifier la proposition de valeur et conditions de paiement
+- Les préférences abonnement vs achat unique doivent être vérifiées
+- Les capacités de paiement des étudiants et professionnels diffèrent considérablement
+
+### Guide d'entretien
+
+Q5.1 [Notes animateur: Comprendre l'historique et attitude de paiement, établir une base pour la discussion sur le paiement, utilisez "je comprends l'importance de l'investissement éducatif" pour exprimer l'accord] [Contexte pertinent: Comprendre l'expérience et attitude de paiement éducatif des utilisateurs, fournir des références pour la stratégie de prix] 
+Question: Est-ce que vous avez déjà investi financièrement dans l'apprentissage de l'anglais ou d'autres outils éducatifs ? À peu près quel type de solutions ?
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] S'il y a expérience de paiement, demandez pourquoi avoir payé et le niveau de satisfaction
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Si non, comprenez les raisons de non-paiement et les réticences
+
+Q5.2 [Notes animateur: Explorer la logique de décision de paiement, comprendre les standards de perception de valeur, utilisez "ces conditions sont très raisonnables" pour exprimer la compréhension] [Contexte pertinent: Vérifier la faisabilité commerciale, comprendre la perception de valeur et conditions de paiement des utilisateurs] 
+Question: Dans quelles circonstances vous seriez prêt à investir dans une appli d'apprentissage de l'anglais ? Quelles conditions il faudrait réunir ?
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Demandez les facteurs de décision de paiement les plus importants
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Comprenez les attentes pour période d'essai ou fonctionnalités gratuites
+
+Q5.3 [Notes animateur: Recueillir quantitativement la sensibilité aux prix, noter les chiffres spécifiques en euros, utilisez "je note bien votre fourchette de prix" pour montrer l'importance] [Contexte pertinent: Recueillir la fourchette d'acceptation de prix spécifique, fournir un support de données pour la stratégie de prix] 
+Question: S'il existait une appli d'apprentissage du vocabulaire anglais vraiment efficace, combien d'euros vous seriez prêt à investir par mois ? Quelle fourchette de prix vous semblerait raisonnable ?
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Demandez ce qui influence les limites hautes et basses de prix
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Comprenez la préférence pour abonnement vs achat unique
+
+Q5.4 [Notes animateur: Tester la volonté d'investissement temporel, comprendre les préférences de scénarios d'usage, utilisez "cet arrangement est très pratique" pour exprimer l'accord] [Contexte pertinent: Comprendre la répartition du temps d'apprentissage et scénarios d'usage des utilisateurs, fournir des références pour la conception produit] 
+Question: Vous pourriez généralement consacrer combien de temps chaque jour à l'apprentissage du vocabulaire anglais ? Quels seraient vos créneaux les plus appropriés ?
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Demandez pourquoi ces choix temporels et quels sont les facteurs limitants
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Comprenez les besoins et scénarios préférés pour l'apprentissage par petits bouts
+
+Q5.5 [Notes animateur: Recueillir la volonté de recommandation et chemins de diffusion, comprendre le potentiel de diffusion par bouche-à-oreille, utilisez "les recommandations d'amis sont vraiment importantes" pour exprimer l'accord] [Contexte pertinent: Comprendre le potentiel de diffusion par bouche-à-oreille du produit et canaux d'acquisition utilisateurs] 
+Question: S'il existait vraiment une appli aussi performante, vous la recommanderiez à vos proches ? Généralement par quels moyens ?
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Demandez les conditions et standards précis de recommandation
+- [Si le contexte est abrupt ou si l'utilisateur a déjà partagé les informations visées par la relance, passez cette relance ou posez la question de manière flexible pour atteindre le même objectif] Comprenez les caractéristiques du groupe cible de recommandation
+
+**Transition entre sections**: Merci beaucoup d'avoir partagé tant d'idées et d'expériences précieuses. Vos points de vue nous sont vraiment utiles. On fait un petit bilan ensemble, d'accord ?
+
+---
+
+## Section 6: Résumé de confirmation et collecte de retours sur l'entretien IA
+
+### Objectif de recherche de cette section
+Valoriser la contribution de l'utilisateur, résumer les points clés, confirmer qu'aucune information importante n'est omise, recueillir les retours sur l'expérience d'entretien IA pour améliorer la technologie d'entretien multilingue, maintenir de bonnes relations et préparer les contacts futurs.
+
+### Notes de section (Section Notes)
+**Instructions pour l'animateur:** *"Si l'utilisateur partage des informations nouvelles qui semblent pertinentes pour nos objectifs de recherche, posez 1-2 questions de suivi pour approfondir (pourquoi/quoi/comment/quel impact). Si ce n'est pas pertinent, accusez réception simplement et continuez l'entretien. Pour les questions qui ont des relances prévues, si l'utilisateur a déjà répondu aux relances dans sa réponse principale, passez les relances. Quand vous accusez réception des réponses de l'utilisateur, utilisez de manière flexible différentes expressions comme 'très bien', 'mmh', 'je comprends', 'c'est intéressant', 'je vois', 'parfait', 'oui', 'c'est clair', 'd'accord', 'effectivement', etc., évitez de répéter 'je comprends'."* Remerciements personnalisés, reprise des points clés, demande de compléments, collecte de retours sur l'expérience d'entretien IA (encourager évaluations vraies voire critiques), explication des contacts futurs.
+
+**Techniques d'expression localisées**: Concluez avec la courtoisie française typique, exprimez une gratitude sincère, utilisez des formules de politesse appropriées pour la fin d'entretien ("Je vous remercie vraiment", "Ça a été très enrichissant"). Adoptez un ton chaleureux et reconnaissant qui reflète l'appréciation française pour le temps accordé.
+
+**Informations contextuelles:**
+- La collecte de retours sur l'entretien IA est un élément important pour améliorer la technologie d'entretien multilingue
+- Besoin de comprendre les problèmes techniques (qualité sonore, stabilité de connexion), expérience de communication (profondeur de relance, naturel du dialogue), adaptabilité culturelle etc.
+- Encourager les utilisateurs à fournir des retours sincères, y compris des évaluations négatives, pour aider à améliorer l'application des entretiens IA sur le marché français
+- Les évaluations quantifiées (1-10 points) et suggestions d'amélioration concrètes sont toutes importantes
+
+### Guide d'entretien
+
+**Remerciements et résumé**
+Je vous remercie vraiment d'avoir consacré ce temps aujourd'hui pour partager vos réflexions et expériences avec moi. Vos points de vue sont extrêmement précieux pour nous, particulièrement ce que vous avez mentionné concernant [l'animateur reprend personnellement 1-2 points clés de l'utilisateur, comme des difficultés d'apprentissage spécifiques, besoins fonctionnels, ou retours sur les concepts produits].
+
+**Demande d'informations complémentaires**
+Est-ce qu'il y a d'autres réflexions ou expériences concernant l'apprentissage du vocabulaire anglais que vous jugez importantes mais qu'on n'a pas abordées aujourd'hui ?
+
+**Confirmation de contact futur**
+Si on développe par la suite des solutions liées à ces besoins, je peux vous inviter à les tester et recueillir vos retours ? C'est vraiment important pour l'amélioration de nos produits.
+
+**Collecte de retours sur l'expérience d'entretien IA**
+Avant de terminer, j'aimerais que vous preniez une minute ou deux pour partager vos impressions sur cet entretien IA lui-même. Vos retours sont vraiment importants pour nous aider à améliorer cette technologie d'entretien IA, on espère vraiment entendre des évaluations sincères, même critiques :
+
+'Durant tout l'entretien, vous avez rencontré des difficultés techniques ? Par exemple, problèmes d'audition, coupures sonores, ou autres dysfonctionnements techniques ?'
+
+'Comment vous avez trouvé la profondeur des relances de l'animateur IA ? Il y a eu des questions trop superficielles ou au contraire trop approfondies ?'
+
+'Vous avez ressenti une gêne ou un inconfort en dialoguant avec l'IA ? Quelles différences vous ressentez par rapport à un entretien avec une personne réelle ?'
+
+'Concernant les entretiens IA sur le marché français, vous avez des suggestions ? Par exemple sur l'expression linguistique, la compréhension culturelle, ou l'expérience technique ?'
+
+'Globalement, vous êtes satisfait de cette expérience d'entretien IA ? De 1 à 10, vous donneriez quelle note ? Vous avez des suggestions d'amélioration concrètes ?'
+
+On souhaite vraiment entendre vos réflexions sincères, y compris toute critique ou suggestion, ça nous aidera à offrir une meilleure expérience d'entretien IA aux utilisateurs français.
+
+**Remerciements de conclusion**
+Je vous remercie encore chaleureusement pour votre participation et vos retours précieux, bonne continuation dans votre apprentissage !
