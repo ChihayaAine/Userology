@@ -49,7 +49,8 @@ function DetailsPopup({
     interviewData.interviewer_id,
   );
   const [selectedLanguage, setSelectedLanguage] = useState<LanguageCode>('en-US');
-  
+  const [researchType, setResearchType] = useState<'product' | 'market'>('product');
+
   // 调试日志 - 移到状态变量声明之后
   console.warn('【interviewers】：>>>>>>>>>>>> details.tsx:41', {
     interviewers,
@@ -135,6 +136,7 @@ function DetailsPopup({
         objective: objective.trim(),
         number: numQuestions,
         context: uploadedDocumentContext,
+        researchType: researchType,
       };
 
       // 检测选择的面试官是否是 David（深度访谈模式）
@@ -371,11 +373,40 @@ function DetailsPopup({
               ))}
             </select>
           </div>
+          <div className="flex flex-row justify-between items-center w-[33.2rem] mt-3">
+            <h3 className="text-sm font-medium">Research Type:</h3>
+            <div className="flex gap-3">
+              <button
+                type="button"
+                className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                  researchType === 'product'
+                    ? 'bg-indigo-600 text-white'
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                }`}
+                onClick={() => setResearchType('product')}
+              >
+                Product Research
+              </button>
+              <button
+                type="button"
+                className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                  researchType === 'market'
+                    ? 'bg-indigo-600 text-white'
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                }`}
+                onClick={() => setResearchType('market')}
+              >
+                Market Research
+              </button>
+            </div>
+          </div>
           <h3 className="text-sm font-medium mt-3">Research Objective:</h3>
           <Textarea
             value={objective}
             className="h-24 mt-2 border-2 border-gray-500 w-[33.2rem]"
-            placeholder="e.g. Understand user pain points during the onboarding process and gather feedback on new features. Note: Supports 30+ languages for global research."
+            placeholder={researchType === 'product'
+              ? "e.g. Product Research - New Version Validation\n\nProduct Info:\n- Name: TaskMaster\n- Positioning: Team task management tool\n- Core Features: Task assignment, progress tracking\n- Target Users: SMB team managers\n\nResearch Background:\n- Trigger: Version 3.0 launched 3 months ago\n- Core Questions: Which new features are most valuable? What should we prioritize next?\n- Decision Need: Define roadmap for next 2-3 versions\n- Must Collect: Top 3 highlights and 3 pain points\n- Ideal Output: 3 must-do and 3 nice-to-have improvements"
+              : "e.g. Market Research - Opportunity Exploration\n\nBusiness Context:\n- Domain: AI leisure consumption assistant\n- Opportunity: Young people face choice paralysis, info overload\n- Strategic Goal: Validate market opportunity\n\nCore Questions to Validate:\n- Market Need: Real pain points in leisure decision-making?\n- Solution Gap: What's missing in existing tools (Xiaohongshu, Dianping)?\n- Product Direction: What do users expect from AI recommendations?\n- Commercial Viability: Willingness to pay?\n\nTarget Users:\n- Core: Young professionals in tier-1 cities (25-35)\n- Geography: Beijing, Shanghai, Guangzhou, Shenzhen\n- Characteristics: Disposable income, quality-seeking\n\nSuccess Criteria:\n- Decision: Whether to enter this market\n- Ideal Output: Validate 3 need hypotheses, discover 2 new opportunities\n- Must Collect: Pain point authenticity, AI acceptance, payment willingness"}
             onChange={(e) => setObjective(e.target.value)}
             onBlur={(e) => setObjective(e.target.value.trim())}
           />
