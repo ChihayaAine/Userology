@@ -417,8 +417,8 @@ function DetailsPopup({
                   <p className="text-xs text-gray-700">
                     <span className="font-semibold text-gray-900">Required.</span>{' '}
                     {researchType === 'product'
-                      ? "Describe your product and core research questions. Include: product info, research background, core questions, decision needs, and expected outputs."
-                      : "Describe the market opportunity and validation goals. Include: business context, core questions to validate, target users, and success criteria."}
+                      ? "Describe your product and core research questions. Very recommended to include: product info, research background, core questions, decision needs, and expected outputs."
+                      : "Describe the market opportunity and validation goals. Very recommended to include: business context, core questions to validate, target users, and success criteria."}
                   </p>
                   <button
                     className="text-xs text-indigo-600 hover:text-indigo-800 mt-2 underline"
@@ -521,10 +521,9 @@ function DetailsPopup({
               {showDocumentTooltip && !showDocumentExample && (
                 <div className="absolute left-0 top-6 z-50 w-80 bg-white border border-gray-300 rounded-lg shadow-lg p-3">
                   <p className="text-xs text-gray-700">
-                    <span className="font-semibold text-gray-900">Optional.</span>{' '}
                     {researchType === 'product'
-                      ? "Upload detailed product documentation, PRDs, feature specs, user feedback reports, or version release notes to provide additional context."
-                      : "Upload market research reports, competitor analysis, user survey data, industry reports, or business plans to supplement your research context."}
+                      ? "Upload detailed product documentation, PRDs, feature specs, user feedback reports, or version release notes or anything related to provide additional context."
+                      : "Upload market research reports, competitor analysis, user survey data, industry reports, or business plans or anything related to provide additional context."}
                   </p>
                   <button
                     className="text-xs text-indigo-600 hover:text-indigo-800 mt-2 underline"
@@ -537,48 +536,70 @@ function DetailsPopup({
                 </div>
               )}
               {showDocumentExample && (
-                <div className="absolute left-0 top-6 z-50 w-96 bg-white border border-gray-300 rounded-lg shadow-lg p-4 max-h-96 overflow-y-auto">
-                  <h4 className="text-sm font-semibold text-gray-900 mb-2">
-                    {researchType === 'product' ? 'Product Documentation Examples' : 'Market Research Documentation Examples'}
-                  </h4>
-                  <div className="text-xs text-gray-700 space-y-2">
-                    {researchType === 'product' ? (
-                      <>
-                        <p><span className="font-semibold">• Product Requirements Document (PRD)</span><br/>
-                        Detailed feature specifications, user stories, acceptance criteria</p>
-                        <p><span className="font-semibold">• Feature Specifications</span><br/>
-                        Technical specs, design mockups, interaction flows</p>
-                        <p><span className="font-semibold">• User Feedback Reports</span><br/>
-                        Support tickets, user reviews, NPS survey results</p>
-                        <p><span className="font-semibold">• Version Release Notes</span><br/>
-                        Changelog, new features, bug fixes, known issues</p>
-                        <p><span className="font-semibold">• Analytics Reports</span><br/>
-                        Usage metrics, feature adoption rates, user behavior data</p>
-                      </>
-                    ) : (
-                      <>
-                        <p><span className="font-semibold">• Market Research Reports</span><br/>
-                        Industry trends, market size, growth projections</p>
-                        <p><span className="font-semibold">• Competitor Analysis</span><br/>
-                        Competitive landscape, feature comparison, pricing analysis</p>
-                        <p><span className="font-semibold">• User Survey Data</span><br/>
-                        Survey results, user interviews, focus group findings</p>
-                        <p><span className="font-semibold">• Industry Reports</span><br/>
-                        Third-party research, analyst reports, white papers</p>
-                        <p><span className="font-semibold">• Business Plans</span><br/>
-                        Go-to-market strategy, business model, revenue projections</p>
-                      </>
-                    )}
-                  </div>
+                <div className="absolute left-0 top-6 z-50 w-[520px] h-[520px] bg-white border border-gray-300 rounded-lg shadow-lg p-5 overflow-y-auto">
+                  {/* Close button */}
                   <button
-                    className="text-xs text-indigo-600 hover:text-indigo-800 mt-3 underline"
+                    className="absolute top-3 right-3 text-gray-400 hover:text-gray-600"
                     onClick={() => {
                       setShowDocumentExample(false);
                       setShowDocumentTooltip(false);
                     }}
                   >
-                    Close
+                    ✕
                   </button>
+
+                  <h4 className="text-sm font-semibold text-gray-900 mb-4">
+                    {researchType === 'product' ? 'Product Documentation Examples' : 'Market Research Documentation Examples'}
+                  </h4>
+                  <div className="text-xs text-gray-700 space-y-3 text-left">
+                    {researchType === 'product' ? (
+                      <>
+                        <div>
+                          <div className="font-semibold">• Product Requirements Document (PRD)</div>
+                          <div>Detailed feature specifications, user stories, acceptance criteria</div>
+                        </div>
+                        <div>
+                          <div className="font-semibold">• Feature Specifications</div>
+                          <div>Technical specs, design mockups, interaction flows</div>
+                        </div>
+                        <div>
+                          <div className="font-semibold">• User Feedback Reports</div>
+                          <div>Support tickets, user reviews, NPS survey results</div>
+                        </div>
+                        <div>
+                          <div className="font-semibold">• Version Release Notes</div>
+                          <div>Changelog, new features, bug fixes, known issues</div>
+                        </div>
+                        <div>
+                          <div className="font-semibold">• Analytics Reports</div>
+                          <div>Usage metrics, feature adoption rates, user behavior data</div>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <div>
+                          <div className="font-semibold">• Market Research Reports</div>
+                          <div>Industry trends, market size, growth projections</div>
+                        </div>
+                        <div>
+                          <div className="font-semibold">• Competitor Analysis</div>
+                          <div>Competitive landscape, feature comparison, pricing analysis</div>
+                        </div>
+                        <div>
+                          <div className="font-semibold">• User Survey Data</div>
+                          <div>Survey results, user interviews, focus group findings</div>
+                        </div>
+                        <div>
+                          <div className="font-semibold">• Industry Reports</div>
+                          <div>Third-party research, analyst reports, white papers</div>
+                        </div>
+                        <div>
+                          <div className="font-semibold">• Business Plans</div>
+                          <div>Go-to-market strategy, business model, revenue projections</div>
+                        </div>
+                      </>
+                    )}
+                  </div>
                 </div>
               )}
             </div>
