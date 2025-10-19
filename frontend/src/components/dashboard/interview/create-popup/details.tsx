@@ -400,7 +400,14 @@ function DetailsPopup({
               </button>
             </div>
           </div>
-          <h3 className="text-sm font-medium mt-3">Research Objective:</h3>
+          <div className="mt-3">
+            <h3 className="text-sm font-medium">Research Objective: (Required)</h3>
+            <p className="text-xs text-gray-600 mt-1">
+              {researchType === 'product'
+                ? "Describe your product and core research questions. Include: product info, research background, core questions, decision needs, and expected outputs."
+                : "Describe the market opportunity and validation goals. Include: business context, core questions to validate, target users, and success criteria."}
+            </p>
+          </div>
           <Textarea
             value={objective}
             className="h-24 mt-2 border-2 border-gray-500 w-[33.2rem]"
@@ -410,9 +417,14 @@ function DetailsPopup({
             onChange={(e) => setObjective(e.target.value)}
             onBlur={(e) => setObjective(e.target.value.trim())}
           />
-          <h3 className="text-sm font-medium mt-2">
-            Upload any documents related to the research study.
-          </h3>
+          <div className="mt-2">
+            <h3 className="text-sm font-medium">Additional Documents: (Optional)</h3>
+            <p className="text-xs text-gray-600 mt-1">
+              {researchType === 'product'
+                ? "Upload detailed product documentation, PRDs, feature specs, user feedback reports, or version release notes to provide additional context."
+                : "Upload market research reports, competitor analysis, user survey data, industry reports, or business plans to supplement your research context."}
+            </p>
+          </div>
           <FileUpload
             isUploaded={isUploaded}
             setIsUploaded={setIsUploaded}
