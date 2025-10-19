@@ -1,7 +1,8 @@
 import { Request, Response } from 'express';
 import { InterviewerService } from '@/services/interviewers.service';
 import { retellClient } from '@/config/retell';
-import { INTERVIEWERS, RETELL_AGENT_GENERAL_PROMPT, RETELL_AGENT_DEEP_DIVE_PROMPT } from '@/lib/constants';
+import { INTERVIEWERS, RETELL_AGENT_GENERAL_PROMPT, RETELL_AGENT_DEEP_DIVE_PROMPT, SUPPORTED_LANGUAGES } from '@/lib/constants';
+import axios from 'axios';
 
 export const createInterviewer = async (req: Request, res: Response) => {
   console.log("create-interviewer request received");
@@ -223,6 +224,81 @@ export const getInterviewer = async (req: Request, res: Response) => {
     console.error("Error fetching interviewer:", error);
     return res.status(500).json({
       error: "Failed to fetch interviewer"
+    });
+  }
+};
+
+// 更新面试官的语言配置
+export const updateInterviewerLanguage = async (req: Request, res: Response) => {
+  try {
+    const { agentId, language } = req.body;
+
+    if (!agentId || !language) {
+      return res.status(400).json({
+        error: "Agent ID and language are required"
+      });
+    }
+
+    // 验证语言是否支持
+    const languageConfig = SUPPORTED_LANGUAGES[language as keyof typeof SUPPORTED_LANGUAGES];
+    if (!languageConfig) {
+      return res.status(400).json({
+        error: `Language ${language} is not supported`
+      });
+    }
+
+    console.log(`🌐 Updating agent ${agentId} to language: ${language}`);
+
+    // 获取 agent 信息以确定是哪个面试官
+    const agent = await retellClient.agent.retrieve(agentId);
+    
+    // 根据面试官名称选择对应的语音
+    let voiceId = languageConfig.voices.bob; // 默认使用 bob 的语音
+    
+    if (agent.agent_name?.toLowerCase().includes('lisa')) {
+      voiceId = languageConfig.voices.lisa;
+    } else if (agent.agent_name?.toLowerCase().includes('david')) {
+      voiceId = languageConfig.voices.david;
+    }
+
+    // 直接调用 Retell API 更新 agent（不使用 SDK）
+    console.log(`📝 Preparing to update agent:`);
+    console.log(`   - Agent ID: ${agentId}`);
+    console.log(`   - Language: ${languageConfig.code}`);
+    console.log(`   - Voice ID: ${voiceId}`);
+    console.log(`   - API Key: ${process.env.RETELL_API_KEY ? 'Present' : 'Missing'}`);
+    
+    const response = await axios.patch(
+      `https://api.retellai.com/update-agent/${agentId}`,
+      {
+        language: languageConfig.code,
+        voice_id: voiceId,
+      },
+      {
+        headers: {
+          'Authorization': `Bearer ${process.env.RETELL_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+
+    const updatedAgent = response.data;
+
+    console.log(`✅ Agent ${agentId} updated successfully`);
+    console.log(`   - Language: ${languageConfig.code} (${languageConfig.name})`);
+    console.log(`   - Voice ID: ${voiceId}`);
+
+    return res.status(200).json({
+      success: true,
+      agent: updatedAgent,
+      language: languageConfig.name,
+      languageCode: languageConfig.code,
+      voiceId: voiceId
+    });
+  } catch (error) {
+    console.error("Error updating interviewer language:", error);
+    return res.status(500).json({
+      error: "Failed to update interviewer language"
     });
   }
 };

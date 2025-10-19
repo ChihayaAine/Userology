@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import { apiClient } from "@/services/api";
 import { useInterviewers } from "@/contexts/interviewers.context";
 import { InterviewBase, Question } from "@/types/interview";
-import { ChevronRight, ChevronLeft, Info } from "lucide-react";
+import { ChevronRight, ChevronLeft, Info, Globe } from "lucide-react";
 import Image from "next/image";
 import { CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
@@ -14,6 +14,7 @@ import FileUpload from "../fileUpload";
 import Modal from "@/components/dashboard/Modal";
 import InterviewerDetailsModal from "@/components/dashboard/interviewer/interviewerDetailsModal";
 import { Interviewer } from "@/types/interviewer";
+import { SUPPORTED_LANGUAGES, LanguageCode } from "@/lib/languages";
 
 interface Props {
   open: boolean;
@@ -47,6 +48,7 @@ function DetailsPopup({
   const [selectedInterviewer, setSelectedInterviewer] = useState<bigint | number>(
     interviewData.interviewer_id,
   );
+  const [selectedLanguage, setSelectedLanguage] = useState<LanguageCode>('en-US');
   
   // 调试日志 - 移到状态变量声明之后
   console.warn('【interviewers】：>>>>>>>>>>>> details.tsx:41', {
@@ -99,6 +101,29 @@ function DetailsPopup({
       duration !== "" &&
       Number(selectedInterviewer) > 0
     );
+  };
+
+  // 更新面试官的语言配置
+  const updateInterviewerLanguage = async (language: LanguageCode) => {
+    const selectedInterviewerData = interviewers.find(
+      (interviewer) => Number(interviewer.id) === Number(selectedInterviewer)
+    );
+
+    if (!selectedInterviewerData?.agent_id) {
+      console.error('No agent_id found for selected interviewer');
+      return;
+    }
+
+    try {
+      console.log(`🌐 Updating interviewer language to: ${language}`);
+      await apiClient.post('/interviewers/update-language', {
+        agentId: selectedInterviewerData.agent_id,
+        language: language
+      });
+      console.log(`✅ Language updated successfully`);
+    } catch (error) {
+      console.error('❌ Error updating language:', error);
+    }
   };
 
   const onGenrateQuestions = async () => {
@@ -154,7 +179,7 @@ function DetailsPopup({
       name: name.trim(),
       objective: objective.trim(),
       questions: updatedQuestions,
-      interviewer_id: selectedInterviewer,
+      interviewer_id: BigInt(selectedInterviewer),
       question_count: Number(numQuestions),
       time_duration: duration,
       description: generatedQuestionsResponse.description,
@@ -179,7 +204,7 @@ function DetailsPopup({
       name: name.trim(),
       objective: objective.trim(),
       questions: [{ id: uuidv4(), question: "", follow_up_count: 1 }],
-      interviewer_id: selectedInterviewer,
+      interviewer_id: BigInt(selectedInterviewer),
       question_count: Number(numQuestions),
       time_duration: String(duration),
       description: "",
@@ -274,8 +299,18 @@ function DetailsPopup({
                     onClick={() => {
                       console.log('🚀 Selecting interviewer:', item.id, item.name);
                       console.log('🚀 Previous selectedInterviewer:', selectedInterviewer);
-                      setSelectedInterviewer(Number(item.id));
-                      console.log('🚀 New selectedInterviewer should be:', Number(item.id));
+                      const newInterviewerId = Number(item.id);
+                      setSelectedInterviewer(newInterviewerId);
+                      console.log('🚀 New selectedInterviewer should be:', newInterviewerId);
+                      // 立即应用当前选择的语言到新选择的面试官
+                      setTimeout(() => {
+                        const selectedInterviewerData = interviewers.find(
+                          (interviewer) => Number(interviewer.id) === newInterviewerId
+                        );
+                        if (selectedInterviewerData?.agent_id) {
+                          updateInterviewerLanguage(selectedLanguage);
+                        }
+                      }, 100);
                     }}
                   >
                     <Image
@@ -316,7 +351,27 @@ function DetailsPopup({
               <></>
             )}
           </div>
-          <h3 className="text-sm font-medium">Research Objective:</h3>
+          <div className="flex flex-row justify-between items-center w-[33.2rem] mt-3">
+            <h3 className="text-sm font-medium">Interview Language:</h3>
+            <select
+              value={selectedLanguage}
+              onChange={(e) => {
+                const newLanguage = e.target.value as LanguageCode;
+                setSelectedLanguage(newLanguage);
+                if (selectedInterviewer && Number(selectedInterviewer) > 0) {
+                  updateInterviewerLanguage(newLanguage);
+                }
+              }}
+              className="border-2 border-gray-500 rounded px-3 py-1.5 text-sm focus:outline-none focus:border-indigo-600 cursor-pointer"
+            >
+              {Object.entries(SUPPORTED_LANGUAGES).map(([code, lang]) => (
+                <option key={code} value={code}>
+                  {lang.flag} {lang.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <h3 className="text-sm font-medium mt-3">Research Objective:</h3>
           <Textarea
             value={objective}
             className="h-24 mt-2 border-2 border-gray-500 w-[33.2rem]"

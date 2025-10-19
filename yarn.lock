@@ -9640,10 +9640,10 @@ retell-client-js-sdk@^2.0.0:
     eventemitter3 "^5.0.1"
     livekit-client "^2.5.1"
 
-retell-sdk@^4.19.0:
-  version "4.48.0"
-  resolved "https://registry.npmmirror.com/retell-sdk/-/retell-sdk-4.48.0.tgz#360bfe64f3d8cee1490f3012c0fc5ef44062898c"
-  integrity sha512-W3FdrsHOnIeVtkbm7WqA3xMolTmT4kfRrk/MlySOCUKO2LOUsRCKTd23QPdBBYVPPnDZdESsRqHRHbccVlT4zw==
+retell-sdk@^4.50.0:
+  version "4.50.0"
+  resolved "https://registry.npmmirror.com/retell-sdk/-/retell-sdk-4.50.0.tgz#6483321325c09f4a4d9016b7a8351c1e72e87c5b"
+  integrity sha512-MBhHJmgpM86cWxKCchFaV/+d0ZN4Wq2XHkoQCW6IQCTWVFnpvci4eD62baN4neWhr+mONT8OUNpLdFrtuk/+lA==
   dependencies:
     "@types/node" "^18.11.18"
     "@types/node-fetch" "^2.6.4"

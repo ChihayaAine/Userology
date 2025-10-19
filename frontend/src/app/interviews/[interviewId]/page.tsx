@@ -71,7 +71,7 @@ function InterviewHome({ params, searchParams }: Props) {
     const protocol = base_url?.includes("localhost") ? "http" : "https";
     if (interview?.url) {
       const url = interview?.readable_slug
-        ? `${protocol}://${base_url}/call/${interview?.readable_slug}`
+        ? `https://47.93.101.73:8089/call/${interview?.readable_slug}`
         : interview.url.startsWith("http")
           ? interview.url
           : `https://${interview.url}`;
