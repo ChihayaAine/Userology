@@ -431,48 +431,78 @@ function DetailsPopup({
                 </div>
               )}
               {showObjectiveExample && (
-                <div className="absolute left-0 top-6 z-50 w-96 bg-white border border-gray-300 rounded-lg shadow-lg p-4 max-h-96 overflow-y-auto">
+                <div className="absolute left-0 top-6 z-50 w-[480px] bg-white border border-gray-300 rounded-lg shadow-lg p-4 max-h-[500px] overflow-y-auto">
                   <h4 className="text-sm font-semibold text-gray-900 mb-2">
                     {researchType === 'product' ? 'Product Research Example' : 'Market Research Example'}
                   </h4>
-                  <pre className="text-xs text-gray-700 whitespace-pre-wrap font-sans">
+                  <pre className="text-xs text-gray-700 whitespace-pre-wrap font-sans leading-relaxed">
                     {researchType === 'product'
-                      ? `Product Research - New Version Validation
+                      ? `Research Type: Product Research - English Exam Vocabulary App
 
 Product Info:
-- Name: TaskMaster
-- Positioning: Team task management tool
-- Core Features: Task assignment, progress tracking, team collaboration
-- Target Users: SMB team managers
+- Name: Sparkmo
+- Positioning: AI-powered exam-focused English vocabulary learning app for Taiwan market
+- Core Features: Spaced repetition, exam-specific word lists (TOEFL/IELTS/TOEIC), AI-generated example sentences, progress tracking
+- Target Users: Taiwanese students and young professionals preparing for English proficiency exams
 
 Research Background:
-- Trigger: Version 3.0 launched 3 months ago
-- Core Questions: Which new features are most valuable? What should we prioritize next?
-- Decision Need: Define roadmap for next 2-3 versions
-- Must Collect: Top 3 highlights and 3 pain points
-- Ideal Output: 3 must-do and 3 nice-to-have improvements`
-                      : `Market Research - Opportunity Exploration
+- Trigger: Successfully launched in Taiwan, now exploring expansion to French market
+- Core Questions:
+  • Can our "exam-driven" product model work in France?
+  • What are the core pain points for French users preparing for English exams?
+  • Which exam types (TOEIC, TOEFL, IELTS, Cambridge) should we prioritize?
+  • What features need localization beyond translation?
+- Decision Need: Decide whether to invest in French market localization and product development
+- Must Collect:
+  • Current tools users are using for exam vocabulary prep
+  • Top 3 pain points with existing solutions
+  • Must-have features for an "ideal exam prep app"
+  • Pricing sensitivity and payment willingness (€)
+  • Preferred payment model (subscription vs. one-time purchase)
+- Ideal Output:
+  • Go/No-Go decision recommendation
+  • User personas for different exam types
+  • Competitive analysis of existing solutions
+  • Prioritized feature list for localization`
+                      : `Research Type: Market Research - AI Leisure Time Optimization
 
 Business Context:
-- Domain: AI leisure consumption assistant
-- Opportunity: Young people face choice paralysis, info overload
-- Strategic Goal: Validate market opportunity
+- Domain: AI applications for individual consumers (consumption, entertainment, self-improvement, productivity)
+- Opportunity: AI can reshape leisure experiences through personalized recommendations, content generation, and intelligent interaction, helping users spend leisure time more efficiently and meaningfully
+- Strategic Goal: Explore AI breakthrough opportunities in consumer market, identify and validate a product direction with high user value and commercial potential
 
 Core Questions to Validate:
-- Market Need: Real pain points in leisure decision-making?
-- Solution Gap: What's missing in existing tools (Xiaohongshu, Dianping)?
-- Product Direction: What do users expect from AI recommendations?
-- Commercial Viability: Willingness to pay?
+- Market Need Authenticity:
+  • Do users have real and strong needs for "optimizing leisure time arrangement"?
+  • Do users perceive pain points in current leisure activities (videos, games, reading) that AI can significantly improve?
+- Solution Gap:
+  • What core pain points exist in mainstream entertainment/productivity apps (Douyin, Bilibili, Xiaohongshu, games)? (e.g., echo chambers, post-binge emptiness, high content filtering costs)
+  • What gaps exist in how existing AI tools (ChatGPT, Midjourney) integrate into ordinary people's daily leisure? (e.g., usage barriers, scenario integration, lack of consolidation)
+- Product Direction:
+  • Which leisure scenario do users most want AI help with? (e.g., AI reading assistant, AI game companion, AI personalized content generator, AI interest mentor)
+  • What core features should an ideal AI product have to attract users? (efficiency tool, entertainment partner, or creativity engine?)
+- Commercial Viability:
+  • Are users willing to pay for "higher quality leisure time"? What payment models? (subscription, pay-per-use, premium features)
 
 Target Users:
-- Core: Young professionals in tier-1 cities (25-35)
-- Geography: Beijing, Shanghai, Guangzhou, Shenzhen
-- Characteristics: Disposable income, quality-seeking
+- Core: "Active explorers" interested in new tech (especially AI), willing to try new products, motivated to self-improve or pursue quality entertainment
+- Secondary: "Efficiency anxious" professionals/students seeking efficient, valuable content consumption
+- Geography: Tier 1 & 2 cities in mainland China
+- Age: 18-35 years old
+- Occupation: University students, internet workers, white-collar workers, content creators
 
 Success Criteria:
-- Decision: Whether to enter this market
-- Ideal Output: Validate 3 need hypotheses, discover 2 new opportunities
-- Must Collect: Pain point authenticity, AI acceptance, payment willingness`}
+- Decision: Whether to launch project in AI leisure consumption domain and determine most promising product direction
+- Ideal Output:
+  • Detailed user leisure time allocation map (activities, duration, apps used, satisfaction, pain points)
+  • Identify and rank 3-5 core pain points users most want solved in leisure scenarios
+  • Collect 5-10 user-perspective "ideal AI product" concepts with specific, attractive features
+  • Validate payment willingness and acceptable price range for "AI-optimized leisure"
+- Must Collect:
+  • Time allocation: specific leisure activities and duration (e.g., 2hrs short videos, 1hr gaming, 30min reading)
+  • Current solutions and ratings: main apps used for each activity, what they like and hate
+  • Core pain points: most frustrating, time-wasting, or unsatisfying aspects of leisure time
+  • Open-ended vision: if an all-powerful AI team could build anything, what product would users want for their leisure time? What features? Why important?`}
                   </pre>
                   <button
                     className="text-xs text-indigo-600 hover:text-indigo-800 mt-3 underline"
