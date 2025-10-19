@@ -105,3 +105,6 @@ ssl-certs/
 # Temporary files
 tmp/
 temp/
+
+
+.augment

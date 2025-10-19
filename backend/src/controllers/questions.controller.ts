@@ -71,6 +71,7 @@ export const generateInterviewSessions = async (req: Request, res: Response) => 
   console.log("generate-interview-sessions request received");
   const body = req.body;
   const researchType = body.researchType || 'product';
+  const language = body.language || 'en-US'; // 接收访谈语言参数
 
   let systemPrompt;
   let userPrompt;
@@ -88,6 +89,7 @@ export const generateInterviewSessions = async (req: Request, res: Response) => 
 
   console.warn('【生成 Sessions - 配置】：>>>>>>>>>>>> questions.controller.ts', {
     researchType,
+    language, // 记录语言参数
     apiKey: process.env.OPENAI_API_KEY ? 'exists' : 'missing',
     baseURL: process.env.OPENAI_API_BASE || "https://api.tu-zi.com/v1",
     requestBody: body

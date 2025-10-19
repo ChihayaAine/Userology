@@ -141,6 +141,7 @@ function DetailsPopup({
         number: numQuestions,
         context: uploadedDocumentContext,
         researchType: researchType,
+        language: selectedLanguage, // 添加访谈语言参数
       };
 
       // 检测选择的面试官是否是 David（深度访谈模式）

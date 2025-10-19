@@ -19,13 +19,70 @@ export const generateMarketResearchSessionsPrompt = (body: {
   objective: string;
   number: number;
   context: string;
-}) => `# Market Research Interview Guide Generation Task
+  language?: string;
+}) => {
+  // 语言本地化配置
+  const languageConfig: Record<string, { name: string; instructions: string }> = {
+    'zh-CN': {
+      name: '中文（简体）',
+      instructions: `**CRITICAL LANGUAGE REQUIREMENT**:
+- Generate ALL content in Simplified Chinese (简体中文)
+- Use Chinese interview conventions and communication styles
+- Adapt question phrasing to Chinese cultural context (e.g., more indirect, relationship-building approach)
+- Use Chinese-appropriate examples and scenarios
+- Follow Chinese user research best practices (e.g., emphasis on group harmony, face-saving language)`
+    },
+    'en-US': {
+      name: 'English (US)',
+      instructions: `**LANGUAGE REQUIREMENT**:
+- Generate ALL content in English (US)
+- Use American English conventions and direct communication style
+- Follow Western user research best practices`
+    },
+    'es-ES': {
+      name: 'Spanish',
+      instructions: `**LANGUAGE REQUIREMENT**:
+- Generate ALL content in Spanish
+- Use Spanish interview conventions and communication styles
+- Adapt to Spanish-speaking cultural context`
+    },
+    'fr-FR': {
+      name: 'French',
+      instructions: `**LANGUAGE REQUIREMENT**:
+- Generate ALL content in French
+- Use French interview conventions and communication styles
+- Adapt to French cultural context`
+    },
+    'de-DE': {
+      name: 'German',
+      instructions: `**LANGUAGE REQUIREMENT**:
+- Generate ALL content in German
+- Use German interview conventions and communication styles
+- Adapt to German cultural context`
+    },
+    'ja-JP': {
+      name: 'Japanese',
+      instructions: `**LANGUAGE REQUIREMENT**:
+- Generate ALL content in Japanese
+- Use Japanese interview conventions and communication styles (e.g., high-context, polite forms)
+- Adapt to Japanese cultural context (e.g., emphasis on harmony, indirect communication)`
+    }
+  };
+
+  const selectedLanguage = body.language || 'en-US';
+  const langConfig = languageConfig[selectedLanguage] || languageConfig['en-US'];
+
+  return `# Market Research Interview Guide Generation Task
+
+${langConfig.instructions}
+
+**IMPORTANT**: Regardless of the language used in the Research Objective or Additional Context below, you MUST generate the interview guide in ${langConfig.name}. The input language is for your understanding only - the output MUST be in ${langConfig.name}.
 
 ## Input Information
 
 **Research Study Title**: ${body.name}
 
-**Research Objective**: 
+**Research Objective**:
 ${body.objective}
 
 ${body.context ? `**Additional Market Context**:\n${body.context}\n` : ''}
@@ -161,4 +218,5 @@ After generating the guide, self-check:
 Now, based on the above input information and requirements, generate a complete, high-quality market research interview guide.
 
 **IMPORTANT**: Directly output JSON object, do not include any markdown code block markers (like \`\`\`json).`;
+};
 
