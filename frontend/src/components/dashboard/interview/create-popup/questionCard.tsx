@@ -14,6 +14,7 @@ interface QuestionCardProps {
   questionData: Question;
   onQuestionChange: (id: string, question: Question) => void;
   onDelete: (id: string) => void;
+  isDeepDiveMode?: boolean;
 }
 
 const questionCard = ({
@@ -21,13 +22,16 @@ const questionCard = ({
   questionData,
   onQuestionChange,
   onDelete,
+  isDeepDiveMode = false,
 }: QuestionCardProps) => {
   return (
     <>
-      <Card className=" shadow-md mb-5 pb-3 ">
+      <Card className={`shadow-md mb-5 pb-3 ${isDeepDiveMode ? 'min-h-[200px]' : ''}`}>
         <CardContent className="p-2 mx-5">
           <div className="flex flex-row justify-between mt-3 items-baseline ">
-            <CardTitle className="text-lg">Question {questionNumber}</CardTitle>
+            <CardTitle className="text-lg">
+              {isDeepDiveMode ? `Session ${questionNumber}` : `Question ${questionNumber}`}
+            </CardTitle>
             <div className="flex flex-row items-start space-x-1">
               <h3 className="text-base font-semibold mr-2">Depth Level: </h3>
               <TooltipProvider>
@@ -109,9 +113,15 @@ const questionCard = ({
           <div className="flex flex-row items-center">
             <textarea
               value={questionData?.question}
-              className="h-fit mt-3 pt-1 border-2 rounded-md w-full px-2 border-gray-400"
-              placeholder="e.g. Can you tell me about a challenging project you’ve worked on?"
-              rows={3}
+              className={`h-fit mt-3 pt-1 border-2 rounded-md w-full px-2 border-gray-400 ${
+                isDeepDiveMode ? 'min-h-[120px]' : ''
+              }`}
+              placeholder={
+                isDeepDiveMode 
+                  ? "e.g. Session 1: User Background & Context\n- Tell me about your role and daily responsibilities\n- What does a typical workday look like for you?\n- What tools and systems do you use regularly?\n- How long have you been in this position?"
+                  : "e.g. Can you tell me about a challenging project you've worked on?"
+              }
+              rows={isDeepDiveMode ? 10 : 3}
               onChange={(e) =>
                 onQuestionChange(questionData.id, {
                   ...questionData,

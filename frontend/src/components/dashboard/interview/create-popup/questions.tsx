@@ -5,6 +5,7 @@ import { apiClient } from "@/services/api";
 import { useClerk, useOrganization } from "@clerk/nextjs";
 import { InterviewBase, Question } from "@/types/interview";
 import { useInterviews } from "@/contexts/interviews.context";
+import { useInterviewers } from "@/contexts/interviewers.context";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import QuestionCard from "@/components/dashboard/interview/create-popup/questionCard";
 import { Button } from "@/components/ui/button";
@@ -20,6 +21,7 @@ interface Props {
 function QuestionsPopup({ interviewData, setProceed, setOpen }: Props) {
   const { user } = useClerk();
   const { organization } = useOrganization();
+  const { interviewers } = useInterviewers();
   const [isClicked, setIsClicked] = useState(false);
 
   const [questions, setQuestions] = useState<Question[]>(
@@ -29,6 +31,13 @@ function QuestionsPopup({ interviewData, setProceed, setOpen }: Props) {
     interviewData.description.trim(),
   );
   const { fetchInterviews } = useInterviews();
+
+  // 检测是否为深度访谈模式（David 面试官）
+  const selectedInterviewer = interviewers.find(
+    (interviewer) => Number(interviewer.id) === Number(interviewData.interviewer_id)
+  );
+  const isDeepDiveMode = selectedInterviewer?.name?.includes('David') || 
+                         selectedInterviewer?.name?.includes('Deep Dive');
 
   const endOfListRef = useRef<HTMLDivElement>(null);
   const prevQuestionLengthRef = useRef(questions.length);
@@ -127,8 +136,10 @@ function QuestionsPopup({ interviewData, setProceed, setOpen }: Props) {
           <h1 className="text-2xl font-semibold">Create Interview</h1>
         </div>
         <div className="my-3 text-left w-[96%] text-sm">
-          We will be using these questions during the interviews. Please make
-          sure they are ok.
+          {isDeepDiveMode 
+            ? "We will be using these session outlines during the deep dive interviews. Each session will be explored thoroughly before moving to the next. Please make sure they are ok."
+            : "We will be using these questions during the interviews. Please make sure they are ok."
+          }
         </div>
         <ScrollArea className="flex flex-col justify-center items-center w-full mt-3">
           {questions.map((question, index) => (
@@ -138,6 +149,7 @@ function QuestionsPopup({ interviewData, setProceed, setOpen }: Props) {
               questionData={question}
               onDelete={handleDeleteQuestion}
               onQuestionChange={handleInputChange}
+              isDeepDiveMode={isDeepDiveMode}
             />
           ))}
           <div ref={endOfListRef} />

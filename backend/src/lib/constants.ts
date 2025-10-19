@@ -91,3 +91,61 @@ export const INTERVIEWERS = {
     audio: "Bob.wav",
   },
 };
+
+// 支持的语言配置
+export const SUPPORTED_LANGUAGES = {
+  'en-US': {
+    name: 'English (US)',
+    code: 'en-US',
+    voices: {
+      lisa: '11labs-Chloe',
+      bob: '11labs-Brian',
+      david: '11labs-Adam'
+    }
+  },
+  'zh-CN': {
+    name: '中文 (简体)',
+    code: 'zh-CN',
+    voices: {
+      lisa: '11labs-Lily',      // 女声
+      bob: '11labs-Brian',      // 男声
+      david: '11labs-Brian'
+    }
+  },
+  'es-ES': {
+    name: 'Español',
+    code: 'es-ES',
+    voices: {
+      lisa: '11labs-Paola',       // 女声西班牙语
+      bob: '11labs-Santiago',     // 男声西班牙语
+      david: '11labs-Santiago'
+    }
+  },
+  'fr-FR': {
+    name: 'Français',
+    code: 'fr-FR',
+    voices: {
+      lisa: '11labs-Emily',       // 女声
+      bob: '11labs-Brian',        // 男声
+      david: '11labs-Brian'
+    }
+  },
+  'de-DE': {
+    name: 'Deutsch',
+    code: 'de-DE',
+    voices: {
+      lisa: '11labs-Carola',      // 女声德语
+      bob: '11labs-Brian',        // 男声
+      david: '11labs-Brian'
+    }
+  },
+  'ja-JP': {
+    name: '日本語',
+    code: 'ja-JP',
+    voices: {
+      lisa: '11labs-Lily',        // 女声
+      bob: '11labs-Brian',        // 男声
+      david: '11labs-Brian'
+    }
+  }
+};
