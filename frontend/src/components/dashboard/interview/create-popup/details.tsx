@@ -52,6 +52,8 @@ function DetailsPopup({
   const [researchType, setResearchType] = useState<'product' | 'market'>('product');
   const [showObjectiveTooltip, setShowObjectiveTooltip] = useState(false);
   const [showDocumentTooltip, setShowDocumentTooltip] = useState(false);
+  const [showObjectiveExample, setShowObjectiveExample] = useState(false);
+  const [showDocumentExample, setShowDocumentExample] = useState(false);
 
   // 调试日志 - 移到状态变量声明之后
   console.warn('【interviewers】：>>>>>>>>>>>> details.tsx:41', {
@@ -410,7 +412,7 @@ function DetailsPopup({
                 className="text-indigo-600 cursor-pointer hover:text-indigo-800"
                 onClick={() => setShowObjectiveTooltip(!showObjectiveTooltip)}
               />
-              {showObjectiveTooltip && (
+              {showObjectiveTooltip && !showObjectiveExample && (
                 <div className="absolute left-0 top-6 z-50 w-80 bg-white border border-gray-300 rounded-lg shadow-lg p-3">
                   <p className="text-xs text-gray-700">
                     <span className="font-semibold text-gray-900">Required.</span>{' '}
@@ -419,10 +421,67 @@ function DetailsPopup({
                       : "Describe the market opportunity and validation goals. Include: business context, core questions to validate, target users, and success criteria."}
                   </p>
                   <button
-                    className="text-xs text-indigo-600 hover:text-indigo-800 mt-2"
-                    onClick={() => setShowObjectiveTooltip(false)}
+                    className="text-xs text-indigo-600 hover:text-indigo-800 mt-2 underline"
+                    onClick={() => {
+                      setShowObjectiveExample(true);
+                    }}
                   >
-                    Got it
+                    See Example
+                  </button>
+                </div>
+              )}
+              {showObjectiveExample && (
+                <div className="absolute left-0 top-6 z-50 w-96 bg-white border border-gray-300 rounded-lg shadow-lg p-4 max-h-96 overflow-y-auto">
+                  <h4 className="text-sm font-semibold text-gray-900 mb-2">
+                    {researchType === 'product' ? 'Product Research Example' : 'Market Research Example'}
+                  </h4>
+                  <pre className="text-xs text-gray-700 whitespace-pre-wrap font-sans">
+                    {researchType === 'product'
+                      ? `Product Research - New Version Validation
+
+Product Info:
+- Name: TaskMaster
+- Positioning: Team task management tool
+- Core Features: Task assignment, progress tracking, team collaboration
+- Target Users: SMB team managers
+
+Research Background:
+- Trigger: Version 3.0 launched 3 months ago
+- Core Questions: Which new features are most valuable? What should we prioritize next?
+- Decision Need: Define roadmap for next 2-3 versions
+- Must Collect: Top 3 highlights and 3 pain points
+- Ideal Output: 3 must-do and 3 nice-to-have improvements`
+                      : `Market Research - Opportunity Exploration
+
+Business Context:
+- Domain: AI leisure consumption assistant
+- Opportunity: Young people face choice paralysis, info overload
+- Strategic Goal: Validate market opportunity
+
+Core Questions to Validate:
+- Market Need: Real pain points in leisure decision-making?
+- Solution Gap: What's missing in existing tools (Xiaohongshu, Dianping)?
+- Product Direction: What do users expect from AI recommendations?
+- Commercial Viability: Willingness to pay?
+
+Target Users:
+- Core: Young professionals in tier-1 cities (25-35)
+- Geography: Beijing, Shanghai, Guangzhou, Shenzhen
+- Characteristics: Disposable income, quality-seeking
+
+Success Criteria:
+- Decision: Whether to enter this market
+- Ideal Output: Validate 3 need hypotheses, discover 2 new opportunities
+- Must Collect: Pain point authenticity, AI acceptance, payment willingness`}
+                  </pre>
+                  <button
+                    className="text-xs text-indigo-600 hover:text-indigo-800 mt-3 underline"
+                    onClick={() => {
+                      setShowObjectiveExample(false);
+                      setShowObjectiveTooltip(false);
+                    }}
+                  >
+                    Close
                   </button>
                 </div>
               )}
@@ -432,8 +491,8 @@ function DetailsPopup({
             value={objective}
             className="h-24 mt-2 border-2 border-gray-500 w-[33.2rem]"
             placeholder={researchType === 'product'
-              ? "e.g. Product Research - New Version Validation\n\nProduct Info:\n- Name: TaskMaster\n- Positioning: Team task management tool\n- Core Features: Task assignment, progress tracking\n- Target Users: SMB team managers\n\nResearch Background:\n- Trigger: Version 3.0 launched 3 months ago\n- Core Questions: Which new features are most valuable? What should we prioritize next?\n- Decision Need: Define roadmap for next 2-3 versions\n- Must Collect: Top 3 highlights and 3 pain points\n- Ideal Output: 3 must-do and 3 nice-to-have improvements"
-              : "e.g. Market Research - Opportunity Exploration\n\nBusiness Context:\n- Domain: AI leisure consumption assistant\n- Opportunity: Young people face choice paralysis, info overload\n- Strategic Goal: Validate market opportunity\n\nCore Questions to Validate:\n- Market Need: Real pain points in leisure decision-making?\n- Solution Gap: What's missing in existing tools (Xiaohongshu, Dianping)?\n- Product Direction: What do users expect from AI recommendations?\n- Commercial Viability: Willingness to pay?\n\nTarget Users:\n- Core: Young professionals in tier-1 cities (25-35)\n- Geography: Beijing, Shanghai, Guangzhou, Shenzhen\n- Characteristics: Disposable income, quality-seeking\n\nSuccess Criteria:\n- Decision: Whether to enter this market\n- Ideal Output: Validate 3 need hypotheses, discover 2 new opportunities\n- Must Collect: Pain point authenticity, AI acceptance, payment willingness"}
+              ? "Product Info:\n- Name: [Product Name]\n- Positioning: [One-sentence product positioning]\n- Core Features: [3-5 core features]\n- Target Users: [Main user groups]\n\nResearch Background:\n- Trigger: [Why conduct this research]\n- Core Questions: [1-3 core questions to solve]\n- Decision Need: [What decisions will the research inform]\n- Must Collect: [Required data points, e.g., \"Top 3 highlights and 3 pain points\"]\n- Ideal Output: [Expected research outcomes]"
+              : "Business Context:\n- Domain: [Business domain]\n- Opportunity: [Market opportunity hypothesis]\n- Strategic Goal: [Strategic objectives]\n\nCore Questions to Validate:\n- Market Need: [Real pain points?]\n- Solution Gap: [What's missing in existing solutions?]\n- Product Direction: [User expectations?]\n- Commercial Viability: [Willingness to pay?]\n\nTarget Users:\n- Core: [Primary user segment]\n- Geography: [Geographic scope]\n- Characteristics: [User characteristics]\n\nSuccess Criteria:\n- Decision: [Key decision to make]\n- Ideal Output: [Expected validation outcomes]\n- Must Collect: [Required data points]"}
             onChange={(e) => setObjective(e.target.value)}
             onBlur={(e) => setObjective(e.target.value.trim())}
           />
@@ -445,7 +504,7 @@ function DetailsPopup({
                 className="text-indigo-600 cursor-pointer hover:text-indigo-800"
                 onClick={() => setShowDocumentTooltip(!showDocumentTooltip)}
               />
-              {showDocumentTooltip && (
+              {showDocumentTooltip && !showDocumentExample && (
                 <div className="absolute left-0 top-6 z-50 w-80 bg-white border border-gray-300 rounded-lg shadow-lg p-3">
                   <p className="text-xs text-gray-700">
                     <span className="font-semibold text-gray-900">Optional.</span>{' '}
@@ -454,10 +513,57 @@ function DetailsPopup({
                       : "Upload market research reports, competitor analysis, user survey data, industry reports, or business plans to supplement your research context."}
                   </p>
                   <button
-                    className="text-xs text-indigo-600 hover:text-indigo-800 mt-2"
-                    onClick={() => setShowDocumentTooltip(false)}
+                    className="text-xs text-indigo-600 hover:text-indigo-800 mt-2 underline"
+                    onClick={() => {
+                      setShowDocumentExample(true);
+                    }}
                   >
-                    Got it
+                    See Example
+                  </button>
+                </div>
+              )}
+              {showDocumentExample && (
+                <div className="absolute left-0 top-6 z-50 w-96 bg-white border border-gray-300 rounded-lg shadow-lg p-4 max-h-96 overflow-y-auto">
+                  <h4 className="text-sm font-semibold text-gray-900 mb-2">
+                    {researchType === 'product' ? 'Product Documentation Examples' : 'Market Research Documentation Examples'}
+                  </h4>
+                  <div className="text-xs text-gray-700 space-y-2">
+                    {researchType === 'product' ? (
+                      <>
+                        <p><span className="font-semibold">• Product Requirements Document (PRD)</span><br/>
+                        Detailed feature specifications, user stories, acceptance criteria</p>
+                        <p><span className="font-semibold">• Feature Specifications</span><br/>
+                        Technical specs, design mockups, interaction flows</p>
+                        <p><span className="font-semibold">• User Feedback Reports</span><br/>
+                        Support tickets, user reviews, NPS survey results</p>
+                        <p><span className="font-semibold">• Version Release Notes</span><br/>
+                        Changelog, new features, bug fixes, known issues</p>
+                        <p><span className="font-semibold">• Analytics Reports</span><br/>
+                        Usage metrics, feature adoption rates, user behavior data</p>
+                      </>
+                    ) : (
+                      <>
+                        <p><span className="font-semibold">• Market Research Reports</span><br/>
+                        Industry trends, market size, growth projections</p>
+                        <p><span className="font-semibold">• Competitor Analysis</span><br/>
+                        Competitive landscape, feature comparison, pricing analysis</p>
+                        <p><span className="font-semibold">• User Survey Data</span><br/>
+                        Survey results, user interviews, focus group findings</p>
+                        <p><span className="font-semibold">• Industry Reports</span><br/>
+                        Third-party research, analyst reports, white papers</p>
+                        <p><span className="font-semibold">• Business Plans</span><br/>
+                        Go-to-market strategy, business model, revenue projections</p>
+                      </>
+                    )}
+                  </div>
+                  <button
+                    className="text-xs text-indigo-600 hover:text-indigo-800 mt-3 underline"
+                    onClick={() => {
+                      setShowDocumentExample(false);
+                      setShowDocumentTooltip(false);
+                    }}
+                  >
+                    Close
                   </button>
                 </div>
               )}
