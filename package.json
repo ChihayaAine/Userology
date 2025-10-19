@@ -1,0 +1,51 @@
+{
+  "name": "usercopy-separated",
+  "version": "1.0.0",
+  "description": "Usercopy application with separated frontend and backend",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "install:all": "yarn install && yarn install:backend && yarn install:frontend",
+    "install:backend": "cd backend && yarn install",
+    "install:frontend": "cd frontend && yarn install",
+    "dev": "concurrently \"yarn dev:backend\" \"yarn dev:frontend\"",
+    "dev:nohup": "nohup concurrently \"yarn dev:backend\" \"yarn dev:frontend\" > app.log 2>&1 &",
+    "dev:backend": "cd backend && yarn dev",
+    "dev:frontend": "cd frontend && yarn dev",
+    "build": "yarn build:backend && yarn build:frontend",
+    "build:backend": "cd backend && yarn build",
+    "build:frontend": "cd frontend && yarn build",
+    "start": "concurrently \"yarn start:backend\" \"yarn start:frontend\"",
+    "start:backend": "cd backend && yarn start",
+    "start:frontend": "cd frontend && yarn start",
+    "lint": "yarn lint:backend && yarn lint:frontend",
+    "lint:backend": "cd backend && yarn lint",
+    "lint:frontend": "cd frontend && yarn lint",
+    "clean": "rm -rf backend/node_modules backend/dist frontend/node_modules frontend/.next yarn.lock backend/yarn.lock frontend/yarn.lock",
+    "docker:build": "docker-compose build",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "yarn": ">=1.22.0"
+  },
+  "packageManager": "yarn@1.22.22",
+  "keywords": [
+    "usercopy",
+    "interview",
+    "ai",
+    "nextjs",
+    "express",
+    "typescript"
+  ],
+  "author": "Usercopy Team",
+  "license": "MIT"
+}
