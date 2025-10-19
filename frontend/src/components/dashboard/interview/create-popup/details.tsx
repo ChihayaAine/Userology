@@ -50,6 +50,8 @@ function DetailsPopup({
   );
   const [selectedLanguage, setSelectedLanguage] = useState<LanguageCode>('en-US');
   const [researchType, setResearchType] = useState<'product' | 'market'>('product');
+  const [showObjectiveTooltip, setShowObjectiveTooltip] = useState(false);
+  const [showDocumentTooltip, setShowDocumentTooltip] = useState(false);
 
   // 调试日志 - 移到状态变量声明之后
   console.warn('【interviewers】：>>>>>>>>>>>> details.tsx:41', {
@@ -400,13 +402,31 @@ function DetailsPopup({
               </button>
             </div>
           </div>
-          <div className="mt-3">
-            <h3 className="text-sm font-medium">Research Objective: (Required)</h3>
-            <p className="text-xs text-gray-600 mt-1">
-              {researchType === 'product'
-                ? "Describe your product and core research questions. Include: product info, research background, core questions, decision needs, and expected outputs."
-                : "Describe the market opportunity and validation goals. Include: business context, core questions to validate, target users, and success criteria."}
-            </p>
+          <div className="mt-3 flex items-center gap-2 relative">
+            <h3 className="text-sm font-medium">Research Objective:</h3>
+            <div className="relative">
+              <Info
+                size={16}
+                className="text-indigo-600 cursor-pointer hover:text-indigo-800"
+                onClick={() => setShowObjectiveTooltip(!showObjectiveTooltip)}
+              />
+              {showObjectiveTooltip && (
+                <div className="absolute left-0 top-6 z-50 w-80 bg-white border border-gray-300 rounded-lg shadow-lg p-3">
+                  <p className="text-xs text-gray-700">
+                    <span className="font-semibold text-gray-900">Required.</span>{' '}
+                    {researchType === 'product'
+                      ? "Describe your product and core research questions. Include: product info, research background, core questions, decision needs, and expected outputs."
+                      : "Describe the market opportunity and validation goals. Include: business context, core questions to validate, target users, and success criteria."}
+                  </p>
+                  <button
+                    className="text-xs text-indigo-600 hover:text-indigo-800 mt-2"
+                    onClick={() => setShowObjectiveTooltip(false)}
+                  >
+                    Got it
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
           <Textarea
             value={objective}
@@ -417,13 +437,31 @@ function DetailsPopup({
             onChange={(e) => setObjective(e.target.value)}
             onBlur={(e) => setObjective(e.target.value.trim())}
           />
-          <div className="mt-2">
-            <h3 className="text-sm font-medium">Additional Documents: (Optional)</h3>
-            <p className="text-xs text-gray-600 mt-1">
-              {researchType === 'product'
-                ? "Upload detailed product documentation, PRDs, feature specs, user feedback reports, or version release notes to provide additional context."
-                : "Upload market research reports, competitor analysis, user survey data, industry reports, or business plans to supplement your research context."}
-            </p>
+          <div className="mt-2 flex items-center gap-2 relative">
+            <h3 className="text-sm font-medium">Additional Documents:</h3>
+            <div className="relative">
+              <Info
+                size={16}
+                className="text-indigo-600 cursor-pointer hover:text-indigo-800"
+                onClick={() => setShowDocumentTooltip(!showDocumentTooltip)}
+              />
+              {showDocumentTooltip && (
+                <div className="absolute left-0 top-6 z-50 w-80 bg-white border border-gray-300 rounded-lg shadow-lg p-3">
+                  <p className="text-xs text-gray-700">
+                    <span className="font-semibold text-gray-900">Optional.</span>{' '}
+                    {researchType === 'product'
+                      ? "Upload detailed product documentation, PRDs, feature specs, user feedback reports, or version release notes to provide additional context."
+                      : "Upload market research reports, competitor analysis, user survey data, industry reports, or business plans to supplement your research context."}
+                  </p>
+                  <button
+                    className="text-xs text-indigo-600 hover:text-indigo-800 mt-2"
+                    onClick={() => setShowDocumentTooltip(false)}
+                  >
+                    Got it
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
           <FileUpload
             isUploaded={isUploaded}
