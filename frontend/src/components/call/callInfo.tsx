@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Analytics, CallData } from "@/types/response";
+import { Analytics, CallData, KeyInsight, ImportantQuote } from "@/types/response";
 import { apiClient } from "@/services/api";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
 import ReactAudioPlayer from "react-audio-player";
@@ -14,6 +14,8 @@ import LoaderWithText from "@/components/loaders/loader-with-text/loaderWithText
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Skeleton } from "@/components/ui/skeleton";
 import QuestionAnswerCard from "@/components/dashboard/interview/questionAnswerCard";
+import KeyInsightsCard from "@/components/call/KeyInsightsCard";
+import ImportantQuotesCard from "@/components/call/ImportantQuotesCard";
 import { marked } from "marked";
 import {
   AlertDialog,
@@ -57,6 +59,8 @@ function CallInfo({
   const [transcript, setTranscript] = useState("");
   const [candidateStatus, setCandidateStatus] = useState<string>("");
   const [interviewId, setInterviewId] = useState<string>("");
+  const [keyInsights, setKeyInsights] = useState<KeyInsight[]>([]);
+  const [importantQuotes, setImportantQuotes] = useState<ImportantQuote[]>([]);
 
   useEffect(() => {
     const fetchResponses = async () => {
@@ -89,6 +93,14 @@ function CallInfo({
         setName(response.name);
         setCandidateStatus(response.candidate_status);
         setInterviewId(response.interview_id);
+
+        // Set key insights and important quotes
+        if (response.key_insights) {
+          setKeyInsights(response.key_insights);
+        }
+        if (response.important_quotes) {
+          setImportantQuotes(response.important_quotes);
+        }
       } catch (error) {
         console.error(error);
       } finally {
@@ -306,6 +318,13 @@ function CallInfo({
               </div>
             </div>
           </div>
+
+          {/* Key Insights Section */}
+          <KeyInsightsCard insights={keyInsights} />
+
+          {/* Important Quotes Section */}
+          <ImportantQuotesCard quotes={importantQuotes} />
+
           {analytics &&
             analytics.questionSummaries &&
             analytics.questionSummaries.length > 0 && (
