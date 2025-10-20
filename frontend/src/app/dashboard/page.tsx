@@ -22,6 +22,15 @@ function Interviews() {
     useState<number>(10);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
+  // Debug logging
+  useEffect(() => {
+    console.log('📊 Dashboard - Interviews state:', {
+      interviewsCount: interviews.length,
+      interviewsLoading,
+      interviews: interviews.map(i => ({ id: i.id, name: i.name }))
+    });
+  }, [interviews, interviewsLoading]);
+
   function InterviewsLoader() {
     return (
       <>

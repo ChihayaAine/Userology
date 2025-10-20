@@ -35,15 +35,17 @@ export function InterviewProvider({ children }: InterviewProviderProps) {
 
   const fetchInterviews = async () => {
     try {
+      console.log('🔄 Fetching interviews...', { userId: user?.id, orgId: organization?.id });
       setInterviewsLoading(true);
       const response = await InterviewService.getAllInterviews(
         user?.id as string,
         organization?.id as string,
       );
+      console.log('✅ Interviews fetched:', response.length, 'interviews');
       setInterviewsLoading(false);
       setInterviews(response);
     } catch (error) {
-      console.error(error);
+      console.error('❌ Error fetching interviews:', error);
     }
     setInterviewsLoading(false);
   };
