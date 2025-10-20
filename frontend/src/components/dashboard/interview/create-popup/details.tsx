@@ -171,15 +171,29 @@ function DetailsPopup({
       );
 
       console.log('✅ Parsed response:', generatedQuestionsResponse);
+      console.log('📊 Questions array:', generatedQuestionsResponse.questions);
+      console.log('📊 Questions array length:', generatedQuestionsResponse.questions?.length);
+      console.log('📊 First question type:', typeof generatedQuestionsResponse.questions?.[0]);
+      console.log('📊 First question preview:', generatedQuestionsResponse.questions?.[0]?.substring(0, 200));
 
     const updatedQuestions = generatedQuestionsResponse.questions.map(
-      (question: Question | string) => ({
-        id: uuidv4(),
-        // sessions 返回的是字符串，questions 返回的是对象
-        question: typeof question === 'string' ? question.trim() : question.question.trim(),
-        follow_up_count: 1,
-      }),
+      (question: Question | string, index: number) => {
+        const questionText = typeof question === 'string' ? question.trim() : question.question.trim();
+        console.log(`📝 Processing question/session ${index + 1}:`, {
+          type: typeof question,
+          length: questionText.length,
+          preview: questionText.substring(0, 100)
+        });
+        return {
+          id: uuidv4(),
+          question: questionText,
+          follow_up_count: 1,
+        };
+      },
     );
+
+    console.log('✅ Updated questions array:', updatedQuestions);
+    console.log('✅ Total questions/sessions:', updatedQuestions.length);
 
     const updatedInterviewData = {
       ...interviewData,
