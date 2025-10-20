@@ -16,7 +16,16 @@ export const getInterviewSummaryPrompt = (
   transcript: string,
   studyObjective: string,
   questions: string[],
-) => `Analyze this user research interview and extract key insights and important quotes.
+  language?: string,
+) => {
+  // 根据语言设置输出语言
+  const languageInstruction = language === 'zh-CN'
+    ? '\n\n**CRITICAL: Write ALL insights and context in Chinese (简体中文). Keep quotes in their original language.**'
+    : language === 'ja-JP'
+    ? '\n\n**CRITICAL: Write ALL insights and context in Japanese (日本語). Keep quotes in their original language.**'
+    : '\n\n**CRITICAL: Write ALL insights and context in English. Keep quotes in their original language.**';
+
+  return `Analyze this user research interview and extract key insights and important quotes.
 
 ## Study Objective
 ${studyObjective}
@@ -112,7 +121,8 @@ Return a JSON object with this exact structure:
 
 7. **Quality over Quantity**: Better to have 3 strong insights than 5 weak ones
 
-Generate the JSON output now:`;
+Generate the JSON output now:${languageInstruction}`;
+};
 
 /**
  * Helper function to validate the generated summary

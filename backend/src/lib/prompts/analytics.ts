@@ -5,7 +5,16 @@ export const getInterviewAnalyticsPrompt = (
   interviewTranscript: string,
   mainInterviewQuestions: string,
   studyObjective?: string,
-) => `Analyze the following user research interview transcript:
+  language?: string,
+) => {
+  // 根据语言设置输出语言
+  const languageInstruction = language === 'zh-CN'
+    ? '\n\n**IMPORTANT: Please write ALL summaries in Chinese (简体中文).**'
+    : language === 'ja-JP'
+    ? '\n\n**IMPORTANT: Please write ALL summaries in Japanese (日本語).**'
+    : '\n\n**IMPORTANT: Please write ALL summaries in English.**';
+
+  return `Analyze the following user research interview transcript:
 
 ###
 Transcript: ${interviewTranscript}
@@ -49,4 +58,5 @@ CRITICAL REQUIREMENTS:
 - The "questionSummaries" array MUST contain exactly ${mainInterviewQuestions.split('\n').filter(q => q.trim()).length} items (one for each main question)
 - Maintain the exact order of questions as provided
 - Do not skip any questions
-- Do not add extra questions`;
+- Do not add extra questions${languageInstruction}`;
+};

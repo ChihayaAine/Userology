@@ -26,6 +26,7 @@ export const generateInterviewAnalytics = async (payload: {
     const interviewTranscript = transcript || response.details?.transcript;
     const questions = interview?.questions || [];
     const studyObjective = interview?.objective || '';
+    const language = interview?.language || 'en-US'; // 获取Study设置的语言
 
     const mainInterviewQuestions = questions
       .map((q: Question, index: number) => `${index + 1}. ${q.question}`)
@@ -35,12 +36,14 @@ export const generateInterviewAnalytics = async (payload: {
       interviewTranscript,
       mainInterviewQuestions,
       studyObjective,
+      language, // 传递语言参数
     );
 
     console.log('🔍 [Analytics] Generating analytics with:', {
       questionCount: questions.length,
       hasObjective: !!studyObjective,
       objective: studyObjective,
+      language: language, // 记录使用的语言
     });
 
     const baseCompletion = await openaiClient.chat.completions.create({

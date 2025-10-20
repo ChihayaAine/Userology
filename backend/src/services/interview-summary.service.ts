@@ -49,6 +49,7 @@ export const generateInterviewSummary = async (payload: {
     const studyObjective = interview?.objective || 'General user research';
     const questions = (interview?.questions || []) as Question[];
     const questionTexts = questions.map(q => q.question);
+    const language = interview?.language || 'en-US'; // 获取Study设置的语言
 
     if (!interviewTranscript) {
       console.error('❌ [Interview Summary] No transcript available');
@@ -59,6 +60,7 @@ export const generateInterviewSummary = async (payload: {
       transcriptLength: interviewTranscript.length,
       questionCount: questionTexts.length,
       hasObjective: !!studyObjective,
+      language: language, // 记录使用的语言
     });
 
     // Generate summary using GPT-4o
@@ -66,6 +68,7 @@ export const generateInterviewSummary = async (payload: {
       interviewTranscript,
       studyObjective,
       questionTexts,
+      language, // 传递语言参数
     );
 
     const completion = await openaiClient.chat.completions.create({
