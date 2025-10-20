@@ -1,0 +1,186 @@
+import { openaiClient } from '@/config/openai';
+import { 
+  INTERVIEW_SUMMARY_SYSTEM_PROMPT, 
+  getInterviewSummaryPrompt,
+  validateInterviewSummary 
+} from '@/lib/prompts/generate-interview-summary';
+import { ResponseService } from './responses.service';
+import { InterviewService } from './interviews.service';
+import { KeyInsight, ImportantQuote } from '@/types/response';
+import { Question } from '@/types/interview';
+
+interface InterviewSummaryResult {
+  key_insights: KeyInsight[];
+  important_quotes: ImportantQuote[];
+}
+
+/**
+ * Generate deep summary for a single interview
+ * Extracts key insights and important quotes
+ */
+export const generateInterviewSummary = async (payload: {
+  callId: string;
+  interviewId: string;
+  transcript: string;
+}): Promise<{ summary: InterviewSummaryResult | null; status: number; error?: string }> => {
+  const { callId, interviewId, transcript } = payload;
+
+  try {
+    console.log('🔍 [Interview Summary] Starting generation for call:', callId);
+
+    // Get response and interview data
+    const response = await ResponseService.getResponseByCallId(callId);
+    const interview = await InterviewService.getInterviewById(interviewId);
+
+    // Check if summary already exists
+    if (response.key_insights && response.important_quotes) {
+      console.log('✅ [Interview Summary] Summary already exists, returning cached version');
+      return {
+        summary: {
+          key_insights: response.key_insights,
+          important_quotes: response.important_quotes,
+        },
+        status: 200,
+      };
+    }
+
+    // Prepare data
+    const interviewTranscript = transcript || response.details?.transcript;
+    const studyObjective = interview?.objective || 'General user research';
+    const questions = (interview?.questions || []) as Question[];
+    const questionTexts = questions.map(q => q.question);
+
+    if (!interviewTranscript) {
+      console.error('❌ [Interview Summary] No transcript available');
+      return { summary: null, status: 400, error: 'No transcript available' };
+    }
+
+    console.log('📊 [Interview Summary] Generating with:', {
+      transcriptLength: interviewTranscript.length,
+      questionCount: questionTexts.length,
+      hasObjective: !!studyObjective,
+    });
+
+    // Generate summary using GPT-4o
+    const prompt = getInterviewSummaryPrompt(
+      interviewTranscript,
+      studyObjective,
+      questionTexts,
+    );
+
+    const completion = await openaiClient.chat.completions.create({
+      model: 'gpt-4o',
+      messages: [
+        {
+          role: 'system',
+          content: INTERVIEW_SUMMARY_SYSTEM_PROMPT,
+        },
+        {
+          role: 'user',
+          content: prompt,
+        },
+      ],
+      response_format: { type: 'json_object' },
+      temperature: 0.7,
+    });
+
+    const content = completion.choices[0]?.message?.content;
+    if (!content) {
+      console.error('❌ [Interview Summary] No content in response');
+      return { summary: null, status: 500, error: 'No content generated' };
+    }
+
+    const summaryData = JSON.parse(content);
+
+    // Validate the generated summary
+    if (!validateInterviewSummary(summaryData)) {
+      console.error('❌ [Interview Summary] Validation failed');
+      return { summary: null, status: 500, error: 'Invalid summary structure' };
+    }
+
+    console.log('✅ [Interview Summary] Generated successfully:', {
+      insightsCount: summaryData.key_insights.length,
+      quotesCount: summaryData.important_quotes.length,
+    });
+
+    // Save to database
+    await ResponseService.saveResponse(
+      {
+        key_insights: summaryData.key_insights,
+        important_quotes: summaryData.important_quotes,
+      },
+      callId,
+    );
+
+    console.log('💾 [Interview Summary] Saved to database');
+
+    return {
+      summary: {
+        key_insights: summaryData.key_insights,
+        important_quotes: summaryData.important_quotes,
+      },
+      status: 200,
+    };
+  } catch (error) {
+    console.error('❌ [Interview Summary] Error:', error);
+    return {
+      summary: null,
+      status: 500,
+      error: error instanceof Error ? error.message : 'Unknown error',
+    };
+  }
+};
+
+/**
+ * Regenerate summary for an existing interview
+ * Useful for testing or when the summary needs to be updated
+ */
+export const regenerateInterviewSummary = async (callId: string): Promise<{
+  summary: InterviewSummaryResult | null;
+  status: number;
+  error?: string;
+}> => {
+  try {
+    const response = await ResponseService.getResponseByCallId(callId);
+    
+    if (!response) {
+      return { summary: null, status: 404, error: 'Response not found' };
+    }
+
+    const transcript = response.details?.transcript;
+    const interviewId = response.interview_id;
+
+    if (!transcript || !interviewId) {
+      return { summary: null, status: 400, error: 'Missing transcript or interview ID' };
+    }
+
+    // Clear existing summary to force regeneration
+    await ResponseService.saveResponse(
+      {
+        key_insights: null,
+        important_quotes: null,
+      },
+      callId,
+    );
+
+    // Generate new summary
+    return await generateInterviewSummary({
+      callId,
+      interviewId,
+      transcript,
+    });
+  } catch (error) {
+    console.error('❌ [Regenerate Summary] Error:', error);
+    return {
+      summary: null,
+      status: 500,
+      error: error instanceof Error ? error.message : 'Unknown error',
+    };
+  }
+};
+
+export const InterviewSummaryService = {
+  generateInterviewSummary,
+  regenerateInterviewSummary,
+};
+

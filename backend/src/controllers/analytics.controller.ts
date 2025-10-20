@@ -3,6 +3,7 @@ import { openaiClient } from '@/config/openai';
 import { ResponseService } from '@/services/responses.service';
 import { InterviewService } from '@/services/interviews.service';
 import { generateInterviewAnalytics } from '@/services/analytics.service';
+import { InterviewSummaryService } from '@/services/interview-summary.service';
 import {
   SYSTEM_PROMPT,
   createUserPrompt,
@@ -71,18 +72,103 @@ export const generateInsights = async (req: Request, res: Response) => {
 export const generateAnalytics = async (req: Request, res: Response) => {
   try {
     const { callId, interviewId, transcript } = req.body;
-    
-    const result = await generateInterviewAnalytics({
+
+    console.log('📊 [Generate Analytics] Starting for call:', callId);
+
+    // Generate basic analytics (question summaries, call summary)
+    const analyticsResult = await generateInterviewAnalytics({
       callId,
       interviewId,
       transcript
     });
-    
-    res.status(result.status).json(result);
+
+    if (analyticsResult.status !== 200) {
+      console.error('❌ [Generate Analytics] Failed:', analyticsResult.error);
+      return res.status(analyticsResult.status).json(analyticsResult);
+    }
+
+    console.log('✅ [Generate Analytics] Basic analytics generated');
+
+    // Generate deep summary (key insights + important quotes)
+    console.log('🔍 [Generate Analytics] Starting deep summary generation...');
+    const summaryResult = await InterviewSummaryService.generateInterviewSummary({
+      callId,
+      interviewId,
+      transcript
+    });
+
+    if (summaryResult.status !== 200) {
+      console.warn('⚠️ [Generate Analytics] Deep summary failed, but continuing:', summaryResult.error);
+      // Don't fail the whole request if summary generation fails
+    } else {
+      console.log('✅ [Generate Analytics] Deep summary generated');
+    }
+
+    res.status(200).json({
+      analytics: analyticsResult.analytics,
+      summary: summaryResult.summary,
+      status: 200
+    });
   } catch (error) {
-    console.error("Error generating analytics:", error);
+    console.error("❌ [Generate Analytics] Error:", error);
     res.status(500).json({
       error: "Failed to generate analytics"
+    });
+  }
+};
+
+/**
+ * Generate or regenerate interview summary (key insights + important quotes)
+ */
+export const generateInterviewSummary = async (req: Request, res: Response) => {
+  try {
+    const { callId, interviewId, transcript } = req.body;
+
+    if (!callId || !interviewId) {
+      return res.status(400).json({
+        error: "callId and interviewId are required"
+      });
+    }
+
+    console.log('🔍 [Generate Interview Summary] Starting for call:', callId);
+
+    const result = await InterviewSummaryService.generateInterviewSummary({
+      callId,
+      interviewId,
+      transcript
+    });
+
+    res.status(result.status).json(result);
+  } catch (error) {
+    console.error("❌ [Generate Interview Summary] Error:", error);
+    res.status(500).json({
+      error: "Failed to generate interview summary"
+    });
+  }
+};
+
+/**
+ * Regenerate interview summary for an existing interview
+ */
+export const regenerateInterviewSummary = async (req: Request, res: Response) => {
+  try {
+    const { callId } = req.params;
+
+    if (!callId) {
+      return res.status(400).json({
+        error: "callId is required"
+      });
+    }
+
+    console.log('🔄 [Regenerate Interview Summary] Starting for call:', callId);
+
+    const result = await InterviewSummaryService.regenerateInterviewSummary(callId);
+
+    res.status(result.status).json(result);
+  } catch (error) {
+    console.error("❌ [Regenerate Interview Summary] Error:", error);
+    res.status(500).json({
+      error: "Failed to regenerate interview summary"
     });
   }
 };
