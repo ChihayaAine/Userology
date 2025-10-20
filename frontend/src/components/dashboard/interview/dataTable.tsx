@@ -27,8 +27,6 @@ import {
 export type TableData = {
   call_id: string;
   name: string;
-  overallScore: number;
-  communicationScore: number;
   callSummary: string;
 };
 
@@ -39,7 +37,7 @@ interface DataTableProps {
 
 function DataTable({ data, interviewId }: DataTableProps) {
   const [sorting, setSorting] = useState<SortingState>([
-    { id: "overallScore", desc: true },
+    { id: "name", desc: false },
   ]);
   const [hoveredRowId, setHoveredRowId] = useState<string | null>(null);
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -121,58 +119,6 @@ function DataTable({ data, interviewId }: DataTableProps) {
         const b = rowB.getValue(columnId) as string;
 
         return a.toLowerCase().localeCompare(b.toLowerCase());
-      },
-    },
-    {
-      accessorKey: "overallScore",
-      header: ({ column }) => {
-        return (
-          <Button
-            variant="ghost"
-            className={`w-full justify-start font-semibold text-[15px] mb-1 ${column.getIsSorted() ? "text-indigo-600" : "text-black"}`}
-            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          >
-            Overall Score
-            <ArrowUpDown className="ml-2 h-4 w-4" />
-          </Button>
-        );
-      },
-      cell: ({ row }) => (
-        <div className="min-h-[2.6em] flex items-center justify-center">
-          {row.getValue("overallScore") ?? "-"}
-        </div>
-      ),
-      sortingFn: (rowA, rowB, columnId) => {
-        const a = rowA.getValue(columnId) as number | null;
-        const b = rowB.getValue(columnId) as number | null;
-
-        return customSortingFn(a, b);
-      },
-    },
-    {
-      accessorKey: "communicationScore",
-      header: ({ column }) => {
-        return (
-          <Button
-            variant="ghost"
-            className={`w-full justify-start font-semibold text-[15px] mb-1 ${column.getIsSorted() ? "text-indigo-600" : "text-black"}`}
-            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          >
-            Communication Score
-            <ArrowUpDown className="ml-2 h-4 w-4" />
-          </Button>
-        );
-      },
-      cell: ({ row }) => (
-        <div className="min-h-[2.6em] flex items-center justify-center">
-          {row.getValue("communicationScore") ?? "-"}
-        </div>
-      ),
-      sortingFn: (rowA, rowB, columnId) => {
-        const a = rowA.getValue(columnId) as number | null;
-        const b = rowB.getValue(columnId) as number | null;
-
-        return customSortingFn(a, b);
       },
     },
     {

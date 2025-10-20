@@ -25,6 +25,9 @@ export const generateInterviewAnalytics = async (payload: {
 
     const interviewTranscript = transcript || response.details?.transcript;
     const questions = interview?.questions || [];
+    const studyObjective = interview?.objective || '';
+    const language = interview?.language || 'en-US'; // 获取Study设置的语言
+
     const mainInterviewQuestions = questions
       .map((q: Question, index: number) => `${index + 1}. ${q.question}`)
       .join("\n");
@@ -32,7 +35,16 @@ export const generateInterviewAnalytics = async (payload: {
     const prompt = getInterviewAnalyticsPrompt(
       interviewTranscript,
       mainInterviewQuestions,
+      studyObjective,
+      language, // 传递语言参数
     );
+
+    console.log('🔍 [Analytics] Generating analytics with:', {
+      questionCount: questions.length,
+      hasObjective: !!studyObjective,
+      objective: studyObjective,
+      language: language, // 记录使用的语言
+    });
 
     const baseCompletion = await openaiClient.chat.completions.create({
       model: "gpt-4o",
@@ -52,6 +64,19 @@ export const generateInterviewAnalytics = async (payload: {
     const basePromptOutput = baseCompletion.choices[0] || {};
     const content = basePromptOutput.message?.content || "";
     const analyticsResponse = JSON.parse(content);
+
+    console.log('✅ [Analytics] Generated analytics:', {
+      questionSummariesCount: analyticsResponse.questionSummaries?.length || 0,
+      expectedCount: questions.length,
+    });
+
+    // Verify we got summaries for all questions
+    if (analyticsResponse.questionSummaries?.length !== questions.length) {
+      console.warn('⚠️ [Analytics] Question count mismatch!', {
+        expected: questions.length,
+        received: analyticsResponse.questionSummaries?.length || 0,
+      });
+    }
 
     analyticsResponse.mainInterviewQuestions = questions.map(
       (q: Question) => q.question,

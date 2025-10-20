@@ -13,18 +13,48 @@ export interface Response {
   analytics: any;
   candidate_status: string;
   tab_switch_count: number;
+  key_insights?: KeyInsight[];  // 旧字段，保留用于向后兼容
+  important_quotes?: ImportantQuote[];  // 旧字段，保留用于向后兼容
+  insights_with_evidence?: InsightWithEvidence[];  // 新字段
 }
 
 export interface Analytics {
-  overallScore: number;
-  overallFeedback: string;
-  communication: { score: number; feedback: string };
-  generalIntelligence: string;
   softSkillSummary: string;
   questionSummaries: Array<{
     question: string;
     summary: string;
   }>;
+  mainInterviewQuestions?: string[];
+}
+
+// 旧的类型定义（保留用于向后兼容）
+export interface KeyInsight {
+  id: string;
+  content: string;
+  category?: string;
+}
+
+export interface ImportantQuote {
+  id: string;
+  quote: string;
+  timestamp: number;
+  context?: string;
+  speaker?: 'user' | 'agent';
+}
+
+// 新的合并类型定义
+export interface SupportingQuote {
+  id: string;
+  quote: string;
+  timestamp: number;
+  speaker: 'user' | 'agent';
+}
+
+export interface InsightWithEvidence {
+  id: string;
+  content: string;
+  category: 'need' | 'pain_point' | 'behavior' | 'preference' | 'mental_model' | 'unexpected';
+  supporting_quotes: SupportingQuote[];
 }
 
 export interface FeedbackData {

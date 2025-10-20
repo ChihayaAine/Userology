@@ -1,13 +1,16 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://47.93.101.73:8090/api';
+// 优先使用环境变量，否则使用本地开发地址
+// 生产环境: http://47.93.101.73:8090/api
+// 本地开发: http://localhost:8090/api
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8090/api';
 
 console.log('🔗 API Base URL:', API_BASE_URL);
 console.log('🔗 Environment API URL:', process.env.NEXT_PUBLIC_API_URL);
 
 export const apiClient = axios.create({
   baseURL: API_BASE_URL,
-  timeout: 30000, // 30 seconds timeout for Retell API calls
+  timeout: 120000, // 120 seconds timeout for OpenAI API calls (question generation can take 60+ seconds)
   headers: {
     'Content-Type': 'application/json',
   },

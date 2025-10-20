@@ -1,0 +1,285 @@
+# Material H1: Optimized Interview Outline - French English Exam Vocabulary Learning Market Research
+
+## Interview Overview
+- **Estimated Duration**: 30 minutes
+- **Core Collection Objectives**: Pain points related to vocabulary learning (3, with quantified ratings) + Solution gaps (3) + SparkMo adaptability features (3) + Payment willingness data (Euro range) + French-English confusion error rate + Feature importance ratings
+
+## Section 1: Ice-breaking & Background Establishment
+
+### Section Research Objective
+Build rapport and collect user's English learning background, determine exam motivation and basic usage scenarios, laying the foundation for deeper exploration.
+
+### Section Notes
+
+**Moderator Instructions**: "If the user shares any new information relevant to our research objectives, please conduct 1-2 follow-up questions to understand in depth (why/what/how/what impact). If irrelevant, simply acknowledge and continue the interview. For questions with set follow-ups, skip them if the user has already answered the follow-up points in their main response. When acknowledging user responses, please flexibly use different expressions such as 'okay', 'I see', 'understood', 'that makes sense', 'I get it', 'right', 'got it', etc., avoiding repetitive use of 'I understand'." This section focuses on establishing a relaxed and friendly atmosphere, avoiding premature product topics, and recording basic user profile information.
+
+**Background Information**: 
+- Major English exams in France include TOEIC (highest workplace recognition), TOEFL/IELTS (study abroad requirements), Cambridge exams (educational certification)
+- French students' practical English proficiency is generally weak, with approximately 50% of middle school graduates failing to reach A2 level
+- English proficiency shows significant regional disparities: 42% in Paris region have communication skills, only 18% in rural areas
+- Users prefer serious and professional learning tools, with moderate acceptance of gamified learning
+
+### Interview Outline
+
+**[Opening]**
+Hello! It's great to chat with you. Thank you for taking the time to participate in our interview. Today I'd like to talk with you about English exam preparation, particularly vocabulary learning experiences and thoughts. We're mainly focusing on exams like TOEIC, TOEFL, and IELTS. This interview will take approximately 30 minutes, and we mainly want to understand your real feelings and needs during exam preparation and vocabulary learning. Feel free to share whatever comes to mind - there are no right or wrong answers. Are you ready to begin?
+
+Q1.1 [Moderator Note: Start with a relaxed opening to build rapport, collect basic background information, flexibly use natural responses like "very interesting" or "sounds quite fulfilling" based on user's answer] [Related Background: English proficiency varies significantly across French regions, with notable differences in learning motivation among different age groups and professional backgrounds] 
+Question: Please briefly introduce yourself, such as what work or studies you're currently engaged in?
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] If user mentions specific occupation, ask about the importance and frequency of English use at work
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] If student, ask about specific English proficiency requirements for their major
+
+Q1.2 [Moderator Note: Understand actual English usage scenarios and frequency, assess user's English need intensity, use expressions like "I see" or "that makes sense" to show understanding] [Related Background: French people have limited daily exposure to English, mainly learning through education system, with gap between practical application and theory] 
+Question: In your daily life or work, how often do you use English? In what contexts mainly?
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] If low frequency, ask about plans or pressure to improve English
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] If high frequency, ask about specific difficulties and challenges encountered
+
+Q1.3 [Moderator Note: Explore English learning journey and self-assessment, record user's current proficiency perception, use "got it" or "understood" to confirm comprehension] [Related Background: French education system emphasizes grammar theory but lacks practical application training, most students have vocabulary of 3000-5000 words] 
+Question: How would you rate your current English level? How do you usually study or practice English?
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] If user self-assesses level, ask which aspects (listening, speaking, reading, writing) specifically
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] If learning methods mentioned, inquire about their effectiveness
+
+Q1.4 [Moderator Note: Confirm exam experience and motivation, this is core screening information requiring detailed recording of exam type and goals, use "okay" or "understood" to show attention] [Related Background: TOEIC has highest workplace recognition in France, TOEFL/IELTS are study abroad passports, vocabulary requirements vary significantly across different exams] 
+Question: Have you prepared for or taken English exams like TOEIC, TOEFL, or IELTS?
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] If has exam experience, ask about specific exam type, target score, and selection reasons
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] If not, inquire about exam plans or career development needs
+
+**Section Transition**: Thank you for sharing. I now have a preliminary understanding of your background. Next, I'd like to hear your real thoughts and feelings about English vocabulary learning. Ready?
+
+---
+
+## Section 2: Vocabulary Learning Needs & Pain Points Exploration
+
+### Section Research Objective
+Collect users' real feelings and core pain points about English vocabulary learning, validate French-English language interference issues, assess importance of vocabulary learning in overall exam preparation.
+
+### Section Notes
+
+**Moderator Instructions**: "If the user shares any new information relevant to our research objectives, please conduct 1-2 follow-up questions to understand in depth (why/what/how/what impact). If irrelevant, simply acknowledge and continue the interview. For questions with set follow-ups, skip them if the user has already answered the follow-up points in their main response. When acknowledging user responses, please flexibly use different expressions such as 'okay', 'I see', 'understood', 'that makes sense', 'I get it', 'right', 'got it', etc., avoiding repetitive use of 'I understand'." This section focuses on capturing users' spontaneous pain point expressions, particularly French-English confusion issues, recording first reactions and emotions.
+
+**Background Information**: 
+- French-English false friends vocabulary is major pain point, words like library/librairie, actually/actuellement easily confused, error rate can reach 60-70%
+- Traditional rote memorization methods are inefficient, forgetting after learning is common phenomenon
+- Exam vocabulary requirements are high (TOEIC 8000+, TOEFL 10000+), but daily exposure to specialized vocabulary is limited
+- Time pressure is significant, especially for working professionals with highly fragmented study time
+
+### Interview Outline
+
+Q2.1 [Moderator Note: Capture user's first reaction to vocabulary learning, record emotional expressions and spontaneous associations, express empathy with "I understand that feeling"] [Related Background: Vocabulary memorization is biggest challenge for French native speakers learning English, traditional rote learning has low efficiency and easy forgetting] 
+Question: When it comes to learning English vocabulary, what's the first thing that comes to mind?
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] If user expresses difficulty or frustration, delve into specific difficulty manifestations and frequency
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] If positive experiences mentioned, inquire about specific practices of effective methods
+
+Q2.2 [Moderator Note: Explore user's perception of vocabulary importance, understand their judgment criteria, affirm user's thoughts with "that's a good point"] [Related Background: Exams have high vocabulary requirements but users generally lack systematic learning methods, mostly relying on traditional textbooks] 
+Question: Do you think vocabulary is important for English proficiency? Why do you think so?
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] Ask about user's specific criteria or experiences for judging vocabulary importance
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] If exam or work impact mentioned, ask about specific manifestations of impact
+
+Q2.3 [Moderator Note: Deep dive into vocabulary learning difficulties, particularly focus on French-English confusion, need to quantitatively collect error frequency, express understanding with "this is indeed frustrating"] [Related Background: French-English false friends, pronunciation transfer, grammatical structure differences are main obstacles] 
+Question: In the process of memorizing vocabulary, what do you find most difficult or frustrating?
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] If user mentions confusion issues, ask what types of words are easily confused, approximate error rate
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] If memory issues mentioned, understand typical forgetting situations and time patterns
+
+Q2.4 [Moderator Note: Specifically validate French-English false friends pain point, this is core differentiation need, need to collect specific examples, express new understanding with "I see now"] [Related Background: French-English false friends like library/librairie, actually/actuellement are easily confused, major obstacle for French native speakers] 
+Question: When learning English vocabulary, have you encountered situations where English words look very similar to French but have completely different meanings?
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] If has experience, ask for specific examples and error frequency in exams (percentage)
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] If haven't noticed, give examples like library/librairie to explain, ask if they have impression or similar experiences
+
+Q2.5 [Moderator Note: Quantify pain point severity, collect time investment data, show importance of user information with "I've noted that"] [Related Background: Need to collect quantitative data to support business decisions, understand user investment willingness] 
+Question: On a scale of 1 to 10, how difficult would you rate vocabulary memorization? How much time do you spend on English vocabulary learning each day approximately?
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] Ask about specific reasons for rating and main difficulty points
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] Understand reasons for time allocation and whether hope to improve efficiency
+
+**Section Transition**: I understand your feelings and difficulties with vocabulary learning. Now I'd like to hear about your experience using existing learning tools. Shall we start the next part?
+
+---
+
+## Section 3: Existing Solution Evaluation & Gap Identification
+
+### Section Research Objective
+Deep dive into users' usage experience and satisfaction evaluation of existing vocabulary learning tools, identify market gaps and competitor weaknesses, collect feature missing list.
+
+### Section Notes
+
+**Moderator Instructions**: "If the user shares any new information relevant to our research objectives, please conduct 1-2 follow-up questions to understand in depth (why/what/how/what impact). If irrelevant, simply acknowledge and continue the interview. For questions with set follow-ups, skip them if the user has already answered the follow-up points in their main response. When acknowledging user responses, please flexibly use different expressions such as 'okay', 'I see', 'understood', 'that makes sense', 'I get it', 'right', 'got it', etc., avoiding repetitive use of 'I understand'." This section focuses on mining competitor pros/cons and user satisfaction, identifying unmet needs, collecting quantitative ratings.
+
+**Background Information**: 
+- Main competitors include Duolingo (gamified but focuses on daily vocabulary), GlobalExam (professional but expensive at €39.90/month), Anki (powerful but complex)
+- Traditional solutions like Hachette and Larousse publisher textbooks still have some market
+- Users have clear needs for localization level (French interface, French-English comparison features)
+- High price sensitivity, especially student group, but willing to pay for effective tools
+
+### Interview Outline
+
+Q3.1 [Moderator Note: Understand specific products user has used, record each product name, show familiarity with "I know this one"] [Related Background: Main language learning apps in French market include Duolingo, Babbel, MosaLingua, etc., professional exam tools include GlobalExam, PrepMyFuture, etc.] 
+Question: What English learning apps or software have you specifically used? Can you mention the names of these products?
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] For each mentioned product, ask about usage duration and main purposes
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] If user can't name specific products, ask about usage types (mobile app, website, books, etc.)
+
+Q3.2 [Moderator Note: Deep dive into selection logic and experience of main product used, affirm user's judgment with "that makes sense"] [Related Background: Understand key decision factors for user product selection, provide reference for differentiation positioning] 
+Question: Among these products, which one do you use most? Why did you choose it?
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] Ask about initial selection reasons and motivation for continued use
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] Understand advantages compared to other products
+
+Q3.3 [Moderator Note: Quantitatively collect satisfaction rating, record specific scores and reasons, show importance with "let me record your rating"] [Related Background: Need to collect 1-10 satisfaction rating, understand specific pros/cons analysis] 
+Question: If you were to rate this product on a scale of 1 to 10, what would you give it? Why this score?
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] Ask what specific positive factors contributed to the score
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] Understand main reasons for point deductions
+
+Q3.4 [Moderator Note: Identify core product advantages and valuable features, record characteristics user values most, express agreement with "this feature is indeed practical"] [Related Background: Understand feature characteristics users value most, provide reference for product design] 
+Question: What attracts you most about this product? Which features do you find particularly useful?
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] Ask why these features are useful, what problems they solve
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] Understand in what scenarios these features are used
+
+Q3.5 [Moderator Note: Mine product pain points and improvement needs, this is key to discovering market opportunities, express empathy with "I understand your frustration"] [Related Background: Identify existing product shortcomings, discover differentiation opportunities] 
+Question: What aspects of this product are you not quite satisfied with? What would you hope it could improve?
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] If feature gaps mentioned, ask about expected specific feature performance
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] If experience issues mentioned, understand specific impact on learning effectiveness
+
+Q3.6 [Moderator Note: Collect ideal product feature needs oriented toward exam preparation, focus on recording necessary and standout features for exams, encourage expression with "your ideas are very insightful"] [Related Background: Collect 3 necessary features and 3 standout features for exam preparation, understand user's feature priority in exam prep scenarios] 
+Question: If you were to design a vocabulary learning app specifically for exam preparation like TOEIC or TOEFL, what features would you most hope it has? Can you name the 3 most important ones? We're particularly interested in understanding the most critical features for exam preparation.
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] For each feature, ask why it's important, what exam prep problem it solves
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] If user description is broad, request specific implementation, especially how it helps with exam preparation
+
+Supplementary Question: Besides the features just mentioned, what other special features do you think this exam prep app needs to help you more efficiently improve vocabulary and exam scores within limited preparation time?
+
+**Section Transition**: Thank you for sharing your detailed thoughts on existing tools. Now I'd like to understand your thoughts on some new feature concepts, which will help us better understand user needs. Ready?
+
+---
+
+## Section 4: SparkMo Product Feature Validation & Adaptability Testing
+
+### Section Research Objective
+Test SparkMo core features' acceptance in French market, collect feedback on memory algorithms, gamification elements, exam orientation, validate localization needs.
+
+### Section Notes
+
+**Moderator Instructions**: "If the user shares any new information relevant to our research objectives, please conduct 1-2 follow-up questions to understand in depth (why/what/how/what impact). If irrelevant, simply acknowledge and continue the interview. For questions with set follow-ups, skip them if the user has already answered the follow-up points in their main response. When acknowledging user responses, please flexibly use different expressions such as 'okay', 'I see', 'understood', 'that makes sense', 'I get it', 'right', 'got it', etc., avoiding repetitive use of 'I understand'." This section focuses on testing SparkMo core feature acceptance, collecting localization suggestions and feature ratings.
+
+**Background Information**: 
+- SparkMo core features include memory algorithm (MemScore rating, forgetting curve review), gamification elements (streak rewards, badge system), exam-oriented word banks
+- Need to validate French users' acceptance of gamified learning, may need adjustment to more serious style
+- Need to add French-English comparison features and false friends vocabulary practice
+- Parent-school interaction features need adaptation to French educational culture and privacy regulations
+
+### Interview Outline
+
+Q4.1 [Moderator Note: Test smart memory algorithm concept acceptance, record user's trust in AI recommendations, express interest with "this is an innovative idea"] [Related Background: SparkMo's intelligent review mechanism based on forgetting curve, arranging reviews according to user's answer accuracy and response time] 
+Question: If there's an app that can remember your mastery of each word and automatically schedule when to review which words, what do you think of this feature?
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] Ask about trust level and concerns regarding smart recommendations
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] Understand whether prefer to retain manual control
+
+Q4.2 [Moderator Note: Test gamification element acceptance, particularly focus on French users' preference for serious learning, express respect with "I understand your perspective"] [Related Background: French users may have reservations about excessive gamification, need to find appropriate balance] 
+Question: What do you think about game elements in learning apps? Such as consecutive learning day tracking, earning rewards for completing tasks, etc.?
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] If accepting, ask about favorite specific elements and reasons
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] If resistant, understand reasons and expected alternative incentive schemes
+
+Q4.3 [Moderator Note: Validate exam targeting value, understand preference for specialization vs. universality, emphasize specialization with "this distinction is important"] [Related Background: SparkMo supports multiple exam word banks, targeting different exams like TOEIC, TOEFL, IELTS] 
+Question: If an app specifically designs vocabulary content for exams like TOEIC or TOEFL, compared to general English learning apps, what do you think are the advantages and disadvantages?
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] Ask about price willing to pay for specialization (time/money)
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] Understand degree of need for general learning
+
+Q4.4 [Moderator Note: Test French-English comparison feature need, this is core differentiation feature, express understanding with "this is indeed a special need for French learners"] [Related Background: Addressing special needs of French native speakers, existing products lack this feature] 
+Question: If an app could specifically mark English words easily confused with French and provide comparison exercises, would you find it helpful?
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] Ask about importance ranking of this feature (1-5 points)
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] Understand expected specific implementation methods and practice formats
+
+Q4.5 [Moderator Note: Collect overall evaluation of SparkMo product concept, quantitatively collect attractiveness rating, express gratitude with "your evaluation is very valuable"] [Related Background: Comprehensively assess SparkMo product model adaptability] 
+Question: If the features I just described were combined in one app, on a scale of 1 to 10, what would you rate it? Why?
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] Ask about most attractive features and reasons
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] Understand areas needing improvement or concerns
+
+**Section Transition**: Your feedback on these features is very helpful. Finally, I'd like to understand your thoughts on payment and usage, which is important to us. Shall we continue?
+
+---
+
+## Section 5: Business Viability Validation & Payment Willingness Testing
+
+### Section Research Objective
+Test user payment willingness and price sensitivity, understand business model preferences, validate market commercial viability, collect recommendation willingness and dissemination channels.
+
+### Section Notes
+
+**Moderator Instructions**: "If the user shares any new information relevant to our research objectives, please conduct 1-2 follow-up questions to understand in depth (why/what/how/what impact). If irrelevant, simply acknowledge and continue the interview. For questions with set follow-ups, skip them if the user has already answered the follow-up points in their main response. When acknowledging user responses, please flexibly use different expressions such as 'okay', 'I see', 'understood', 'that makes sense', 'I get it', 'right', 'got it', etc., avoiding repetitive use of 'I understand'." This section focuses on collecting payment decision logic and price range, avoiding overly direct commercial inquiries, valuing user value perception.
+
+**Background Information**: 
+- French users willing to pay for high-quality educational tools, but price sensitive
+- Need clear value proposition and payment conditions
+- Subscription vs. one-time purchase preference needs validation
+- Student group and working professional group have significant payment capacity differences
+
+### Interview Outline
+
+Q5.1 [Moderator Note: Understand payment history and attitude, establish foundation for payment discussion, express agreement with "I understand the importance of educational investment"] [Related Background: Understand user educational payment experience and attitude, provide reference for pricing strategy] 
+Question: Have you paid for English learning or other educational products before? What types of products approximately?
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] If has payment experience, ask about payment reasons and satisfaction
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] If no payment, understand reasons for not paying and concerns
+
+Q5.2 [Moderator Note: Explore payment decision logic, understand value perception standards, express understanding with "these conditions are reasonable"] [Related Background: Validate commercial viability, understand user value perception and payment conditions] 
+Question: Under what circumstances would you decide to pay for an English learning app? What conditions need to be met?
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] Ask about most important payment decision factors
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] Understand expectations for trial period or free features
+
+Q5.3 [Moderator Note: Quantitatively collect price sensitivity, record specific Euro amounts, show importance with "I'll record your price range"] [Related Background: Collect specific acceptable price range, provide data support for pricing strategy] 
+Question: If there's a very useful English vocabulary learning app, how much would you be willing to pay per month in Euros? What price range would you consider reasonable?
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] Ask about considerations for price ceiling and floor
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] Understand preference for subscription vs. one-time purchase
+
+Q5.4 [Moderator Note: Test time investment willingness, understand usage scenario preferences, express agreement with "this arrangement is practical"] [Related Background: Understand user learning time allocation and usage scenarios, provide reference for product design] 
+Question: Generally, how much time can you spend learning English vocabulary each day? When would be most suitable for studying?
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] Ask about reasons for time choices and limiting factors
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] Understand needs for fragmented learning and preferred scenarios
+
+Q5.5 [Moderator Note: Collect recommendation willingness and dissemination channels, understand word-of-mouth spread potential, express agreement with "friend recommendations are indeed important"] [Related Background: Understand product word-of-mouth spread potential and user acquisition channels] 
+Question: If there really is such a useful app, would you recommend it to friends around you? Generally through what means?
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] Ask about specific conditions and standards for recommendation
+- [Skip this follow-up question or ask flexibly if the context is awkward or the user has already shared relevant information] Understand characteristics of target recommendation groups
+
+**Section Transition**: Thank you very much for sharing so many valuable thoughts and experiences. Your perspectives are very valuable to us. Let's do a simple summary, shall we?
+
+---
+
+## Section 6: Summary Confirmation & AI Interview Feedback Collection
+
+### Section Research Objective
+Affirm user contributions, summarize key points, confirm no important information is missing, collect AI interview experience feedback to improve cross-language interview technology, maintain good relationships and prepare for follow-up contact.
+
+### Section Notes
+
+**Moderator Instructions:** "If the user shares any new information relevant to our research objectives, please conduct 1-2 follow-up questions to understand in depth (why/what/how/what impact). If irrelevant, simply acknowledge and continue the interview. For questions with set follow-ups, skip them if the user has already answered the follow-up points in their main response. When acknowledging user responses, please flexibly use different expressions such as 'okay', 'I see', 'understood', 'that makes sense', 'I get it', 'right', 'got it', etc., avoiding repetitive use of 'I understand'." Personalized thanks, restate key points, solicit additions, collect AI interview experience feedback (encourage genuine even sharp evaluation), explain follow-up contact.
+
+**Background Information:**
+- AI interview feedback collection is important part of improving cross-language interview technology
+- Need to understand technical issues (sound quality, connection stability), communication experience (follow-up depth, conversation naturalness), cultural adaptability, etc.
+- Encourage users to provide genuine feedback, including negative comments, to help improve AI interview application in French market
+- Both quantitative ratings (1-10 points) and specific improvement suggestions are important
+
+### Interview Outline
+
+**Acknowledgment & Summary**
+Thank you very much for taking so much time today to share your thoughts and experiences with me. Your perspectives are very valuable to us, especially what you mentioned about [Moderator personalizes by restating 1-2 key user points, such as specific learning pain points, feature needs, or product concept feedback].
+
+**Solicit Additional Information**
+Is there anything about English vocabulary learning that you think is important but we didn't discuss today?
+
+**Follow-up Contact Confirmation**
+If we develop related products later, may I invite you to try them and hear your feedback? This would be very important for our product improvement.
+
+**AI Interview Experience Feedback Collection**
+Before we end, I'd like you to spend a minute or two sharing your feelings about this AI interview itself. Your feedback is very important for us to improve AI interview technology, and we hope to hear genuine, even somewhat sharp evaluations:
+
+'During the entire interview process, did you encounter any technical problems? Such as unclear audio, audio stuttering, or other technical failures?'
+
+'How do you think the AI moderator's follow-up depth was? Were there questions that were too shallow or too deep?'
+
+'Did you feel any pressure or discomfort communicating with AI like this? How does it feel different compared to human interviews?'
+
+'For conducting AI interviews in the French market, do you have any suggestions? For example, regarding language expression, cultural understanding, or technical experience?'
+
+'Overall, are you satisfied with this AI interview experience? On a scale of 1 to 10, what would you rate it? Any specific improvement suggestions?'
+
+We very much hope to hear your genuine thoughts, including any criticisms or suggestions, which will help us provide better AI interview experiences for French users.
+
+**Closing Thanks**
+Thank you again for your participation and valuable feedback. Wishing you success in your studies!
+

@@ -1,0 +1,223 @@
+
+Participant: (at 0.00) ~~ Section 1 starts~~
+Moderator: (at 0.34) Hello,  Anthony!  I'm  really  excited  to  be  able  to  chat  with  you  today.  Thank  you  so  much  for  agreeing  to  participate  in  this  interview.  How  are  you  today?
+Moderator: (at 19.80) J'aimerais  discuter  avec  vous  de  vos  expériences  concernant  la  préparation  aux  examens  d'anglais  et  l'apprentissage  du  vocabulaire.  Notre  conversation  durera  environ  une  demi-heure,  et  ce  qui  m'intéresse  vraiment,  c'est  de  comprendre  votre  vécu  et  vos  besoins  concrets  dans  votre  parcours  d'apprentissage  de  l'anglais.  N'hésitez  pas  à  partager  tout  ce  qui  vous  passe  par  la  tête  -  il  n'y  a  vraiment  aucune  "bonne"  réponse  attendue.  Ça  vous  va  si  on  commence?
+Participant: (at 41.96) Oui.
+Moderator: (at 45.54) Parfait  !  Alors  pour  commencer,  est-ce  que  vous  pourriez  vous  présenter  un  peu  ?  J'aimerais  savoir  où  vous  en  êtes  actuellement,  que  ce  soit  côté  boulot  ou  études.
+Participant: (at 58.36) Alors  en  ce  moment  au  niveau  professionnel,  je  suis  en  reconversion  professionnelle.
+Participant: (at 68.93) Congrès  j'ai  le  niveau  j'ai  passé  le  test  de  l'AF  sept.
+Participant: (at 74.21) Apparemment,  je  suis  niveau  c
+Moderator: (at 81.38) Ah  d'accord,  une  reconversion  professionnelle,  c'est  intéressant  !  Et  vous  vous  dirigez  vers  quel  domaine  pour  cette  reconversion  ?
+Participant: (at 89.45) informatique.
+Moderator: (at 94.73) Je  vois,  l'informatique  c'est  un  secteur  où  l'anglais  est  souvent  important.  Dans  ce  domaine  là,  vous  pensez  que  vous  allez  avoir  besoin  d'utiliser  l'anglais  régulièrement  ?
+Participant: (at 105.57) Oui,  quasiment  tous  les  jours.
+Moderator: (at 110.38) D'accord,   donc   c'est   vraiment   central   pour   votre   projet   professionnel.    Au   quotidien   actuellement,   que   ce   soit   perso   ou   pro,   vous   utilisez   l'anglais   à   quelle   fréquence   ?    Dans   quels   contextes   surtout   ?
+Participant: (at 122.34) Pour  discuter  avec  mes  proches.
+Participant: (at 124.46) Tous  tous  les  jours,  quotidiennes.
+Moderator: (at 131.05) Ah   c'est   intéressant,   vous   avez   des   proches   anglophones   alors   ?    Vous   pouvez   me   dire   un   peu   plus   sur   ces   conversations   quotidiennes   ?
+Participant: (at 140.02) Mes  proches  ne  sont  pas  anglophones,  mais  peuvent  parler  anglais.
+Participant: (at 144.92) C'est  des  conversations  sur  des  discussions  basiques
+Moderator: (at 152.86) Je   comprends,   donc   vous   choisissez   de   parler   anglais   avec   eux   même   s'ils   ne   sont   pas   anglophones.    C'est   pour   vous   entraîner   ou   il   y   a   une   autre   raison   ?
+Participant: (at 162.72) C'est  pour  se  faire  comprendre.
+Participant: (at 165.31) comprendre  et  puis  s'entraîner,  pour  pour  progresser  ensemble  sur
+Moderator: (at 175.28) Très    bien,    c'est    une    approche    sympa    de    progresser    ensemble.      Où    vous    situez-vous    actuellement    en    anglais    ?      Et    comment    vous    vous    y    prenez    habituellement    pour    apprendre    ou    entretenir    votre    anglais    ?
+Participant: (at 187.24) apparemment,  en  ce  moment,  j'ai  le  niveau  c  un,  des  tests  le  test  f  sept  que  j'avais  effectué  en  en  autodidacte,  Sinon,  comment  je  m'y  prends  pour  en  entretenir  mon  anglais  Je  je  lis  beaucoup  de  textes  sur  internet.
+Participant: (at 206.91) Voilà,  de  discussion  en  ligne,  en  anglais,  ce  qui  m'aide
+Participant: (at 211.88) mon  anglais.  Et  puis,  y  aussi  tout  ce  qui  est  vidéo,  voilà,  même  les  séries  télévisées,  en  anglais,  voilà,  en  version  originale.
+Moderator: (at 227.03) Mmh,   c'est   une   bonne   approche   avec   la   lecture   et   les   vidéos.    Quand   vous   dites   niveau   C1,   sur   quels   aspects   précis   ça   se   manifeste   ?   Je   veux   dire,   est-ce   que   c'est   plutôt   en   compréhension,   expression,   lecture,   écriture   ?
+Participant: (at 240.52) Alors  moi  j'avais  fait  le  test,  c'était  lecture  et  écoute.
+Participant: (at 246.53) Je  me  souviens  bien.
+Moderator: (at 250.87) D'accord,    donc    c'était    axé    sur    la    compréhension.      Et    côté    expression    orale    ou    écrite,    comment    vous    vous    sentez    ?
+Participant: (at 258.49) Alors,  je  pense  que  je  me  débrouille  pas  mal.  Bon,  après,  j'ai  j'ai  un  accent  français
+Participant: (at 264.14) Je  pense  que  c'est  inhérent  à  mes  origines,  mais  j'essaie  de  le  gommer,  j'essaie  de  faire  des  efforts  et,  d'avoir  l'accent  anglais  américain,  anglais  britannique  ou  anglais  au  australien  selon  les  les  conversations.
+Moderator: (at 280.54) Je    vois    bien,    vous    travaillez    sur    l'accent    selon    les    contextes.      Est-ce    que    vous    avez    déjà    préparé    ou    passé    des    examens    d'anglais    ?      Je    pense    au    TOEIC,    TOEFL,    IELTS,    ce    genre    de    choses...
+Participant: (at 293.59) Oui,  alors  je  vais  essayer  de  de  préparer  le  TOEIC.  C'est  un  un  examen  qui  est,  qui  est  important.
+Participant: (at 299.43) Un  examen  officiel  qui  est  important  et  puis  qui  est  reconnu  dans  le  monde  entier.
+Moderator: (at 306.68) Effectivement,     le     TOEIC     a     une     très     bonne     reconnaissance     professionnelle.       Qu'est-ce     qui     vous     pousse     à     vouloir     le     passer     ?        C'est     lié     à     votre     reconversion     en     informatique     ?
+Participant: (at 317.32) Oui,  entre  autres.  Et  puis  aussi,  pour  avoir  d'autres  d'autres  opportunités  professionnelles
+Participant: (at 322.80) dans  des  pays  anglophones,  par  exemple.
+Participant: (at 330.32) ~~ Section 1 ends~~
+Participant: (at 330.32) ~~ Section 2 starts~~
+Participant: (at 428.84) Allô,  allô.
+Participant: (at 430.46) Est-ce  que  vous  m'entendez
+Moderator: (at 435.28) Oui,  je  vous  entends  très  bien  Anthony  !  Parfait,  on  peut  continuer. 
+
+Alors  maintenant  j'aimerais  qu'on  parle  un  peu  plus  de  l'apprentissage  du  vocabulaire.  Quand  on  parle  d'apprendre  du  vocabulaire  anglais,  qu'est-ce  qui  vous  vient  spontanément  à  l'esprit  ?
+Participant: (at 454.07) Les  mots,  les  phrases,  ce  genre  de  choses.
+Moderator: (at 461.93) Mmh,   d'accord.    Et   quand   vous   pensez   à   apprendre   ces   mots   et   phrases,   qu'est-ce   que   ça   vous   évoque   comme   sensation   ou   expérience   ?    Je   veux   dire,   c'est   plutôt   quelque   chose   que   vous   trouvez   facile,   difficile,   motivant   ?
+Participant: (at 476.51) Alors,  c'est  moyennement  facile,  C'est  c'est  très  motivant  parce  que  j'essaie  d'apprendre  de  nouveaux  mots  en  anglais
+Participant: (at 483.28) régulièrement.
+Participant: (at 484.92) enrichir  mon  vocabulaire.
+Participant: (at 486.93) Donc  je  trouve  ça  plutôt  intéressant.
+Moderator: (at 491.74) C'est   chouette   que   vous   trouviez   ça   motivant   !    Vous   dites   que   c'est   moyennement   facile   -   qu'est-ce   qui   fait   que   c'est   pas   complètement   facile   pour   vous   ?
+Participant: (at 502.76) L'anglais,  c'est  quand  même,  c'est  un  langage  qui  est  qui  est  quand  même  développé,  donc  il  faut,  il  faut  bien  retenir  les  phrases,  les  distinctions  aussi
+Participant: (at 515.38) voilà  ce  genre  de  choses.
+Participant: (at 522.28) ~~ Section 2 ends~~
+Participant: (at 522.28) ~~ Section 3 starts~~
+Moderator: (at 527.15) Je    comprends,    il    y    a    effectivement    beaucoup    de    nuances    à    retenir.      
+
+Maintenant    j'aimerais    qu'on    parle    des    outils    que    vous    utilisez    concrètement.     Quelles    applis    ou    logiciels    d'apprentissage    de    l'anglais    vous    avez    utilisés    ?      Vous    pourriez    me    donner    les    noms    ?
+Participant: (at 541.68) Alors  apprentissage  de  l'anglais,  c'est,  c'est  des  applications  c'est  un  un  navigateur  internet,  c'est  l'application  YouTube  par  exemple.  Aussi  un  petit  peu  de  de  chat  GPT,  de  Google  traduction  pour  corriger  certaines  choses.
+Moderator: (at 559.86) Ah    oui,    je    vois    que    vous    utilisez    des    outils    assez    variés    !      Est-ce    que    vous    avez    testé    des    applications    plus    spécialisées    dans    l'apprentissage    des    langues    ?      Je    pense    à    des    trucs    comme    Duolingo,    Babbel,    ce    genre    d'applis    ?
+Participant: (at 573.07) Non,  jamais,  j'ai  toujours  essayé  d'apprendre  en  auto  dictée.  Autodidacte.  Je  sais  qu'il  y  a,  qu'il  y  des  applications  plutôt  pour  les  novices.
+Participant: (at 580.94) Comme  je  pense  que  mon  niveau  est  plutôt  avancé,  je  n'en  ai  pas  besoin  à  ce  stade.
+Moderator: (at 590.34) D'accord,     vous     préférez     l'approche     autodidacte.        Parmi     les     outils     que     vous     utilisez     -     YouTube,     ChatGPT,     Google     Traduction     -     lequel     vous     utilisez     le     plus     régulièrement     ?        Et     qu'est-ce     qui     vous     a     amené     à     choisir     cette     approche     ?
+Participant: (at 604.45) Alors  YouTube,  évidemment,  parce  que  les  les  vidéos  en  anglais,  il  y  en  a  il  y  en  a  énormément  dans  plein  de  domaines  variés.
+Participant: (at 611.94) et  puis  ça  me  permet,  voilà,  d'améliorer  mon  écoute  aussi
+Participant: (at 618.43) Vu  que  l'accent  diffère  selon  les  personnes,  et  selon  les  voix  des  gens,  donc  ça  m'aide
+Participant: (at 627.29) ouais,  ça  m'aide  à  apprendre.
+Moderator: (at 633.06) C'est     logique     comme     choix,     YouTube     offre     vraiment     une     diversité     incroyable     !        Qu'est-ce     qui     fait     que     vous     continuez     avec     cette     méthode     plutôt     que     d'essayer     autre     chose     ?        Et     quels     avantages     vous     y     trouvez     par     rapport     aux     autres     outils     ?
+Participant: (at 645.30) Alors  l'avantage,  c'est  la  vidéo,  voilà,  on  on  ne  se  laisse  jamais  vu  qu'il  y  a  plein  de  vidéos  à  parcourir,  plein  de  choses  à  regarder,  plein  de  contenus  à  regarder  en  anglais.
+Participant: (at 656.26) C'est  une  source  d'apprentissage  quasiment  inépuisable.
+Participant: (at 660.28) Et  et  voilà,  donc  l'avantage,  c'est  c'est  vraiment  la  vidéo,  c'est  le  super  YouTube.
+Participant: (at 665.69) puis,  on  peut  aussi  télé  télécharger  les  vidéos  en  mode  hors  ligne,  les  revoir  plus  tard,  ce  genre  de  choses.
+Participant: (at 672.14) C'est  vraiment  un  support  qui  me  plaît  beaucoup  et  que  j'utilise  depuis  de  nombreuses  années.
+Moderator: (at 680.62) Si      vous      deviez      noter      YouTube      comme      outil      d'apprentissage      de      1      à      10,      vous      mettriez      quoi      ?          Qu'est-ce      qui      justifie      cette      note      ?
+Participant: (at 689.16) Alors,  je  je  mettrai  huit,  je  pense,  je  c'est  une  bonne  note  parce  que  le  le  support  est  facile  d'accès,  le  lecteur  est,  est  pratique,  Il  y  la  possibilité  de  mettre  éventuellement  des  sous-titres  audio  si  on  ne  comprend  pas  tout  à  fait  ce  qui  est  dit.
+Participant: (at 707.11) Donc,  donc  ce  n'est  pas  mal.
+Participant: (at 709.11) voilà.
+Moderator: (at 712.62) Je     note     votre     évaluation     de     8     sur     10.        Qu'est-ce     qui     fait     que     vous     ne     mettez     pas     9     ou     10     ?        Quels     sont     les     trucs     précis     qui     vous     font     perdre     ces     deux     points     ?
+Participant: (at 722.78) Moi,  généralement,  je  ne  mets  jamais  les  notes  maximales.  Je  J'aurais  pu  mettre  dix,  mais  j'ai  ou  neuf,  mais  j'ai  j'ai  choisi  huit  parce  que  YouTube,  voilà,  après  il  y  a  des  systèmes  d'abonnement,  ce  genre  de  choses,  mais  ça,  plutôt  inhérent  à  la  plateforme.
+Participant: (at 737.15) Voilà,  mais  c'est,  mais  c'est  très  bien.
+Participant: (at 738.80) Un  service  qui  est  très  bien,  je,  j'aurais  pu  mettre  dix,  voilà,  j'ai  mis  huit  parce  que  c'est  symbolique.
+Moderator: (at 746.45) D'accord,      je      comprends      votre      logique      !          Qu'est-ce      qui      vous      plaît      le      plus      dans      YouTube      pour      l'apprentissage      ?          Quelles      fonctionnalités      vous      trouvez      particulièrement      utiles      ?
+Participant: (at 756.36) Alors,  comme  je  l'ai  dit,  les  sous-titres,  voilà,  c'est  les  les  sous-titres  en  temps  réel,  c'est  une  fonctionnalité  que  j'apprécie  beaucoup.
+Participant: (at 764.79) Par  exemple,  quand  quand  je  j'entends  quelqu'un  parler  en  anglais  et  que  et  que  ne  comprends  pas  ce  qui  est  le  mot  qui  est  dit,  voilà,  ça  me  permet  de  vérifier  avec  les  sous-titres
+Participant: (at 779.77) pour  voir  si  j'ai  bien  compris.
+Moderator: (at 784.41) Cette      fonctionnalité      est      effectivement      très      pratique      !          Dans      quelles      situations      vous      utilisez      le      plus      ces      sous-titres      ?          Et      pourquoi      c'est      si      utile      pour      vous      ?
+Participant: (at 794.93) Alors,  comme  je  l'ai  dit,  j'utilise  cet  outil  outil  vraiment  quand  je  ne  comprends  pas,  enfin  quand  j'ai  zappé  un  mot,  parce  que  ça  certaines  personnes  parlent,  parlent,  peuvent  parler  vite,  peuvent  un  petit  peu  hacher  les  mots.  Donc  uniquement  quand  j'ai  un  doute,  c'est  c'est  assez  occasionnel.  J'essaie  de  m'en  passer  le  plus  souvent  possible.
+Participant: (at 814.04) Pour  améliorer  mon  anglais
+Participant: (at 816.28) anglais  à  l'oral.
+Participant: (at 819.30) Donc  c'est  c'est  utile,  parce  que  ça  m'aide  à  à  lever  les  doutes.
+Moderator: (at 827.63) À       l'inverse,       qu'est-ce       qui       vous       satisfait       pas       dans       YouTube       comme       outil       d'apprentissage       ?            Qu'est-ce       que       vous       aimeriez       qu'il       améliore       ?
+Participant: (at 837.47) Globalement,  tout  est  tout  est  satisfaisant.
+Participant: (at 841.63) ne  vois  pas  trop  ce  qu'il  pourrait  ajouter  en  plus.
+Participant: (at 845.27) y  déjà  les  traductions,  enfin,  y  il  y  déjà  les  sous-titres.
+Participant: (at 848.59) Plus  plus  les  traductions  en  temps  réel.
+Participant: (at 851.31) Être  les,  que  les  traductions  en  temps  réel,  par  exemple  de  l'anglais  vers  le  français,  ne  sont  pas,  ne  sont  pas  incroyables.
+Participant: (at 858.54) Ça  pourrait  être  un  peu  mieux,  mais  de  toute  façon,  je  mets  les  sous-titres,  je,  je  ne  traduis  pas,  je  les  mets  en  anglais,  je  les  laisse  en  anglais,  donc  donc  voilà  après  c'est  plus  au  niveau  des  services  peut-être  plus  de  gratuité  au  niveau  des  abonnements,  ce  genre  de  choses,  mais  c'est,  c'est  vraiment  des  détails.
+Moderator: (at 883.43) Je        comprends        votre        préoccupation        sur        les        traductions        automatiques.              Si        vous        pouviez        concevoir        l'appli        idéale        pour        apprendre        le        vocabulaire,        quelles        fonctionnalités        vous        aimeriez        absolument        qu'elle         ait        ?              Vous        pourriez        m'en        citer        3        qui        vous        sembleraient        les        plus        importantes        ?
+Participant: (at 902.66) Vidéo  des  sous-titres
+Participant: (at 909.69) puis
+Participant: (at 913.84) en  langue  maternelle.
+Moderator: (at 919.64) D'accord,     donc     vidéo,     sous-titres,     et     traduction     en     langue     maternelle.        Pour     chacune     de     ces     fonctionnalités,     pourquoi     c'est     important     pour     vous     ?        Quel     problème     ça     résout     concrètement     ?
+Participant: (at 934.20) Alors  pour,  ça  résout  en  fait  toutes  les  propos  les  problématiques  liées  à  l'apprentissage.
+Participant: (at 941.51) ça  permet  de  de  voir,  d'entendre,  de  comprendre  et  de  comprendre  aussi  dans  la  langue  native
+Participant: (at 948.72) d'où  on  est  origine,  Donc  ces  trois,  ces  trois  éléments  me  paraissent  assez  indispensables  et  assez  indissociables.
+Moderator: (at 962.13) Vos      idées      sont      vraiment      inspirantes      !          Comment      ça      marcherait      concrètement      cette      traduction      en      langue      maternelle      ?          Vous      l'imaginez      comment      dans      l'interface      ?
+Participant: (at 971.87) Alors  j'imagine  une  interface  un  petit  peu  comme  YouTube,  option  avec  des  sous-titres  en  temps  réel  et  puis  après,  on  peut  choisir  une  option  pour  traduire  dans  dans  sa  langue
+Participant: (at 982.79) voilà,  avec  des  options  d'affichage
+Participant: (at 985.35) genre  de  choses.
+Participant: (at 986.56) le  texte  soit  plus  grand,  moins  grand.
+Participant: (at 995.86) ~~ Section 3 ends~~
+Participant: (at 995.86) ~~ Section 4 starts~~
+Participant: (at 1028.43) Vous  m'entendez  toujours.
+Moderator: (at 1034.06) Oui,   je   vous   entends   parfaitement   Anthony   !    
+
+Maintenant   j'aimerais   vous   présenter   quelques   concepts   et   avoir   vos   réactions.    Si   une   appli
+Participant: (at 1040.45) Oui.
+Moderator: (at 1040.41) pouvait
+Moderator: (at 1045.23) mémoriser    votre    maîtrise    de    chaque    mot    et    organiser    automatiquement    vos    révisions    en    fonction    de    vos    forces    et    faiblesses,    qu'est-ce    que    vous    penseriez    de    cette    fonctionnalité    ?
+Participant: (at 1057.61) Je  pense  que  ce  serait  très  intéressant
+Participant: (at 1061.26) permettrait  de  se  focaliser  plutôt  sur  les  faiblesses.
+Moderator: (at 1068.95) C'est     vrai     que     c'est     une     approche     logique     !        À     quel     point     vous     feriez     confiance     aux     recommandations     de     cette     intelligence     artificielle     ?        Est-ce     que     vous     auriez     des     inquiétudes     particulières     ?
+Participant: (at 1077.58) Non,  je  n'ai  pas  d'inquiétude.  Particulière
+Participant: (at 1081.25) déjà  cet  entretien  qu'on  fait.  Moi,  je  moi,  je  trouve  ça  technologiquement  assez  bluffant
+Participant: (at 1088.14) Donc,  j'ai  une  totale  confiance  en  l'intelligence  artificielle  pour  me  proposer  de  bonnes  recommandations.
+Moderator: (at 1098.74) C'est      intéressant      votre      point      de      vue      !          Est-ce      que      vous      souhaiteriez      garder      un      contrôle      manuel      sur      ces      révisions      ou      vous      seriez      à      l'aise      de      laisser      l'algorithme      décider      complètement      ?
+Participant: (at 1108.70) Alors  si  possible  de  garder  les  deux,  voilà  d'avoir  des  suggestions  d'un  côté  et  puis  la  possibilité,  voilà,  de  toujours  vérifier  sur  une  liste  si  ça  nous  convient  toujours,  mais  voilà,  juste  d'avoir  la  possibilité  de  le  faire,  mais  sinon,  je  je  pense  que  l'algorithme
+Moderator: (at 1134.80) Parfait,        donc        un        équilibre        entre        automatisation        et        contrôle.           Maintenant        j'aimerais        savoir        ce        que        vous        pensez        des        éléments        ludiques        dans        les        applis        d'apprentissage        ?            Par        exemple,        le        suivi        des        jours        d'apprentissage        consécutifs,        l'obtention        de        récompenses        pour        accomplir        des        tâches        ?
+Participant: (at 1149.72) Oui,  ça,  c'est  très  intéressant  d'avoir  un  planning,  voilà,  qui  nous  encourage  et  qui  nous  pousse  dans  nos  objectifs.
+Participant: (at 1156.61) Et  puis,  voilà,  des  récompenses  quelconques  Voilà,  ça  peut  dépendre  de  la  plateforme,  mais  c'est  toujours  gratifiant
+Participant: (at 1163.80) d'obtenir  deux,  trois  bonus  parce  qu'on  a  bien  étudié.
+Moderator: (at 1170.38) Je          comprends          bien          votre          point          de          vue          !              Quels          éléments          précis          vous          appréciez          le          plus          dans          cette          gamification          ?              Et          pourquoi          ça          vous          motive          ?
+Participant: (at 1183.46) Les  éléments  que  j'apprécie  le  plus,  voilà,  c'est  des  félicitations  des  félicitations  écrites  ou  orales.
+Moderator: (at 1196.16) C'est          clair          !              Maintenant,          si          une          appli          était          spécialement          conçue          pour          les          examens          comme          le          TOEIC           ou          le          TOEFL          avec          du          contenu          vocabulaire          dédié,          comparée          aux          applis          d'apprentissage          anglais          généralistes,          quels          avantages          et          inconvénients          vous          y          voyez          ?
+Participant: (at 1213.91) Alors  moi,  mange  j'adorerais,  voilà,  une  une  application  pour  préparer  cet  examen  comme  le  TOEIC.
+Moderator: (at 1225.34) Cette            distinction            est            vraiment            importante            !                 Combien            vous            seriez            prêt            à            investir            pour            cette            spécialisation,            que            ce            soit            en            temps            ou            en            argent            ?
+Participant: (at 1235.90) Alors,  en  temps,  plusieurs  heures  par  semaine,  je  pense,  en  argent,  entre  une  cinquantaine  et  une  centaine  d'euros.
+Participant: (at 1242.55) dépend.
+Moderator: (at 1246.76) D'accord,              c'est              un              budget              conséquent              !                    À              quel              point              vous              avez              besoin              de              l'apprentissage              généraliste              en              parallèle              ?                    Ou              vous              préféreriez              vous              concentrer              uniquement              sur              la              préparation              d'examen              ?
+Participant: (at 1260.29) Alors,  en  priorité  sur  la  la  préparation  de  l'examen,  mais  on  apprend  tous  les  jours,  donc  l'apprentissage  généraliste  est  toujours  intéressant  de  toute  façon.
+Moderator: (at 1272.67) C'est                 vrai                 que                 c'est                 un                 besoin                 spécial                 des                 apprenants                 français                 !                      Si                 une                 appli                 pouvait                 spécialement                 signaler                 les                 mots                 anglais                 qui                 se                 mélangent                 facilement                 avec                 le                 français                 et                 proposer                 des                 exercices                 de                 comparaison,                 vous                 pensez                 que                 ça                 vous                 serait                 utile                 ?
+Participant: (at 1285.53) Oui,  ce  serait  chouette  pour  éviter  les  qu'on  appelle  les  faux-amis,  voilà.
+Moderator: (at 1293.57) Exactement                    !                          Sur                    une                    échelle                    de                    1                    à                    5,                    quelle                    importance                    vous                    donneriez                    à                    cette                    fonctionnalité                    ?
+Participant: (at 1301.37) Je  dirais  quatre.
+Moderator: (at 1308.29) Parfait                      !                             Comment                      ça                      devrait                      marcher                      concrètement                      selon                      vous                      ?                             Et                      quels                      types                      d'exercices                      vous                      imagineriez                      ?
+Participant: (at 1316.68) Alors  moi,  je  vois  bien  une  image  une  liste  de  mots  et  puis  on  doit  choisir  ce  correspond  et  ce  qui  ne  correspond  pas.
+Participant: (at 1331.86) ~~ Section 4 ends~~
+Participant: (at 1331.86) ~~ Section 5 starts~~
+Participant: (at 1359.11) Vous  m'entendez  toujours
+Moderator: (at 1363.30) Oui,    je    vous    entends    très    bien    Anthony    !     
+
+Maintenant    j'aimerais    aborder    un    sujet    un    peu    différent    si    ça    ne    vous    dérange    pas.     Est-ce    que    vous    avez    déjà    investi    financièrement    dans    l'apprentissage    de    l'anglais    ou    d'autres    outils    éducatifs    ?     À    peu    près    quel    type    de    solutions    ?
+Participant: (at 1381.29) Oui,  j'investis  dans  des  dans  des  livres  d'anglais,
+Moderator: (at 1390.09) D'accord,     vous     investissez     dans     des     livres.       Qu'est-ce     qui     vous     a     poussé     à     payer     pour     ces     livres     plutôt     que     d'utiliser     uniquement     des     ressources     gratuites     ?
+Participant: (at 1401.00) Alors  le  support,  c'est  vrai  qu'un  livre,  voilà,  on  peut  toujours  le  lire,  on  peut  toujours  l'emporter  en  voyage.
+Participant: (at 1408.19) Téléphone,  n'a  pas  forcément  la  batterie,  le  temps  nécessaire
+Moderator: (at 1418.06) Je      vois,      c'est      pratique      effectivement.        Et      vous      êtes      satisfait      de      ces      investissements      dans      les      livres      ?        Ça      vous      a      apporté      ce      que      vous      attendiez      ?
+Participant: (at 1427.00) Oui,  c'est  c'est  un  c'est  un  complément
+Participant: (at 1430.53) au  reste  de,  de  l'apprentissage  en  fait.  Voilà,  c'est  un  complément
+Participant: (at 1434.49) ce  que  je  fais  en  ligne.
+Moderator: (at 1438.73) Dans        quelles        circonstances        vous        seriez        prêt        à        investir        dans        une        appli        d'apprentissage        de        l'anglais        ?          Quelles        conditions        il        faudrait        réunir        ?
+Participant: (at 1446.86) Alors,  conditions  il  faut  que  ce  que  l'appli  se  apporte  vraiment  une  plus-value  pour  les  examens  Ça,  ça  me  semble  indispensable
+Participant: (at 1456.49) le  prix  soit  intéressant
+Participant: (at 1458.25) même  moyennant  un  abonnement,  ce  genre  de  choses.
+Moderator: (at 1466.12) Mmh,       donc       une       vraie       plus-value       pour       les       examens       et       un       prix       intéressant.         Quels       seraient       les       facteurs       de       décision       les       plus       importants       pour       vous       ?          Qu'est-ce       qui       ferait       vraiment       pencher       la       balance       ?
+Participant: (at 1477.52) S'il  y  avait  vraiment  un  un  avantage  par  rapport  au  TOEIC,  peut-être  quelques  points,  je,  je  ne  sais  pas.  Après,  il  faut,  voir  avec  les  organisateurs  du  test.
+Participant: (at 1487.09) mais  qu'il  y  ait  une  plus-value  par  rapport  à  ce  niveau-là.
+Moderator: (at 1492.76) C'est          logique          de          vouloir          des          résultats          concrets          !             S'il          existait          une          appli          d'apprentissage          du          vocabulaire          anglais          vraiment          efficace,          combien          d'euros          vous          seriez          prêt          à          investir          par          mois          ?             Quelle          fourchette          de          prix          vous          semblerait          raisonnable          ?
+Participant: (at 1506.61) Une  fourchette  de  prix  raisonnable,  je  pense,  qu'entre  neuf  et  dix  neuf  euros  par  mois,  ce  serait,  ce  serait  correct.
+Moderator: (at 1519.17) Je            note            bien            votre            fourchette            de            9            à            19            euros            par            mois.                Qu'est-ce            qui            influence            ces            limites            basses            et            hautes            de            prix            ?                Pourquoi            pas            moins            de            9            ou            plus            de            19            ?
+Participant: (at 1529.29) Alors  déjà,  c'est  par  rapport  à  la  moyenne  moyenne,  voilà,  des  abonnements  en  général.
+Participant: (at 1536.79) Sinon,  voilà,  c'est,  c'est,  c'est  une  moyenne,  ça  peut  être  au-dessus  comme  ça  peut  être  en  dessous,  mais  je  pense  que  c'est  une  moyenne  qui  est  raisonnable.
+Moderator: (at 1549.25) D'accord,               vous               vous               basez               sur               la               moyenne               du               marché.                      Entre               un               abonnement               mensuel               et               un               achat               unique,               qu'est-ce               que               vous               préféreriez               ?                      Et               pourquoi               ?
+Participant: (at 1559.63) Alors,  l'abonnement  mensuel,  ça  permet  de  garder  une  forme  d'apprentissage  et  l'achat  unique,  ce  serait  plutôt  focalisé  sur  les  spécimens.
+Participant: (at 1568.69) comme  le  test  TOEIC,  ce  genre  de  choses.
+Participant: (at 1572.88) Vraiment  quelque  chose  de  plus  poussé
+Participant: (at 1576.11) plus  intense  peut-être.
+Moderator: (at 1581.54) Intéressant                  cette                  distinction                  !                          Vous                  pourriez                  généralement                  consacrer                  combien                  de                  temps                  chaque                  jour                  à                  l'apprentissage                  du                  vocabulaire                  anglais                  ?                          Quels                  seraient                  vos                  créneaux                  les                  plus                  appropriés                  ?
+Participant: (at 1592.07) Alors  je  pense  heure  par  jour,  ce  n'est  pas  mal,  parce  que  dans  la  journée,  voilà,  plusieurs  choses  à  faire.
+Participant: (at 1598.69) pense  qu'une  heure  par  jour,  ce  n'est  pas  mal.
+Participant: (at 1600.95) Le  soir.
+Moderator: (at 1606.10) Une                      heure                      le                      soir,                      c'est                      un                      bon                      créneau.                            Pourquoi                      vous                      choisissez                      le                      soir                      plutôt                      qu'un                      autre                      moment                      ?                            Et                      qu'est-ce                      qui                      pourrait                      limiter                      ce                      temps                      d'apprentissage                      ?
+Participant: (at 1615.41) Alors,  le  soir  est  pas  un  autre  moment  de  la  journée  que  le  matin,  n'est  pas  très  réveillé,  voilà,  il  faut,  il  faut  prendre  le  temps  de  manger,  de  se  laver,  ce  genre  de  choses.
+Participant: (at 1625.69) que  le  soir,  on  est  quand  même  voilà,  c'est,  c'est  le  temps  on  a,  on  a  du  temps  de  libre  ce  genre  de  choses  donc,  si  paraît  judicieux  le  soir.
+Moderator: (at 1641.35) Je                          comprends                          bien                          votre                          logique                          !                                 S'il                          existait                          vraiment                          une                          appli                          aussi                          performante,                          vous                          la                          recommanderiez                          à                          vos                          proches                          ?                                 Généralement                          par                          quels                          moyens                          ?
+Participant: (at 1651.35) Bien  sûr  que  je  la  recommanderais  à  mes  proches.
+Participant: (at 1654.50) quels  moyens  Par  ce  qu'on  appelle  le  bouche-à-oreille,  voilà.
+Participant: (at 1662.06) Par  voie,  par  voie  orale.
+Participant: (at 1669.61) ~~ Section 5 ends~~
+Participant: (at 1669.61) ~~ Section 6 starts~~
+Moderator: (at 1674.17) Je  vous  remercie  vraiment  d'avoir  consacré  ce  temps  aujourd'hui  pour  partager  vos  réflexions  et  expériences  avec  moi.  Vos  points  de  vue  sont  extrêmement  précieux  pour  nous,  particulièrement  ce  que  vous  avez  mentionné  concernant  votre  préparation  au  TOEIC  et  votre  approche  autodidacte  avec  YouTube  et  les  sous-titres. 
+
+Est-ce  qu'il  y  a  d'autres  réflexions  ou  expériences  concernant  l'apprentissage  du  vocabulaire  anglais  que  vous  jugez  importantes  mais  qu'on  n'a  pas  abordées  aujourd'hui  ?
+Participant: (at 1696.38) Je  crois  qu'on  a  fait  le  tour.
+Participant: (at 1698.36) De  de  toutes  les  pratiques  concernant  l'apprentissage  en  anglais.
+Moderator: (at 1705.34) Parfait   !    Si   on   développe   par   la   suite   des   solutions   liées   à   ces   besoins,   je   peux   vous   inviter   à   les   tester   et   recueillir   vos   retours   ?   C'est   vraiment   important   pour   l'amélioration   de   nos   produits.
+Participant: (at 1716.89) Bien  sûr,  j'en  serais  ravi.
+Moderator: (at 1721.68) Excellent   !     Avant   de   terminer,   j'aimerais   que   vous   preniez   une   minute   ou   deux   pour   partager   vos   impressions   sur   cet   entretien   IA   lui-même.    Vos   retours   sont   vraiment   importants   pour   nous   aider   à   améliorer   cette   technologie   d'entretien   IA,   on   espère   vraiment   entendre   des   évaluations   sincères,   même   critiques. 
+
+Durant   tout   l'entretien,   vous   avez   rencontré   des   difficultés   techniques   ?   Par   exemple,   problèmes   d'audition,   coupures   sonores,   ou   autres   dysfonctionnements   techniques   ?
+Participant: (at 1746.60) Non,  pas  de  difficulté.
+Participant: (at 1747.73) Fonctionnement  en  particulier.  C'était  c'était  fluide,  c'était  très  intéressant.
+Participant: (at 1752.33) technologiquement  impressionnant.
+Moderator: (at 1759.65) Merci    pour    ce    retour    positif    !       Comment    vous    avez    trouvé    la    profondeur    des    relances    de    l'animateur    IA    ?     Il    y    a    eu    des    questions    trop    superficielles    ou    au    contraire    trop    approfondies    ?
+Participant: (at 1770.08) Non,  je  trouve  que  les  questions  questions  étaient  très  justes.
+Participant: (at 1773.13) a  permis  de  faire  un  entretien  qui  était  qui  était  intéressant.
+Moderator: (at 1779.71) C'est     encourageant     !         Vous     avez     ressenti     une     gêne     ou     un     inconfort     en     dialoguant     avec     l'IA     ?       Quelles     différences     vous     ressentez     par     rapport     à     un     entretien     avec     une     personne     réelle     ?
+Participant: (at 1790.33) Pas  de  gêne,  ça  s'est  fait  naturellement.
+Participant: (at 1794.10) Voilà,  vraiment  naturel,
+Participant: (at 1797.78) L'approche  très  naturelle.
+Moderator: (at 1802.64) Parfait       !          Concernant       les       entretiens       IA       sur       le       marché       français,       vous       avez       des       suggestions       ?        Par       exemple       sur       l'expression       linguistique,       la       compréhension       culturelle,       ou       l'expérience       technique       ?
+Participant: (at 1816.36) Oui,  il  peut  y  avoir  tout  tout  un  tas  d'entretiens  IA  qui  peuvent  se  faire  et  se  développer  dans  le  futur.  C'est  très  intéressant  dans  dans  tous  les  types  de  domaine.
+Participant: (at 1825.03) Et  je  serai  ravi  d'y  participer.
+Participant: (at 1858.64) C'était  une  très  belle  expérience,  en  tout  cas,  je  vous  remercie.
+Moderator: (at 1864.91) Globalement,         vous         êtes         satisfait         de         cette         expérience         d'entretien         IA         ?          De         1         à         10,         vous         donneriez         quelle         note         ?          Vous         avez         des         suggestions         d'amélioration         concrètes         ?
+Participant: (at 1875.63) Alors,  mettrai  neuf,  parce  que  je  ne  donne  jamais  la  perfection,  je  donne  jamais  dix,  mais  c'est  vraiment  très  bon  et  je  suis  très  très  surpris  dans  le  bon  sens  et  j'ai  envie  de  réitérer  l'expérience  plus  tard.
+Moderator: (at 1892.57) Je  vous  remercie  encore  chaleureusement  Anthony  pour  votre  participation  et  vos  retours  précieux  !  Votre  note  de  9  sur  10  et  votre  enthousiasme  pour  réitérer  l'expérience  nous  font  vraiment  plaisir.  Bonne  continuation  dans  votre  apprentissage  et  votre  préparation  au  TOEIC  ! 
+
+Vous  pouvez  maintenant  cliquer  sur  "End  Session"  pour  terminer  l'entretien.
+Participant: (at 1919.74) [[User clicked on mic icon to mute]]
+Participant: (at 1919.76) [[User clicked on camera icon and facecamera is off]]
+Participant: (at 1962.91) ~~Section 6 ends~~

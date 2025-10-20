@@ -1,0 +1,435 @@
+
+Participant: (at 0.00) ~~ Section 1 starts~~
+Moderator: (at 0.26) Bonjour,  Augustin  !  Je  suis  vraiment  ravi(e)  de  pouvoir  échanger  avec  vous  aujourd'hui.  Merci  infiniment  d'avoir  accepté  de  participer  à  cet  entretien.  Vous  allez  bien  aujourd'hui  ?
+Participant: (at 13.81) Bonjour,  Nova.  Oui,  je  vais  très  bien.
+Moderator: (at 18.35) Super,  ça  me  fait  plaisir  de  l'entendre.  J'aimerais  discuter  avec  vous  de  vos  expériences  concernant  la  préparation  aux  examens  d'anglais  comme  le  TOEIC,  TOEFL  ou  IELTS,  et  plus  spécifiquement  l'apprentissage  du  vocabulaire  pour  réussir  ces  tests.  Notre  conversation  durera  environ  une  demi-heure,  et  ce  qui  m'intéresse  vraiment,  c'est  de  comprendre  votre  vécu  et  vos  besoins  concrets  dans  votre  préparation  à  ces  examens  d'anglais.  N'hésitez  pas  à  partager  tout  ce  qui  vous  passe  par  la  tête  -  il  n'y  a  vraiment  aucune  "bonne"  réponse  attendue.  Ça  vous  va  si  on  commence  ?
+Participant: (at 47.32) Très  bien,  je  vous  écoute.
+Moderator: (at 51.05) Parfait.  Pour  commencer,  'est-ce  que  vous  pourriez  vous  présenter  un  peu,  Augustin  ?  J'aimerais  savoir  où  vous  en  êtes  actuellement,  que  ce  soit  côté  boulot  ou  études.'
+Participant: (at 61.15) Alors  côté  études,  je  suis  en  troisième  année  d'un  b  b  I  et  je  dois  actuellement  faire  un  test  TOEFL  pour  les  échanges  de  l'année  prochaine.
+Moderator: (at 77.06) D'accord,  je  vois  bien.  Vous  êtes  en  troisième  année  de  BBI  et  vous  préparez  un  test  TOEFL  pour  des  échanges.  Est-ce  que  votre  filière  exige  concrètement  des  compétences  particulières  en  anglais  ?
+Participant: (at 90.34) Oui,  ma  filière  exige  des  compétences  anglais.
+Moderator: (at 97.31) D'accord.  Pouvez-vous  me  dire  ce  que  votre  filière  exige  concrètement  en  anglais,  Augustin  ?
+Participant: (at 104.45) Pour  rentrer  dans  le  billet,  il  fallait  avoir  entre  six  et  demi  et  sept  à  l'IELTS
+Moderator: (at 114.31) Je   comprends.    Et   une   fois   dans   la   filière,   y   a-t-il   des   exigences   spécifiques   en   anglais   liées   à   vos   cours   ou   à   vos   projets   d'études   ?
+Participant: (at 123.63) Pour  accéder  à  des  échanges  particuliers,  il  faut  réaliser  le  TOEFL.
+Moderator: (at 130.74) D'accord.  Donc,  l'exigence  est  principalement  liée  aux  échanges  et  au  TOEFL.  Au  quotidien,  que  ce  soit  perso  ou  pro,  vous  utilisez  l'anglais  à  quelle  fréquence,  Augustin  ?  Et  dans  quels  contextes  surtout  ?
+Participant: (at 144.86) Tous  les  cours  sont  en  anglais.
+Moderator: (at 148.55) Ah,   c'est   intéressant.    Donc   tous   vos   cours   sont   en   anglais.    Du   coup,   mis   à   part   les   cours,   y   a-t-il   d'autres   situations   où   vous   utilisez   l'anglais,   que   ce   soit   dans   votre   vie   personnelle   ou   professionnelle,   Augustin   ?
+Participant: (at 164.02) Il  est  possible  en  anglais  avec  des  camarades  de  classe.
+Moderator: (at 169.88) D'accord,   je   vois.    Vous   échangez   en   anglais   avec   vos   camarades   de   classe.    Et   en   dehors   de   l'école,   y   a-t-il   des   moments   où   vous   utilisez   l'anglais   ?
+Participant: (at 181.58) À  part  pour  les  échanges  de  mails  toujours  reliés  à  l'école,  il  n'y  a  pas
+Participant: (at 189.90) de  moments  où  j'utiliserai  l'anglais,  sauf  pour  partir  en  voyage.
+Moderator: (at 195.90) Je  comprends  bien.  Donc  principalement  dans  le  cadre  de  vos  études  et  un  peu  en  voyage. 
+
+'Où  vous  situez-vous  actuellement  en  anglais,  Augustin  ?  Et  comment  vous  vous  y  prenez  habituellement  pour  apprendre  ou  entretenir  votre  anglais  ?
+Participant: (at 209.89) En  anglais,  entre  le  b  deux  et  le  c  un,  et  j'ai  appris  l'anglais  à  l'école.  Et  aujourd'hui,  pour  rentrer  entretenir  mon  anglais,  je  le  parle  et  l'écoute  tous  les  jours  à  l'école.
+Moderator: (at 227.57) Je  comprends  bien.  Quand  vous  dites  que  vous  vous  situez  entre  le  B2  et  le  C1,  sur  quels  aspects  précis  ça  se  manifeste,  Augustin  ?  Par  exemple,  est-ce  plus  en  compréhension,  en  expression  orale,  en  lecture,  ou  en  écriture  ?
+Participant: (at 241.04) J'ai  réalisé  le  b  deux,  puis  IELTS  niveau  six  point  cinq,  et  aujourd'hui  avec  deux  ans  d'école  complète  en  anglais,  j'imagine  que  mon  niveau  a  augmenté  plus  proche  du  c  un.
+Moderator: (at 262.32) D'accord,  je  vois.  Vous  avez  un  point  de  référence  avec  l'IELTS  B2  et  vous  pensez  que  votre  niveau  a  progressé  vers  le  C1  grâce  à  vos  cours.  Sur  quels  aspects  spécifiques,  comme  la  compréhension,  l'expression,  la  lecture  ou  l'écriture,  ressentez-vous  cette  progression  ou  vous  sentez-vous  le  plus  à  l'aise,  Augustin  ?
+Participant: (at 282.80) Aujourd'hui,  je  me  sens  le  plus  à  l'aise  sur  la  compréhension
+Participant: (at 286.11) vu  que  toutes  les  tous  les  cours  sont  en  anglais.  L'expression  est  plus  difficile
+Participant: (at 292.73) lecture  est  aussi  aussi  facile,  aussi  facile  que  la  compréhension  et  l'écriture  est  également  un  peu  compliquée  aussi.
+Moderator: (at 303.17) D'accord,  c'est  très  clair.  Vous  vous  sentez  plus  à  l'aise  avec  la  compréhension  et  la  lecture,  et  un  peu  moins  avec  l'expression  et  l'écriture. 
+
+Vous  avez  mentionné  que  vous  apprenez  et  entretenez  votre  anglais  en  le  parlant  et  en  l'écoutant  tous  les  jours  à  l'école.  Que  ressentez-vous  concernant  l'efficacité  de  ces  méthodes,  Augustin  ?
+Participant: (at 324.09) La  compréhension  et  la  lecture  ont  augmenté  grâce  à  l'école,  mais  de  là  à  savoir  convenablement  avec  de  nouveaux  vocabulaires,  très  efficace.
+Moderator: (at 339.29) Je   comprends,   Augustin.    Vous   dites   que   c'est   efficace   pour   la   compréhension   et   la   lecture.    Quand   vous   dites   "mais   de   là   à   savoir   convenablement   avec   de   nouveaux   vocabulaires,   très   efficace",   pouvez-vous   m'en   dire   un   peu   plus   sur   ce   que   vous   ressentez   concernant   l'efficacité   pour   les   nouveaux   vocabulaires   ?
+Participant: (at 356.05) C'est-à-dire  que  le  nouveau  vocabulaire  vu  en  cours,  soit  en  lecture,  soit
+Participant: (at 365.01) en  ayant  été  par  le  professeur,  n'est  pas  facile  à  parler  après  l'avoir  entendu.
+Moderator: (at 378.99) Je  vois  bien,  Augustin.  Le  vocabulaire  que  vous  entendez  ou  lisez  en  cours  n'est  pas  toujours  facile  à  réutiliser  à  l'oral  par  la  suite. 
+
+'Est-ce  que  vous  avez  déjà  préparé  ou  passé  des  examens  d'anglais,  Augustin  ?  Je  pense  au  TOEIC,  TOEFL,  IELTS,  ce  genre  de  choses...'  Vous  avez  mentionné  le  TOEFL  pour  des  échanges  et  un  IELTS  auparavant.  Pourriez-vous  me  dire  quel  examen  vous  visez  précisément  pour  le  TOEFL,  quel  score  vous  espérez  obtenir,  et  pourquoi  ce  choix  d'examen  ?
+Participant: (at 406.86) Alors  tout  d'abord,  j'ai  fait  Cambridge  b  un,  b  deux,  l'IELTS,  et  là,  je  me  prépare  pour  le  TOEFL  et  j'aimerais  obtenir  un  score  proche  de  cent.
+Moderator: (at 421.09) Très   bien,   Augustin.   C'est   clair.    Vous   avez   passé   le   Cambridge   B1,   B2,   l'IELTS,   et   vous   préparez   actuellement   le   TOEFL   avec   un   objectif   proche   de   100.
+ 
+Pourriez-vous   m'expliquer   pourquoi   vous   avez   choisi   le   TOEFL   pour   cette   préparation   et   quelles   sont   les   raisons   de   viser   un   score   autour   de   cent   ?
+Participant: (at 439.46) J'ai  décidé  de  choisir  le  TOEFL  parce  que  c'est  ce  que  les  écoles  pour  les  échanges  demandent.
+Participant: (at 448.14) Il  n'y  a  pas  d'autres  restes  demandés  que  le  TOEFL,  et  les  raisons  de  viser  un  score  autour  de  cent  il  faut  savoir  que  toutes  les  écoles  demandent  un  score  différent  mais  la  avec  un  score  proche  de  cent,  la  plupart  des  écoles  m'accepteraient.
+Moderator: (at 470.74) Très  bien,  je  comprends,  Augustin.  Le  TOEFL  est  demandé  par  les  écoles  pour  les  échanges,  et  un  score  proche  de  100  vous  ouvrirait  la  porte  de  la  plupart  d'entre  elles. 
+
+Merci  pour  toutes  ces  infos,  Augustin.  J'ai  maintenant  une  bonne  vision  de  votre  contexte.  'Maintenant  j'aimerais  qu'on  creuse  ensemble  vos  ressentis  sur  l'apprentissage  du  vocabulaire  anglais  plus  spécifiquement.  Ça  vous  va  ?'
+Participant: (at 490.69) Je  t'écoute.
+Participant: (at 494.43) ~~ Section 1 ends~~
+Participant: (at 494.43) ~~ Section 2 starts~~
+Moderator: (at 498.10) Très  bien,  on  y  va  !  Quand  on  parle  d'apprendre  du  vocabulaire  anglais,  qu'est-ce  qui  vous  vient  spontanément  à  l'esprit,  Augustin  ?
+Participant: (at 505.90) Ce  qui  me  vient,  ce  spontanément  à  l'esprit,  c'est  apprendre  une  liste  de  vocabulaire  avec  des  mots  que  l'on  n'emploie  pas  couramment  ou  rarement  et  qui  permettent  d'avoir  une  meilleure  expression  orale.
+Moderator: (at 524.70) Je   vois   tout   à   fait.    Donc,   l'idée   d'apprendre   des   listes   de   mots,   surtout   ceux   qui   ne   sont   pas   couramment   utilisés,   vous   vient   à   l'esprit.    Quand   vous   dites   que   ce   sont   des   mots   qu'on   n'emploie   pas   couramment   ou   rarement,   est-ce   que   c'est   quelque   chose   qui   vous   pose   problème   ou   qui   vous   frustre   dans   votre   apprentissage,   Augustin   ?    Et   si   oui,   comment   ça   se   manifeste   concrètement   ?
+Participant: (at 544.90) Je  dirais  que  les  personnes  qui  ne  parlent  pas  anglais,  qui  ne  sont  pas  anglophones,  utilisent  souvent  les  mêmes  mots,  et  donc  les  listes  de  vocabulaire  sont  souvent  des  mots  rarement  entendus  par  des  personnes  ne  sont  pas  anglophones  et  qui  relèvent  cependant  le  niveau  de  conversation  personnes  qui  ne  sont  pas  anglophones,  et  ces  mots  qu'on  n'envoie  pas  couramment,  ce  n'est  pas  quelque  chose  qui  me  me  pose  problème.  Justement,  c'est  des  mots  qui  sont  importants  à  apprendre.  Pour  avoir  un  niveau  de  conversation  plus  élevé  et  pouvoir  échanger  avec  davantage  de  personnes.
+Moderator: (at 585.97) D'accord,  je  comprends  bien  ce  ressenti,  Augustin.  Vous  trouvez  que  ces  mots  moins  courants  sont  justement  importants  pour  élever  le  niveau  de  conversation. 
+
+Pour  vous,  quelle  place  occupe  le  vocabulaire  dans  la  maîtrise  de  l'anglais  ?  Qu'est-ce  qui  vous  fait  penser  ça  ?
+Participant: (at 602.42) Je  vois  que  les  personnes  dans  ma  classe  par  exemple,  qui  ont  un  niveau  d'anglais  bilingue,  beaucoup  plus  de  vocabulaire  et  donc  beaucoup  plus  d'aisance  pour  s'exprimer  et  communiquer  leurs  émotions  ou  leurs  pensées.
+Participant: (at 619.77) Et  je  pense  que  le  vocabulaire  occupe  une  place  importante  dans  la  maîtrise  de  l'anglais  et  dans  la  conversation
+Participant: (at 627.44) les  autres.
+Moderator: (at 632.34) C'est   un   point   de   vue   très   juste,   Augustin.    Vous   observez   que   plus   on   a   de   vocabulaire,   plus   on   est   à   l'aise   pour   s'exprimer   et   communiquer   ses   idées,   ce   qui   souligne   bien   l'importance   du   vocabulaire. 
+
+Maintenant,   j'aimerais   qu'on   parle   un   peu   des   difficultés.    Dans   votre   apprentissage   des   mots,   qu'est-ce   qui   vous   pose   le   plus   de   difficultés   ou   vous   frustre   le   plus,   Augustin   ?
+Participant: (at 652.80) Je  dirais  que  l'apprentissage  des  mots  d'abord,  il  faut  vouloir  les  apprendre,  se  lancer,  faire  une  liste,  les  répéter  et  ensuite  savoir  les  quand  les  utiliser,  dans  quel  contexte  et  dans  quel  type  de  phrase.
+Moderator: (at 671.84) C'est   vrai   que   c'est   galère   de   savoir   exactement   comment   et   quand   utiliser   un   nouveau   mot.    Quand   vous   dites   que   c'est   difficile   de   savoir   "quand   les   utiliser,   dans   quel   contexte   et   dans   quel   type   de   phrase",   est-ce   que   vous   pouvez   me   donner   un   exemple   concret   où   vous   avez   ressenti   cette   difficulté,   Augustin   ?
+Participant: (at 689.20) Les  les  mots  qui  sont  très  spécifiques,  plus  soutenus,  plus  précis  dans  un  domaine  ou  dans  un  secteur,  Pour  ensuite  les  réemployer,  il  faut  dans  quel  contexte  on  peut  les  réemployer,  dans  quel  domaine.
+Moderator: (at 706.82) Ah,   d'accord,   je   vois.    Vous   parlez   des   mots   très   spécifiques   à   un   domaine   ou   à   un   secteur,   et   la   difficulté   est   de   savoir   où   et   comment   les   réutiliser   correctement.    C'est   très   clair. 
+
+Maintenant,   j'aimerais   aborder   un   point   un   peu   différent.    Dans   votre   apprentissage   du   vocabulaire   anglais,   est-ce   que   vous   êtes   déjà   tombé   sur   des   mots   anglais   qui   ressemblent   au   français   mais   qui   veulent   dire   tout   autre   chose,   Augustin   ?
+Participant: (at 729.72) Oui,  tout  à  fait.
+Participant: (at 730.98) A  pas  de  mots  qui  me  viennent  à  l'esprit  tout  de  suite.
+Participant: (at 733.70) mais  il  y  a  bien  des  mots  qui  sont  comme  on  dirait  des  faux  amis,  qui  n'ont  pas  la  même  signification,  mais  se  disent  pareils,
+Moderator: (at 748.02) Ah  oui,  je  vois  maintenant.  Vous  parlez  des  "faux  amis".  Est-ce  que  vous  pourriez  me  donner  un  ou  deux  exemples  concrets  de  ces  mots,  Augustin,  que  vous  avez  pu  rencontrer  et  qui  vous  ont  induit  en  erreur  ?
+Participant: (at 760.95) Je  réfléchis.
+Moderator: (at 766.10) NO_RESPONSE_REQUIRED
+Participant: (at 778.08) Il  n'y  a  pas  de  mots  qui  me  viennent  à  l'esprit  là  tout  de  suite.
+Moderator: (at 782.02) Pas   de   souci,   ça   arrive.    Un   exemple   très   courant,   c'est   le   mot   "library"   en   anglais,   qui   ressemble   à   "librairie"   en   français,   mais   qui   veut   dire   "bibliothèque".    Ou   encore   "actually",   qui   ressemble   à   "actuellement",   mais   qui   signifie   "en   fait".  
+
+Est-ce   que   ces   exemples   vous   évoquent   des   situations   similaires   que   vous   auriez   pu   vivre,   Augustin,   même   si   vous   n'avez   pas   le   mot   précis   en   tête   ?
+Participant: (at 803.44) Tout  à  fait,  c'est  exactement  le  genre  de  mot
+Participant: (at 806.65) auquel  je,  je,  j'aurais  pu  penser  et  qui  sont  différents,  qui  ont  différentes  significations  en  anglais  et  en  français,  mais  qui  pourraient  faire  penser  à  une  signification  similaire.
+Moderator: (at 824.82) Ah  oui,  je  comprends  tout  à  fait  ce  que  vous  voulez  dire,  Augustin.  C'est  vrai  que  c'est  galère  de  tomber  sur  ces  mots  qui  nous  trompent  comme  ça.
+ 
+Maintenant,  pour  avoir  une  idée  plus  précise,  sur  une  échelle  de  1  à  10,  vous  mettriez  combien  au  niveau  de  difficulté  pour  mémoriser  du  vocabulaire,  Augustin  ?  (où  1  c'est  très  facile  et  10  c'est  extrêmement  difficile)  Et  vous  y  consacrez  combien  de  temps  par  jour  à  peu  près  ?
+Participant: (at 849.40) Alors,  dépend  de  la  langue,  mais  je  dirais  qu'en  anglais,  apprendre  du  vocabulaire  n'est  pas  extrêmement  compliqué,  c'est  quand  même  assez  proche  du  français,  donc  je  mettrai  trois  avec  de  la  volonté,  il  faut  juste  prendre  le  temps  de  le  faire.
+Moderator: (at 871.92) D'accord,   Augustin,   un   3   sur   10   pour   la   difficulté,   avec   l'idée   que   c'est   assez   proche   du   français   et   que   ça   demande   surtout   de   la   volonté.    C'est   intéressant. 
+
+Et   du   coup,   vous   y   consacrez   combien   de   temps   par   jour   à   peu   près   pour   mémoriser   du   vocabulaire,   Augustin   ?
+Participant: (at 889.27) Je  ne  fais  pas  de  liste  précise  de  vocabulaire,  mais  je  dirais  qu'en  cours  par  exemple,  petit  à  petit,  en  entendant  de  plus  en  plus  de  mots,  je  vais  absorber  du  nouveau  vocabulaire  que  je  vais  mais  je  ne  fais  pas  de  liste  concrète  et  en  temps,  si  je  devais  apprendre  cinq  mots  par  jour,  ça  ne  me  prendrait  pas  plus  de  dix  minutes.
+Moderator: (at 916.66) D'accord,   je   note   bien   ça.    Vous   estimez   la   difficulté   à   3   sur   10,   principalement   parce   que   l'anglais   est   proche   du   français   et   demande   surtout   de   la   volonté. 
+
+Est-ce   que   vous   pourriez   m'expliquer   un   peu   plus   précisément   pourquoi   cette   note   de   3,   Augustin   ?    Qu'est-ce   qui   fait   que   ce   n'est   pas   un   1,   qui   serait   très   facile,   ou   un   5,   qui   indiquerait   une   difficulté   plus   modérée   ?
+Participant: (at 939.02) Alors,  pense  que  ce  n'est  pas  un,  parce  que  ça  demande  du  temps.
+Participant: (at 944.81) Comme  je  disais  de  la  volonté,  il  faut  vouloir  prendre  Ensuite,  pourquoi  ce  n'est  pas  un  cinq  Parce  que  n'est  pas  une  langue  très  compliquée.  Après,  dépendant  du  nombre  de  mots  qu'on  veut  apprendre  par  jour,  la  difficulté  peut  augmenter  et  du  domaine  également.
+Participant: (at 960.46) mais  je  pense  que  une  liste  de  vocabulaire  courte  entre  cinq  et  dix  mots  par  jour,  reste  un  trois,  après  ensuite  si  on  veut  apprendre  plus  de  mots,  dix,  quinze,  vingt  ou  trente  mots  par  jour,  évidemment  la  difficulté  sera  augmentée  parce  qu'il  faut  tous  les  mémoriser.
+Moderator: (at 983.27) D'accord,  c'est  très  clair,  Augustin.  Vous  mettez  un  3  parce  que  ça  demande  du  temps  et  de  la  volonté,  mais  ce  n'est  pas  une  langue  intrinsèquement  très  compliquée  pour  la  mémorisation,  surtout  si  on  se  limite  à  une  petite  liste  de  mots  par  jour.  La  difficulté  augmente  si  on  vise  plus  de  mots  ou  des  domaines  spécifiques. 
+
+Vous  avez  mentionné  que  vous  n'avez  pas  de  liste  précise  de  vocabulaire  et  que  vous  absorbez  plutôt  les  mots  en  cours,  et  que  cinq  mots  par  jour  ne  prendraient  pas  plus  de  dix  minutes.  Est-ce  que  c'est  une  approche  que  vous  avez  choisie  consciemment,  Augustin,  et  est-ce  que  vous  aimeriez  améliorer  l'efficacité  de  cette  "absorption"  ou  de  votre  mémorisation  du  vocabulaire  ?
+Participant: (at 1019.38) Oui,  je  dirais  que  pour  l'instant,  malheureusement,  je  ne  recherche  pas  à  apprendre  davantage  de  vocabulaire,  même  si  je  devrais  parce  que  comme  j'ai  dit,  mon  niveau  d'expression  n'est  pas  aussi  bon  que  mon  niveau  d'écoute,  ou  mon  niveau  de  lecture.  Donc,  il  faudrait  apprendre  davantage  de  mots  pour  que  je  puisse  m'exprimer  et  avoir  des  conversations
+Participant: (at 1044.31) intéressantes  avec  des  anglophones.
+Moderator: (at 1049.54) Je   comprends   bien,   Augustin.    C'est   clair   que   vous   souhaitez   développer   votre   vocabulaire   pour   améliorer   votre   expression   orale   et   avoir   des   conversations   plus   riches.  
+
+Je   vois   bien   vos   ressentis   et   difficultés   concernant   l'apprentissage   du   vocabulaire.    Maintenant   j'aimerais   connaître   votre   expérience   avec   les   outils   qui   existent   déjà.    On   peut   aborder   ça   ensemble   ?
+Participant: (at 1068.08) Oui,  tout  à  fait.
+Participant: (at 1077.66) ~~ Section 2 ends~~
+Participant: (at 1077.66) ~~ Section 3 starts~~
+Moderator: (at 1086.45) Super,  on  y  va  !  Alors  pour  commencer  cette  partie,  'quelles  applis  ou  logiciels  d'apprentissage  de  l'anglais  vous  avez  concrètement  utilisés,  Augustin  ?  Vous  pourriez  me  donner  les  noms  ?'
+Participant: (at 1096.94) Alors,  en  anglais,  je  n'ai  pas  appris  via  des  applications  ou  des  logiciels,  J'ai  appris  surtout  l'école  ou  avec  des  cours  particuliers.
+Participant: (at 1107.24) Maintenant,  si  je  devais  donner  le  nom  d'une  application,  je  dirais  Duolingo.
+Moderator: (at 1116.32) D'accord,   je   vois.    Vous   avez   principalement   appris   à   l'école   et   avec   des   cours   particuliers,   et   vous   mentionnez   Duolingo.    'Pour   Duolingo,   Augustin,   combien   de   temps   l'avez-vous   utilisé,   et   pour   quoi   principalement   ?'
+Participant: (at 1129.48) J'ai  utilisé  Duolingo  un  tout  petit  peu  anglais,  je  dirais  moins  d'un  mois.
+Participant: (at 1137.22) Puis  ensuite,  les  cours  ont  été  davantage  formateurs  que  Duolingo.
+Participant: (at 1144.16) les  cours  en  anglais.
+Participant: (at 1146.14) Mais  par  exemple,  j'utilise  Duolingo  pour  apprendre  l'espagnol,  et  et  j'ai  dû  l'utiliser  pendant  quatre  ou  cinq  mois.
+Moderator: (at 1159.86) D'accord,  je  comprends.  Vous  avez  utilisé  Duolingo  moins  d'un  mois  pour  l'anglais,  puis  les  cours  ont  pris  le  relais.  Pour  l'anglais,  Augustin,  'pour  quoi  principalement'  utilisiez-vous  Duolingo  pendant  ce  court  laps  de  temps  ?
+Participant: (at 1172.07) J'ai  utilisé  Duolingo  avant  de  rentrer  dans  l'école  dans  laquelle  je  suis  maintenant,  pour  avoir  davantage  de  vocabulaire  d'expression
+Participant: (at 1185.68) avant  de  rentrer  dans  une  école  où  tous  les  cours  étaient  en  anglais.
+Moderator: (at 1192.65) Je   vois,   Augustin.   Vous   utilisiez   Duolingo   pour   acquérir   du   vocabulaire   et   de   l'expression   avant   d'intégrer   votre   école   actuelle. 
+
+Maintenant,   parmi   les   applis   ou   logiciels   que   vous   avez   mentionnés   pour   l'anglais   (même   si   votre   utilisation   a   été   limitée),   'qu'est-ce   qui   vous   a   amené   à   choisir   Duolingo   au   départ'   ?
+Participant: (at 1209.49) Je  pense  que  Duolingo,  ça  l'application  la  plus  connue  pour  apprendre  une  langue,  tout  cas,  en  France  et  en  Europe  actuellement.
+Participant: (at 1219.95) Ensuite,  elle  est  pour  une  grande  partie  partie  de  la  formation  gratuite,  c'est-à-dire  que  elle  est  utilisable  gratuitement
+Participant: (at 1229.34) mais  il  y  a  des  options  payantes,  mais  elle  est  tout  à  fait  utilisable  tous  les  jours,  gratuit  gratuitement,  simplement  et  sans  payer.
+Moderator: (at 1242.08) D'accord,   Augustin.   C'est   clair   que   Duolingo   est   très   connu   et   son   côté   gratuit   est   un   atout   majeur. 
+
+Du   coup,   parmi   les   outils   que   vous   avez   utilisés   pour   l'anglais,   lequel   vous   utilisez   le   plus   régulièrement   actuellement,   même   si   ce   n'est   pas   une   application   ?    Et   qu'est-ce   qui   vous   a   fait   le   choisir,   ou   vous   fait   continuer   à   l'utiliser   ?
+Participant: (at 1261.87) Alors,  pour  le  vocabulaire,  ça  va  être  surtout  les  cours,  maintenant  que  je  prépare  le  TOEFL,  j'ai  acheté  le  livre  officiel  du  TOEFL  pour  pouvoir  me  former  sur  l'examen.
+Moderator: (at 1278.73) Je   comprends,   Augustin.    Donc,   pour   le   vocabulaire,   ce   sont   principalement   les   cours,   et   pour   le   TOEFL,   vous   utilisez   le   livre   officiel. 
+
+'Qu'est-ce   qui   vous   a   amené   à   choisir   ce   livre   officiel   du   TOEFL   au   départ,   et   qu'est-ce   qui   fait   que   vous   continuez   à   l'utiliser,   Augustin   ?'
+Participant: (at 1295.72) Alors,  pour  me  préparer  au  TOEFL,  j'ai  préféré  utiliser  utiliser  un  livre  qu'un  site  internet  ou  un  logiciel.  Je  me  sens  plus  à  l'aise  sur  un  livre  que  je  pourrais  relire  facilement,  que  je  peux  transporter  partout.
+Participant: (at 1310.70) que  je  peux  surligner  par  exemple  les  phrases  qui  m'intéressent.
+Participant: (at 1316.11) c'est  pour  cette  raison  que  j'ai  choisi  un  livre  et  pas  un  logiciel,  et  je  l'utilise  encore  parce  que  je  ne  l'ai  pas  tout  à  fait  terminé.
+Participant: (at 1324.49) Suis  sur  la  fin.
+Participant: (at 1325.85) voilà.
+Moderator: (at 1328.17) C'est   logique   comme   choix,   Augustin.    Vous   privilégiez   le   livre   pour   sa   facilité   de   transport,   la   possibilité   de   surligner   et   la   relecture.    Et   vous   continuez   à   l'utiliser   car  vous  ne  l'avez  pas  encore  fini. 
+
+Si   vous   deviez   noter   ce   livre   officiel   du   TOEFL   de   1   à   10,   vous   mettriez   quoi,   Augustin   ?    (où   1   c'est   très   mauvais   et   10   c'est   excellent)   'Qu'est-ce   qui   justifie   cette   note   ?'
+Participant: (at 1350.95) Concernant  le  livre  office  officiel  du  TOEFL,  je  mettrai  une  note  de  six,  cinq,  cinq  ou  six,  parce  que  le  livre  est  assez  complexe
+Participant: (at 1362.25) pas  très  intuitif,  comparé  à  un  second  livre  que  j'ai  acheté  qui  n'est  pas  un  livre  officiel,  mais  qui  décrit  et  explique  comment  se  passe  le  TOEFL,  qui  font  à  peu  près  les  les  deux  la  même  taille,  mais  le  second  livre  non  officiel  est  plus  intuitif
+Participant: (at 1382.41) c'est  ce  qui  se  rapproche  plus  d'une  formation,  je  dirais  comme  sur  internet.
+Moderator: (at 1390.47) D'accord,   Augustin,   je   note   votre   évaluation   de   5   ou   6   pour   le   livre   officiel,   parce   qu'il   est   assez   complexe   et   pas   très   intuitif.  
+
+Du   coup,   quand   même,   qu'est-ce   qui   vous   pousse   à   lui   donner   un   5   ou   un   6   ?    Quels   sont   les   trucs   précis   qui   ajoutent   des   points   à   ce   livre,   selon   vous   ?
+Participant: (at 1407.09) Alors  comme  c'est  un  livre  officiel,  ça  ajoute  tout  de  suite  de  la  valeur  puisque  c'est  personnes  qui  vont  développer  le  test  qui  ont  rédigé  le  livre.
+Participant: (at 1418.23) donc  ça  c'est  les  points  positifs.
+Participant: (at 1420.57) Par  contre,  les  points  négatifs,  c'est  qu'il  y  a  peu  de  recul
+Participant: (at 1424.62) c'est  comme  ce  n'est  pas  un  organisme  externe  qui  l'a  fait,  comme  le  livre  non  officiel,  il  y  a  moins  de  recul  sur  qu'on  veut  nous  montrer  et  ce  qu'on  ne  veut  pas  nous  montrer.
+Moderator: (at 1437.55) Je   comprends   bien,   Augustin.    Le   côté   "officiel"   donne   de   la   valeur   au   livre,   car   il   vient   directement   des   créateurs   du   test,   ce   qui   est   un   vrai   plus.    Par   contre,   le   manque   de   recul   ou   de   perspective   externe   est   un   point   faible.  
+
+Du   coup,   si   on   se   concentre   sur   ce   livre   officiel,   'qu'est-ce   qui   vous   plaît   le   plus   dedans,   Augustin   ?    Quelles   fonctionnalités   vous   trouvez   particulièrement   utiles   ?'
+Participant: (at 1458.84) Les  descriptions
+Participant: (at 1463.25) la  structure  de  l'examen  sont  bien  réalisées.
+Participant: (at 1466.93) Cependant,  je  dirais  que  le  livre  ne  fait  pas  très  moderne
+Participant: (at 1472.72) très  neuf,  en  termes  de  de  couleurs,  de  ce  n'est  pas,  ça  ne  donne  pas  très  envie  d'apprendre,  ça  fait  très,  noir  sur  blanc  sans  avoir  vraiment  de  d'images  ou  de  couleurs
+Moderator: (at 1493.62) Très   bien,   je   vois.    Les   descriptions   et   la   structure   de   l'examen   sont   bien   réalisées,   c'est   ce   qui   vous   plaît   le   plus.  
+
+Pourriez-vous   m'expliquer   pourquoi   ces   descriptions   et   cette   structure   sont   particulièrement   utiles   pour   vous,   Augustin   ?    Quel   problème   elles   vous   aident   à   résoudre   dans   votre   préparation   ?
+Participant: (at 1509.37) Alors  le  TOEFL,  c'est  un  test  qui  est  composé  de  plusieurs  parties  et  dans  les  parties  par  exemple  des  questions,  il  y  a  des  questions  types  qui  sont  très  différentes  les  unes  des  autres.
+Participant: (at 1524.81) peut  demander  des  choses  qu'il  y  aurait  dans  le  texte  ou  des  choses  qu'il  n'y  aurait  pas  et  plein  d'autres  manières  de  poser  la  question.
+Participant: (at 1531.70) des  choses  qui  sont  relevés  dans  le  livre  du  TOEFL.
+Moderator: (at 1537.33) D'accord,   je   comprends,   Augustin.    C'est   super   important   d'avoir   une   bonne   compréhension   de   la   structure   et   des   différents   types   de   questions   du   TOEFL   pour   bien   se   préparer,   et   le   livre   vous   y   aide. 
+
+À   l'inverse,   Augustin,   qu'est-ce   qui   ne   vous   satisfait   pas   dans   ce   livre   officiel   ?    Qu'est-ce   que   vous   aimeriez   qu'il   améliore   ?
+Participant: (at 1555.80) J'aimerais  une  perspective  plus  extérieure,  aussi  peut-être  des  astuces
+Participant: (at 1566.86) plus  d'astuces
+Participant: (at 1568.78) le  livre  non  officiel  qui  est  un  second  livre  que  j'ai  acheté  acheté,  où  il  y  a  davantage  d'astuces,  d'experts  comment  réussir  une  partie
+Moderator: (at 1583.79) D'accord,   je   comprends   votre   préoccupation.    Vous   aimeriez   une   perspective   plus   extérieure   et   surtout   plus   d'astuces,   comme   dans   le   livre   non   officiel.  
+
+Quand   vous   parlez   d'astuces   d'experts,   comment   devraient-elles   fonctionner   concrètement   ?    Quel   genre   d'astuces   spécifiques   recherchez-vous   pour   vous   aider   dans   votre   préparation   au   TOEFL,   Augustin   ?
+Participant: (at 1602.43) Je  cherche  des  astuces  par  questions  ou  par  exemple  le  livre  non  officiel,  ils  expliquent  clairement  que  les  mots  comme  always,  never,  tout  ce  qui  est  poussé  à  l'extrême,  et  le  plus  souvent  une  réponse  fausse,  car  elles  sont  poussées  à  l'extrême  par  rapport  au  texte  descriptif.
+Moderator: (at 1630.99) Ah,    d'accord,    je    vois    très    bien,    Augustin.      Vous    cherchez    des    astuces    très    précises,    liées    aux    types    de    questions,    comme    celle    sur    les    mots    extrêmes    qui    indiquent    souvent    une    mauvaise    réponse.    C'est    un    exemple    très    concret    et    utile.  
+
+Merci    beaucoup    pour    tous    ces    détails.     Maintenant,    j'aimerais    qu'on    se    projette    un    peu.     'Si    vous    pouviez    concevoir    l'appli    idéale    spécialement    conçue    pour    la    préparation    aux    examens    d'anglais    comme    le    TOEIC    ou    le    TOEFL    -    donc    vraiment    axée    sur    l'apprentissage    du    vocabulaire    pour    réussir    ces    tests    -    quelles    fonctionnalités    vous    aimeriez    absolument    qu'elle    ait    ?      Vous    pourriez    m'en    citer    3    qui    vous    sembleraient    les    plus    cruciales    pour    la    réussite    à    l'examen    ?'
+Participant: (at 1664.53) Alors,  dirais  que  la  première  fonctionnalité  c'est  de  pouvoir  parler  à  l'application  et  de  pouvoir  entendre  La  seconde  fonctionnalité,  je  dirais  que  c'est  de  voir  l'application  comme  un  jeu,  comme  Duolingo  avec  un  système  de  points  ou  d'expériences,  de  pouvoir  se  connecter  avec  ses  amis,  de  comparer  les  scores.
+Participant: (at 1691.13) Et  la  dernière,  je  dirais  c'est  d'avoir  un  design  qui  fait,  qui  pas  pas  trop  examen,  mais  qui  est  plus  pareil  dans  le  dans  dans  le  jeu  avec  des  des  couleurs  qui  donnent  envie,  une  application  qui  nous  permet  d'avoir  envie  d'y  retourner  et  de  continuer  à  apprendre  du  vocabulaire.
+Participant: (at 1717.89) Et  enfin,  je  dirais  aussi,  le  fait  d'avoir  des  rappels
+Participant: (at 1724.47) les  jours,  des  notifications  pour  qu'on  retourne  sur  l'application  pour  pouvoir  s'entraîner.
+Moderator: (at 1733.97) C'est   une   super   liste,   Augustin  !    Donc,   si  je   résume,   vous   parlez   de   pouvoir   parler   et   entendre   l'application,   de   la   voir   comme   un   jeu   avec   des   points   et   la   connexion   entre   amis,   et   d'avoir   un   design   qui   donne   envie   d'apprendre,   pas   trop   austère   comme   un   examen,   et   aussi   des   rappels   quotidiens. 
+
+Pour   la   première   fonctionnalité,   celle   de   'pouvoir   parler   à   l'application   et   de   pouvoir   entendre',   pourquoi   est-ce   que   c'est   important   pour   la   préparation   d'examen,   et   quel   problème   de   révision   ça   résout   pour   vous,   Augustin   ?
+Participant: (at 1761.38) Alors  le  fait  de  pouvoir  parler  à  l'application,  l'application  pourrait  noter  la  si  l'application  arrive  à  comprendre,  ce  que  dit  l'utilisateur,  et,  et  de  pouvoir  entendre,  c'est  également  pour  pouvoir  absorber  comment  sont  prononcés  les  mots  pour  pouvoir  les  repérer  face  lors  d'une  écoute  pendant  un  examen  par  exemple.
+Moderator: (at 1787.38) Très    clair,    Augustin.      Le    fait    de    parler    à    l'application    vous    aiderait    à    améliorer    votre    prononciation    et    votre    écoute    pour    les    examens.      C'est    un    point    très    intéressant.  
+
+Maintenant,    vous    avez    mentionné    que    l'application    idéale    devrait    être    comme    un    jeu,    un    peu    à    la    manière    de    Duolingo,    avec    un    système    de    points,    d'expériences,    et    la    possibilité    de    se    connecter    avec    des    amis    pour    comparer    les    scores.      'Pourquoi    est-ce    que    cet    aspect    ludique    est    crucial    pour    la    réussite    à    l'examen,    selon    vous,    Augustin,    et    quel    problème    de    révision    cela    viendrait-il    résoudre    ?'
+Participant: (at 1816.58) Je  dirais  que  l'aspect  ludique  permet  de  s'échapper  de  l'apprentissage  basique  comme  on  aurait  à  l'école.
+Participant: (at 1826.98) et  le  problème  de  révision  révisé  à  plusieurs,  donc  avec  des  amis,  parce  qu'on  pourrait  faire,  par  exemple  planifier  de  faire  TOEFL  avec  des  amis  et  pouvoir  s'entraîner  ensemble,  comparer  nos  scores,  nos  forces  et  nos  faiblesses  peut  aussi  permettre  de  s'engager  davantage,  dans  l'apprentissage.
+Moderator: (at 1847.64) C'est    super    pertinent,    Augustin.      L'aspect    ludique    permettrait    de    rendre    l'apprentissage    moins    austère,    et    le    fait    de    pouvoir    s'entraîner    avec    des    amis    créerait    une    motivation    supplémentaire    en    comparant    les    forces    et    les    faiblesses.  
+
+Enfin,    vous    avez    parlé    d'un    design    qui    donne    envie    d'apprendre,    avec    des    couleurs,    pas    trop    "examen",    et    des    rappels    quotidiens.      'Pourquoi    est-ce    que    ces    éléments    sont    si    importants    pour    vous,    et    comment    cela    pourrait-il    concrètement    améliorer    vos    performances    à    l'examen    ?'
+Participant: (at 1874.11) Alors,  tes  couleurs,  dirais  que  les  couleurs  permettent  de  motiver,  d'appeler  l'utilisateur  à  utiliser  l'application,  et  ensuite  des  couleurs  pas  trop  examens,  c'était  pas  une  application  avec  un  fond  blanc  et  des  écritures  seulement  en  noir,  mais  davantage  de  couleurs  pour  attirer  l'oeil  et  ensuite  pourquoi  les  éléments  sont  importants  pour  vous  et  comment  sera-t-il  Ces  éléments  sont  importants  et  les  rappels  quotidiens  également,  parce  que  Duolingo  par  exemple  propose  des  rappels  quotidiens  et  c'est  quelquefois  quand  on  oublie  ce  qui  permet  de  se  dire  qu'on  a  oublié  et  de  pouvoir  donc  réaliser  une  session  de  plus  d'entraînement.
+Moderator: (at 1925.51) Très   bien,   Augustin.   Je   comprends.    Un   design   attractif   et   coloré   aide   à   la   motivation,   et   les   rappels   quotidiens   sont   clés   pour   maintenir   la   régularité   dans   l'apprentissage. 
+
+En   plus   des   fonctionnalités   qu'on   vient   d'évoquer,   'qu'est-ce   qui   pourrait   vraiment   faire   la   différence   dans   cette   appli   de   préparation   d'examen   pour   vous   aider   à   optimiser   votre   temps   de   révision   et   maximiser   vos   chances   de   réussite   ?'
+Participant: (at 1953.75) Pour  pour  faire  la  différence  dans  cet  appli  de  préparation,  et  optimiser  le  temps  de  révision,  il  faut  que  l'application  soit  également  utilisable  dans  les  transports  en  commun,  c'est-à-dire  pas  forcément  lorsqu'on  ne  peut  pas  forcément  écouter  ou  parler,  Ça  permettrait  d'optimiser  le  train,  d'optimiser  le  temps  pour  pouvoir  utiliser  par  exemple  l'application  dans  le  train  ou  dans  le  bus  ou  dans  la  rue.
+Participant: (at 1978.96) Et  ce  qui  ferait  la  différence  en  termes  de  contenu,  c'est  d'avoir  des  mots  de  vocabulaire  qui  ressortent  souvent  au  TOEFL  ou  dans  les  autres  examens.
+Participant: (at 1989.26) Et  et  donc  avoir  des  personnes  qui  sont  des  expertes  dans  ces  tests  et  qui  savent  exactement  ou  moins  quels  sont  les  domaines  les  secteurs  qui  vont  tomber  ou  qui  sont  susceptibles  de  de  tomber  le  fréquemment  dans  ces  examens.
+Moderator: (at 2011.35) C'est   très   intéressant,   Augustin.    Le   fait   de   pouvoir   utiliser   l'application   dans   les   transports   en   commun,   même   sans   son,   et   d'avoir   un   vocabulaire   spécifique   aux   examens,   sélectionné   par   des   experts,   c'est   vraiment   des   points   clés   pour   optimiser   le   temps   de   révision. 
+
+Merci   pour   tous   ces   retours   super   détaillés   sur   les   outils   existants.    Maintenant   j'aimerais   connaître   vos   réactions   sur   quelques   concepts   de   nouvelles   fonctionnalités,   ça   nous   aidera   à   mieux   cerner   les   besoins   des   utilisateurs.    Ça   vous   va   ?
+Participant: (at 2036.48) ~~ Section 3 ends~~
+Participant: (at 2036.48) ~~ Section 4 starts~~
+Participant: (at 2037.45) Parfait.
+Participant: (at 2038.49) vous  écoute.
+Moderator: (at 2042.70) Parfait,  Augustin,  on  y  va  !  On  va  parler  de  quelques  idées  innovantes.  'Si  une  appli  pouvait  mémoriser  votre  maîtrise  de  chaque  mot  et  organiser  automatiquement  vos  révisions  en  fonction  de  vos  forces  et  faiblesses,  qu'est-ce  que  vous  penseriez  de  cette  fonctionnalité  ?'  Cette  idée  est  vraiment  innovante.
+Participant: (at 2061.80) Oui,  je  pense  que  c'est  une  excellente  idée  de  par  exemple  avoir  une  liste  de  quelques  mots  exemple  le  premier  jour  et  les  mots  que  l'on  n'a  pas  réussi  à  retenir,  sur  les  quelques  mots,  sur  les  dix  mots  par  exemple,  s'il  y  en  a  quatre  qu'on  n'a  pas  réussi  à  retenir,  reviennent  fréquemment  le  lendemain  ou  le  surlendemain,  prochaine  fois  qu'on  utilise  l'application  pour  pouvoir  les  comprendre  et  les  apprendre  correctement.
+Participant: (at 2086.14) C'est  une  excellente  idée
+Participant: (at 2088.23) de  faire  ça  avec  un  algorithme.
+Moderator: (at 2093.42) C'est   intéressant,   Augustin.    Vous   trouvez   que   c'est   une   excellente   idée   pour   se   focaliser   sur   les   mots   qu'on   a   du   mal   à   retenir. 
+
+Du   coup,   à   quel   point   feriez-vous   confiance   à   ces   recommandations   intelligentes   de   l'application,   et   auriez-vous   des   inquiétudes   vis-à-vis   de   cette   approche   automatisée   ?
+Participant: (at 2109.61) Non,  avec  la  technologie  d'aujourd'hui,  l'intelligence  artificielle  et  les  algorithmes,  je  pense  que  les  mots  choisis  seraient  ceux  que  l'on  aurait  du  mal  à  retenir.  Donc  j'aurais  une  confiance  en  cet  outil.
+Moderator: (at 2127.59) Je   vois,   Augustin.   C'est   clair.    Vous   auriez   pleinement   confiance   en   cet   outil,   vu   les   avancées   de   la   technologie   et   de   l'IA. 
+
+Maintenant,   une   petite   précision  :   est-ce   que   vous   souhaiteriez   garder   un   certain   contrôle   manuel   sur   ces   révisions,   même   si   l'application   propose   des   recommandations   intelligentes   ?
+Participant: (at 2143.24) Oui,  pense  qu'il  est  toujours  bien  de  pouvoir  choisir  soi-même
+Participant: (at 2146.97) que  l'on  voudrait  réviser.  Peut-être  que  ça  pourrait  être  une  option  qui  s'active  ou  qui  désactive.
+Participant: (at 2152.76) fonction  de  ce  que  l'on  choisit.
+Moderator: (at 2157.50) Oui,   je   comprends   bien   ça,   Augustin.    C'est   vrai   que   c'est   toujours   pratique   de   pouvoir   garder   la   main   et   choisir   ce   qu'on   veut   réviser,   peut-être   sous   forme   d'option   à   activer   ou   désactiver. 
+
+Très   bien.    Maintenant,   on   va   parler   des   éléments   ludiques.    'Qu'est-ce   que   vous   pensez   des   éléments   ludiques   dans   les   applis   d'apprentissage   ?    Par   exemple,   le   suivi   des   jours   d'apprentissage   consécutifs,   l'obtention   de   récompenses   pour   accomplir   des   tâches   ?'
+Participant: (at 2180.59) Je  pense  que  c'est  exactement  ce  qui  différencierait  une  bonne  application  d'une  mauvaise  application.
+Participant: (at 2188.65) les  les  éléments  ludiques  seraient  source  de  motivation  et  montreraient  un  engagement  bien  plus  poussé  que  sans  ces  éléments  ludiques.
+Moderator: (at 2202.34) C'est    clair,    Augustin.     Pour    vous,    ces    éléments    ludiques    sont    vraiment    ce    qui    distingue    une    bonne    application    et    motivent    davantage.  
+
+Du    coup,    'quels    éléments    précis    de    gamification    vous    appréciez    particulièrement    et    pourquoi,    Augustin    ?'
+Participant: (at 2216.01) De  pouvoir  partager  des  scores  avec  ses  amis,  d'avoir  également  le  suivi  des  jours  pour  lesquels  on  a  utilisé  l'application.
+Participant: (at 2225.75) D'avoir  un  classement  peut-être  avec  des  gens  qui  révisent  en  même  temps  que  nous,  Ça  peut  être  des  choses  qui  rendent  l'application  ludique.
+Moderator: (at 2241.83) Très   bien,   je   vois.    Le   partage   de   scores   avec   des   amis,   le   suivi   des   jours   consécutifs   d'utilisation   et   un   classement,   ce   sont   des   éléments   qui   rendent   l'application   vraiment   ludique   pour   vous. 
+
+Maintenant,   on   va   parler   de   la   spécialisation   des   examens.    'Si   une   appli   était   spécialement   conçue   pour   les   examens   comme   le   TOEIC   ou   le   TOEFL   avec   du   contenu   vocabulaire   dédié,   comparée   aux   applis   d'apprentissage   anglais   généralistes,   quels   avantages   et   inconvénients   vous   y   voyez   ?'   Cette   distinction   est   vraiment   importante.
+Participant: (at 2269.69) Alors  l'avantage,  c'est  donc  que  ces  applications  seraient  téléchargées  pour  préparer  ces  tests,  mais  ça  voulait  aussi  dire  que  applications  qui  seraient  utilisées  peu  de  temps,  la  période  serait  assez  courte  puisque  c'est  des  examens  qui  se  préparent  seulement  deux,  trois  mois  à  l'avance.
+Participant: (at 2289.59) c'est-à-dire  que  l'application  deux,  trois  mois  seulement  par  l'utilisateur,  après  elle  ne  servirait  plus  pour  l'utilisateur.
+Participant: (at 2298.12) Alors  que  des  applis  généralistes  peuvent  être  utilisés  pendant  cinq  cents  jours  ou  même  plusieurs  années,
+Participant: (at 2310.42) de  l'engagement  de  l'utilisateur  mais  elle  serait  sûrement  utilisée  sur  plus  long  terme.
+Moderator: (at 2316.65) Je    comprends    bien    votre    analyse,    Augustin.      L'avantage    d'une    appli    spécialisée,    c'est    qu'elle    serait    téléchargée    spécifiquement    pour    la    préparation,    mais    l'inconvénient,    c'est    sa    durée    de    vie    limitée    pour    l'utilisateur,    comparée    aux    applis    généralistes.  
+
+Du    coup,    'combien    seriez-vous    prêt    à    investir    pour    cette    spécialisation,    que    ce    soit    en    temps    ou    en    argent,    Augustin    ?'
+Participant: (at 2338.41) Pour  utiliser  une  application  spécialisée,  si  elle  est  uniquement  pour  le  vocabulaire  ça  se  situerait  plutôt  aux  alentours  des,  en  dessous  de  cinq  euros,  et  par  contre  si  c'était  plus  pouvait  également  répondre  à  des  questions  et  c'était  un  peu  plus  généraliste  que  seulement  le  vocabulaire  pour  le  le  TOEFL,  donc  je  parle  aussi  des  questions  questions  en  plus  pour  le  TOEFL,  de  pouvoir  parler  également  à  l'application  pour  s'entraîner  pour  les  parties.
+Participant: (at 2375.18) Là  ça  pourrait  être  plus  de  dix  euros.
+Moderator: (at 2379.57) D'accord,    je    vois    bien.      Moins    de    5    euros    si    c'est    uniquement    pour    le    vocabulaire,    mais    plus    de    10    euros    si    l'application    est    plus    complète,    avec    des    questions    spécifiques    au    TOEFL    et    la    possibilité    de    parler    à    l'application.  
+
+Maintenant,    vous    avez    mentionné    que    les    applis    généralistes    pouvaient    être    utilisées    sur    du    plus    long    terme.      Du    coup,    'à    quel    point    avez-vous    besoin    de    cet    apprentissage    généraliste    de    l'anglais,    Augustin,    en    plus    de    la    préparation    spécifique    aux    examens    ?'
+Participant: (at 2403.66) L'apprentissage  généraliste  en  anglais,  comme  mes  cours  sont  en  anglais  à  l'école,  je  n'ai  pas  besoin  de  m'entraîner.
+Participant: (at 2411.23) Je  dirais  pour  des  gens  qui  veulent  apprendre  l'anglais  par  exemple,  un  jeune  de  douze  ans  qui  veut  apprendre  l'anglais  en  plus  de  ses  cours,  pour  réutiliser  l'application
+Participant: (at 2421.00) pendant  plusieurs  années.
+Moderator: (at 2425.94) Très   bien,   je   comprends,   Augustin.    Pour   vous,   l'apprentissage   généraliste   n'est   pas   une   priorité   actuelle   étant   donné   que   tous   vos   cours   sont   en   anglais,   mais   vous   voyez   son   utilité   pour   d'autres   profils   d'apprenants. 
+
+Maintenant,   on   va   parler   d'une   fonctionnalité   qui   est   assez   spécifique.    'Si   une   appli   pouvait   spécialement   signaler   les   mots   anglais   qui   se   mélangent   facilement   avec   le   français   et   proposer   des   exercices   de   comparaison,   vous   pensez   que   ça   vous   serait   utile   ?'   C'est   vrai   que   c'est   un   besoin   spécial   des   apprenants   français.
+Participant: (at 2453.06) On  parle  ici  des  faux  amis,  c'est  ça
+Moderator: (at 2458.73) Oui,   exactement,   Augustin.    On   parle   bien   des   "faux   amis"   et   de   tous   ces   mots   qui   peuvent   nous   tromper   entre   le   français   et   l'anglais.    Du   coup,   vous   pensez   que   ça   vous   serait   utile   si   une   appli   pouvait   les   signaler   spécifiquement   et   proposer   des   exercices   là-dessus   ?
+Participant: (at 2472.33) Oui,  suis  sûr  que  ça  serait  utile  parce  que  c'est  le  genre  de  de  mots  qui  peuvent  ressortir  dans  un  examen  et  qui  peuvent  porter  à  confusion
+Participant: (at 2480.59) pour  la  personne  qui  passerait  l'examen.  Donc  ça  pourrait  être  quelque  chose  d'utile,  une  fonctionnalité  en  plus.
+Moderator: (at 2489.34) Très    bien,    Augustin.      Vous    êtes    sûr    que    ce    serait    utile    car    les    faux    amis    peuvent    créer    de    la    confusion    lors    des    examens.  
+
+Sur    une    échelle    de    1    à    5,    où    1    est    pas    du    tout    important    et    5    est    extrêmement    important,    quelle    importance    accorderiez-vous    à    cette    fonctionnalité    de    comparaison    franco-anglaise    avec    des    exercices    spécifiques    ?
+Participant: (at 2509.48) Je  dirais  qu'on  est  entre  deux  et  trois,
+Participant: (at 2513.91) car  bon,  c'est  chose  qui  est  quand  même  utile.
+Participant: (at 2519.89) comparer  avec  le  français.
+Participant: (at 2521.63) Ce  n'est  pas  non  plus  quelque  chose  qui  est  obligatoire
+Participant: (at 2525.76) qui  va  faire  enfin  qui  va  nous  faire  nous  faire  rater  l'examen.
+Moderator: (at 2537.76) D'accord,    Augustin.      Entre    deux    et    trois    donc,    parce    que    c'est    utile    pour    comparer    avec    le    français,    mais    ce    n'est    pas    non    plus    obligatoire    au    point    de    faire    rater    l'examen.  
+
+Du    coup,    si    cette    fonctionnalité    existait,    comment    pensez-vous    qu'elle    devrait    fonctionner    concrètement    ?      Et    quels    types    d'exercices    vous    sembleraient    les    plus    pertinents    pour    travailler    ces    "faux    amis"    ?
+Participant: (at 2558.13) Ça  pourrait  être  sous  forme  de  questions  à  choix  multiples  avec  le  mot  en  anglais  et  sa  signification  en  français.
+Participant: (at 2569.78) Ça  pourrait  également  être  sous  forme  de  texte,  ou  une  phrase  et  on  nous  demande  que  signifie  le  mot
+Participant: (at 2577.86) dans  la  phrase.
+Moderator: (at 2581.89) Très    bien,    Augustin.      Des    questions    à    choix    multiples    avec    la    signification    en    français    ou    des    exercices    où    il    faut    comprendre    le    sens    du    mot    dans    une    phrase,    c'est    très    clair    comme    types    d'exercices.  
+
+On    arrive    presque    au    bout    de    cette    section.      'Si    toutes    les    fonctionnalités    que    je    viens    de    vous    présenter    étaient    réunies    dans    une    seule    appli,    de    1    à    10,    vous    lui    donneriez    quelle    note    ?      Qu'est-ce    qui    motive    cette    évaluation    ?'    Votre    évaluation    est    vraiment    précieuse.
+Participant: (at 2606.69) Je  dirais  que  si  toutes  les  fonctionnalités  étaient  réunies  dans  une  appli,  tout  dépendrait  ici  évidemment  du  prix.  Mais  c'est  une  application  que  j'évaluerais  entre  six  et  huit,  en  fonction  de  jusqu'où  va  l'application  et
+Participant: (at 2629.66) cela  peut  être  une  valeur  ajoutée  par  rapport  aux  aux  livres  par  exemple  officiels  plutôt  seul.
+Moderator: (at 2645.56) D'accord,    Augustin.      Une    note    entre    6    et    8,    en    fonction    du    prix    et    de    l'étendue    des    fonctionnalités,    et    vous    y    voyez    une    valeur    ajoutée    par    rapport    aux    livres    officiels.  
+
+'Quelles    seraient    les    fonctionnalités    les    plus    attrayantes    pour    vous,    parmi    celles    qu'on    a    discutées,    et    pourquoi    ?'
+Participant: (at 2662.68) Parmi  celles  qu'on  a  discutées,  qui  sont  les  plus  attrayantes  seraient  le  le  fait  d'avoir  un  contenu  d'experts,  mais  également  d'avoir  une  gamification  de  l'application.
+Moderator: (at 2682.39) Très    bien,    Augustin.      Le    contenu    d'experts    et    la    gamification    sont    les    fonctionnalités    les    plus    attrayantes    pour    vous.  
+
+Pourriez-vous    m'expliquer    un    peu    plus    en    détail    pourquoi    ces    deux    aspects    sont    particulièrement    attrayants    à    vos    yeux    ?
+Participant: (at 2694.29) Selon  moi,  la  le  contenu  d'experts,  c'est  cela  montrerait  et  aurait  également  un  impact  sur  les  personnes  qui  utilisent  l'application  augmenteraient  sûrement  leur  score  de  l'IELTS  et  ensuite  la  gamification  permet  d'attirer  davantage  d'utilisateurs
+Participant: (at 2715.09) et  d'avoir  un  complément  qui  est  plus  ludique
+Participant: (at 2720.67) simplement  apprendre  sur  un  livre.
+Moderator: (at 2726.67) Très    bien,    Augustin.      Je    comprends    parfaitement.      Le    contenu    d'experts    assure    une    meilleure    préparation    et    donc    une    meilleure    note    à    l'examen,    et    la    gamification    rend    l'apprentissage    plus    attractif    et    ludique    que    sur    un    livre.  
+
+Maintenant,    à    l'inverse,    'quels    seraient    les    aspects    à    améliorer    ou    les    points    qui    vous    inquiéteraient    dans    une    telle    application,    Augustin    ?'
+Participant: (at 2747.41) Je  pense  que  les  aspects  améliorés,  c'est-à-dire  qui  qu'il  faut  beaucoup  de  contenus  pour  ne  pas  tomber  toujours  sur  les  mêmes  questions.
+Participant: (at 2753.91) Beaucoup  de  contenus,  du  contenu  pertinent  et  qui  apporte  vraiment  une  aide  pour  pouvoir  passer  l'examen.
+Participant: (at 2762.16) Qui  va  vraiment  nous  rapporter  des  points.
+Participant: (at 2764.48) Et  ce  qui  m'inquiéterait,  ce  qui  pourrait  être  inquiétant,  c'est  si  le  prix  est  très  cher  par  rapport  à  finalement  que  l'application  va  apporter  à  l'utilisateur.
+Moderator: (at 2780.06) C'est     clair,     Augustin.        Un     contenu     riche     et     varié,     pour     ne     pas     avoir     toujours     les     mêmes     questions,     et     surtout     un     contenu     pertinent     qui     rapporte     des     points     pour     l'examen,     c'est     essentiel.      Et     le     prix,     qui     doit     être     justifié     par     rapport     à     la     valeur     apportée,     est     également     un     point     d'attention.  
+
+Vos     retours     sur     ces     fonctionnalités     sont     vraiment     éclairants.      Pour     finir,     j'aimerais     connaître     vos     réflexions     sur     les     aspects     pratiques     d'usage     et     d'investissement,     c'est     important     pour     nous.      On     continue     ?
+Participant: (at 2804.62) Je  vous  écoute.
+Participant: (at 2808.96) ~~ Section 4 ends~~
+Participant: (at 2808.96) ~~ Section 5 starts~~
+Moderator: (at 2812.76) Parfait,    Augustin.      On    passe    à    la    dernière    partie,    qui    va    nous    aider    à    comprendre    votre    vision    sur    les    questions    financières    et    l'investissement    dans    l'éducation.      C'est    un    sujet    qu'on    aborde    avec    beaucoup    de    délicatesse,    je    comprends    l'importance    de    l'investissement    éducatif.  
+
+'Est-ce    que    vous    avez    déjà    investi    financièrement    dans    l'apprentissage    de    l'anglais    ou    d'autres    outils    éducatifs    ?      À    peu    près    quel    type    de    solutions    ?'
+Participant: (at 2834.20) Oui,  bien  sûr.  J'ai  déjà  investi  dans  des  cours  particuliers
+Participant: (at 2838.77) j'étais  plus  jeune.
+Participant: (at 2840.77) plus  récemment  dans  deux  livres,  le  livre  de  l'examen  du  TOEFL  officiel  et  un  autre  non  officiel.
+Moderator: (at 2850.09) D'accord,    Augustin,    je    vois.     Vous    avez    investi    dans    des    cours    particuliers    quand    vous    étiez    plus    jeune,    et    plus    récemment    dans    les    deux    livres    pour    le    TOEFL.  
+
+Pourriez-vous    me    dire    ce    qui    vous    a    motivé    à    payer    pour    ces    solutions,    Augustin    ?     Et    quel    a    été    votre    niveau    de    satisfaction    général    vis-à-vis    de    ces    investissements    ?
+Participant: (at 2866.15) Les  cours  particuliers  m'ont  satisfait.  M'ont  permis  de  gagner  en  aisance  en  anglais  et  ensuite  les  livres  du  TOEFL  sont  pour  moi  c'est,  ce  n'était  même  pas  une  question  de  les  acheter  ou  pas,  il  fallait  absolument  que  je  comprenne  comment  me  former  pour  l'examen,  car  c'est  un  examen  qui  est  quand  même  très  coûteux.
+Moderator: (at 2888.22) Je   comprends,   Augustin.    Les   cours   particuliers   vous   ont   apporté   de   l'aisance,   ce   qui   est   une   bonne   satisfaction.    Et   pour   les   livres,   c'était   une   nécessité   absolue   pour   comprendre   l'examen   du   TOEFL,   surtout   vu   son   coût. 
+
+Maintenant,   j'aimerais   savoir   :   'Dans   quelles   circonstances   vous   seriez   prêt   à   investir   dans   une   appli   d'apprentissage   de   l'anglais,   Augustin   ?    Quelles   conditions   il   faudrait   réunir   ?'
+Participant: (at 2909.96) Pour  investir  dans  une  application,  d'apprentissage  de  l'anglais,  les  examens  tels  que  le  TOEFL  TOEFL,  le  TOEIC,  l'IELTS,  ce  sont  des  examens  coûteux.  Donc  dépenser  une  dizaine  d'euros  pour  pouvoir  être  une  dizaine  ou  une  vingtaine  en  fonction  de  l'application  du  logiciel,  sont  un  plus,  car  le  prix  de  l'examen  est  même  très  cher  et  donc  on,  il  vaut  mieux  payer  vingt  ou  trente  euros  de  plus  pour  être  bien  formé  plutôt  que  devoir  passer  deux  fois  les  examens.
+Moderator: (at 2941.53) C'est     très     clair,     Augustin.        Vous     êtes     prêt     à     investir     une     dizaine     ou     une     vingtaine     d'euros     dans     une     appli     si     elle     vous     aide     à     éviter     de     repasser     un     examen     coûteux.      C'est     une     excellente     logique.  
+
+Du     coup,     quelles     seraient     les     conditions     les     plus     importantes     pour     vous     qu'une     application     devrait     remplir     pour     que     vous     vous     décidiez     à     investir     financièrement     dedans,     Augustin     ?
+Participant: (at 2960.62) Il  faut  que  l'application  soit  développée  par  des  gens  qui  connaissent  le  texte.  Il  faut  que  les  les  review,  les  évaluations  des  utilisateurs  soient  également  bonnes,  et  il  faut  pouvoir  montrer  aux  utilisateurs  que  les  personnes  qui  ont  utilisé  cette  application  ont  gagné  davantage  de  points  sur  leurs  examens.
+Moderator: (at 2985.83) Je    vois,    Augustin.      Donc,    pour    vous,    les    facteurs    clés    pour    décider    d'investir    dans    une    application,    ce    seraient    qu'elle    soit    développée    par    des    experts    du    test,    qu'il    y    ait    de    bonnes    évaluations    d'utilisateurs,    et    surtout    des    preuves    concrètes    que    l'application    aide    à    améliorer    les    scores    aux    examens.      C'est    très    clair.  
+
+Du    coup,    'est-ce    que    vous    auriez    des    attentes    particulières    concernant    une    période    d'essai    ou    des    fonctionnalités    gratuites    avant    de    vous    engager    à    payer    pour    une    telle    application    ?'
+Participant: (at 3011.88) Je  pense  que  la  fonctionnalité  gratuite  est  davantage  intéressante  que  la  période  d'essai  parce  que  le  plus  souvent  les  périodes  d'essai  il  faut  rentrer  sa  carte  bancaire,  ou  alors  il  faut  prépayer  et  on  est  débité  que  si  on  dépasse  la  période  d'essai,  alors  que  les  fonctionnalités  gratuites  permettent  d'enregistrer  l'application  et  de  commencer  directement
+Participant: (at 3040.62) jusqu'à  un  certain  point.
+Moderator: (at 3046.50) Très    bien,    Augustin.      Je    comprends    parfaitement    votre    préférence    pour    les    fonctionnalités    gratuites    plutôt    que    les    périodes    d'essai,    surtout    pour    éviter    les    contraintes    liées    à    la    carte    bancaire.  
+
+Maintenant,    si    on    imagine    une    appli    d'apprentissage    du    vocabulaire    anglais    vraiment    efficace,    et    en    gardant    à    l'esprit    ce    que    vous    avez    dit    sur    le    coût    des    examens    et    l'importance    de    ne    pas    les    repasser,    'combien    d'euros    vous    seriez    prêt    à    investir    par    mois,    Augustin    ?      Quelle    fourchette    de    prix    vous    semblerait    raisonnable    ?'
+Participant: (at 3072.81) Je  pense  qu'un  abonnement  mensuel,  ne  devrait  pas  dépasser
+Participant: (at 3080.70) mieux,  je  dirais  en  termes  pour  un  utilisateur,  ce  serait  en  dessous  de  dix  euros,  neuf  euros,  parce  que  dès  qu'il  y  a  deux  chiffres  dans  un  abonnement,  mon  mensuel,  ça  fait  plus  gros  pour  l'utilisateur.
+Moderator: (at 3099.36) D'accord,    Augustin,    je    note    bien    votre    fourchette    de    prix.      Moins    de    10    euros,    idéalement    9    euros,    pour    un    abonnement    mensuel,    car    un    chiffre    à    deux    chiffres    peut    sembler    plus    important.  
+
+Qu'est-ce    qui    influencerait    les    limites    hautes    et    basses    de    ce    prix    pour    vous,    Augustin    ?     Qu'est-ce    qui    ferait    que    vous    seriez    prêt    à    payer    plutôt    5    euros,    ou    plutôt    9    euros,    par    exemple    ?
+Participant: (at 3119.08) Je  pense  que  si  les  évaluations  sont  très  bonnes,  et  que  l'application  a  un  intérêt  et  une  valeur  ajoutée  réelle  pour  ses  utilisateurs  le  prix  à  neuf  euros  serait  plus  logique.
+Participant: (at 3132.79) Et  s'il  y  a  également  beaucoup  de  contenus,  c'est-à-dire  qu'il  ne  faut  pas  que  les  personnes  qui  utilisent  l'application  aient  vu  tout  le  contenu  en  quelques  heures  seulement.
+Moderator: (at 3145.43) Très     bien,     Augustin.        Des     évaluations     excellentes,     une     vraie     valeur     ajoutée,     et     surtout     un     contenu     riche     et     fourni     justifieraient     un     prix     plus     proche     des     9     euros.      C'est     clair.    
+
+Maintenant,     si     on     parle     du     modèle     de     paiement,     'avez-vous     une     préférence     entre     un     abonnement     mensuel,     comme     on     vient     d'en     parler,     et     un     achat     unique     pour     débloquer     tout     le     contenu     de     l'application     ?'
+Participant: (at 3167.17) Je  pense  que  abonnement  mensuel  pour  préparer  les  tests,  c'est  plus  plus  réalisable  et  mieux  pour  l'utilisateur,  parce  que  les  tests  du  TOEFL  se  préparent  généralement  deux  ou  trois  mois  à  l'avance,  mais  si  une  personne  ne  veut  exemple  se  préparer  seulement  un  mois  à  l'avance,  elle  ne  peut  payer  qu'un  seul  mois,  pas  besoin  de  payer
+Participant: (at 3190.39) un  prix  parce  que  j'imagine  que  le  prix  fixe  sera  plus  élevé  que  le  prix  mensuel.
+Moderator: (at 3198.13) Très     clair,     Augustin.        Vous     privilégiez     l'abonnement     mensuel     pour     sa     flexibilité,     permettant     de     payer     uniquement     pour     la     durée     nécessaire     à     la     préparation,     ce     qui     est     plus     avantageux     que     le     coût     plus     élevé     d'un     achat     unique.    
+
+Très     bien.        On     a     bien     parlé     des     aspects     financiers.        Maintenant,     on     va     aborder     la     gestion     de     votre     temps     pour     l'apprentissage.        'Vous     pourriez     généralement     consacrer     combien     de     temps     chaque     jour     à     l'apprentissage     du     vocabulaire     anglais,     Augustin     ?        Et     quels     seraient     vos     créneaux     les     plus     appropriés     ?'
+Participant: (at 3224.41) Je  pense  que  pour  se  préparer  un  test,  on  je  pense  qu'entre  dix  et  trente  minutes  en  fonction  de  la  volonté  du  temps  libre,  le,  apprendre  le  vocabulaire  en  anglais  serait  le  plus  pertinent.
+Participant: (at 3241.09) Et  ensuite,  les  créneaux,  je  pense  que  les  créneaux  hors  horaires  d'école,  donc  c'est-à-dire  à  partir  de  dix-sept  heures  sont  les  créneaux  où  les  gens  utiliseraient  davantage  l'application.
+Moderator: (at 3252.34) D'accord,     Augustin.        Entre     10     et     30     minutes     par     jour,     en     fonction     de     la     volonté     et     du     temps     libre,     c'est     votre     estimation.        Et     les     créneaux     après     17h,     en     dehors     des     heures     de     cours,     vous     semblent     les     plus     appropriés.    
+
+'Pourquoi     ces     choix     temporels     et     quels     sont     les     facteurs     limitants     pour     vous,     Augustin,     si     vous     deviez     y     consacrer     plus     de     temps     ?'
+Participant: (at 3274.11) Je  pense  que  pour  du  vocabulaire,  il  n'est  pas  nécessaire  d'y  passer  des  heures  par  jour.  Qu'il  faut  déjà  mémoriser  les  mots  et  leur  signification,  pense  que  dépasser  les  trente  minutes  devient  inutile  et  trop  compliqué
+Moderator: (at 3292.55) D'accord,      Augustin.          Je      comprends      tout      à      fait.          Pour      vous,      au-delà      de      trente      minutes,      l'apprentissage      du      vocabulaire      devient      inefficace      et      trop      compliqué.      
+
+Du      coup,      quand      on      parle      d'apprentissage      par      "petits      bouts",      comme      ce      que      vous      venez      de      décrire,      'quels      seraient      les      scénarios      préférés      pour      utiliser      une      application      pour      apprendre      du      vocabulaire,      Augustin      ?        Dans      quelles      situations      précises      l'utiliseriez-vous      ?'
+Participant: (at 3317.50) Je  pense  que  j'utiliserai  soit  en  entrant  de  l'école,  si  je  dois  prendre  le  bus  ou  le  train,  ou  alors  l'utiliser  vingt  minutes  en  rentrant  de  l'école,  avant  de  faire  ses  devoirs.  Il  faut  le  voir  comme  on  le  voit  plus  comme  un  jeu  que  comme  un  travail,  elle  pourra  être  utilisée  davantage
+Participant: (at 3340.11) qu'une  application  vraiment  dédiée  au  travail.
+Moderator: (at 3352.28) Très     bien,     Augustin.        Utiliser     l'application     dans     les     transports     ou     en     rentrant     de     l'école,     en     la     voyant     plus     comme     un     jeu     que     comme     une     contrainte,     c'est     très     clair     comme     scénario.    
+
+Maintenant,     on     va     aborder     la     volonté     de     recommandation.        'S'il     existait     vraiment     une     appli     aussi     performante,     vous     la     recommanderiez     à     vos     proches,     Augustin     ?        Généralement     par     quels     moyens     ?'
+Participant: (at 3373.01) Oui,  je  dirais  si  je  passe  le  TOEFL,  donc  là  avec  d'autres  amis,  c'est  le  genre  de  d'applications  que  je  recommanderais.  Donc
+Participant: (at 3384.99) je  pense  que  les  moyens  pourraient  être  par  plus  simplement  du  bouche  à  bouche,  en  parler  avec  d'autres  gens  pour  leur  expliquer  comment  on  s'en  s'entraîne  pour  le  TOEFL.
+Moderator: (at 3398.43) Très      bien,      Augustin.          Le      bouche-à-oreille      avec      les      amis      qui      préparent      le      TOEFL,      c'est      un      moyen      de      recommandation      très      efficace.      
+
+Du      coup,      'quelles      seraient      les      conditions      précises      qui      vous      pousseraient      à      recommander      cette      application      ?        Et      quels      standards      devrait-elle      atteindre      pour      que      vous      la      recommandiez      chaleureusement,      Augustin      ?'
+Participant: (at 3416.51) Je  pense  qu'une  application  où  je  vois  vraiment  une  valeur  ajoutée,  où  j'apprends  vocabulaire  et  que  je  m'améliore  dans  aisance  à  l'oral  et  dans  la  lecture.
+Participant: (at 3428.44) et  dans  tous  les  aspects  qui  sont  traités  dans  ce  genre  d'examen,  pourraient  faire  en  sorte  que  je  la  recommande  à  des  amis.
+Moderator: (at 3440.13) D'accord,    Augustin.      Une    application    qui    vous    apporte    une    vraie    valeur    ajoutée,    qui    vous    permet    de    voir    une    amélioration    concrète    dans    le    vocabulaire,    l'aisance    à    l'oral,    la    lecture    et    tous    les    autres    aspects    des    examens,    c'est    ce    qui    vous    pousserait    à    la    recommander.  
+
+Et    en    parlant    de    recommandation,    'quelles    seraient    les    caractéristiques    du    groupe    de    personnes    à    qui    vous    recommanderiez    cette    appli,    Augustin    ?'
+Participant: (at 3460.48) Je  recommanderais  cet  à  des  gens  qui  comme  moi  passent  l'examen,  le  même  examen  que  moi  au  même  moment,  et  non  à  des  gens  seulement  qui  veulent  apprendre  l'anglais,  mais  à  des  gens  qui  passent  un  examen  similaire  ou  le  même.
+Moderator: (at 3478.96) Je     comprends     tout     à     fait,     Augustin.        Vous     la     recommanderiez     donc     principalement     à     d'autres     personnes     qui     préparent     le     même     examen     que     vous,     comme     le     TOEFL,     plutôt     qu'à     des     apprenants     d'anglais     plus     généraux.  
+
+Merci     beaucoup,     Augustin,     d'avoir     partagé     toutes     ces     idées     et     expériences     précieuses     avec     moi     sur     les     aspects     financiers     et     les     recommandations.        Vos     points     de     vue     nous     sont     vraiment     utiles.        Pour     résumer,     nous     avons     parlé     de     votre     volonté     d'investissement,     des     conditions     qui     vous     inciteraient     à     payer     pour     une     application,     de     votre     fourchette     de     prix     préférée,     de     votre     gestion     du     temps     d'apprentissage     et     de     votre     volonté     de     recommander     une     application     performante.    
+
+Est-ce     qu'il     y     a     quelque     chose     que     vous     souhaiteriez     corriger     ou     ajouter     à     tout     ce     qu'on     vient     de     dire     ?
+Participant: (at 3517.31) Non,  toutes  toutes  les  questions  étaient  pertinentes.
+Participant: (at 3522.54) Je  pense  que  c'est  très  bien  de  sonder
+Participant: (at 3524.25) ~~ Section 5 ends~~
+Participant: (at 3524.25) ~~ Section 6 starts~~
+Participant: (at 3525.68) les  les  avis  des  gens  pour  développer  ce  type  d'application  et  que  application  pour  pour  y  être  utile
+Participant: (at 3535.87) pour  apprendre  davantage.  Le  seul  problème  de  développer  cette  d'application,  je  pense  que  c'est  de  de  la  vendre  et  de  et  et  de  diffuser  cette  application
+Participant: (at 3551.11) en  faisant  un  marketing  qui  doit  être  irréprochable.
+Moderator: (at 3561.78) Ah,  c'est  très  intéressant,  Augustin,  d'avoir  cette  perspective  sur  le  marketing.  Je  vous  remercie  d'ailleurs  d'avoir  trouvé  toutes  les  questions  pertinentes,  c'est  super  d'avoir  sondé  vos  avis. 
+
+Pourriez-vous  m'expliquer  un  peu  plus  pourquoi  vous  pensez  que  le  marketing  serait  un  problème  si  critique  pour  le  succès  d'une  telle  application,  Augustin  ?
+Participant: (at 3578.12) Je  pense  que  sans  marketing,  une  application  pareille  va  avoir  beaucoup  de  mal  à  se  vendre.
+Participant: (at 3584.37) parce  que  il  faut  quand  les  personnes  vont  s'inscrire  pour  un  test  comme  le  TOEFL  et  le  TOEIC,  ils  vont  souvent  se  se  rabattre  sur  des  des  formations  telles  que  les  livres,  parce  que  c'est  ce  qui  se  depuis  toujours,  ou  des  formations  en  ligne,  sur  internet,  mais  une  telle  application  pourrait  avoir  un  potentiel  si  les  publicités  sont  sont  vues  par  des  gens  qui  vont  passer  ce  genre  d'examen.
+Moderator: (at 3620.30) Je   comprends   bien,   Augustin.    Vous   pensez   que   sans   un   bon   marketing,   il   serait   difficile   de   se   démarquer   des   méthodes   traditionnelles   comme   les   livres.    Du   coup,   si   vous   deviez   imaginer   le   marketing   idéal   pour   cette   application,   où   pensez-vous   que   les   futurs   utilisateurs,   ceux   qui   passent   le   TOEFL   ou   le   TOEIC,   verraient   le   mieux   ces   publicités   ?
+Participant: (at 3639.12) Je  dirais  que  le  marché  serait  du  marketing  digital.
+Moderator: (at 3647.42) Oui,   le   marketing   digital,   c'est   très   clair.    
+
+Je   vous   remercie   vraiment,   Augustin,   d'avoir   consacré   ce   temps   aujourd'hui   pour   partager   vos   réflexions   et   expériences   avec   moi.    Vos   points   de   vue   sont   extrêmement   précieux   pour   nous,   particulièrement   ce   que   vous   avez   mentionné   concernant   la   difficulté   à   réutiliser   le   vocabulaire   à   l'oral,   et   l'importance   d'avoir   une   gamification   et   un   contenu   d'experts   dans   une   application. 
+
+Est-ce   qu'il   y   a   d'autres   réflexions   ou   expériences   concernant   l'apprentissage   du   vocabulaire   anglais   que   vous   jugez   importantes   mais   qu'on   n'a   pas   abordées   aujourd'hui   ?
+Participant: (at 3674.02) Non,  les  questions  étaient  parfaites  et  très  ciblées.
+Moderator: (at 3680.32) Parfait,   merci   beaucoup,   Augustin.
+ 
+Si   on   développe   par   la   suite   des   solutions   liées   à   ces   besoins,   je   peux   vous   inviter   à   les   tester   et   recueillir   vos   retours   ?    C'est   vraiment   important   pour   l'amélioration   de   nos   produits.
+Participant: (at 3693.79) Oui,  si  je  n'ai  pas  passé  le  taux  avant  et  même  si  je  l'ai  passé,  pourquoi  pas  tester  ce  genre  d'application  pour  pour  mieux  comprendre
+Participant: (at 3702.54) à  quoi  comment  vous  avez  utilisé  l'échange  que  j'ai  fait  avec  vous.
+Moderator: (at 3710.87) Super,   merci   beaucoup   pour   votre   disponibilité,   Augustin.    C'est   très   précieux. 
+
+Avant   de   terminer,   j'aimerais   que   vous   preniez   une   minute   ou   deux   pour   partager   vos   impressions   sur   cet   entretien   IA   lui-même.    Vos   retours   sont   vraiment   importants   pour   nous   aider   à   améliorer   cette   technologie   d'entretien   IA,   on   espère   vraiment   entendre   des   évaluations   sincères,   même   critiques   :
+ 
+'Durant   tout   l'entretien,   vous   avez   rencontré   des   difficultés   techniques   ?    Par   exemple,   problèmes   d'audition,   coupures   sonores,   ou   autres   dysfonctionnements   techniques   ?'
+Participant: (at 3740.19) Non.
+Moderator: (at 3743.96) D'accord,  très  bien. 
+
+'Comment  vous  avez  trouvé  la  profondeur  des  relances  de  l'animateur  IA  ?  Il  y  a  eu  des  questions  trop  superficielles  ou  au  contraire  trop  approfondies  ?'
+Participant: (at 3754.06) Les  questions  étaient  pertinentes  et  l'animateur  a  bien  relancé  au  bon  moment
+Participant: (at 3762.57) une  fois  que  j'avais  fini  de  parler.
+Moderator: (at 3767.21) Excellent,    Augustin.      C'est    bon    à    savoir    que    les    questions    étaient    pertinentes    et    les    relances    bien    chronométrées.  
+
+'Vous    avez    ressenti    une    gêne    ou    un    inconfort    en    dialoguant    avec    l'IA    ?      Quelles    différences    vous    ressentez    par    rapport    à    un    entretien    avec    une    personne    réelle    ?'
+Participant: (at 3780.44) Je  n'ai  ressenti  aucune  gêne  ou  inconfort.
+Participant: (at 3783.16) et  les  différences  par  rapport  à  un  entretien  qu'une  personne  réelle,  je  dirais  qu'avec  une  IA,  il  est  plus  facile  de  prendre  son  temps,  de  réfléchir  et  de  pouvoir  exprimer
+Participant: (at 3798.54) ce  que  l'on  pense  sans  sans  vouloir  aller  dans  le  sens  de  la  personne  en  face.
+Moderator: (at 3808.98) C'est     une     remarque     très     intéressante,     Augustin.        Le     fait     de     pouvoir     prendre     son     temps     et     exprimer     ses     idées     librement     sans     biais,     c'est     un     point     important.    
+
+'Concernant     les     entretiens     IA     sur     le     marché     français,     vous     avez     des     suggestions     ?        Par     exemple     sur     l'expression     linguistique,     la     compréhension     culturelle,     ou     l'expérience     technique     ?'
+Participant: (at 3827.05) Je  n'ai  jamais  réalisé  réalisé  avant  cette  interview,  une  interview  avec  une  intelligence  artificielle.
+Moderator: (at 3835.07) D'accord,    je    comprends.      C'était    votre    première    expérience    d'entretien    avec    une    intelligence    artificielle.  
+
+Du    coup,    sur    la    base    de    cette    première    expérience,    Augustin,    'avez-vous    des    suggestions    pour    améliorer    les    entretiens    IA    en    général,    que    ce    soit    sur    l'expression    linguistique,    la    compréhension    culturelle,    ou    l'expérience    technique    ?'
+Participant: (at 3853.33) Je  dirais  le,  seule  chose  qui  au  début  m'a  m'a  frappé,  c'est  l'accent
+Participant: (at 3859.92) cette  intelligence  artificielle  qui  est  une  intelligence  artificielle  qui  parle  français  avec  un  fort  accent
+Participant: (at 3866.85) dirais  anglais,  mais  au  fur  et  à  mesure  de  la  conversation,  un  détail  qui  s'estompe.
+Moderator: (at 3878.27) C'est     une     remarque     très     pertinente,     Augustin,     concernant     l'accent     de     l'IA     au     début     de     la     conversation.      C'est     précisément     le     genre     de     retour     qui     nous     aide     beaucoup     à     améliorer     l'expérience.  
+
+Maintenant,     pour     conclure     sur     cette     partie,     'globalement,     vous     êtes     satisfait     de     cette     expérience     d'entretien     IA     ?      De     1     à     10,     vous     donneriez     quelle     note     ?      Vous     avez     des     suggestions     d'amélioration     concrètes     ?'
+Participant: (at 3899.34) Je  suis  très  satisfait  en  note,  je  mettrai  dix  sur  dix,  c'est  très  simple  de  converser  et  et,  et  facile.
+Moderator: (at 3913.15) Très    bien,    un    10/10,    c'est    super    !     Merci    beaucoup,    Augustin.      Vous    avez    des    suggestions    d'amélioration    concrètes    ?
+Participant: (at 3921.48) Le,  cela  améliorera  je  dirais,  c'est  l'accent  de  l'intelligence  artificielle.
+Moderator: (at 3927.58) Merci,   Augustin,   pour   cette   suggestion   précise   concernant   l'accent   de   l'intelligence   artificielle.    C'est   le   genre   de   retour   qui   nous   aide   énormément   à   progresser. 
+
+Je   vous   remercie   encore   chaleureusement   pour   votre   participation   et   vos   retours   précieux,   Augustin.    Bonne   continuation   dans   votre   apprentissage  !
+Participant: (at 3944.81) Merci.
+Moderator: (at 3948.03) Merci,  Augustin.  Pour  terminer  la  session,  vous  pouvez  cliquer  sur  le  bouton  "End  Session".
+Participant: (at 3957.92) [[User clicked on mic icon to mute]]
+Participant: (at 3957.92) [[User clicked on camera icon and facecamera is off]]
+Participant: (at 4004.59) ~~Section 6 ends~~

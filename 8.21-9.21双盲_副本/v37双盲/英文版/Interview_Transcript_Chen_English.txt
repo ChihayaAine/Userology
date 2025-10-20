@@ -1,0 +1,116 @@
+Participant: (at 0.00) ~~ Section 1 starts ~~
+Moderator: (at 0.28) Hello, Chen Xinyu. Thank you very much for taking part in this interview. I'm Nova from the SparkMo team. Today I'd like to chat about your experience using SparkMo, especially your impressions of the new version. This interview will take about 30 minutes. Feel free to ask questions or share thoughts at any time. How's your day going?
+Participant: (at 19.66) [unclear]
+Moderator: (at 26.06) Sorry, your voice was a bit unclear. Could you please say that again?
+Participant: (at 31.16) Not bad.
+Moderator: (at 34.90) Great. Let's get started. First, could you briefly introduce your usual vocabulary-learning needs?
+Participant: (at 45.59) When I prepared for IELTS, I needed to memorize vocabulary, so mainly for the IELTS exam.
+Moderator: (at 52.71) I see. You mentioned…
+Moderator: (at 55.98) …the IELTS exam. When did you start using SparkMo?
+Participant: (at 59.78) Around early July.
+Moderator: (at 65.55) Understood. From early July until now, how often do you use SparkMo? For example, roughly how much time per day?
+Participant: (at 75.58) About half an hour a day, usually at night.
+Moderator: (at 82.19) Okay. Before using SparkMo, had you used other vocabulary apps?
+Participant: (at 91.41) Not recently.
+Moderator: (at 96.77) Got it. Since you haven't used other apps recently, let's move on to the next section.
+Participant: (at 103.33) ~~ Section 1 ends ~~
+Participant: (at 103.33) ~~ Section 2 starts ~~
+Moderator: (at 108.77) Let's talk about your experience using SparkMo to learn vocabulary. First, I'm curious: in your vocabulary-learning process, what matters most to you? Or, which method works best for you?
+Participant: (at 124.29) Repeatedly reviewing the words I don't know and practicing them again and again.
+Participant: (at 131.42) That's the most effective for me.
+Moderator: (at 136.04) Got it. You mentioned repeated practice of unknown words. Could you describe situations where this approach is especially effective?
+Participant: (at 146.29) SparkMo's daily review and reinforcement features are quite effective for me.
+Moderator: (at 157.18) Understood. Let's discuss your usage habits. When and in what scenarios do you typically use SparkMo?
+Participant: (at 168.08) Usually in my spare time, and when SparkMo sends me notifications reminding me I still haven't reviewed.
+Moderator: (at 178.72) I see. You mentioned spare time and notifications. During your time using SparkMo, have you encountered any issues or anything you're not satisfied with?
+Participant: (at 188.12) The spelling keyboard isn't very good. Sometimes it doesn't detect what I type.
+Moderator: (at 199.52) I see. How did that issue affect your learning? How do you handle it when it happens?
+Participant: (at 212.23) Sometimes I clearly type the word correctly, but it still marks it as wrong. I don't really have a way to handle that.
+Moderator: (at 221.16) Understood. That does affect the learning experience. For vocabulary apps, which functions or features do you value the most?
+Participant: (at 231.01) The front page should be simple, and the overall interface design should be aesthetically pleasing.
+Moderator: (at 239.54) I heard you mention simplicity and aesthetics. Among these, which is most important to you, and why?
+Participant: (at 250.25) A simple interface makes it easier to use.
+Moderator: (at 255.12) Got it. So your key points are: the importance of repeated practice, the convenience of notifications, and a preference for a clean interface design—plus the keyboard detection problem. Did I understand correctly? Anything you'd like to add?
+Participant: (at 277.33) That's right. Nothing more. Thanks.
+Moderator: (at 285.23) Great, thanks for sharing. Let's move on.
+Participant: (at 289.46) ~~ Section 2 ends ~~
+Participant: (at 289.46) ~~ Section 3 starts ~~
+Moderator: (at 295.18) Have you noticed any recent updates to SparkMo? If so, what was your first impression when you opened the new version?
+Participant: (at 305.86) Finally there's a tutorial interface—previously I wasn't really sure what to do.
+Moderator: (at 311.46) I see. You noticed the addition of a tutorial. What specific changes did you see? How did they help you?
+Participant: (at 324.24) If you'd already been using it a lot before, it doesn't really help much.
+Moderator: (at 332.04) Understood. If you were to rate the old version of SparkMo from 1 to 10, what score would you give, and why? (1 = very dissatisfied, 10 = very satisfied.)
+Participant: (at 348.28) Seven.
+Moderator: (at 354.35) You gave the old version a 7. What factors led to that score? Which aspects satisfied you, and which need improvement?
+Participant: (at 366.16) The interface is fairly clean. Now there are reminder features. The flashcard content is quite rich—overall content is rich. [unclear]
+Moderator: (at 382.16) And for the new version, using the same 1–10 scale, what score would you give it?
+Participant: (at 389.25) Eight.
+Moderator: (at 393.89) I see the new version is one point higher. What are the main reasons for that increase?
+Participant: (at 402.10) The interface is smoother, and those features we mentioned before—like notifications and the keyboard—have been improved.
+Moderator: (at 414.87) Overall, compared to the old version, what aspects of the new version left a particularly deep impression on you?
+Participant: (at 430.60) It doesn't ask me to review the same words every day. It actually pulls out the words I likely don't know.
+Moderator: (at 440.14) Understood. During your use of the new version, were there any experiences that didn't meet optimization expectations or were particularly poor?
+Participant: (at 448.66) The daily “word stories” look pretty fake and don't feel very connected.
+Participant: (at 457.83) It feels forced to make them “your words.”
+Participant: (at 459.02) [unclear]
+Moderator: (at 467.14) I understand. So there are advances in intelligent vocabulary learning, but the “word stories” feel unnatural. Did I capture that correctly? Anything to add?
+Participant: (at 483.07) That's accurate. Nothing to add.
+Moderator: (at 487.65) Thank you for the feedback. Let's continue.
+Participant: (at 493.03) ~~ Section 3 ends ~~
+Participant: (at 493.03) ~~ Section 4 starts ~~
+Moderator: (at 499.07) Did you notice any changes on the vocabulary-book selection page—for example, when finding or previewing books?
+Participant: (at 510.03) I didn't really check new books; I just used the old wordbook.
+Moderator: (at 518.44) In your learning process, did you notice any changes in sounds or audio?
+Participant: (at 527.76) During vocabulary practice it automatically reads sentences; in dictation it also reads the words aloud to me.
+Moderator: (at 539.65) Do these auto-play features help your learning? In what scenarios are they especially useful or inconvenient?
+Participant: (at 549.54) If I can't recall the English for a Chinese term, it helps me spell it. But it also makes it harder to recall English via Chinese on my own.
+Participant: (at 565.13) Because I can just rely on dictation to spell the word.
+Moderator: (at 571.58) Interesting observation. In terms of learning settings—like choosing question types or a study plan—have you noticed any new options?
+Participant: (at 583.49) I can configure the content of my flashcards and the types of exercises.
+Moderator: (at 590.54) Have you adjusted those settings? How did it feel after adjusting them?
+Participant: (at 597.87) I did. I removed the picture-based items because I don't like them.
+Participant: (at 603.81) The overall experience is okay.
+Moderator: (at 608.75) During question answering—especially when you get many in a row correct—did you notice any special effects?
+Participant: (at 616.04) It pops up messages like “you got several correct in a row,” “great,” etc.
+Moderator: (at 626.80) How do those streak effects make you feel? Do they motivate you to continue learning?
+Moderator: (at 650.25) Let me rephrase. Among the new features we mentioned—auto reading, question-type settings, streak effects—what left the deepest impression on you?
+Participant: (at 664.27) Auto reading—because previously it wasn't there, and it's convenient.
+Participant: (at 673.05) It helps me recall what the word refers to.
+Moderator: (at 678.82) Could you describe how auto reading helps you?
+Participant: (at 686.95) When I forget a word, it reads it out loud and I can then produce it.
+Participant: (at 691.34) But it also deprives me of the benefit of actively recalling the word.
+Participant: (at 694.77) And reduces that practice opportunity.
+Moderator: (at 698.79) Understood. Lastly, is there any new feature you feel isn't really necessary, or any problems using it?
+Participant: (at 708.25) Everything's fine.
+Moderator: (at 712.58) We've covered all the new features. From our discussion, auto reading left you with a deep impression—it has pros and cons: convenient for review but may reduce active recall opportunities. Did I get that right? Anything to add?
+Participant: (at 731.51) You got it right.
+Participant: (at 736.91) ~~ Section 4 ends ~~
+Participant: (at 736.91) ~~ Section 5 starts ~~
+Moderator: (at 741.02) Thank you for the detailed sharing. To recap: you rated the new version 8, one point higher than the old version. Among the new features, you find auto reading the most valuable, and the keyboard detection issue seems improved. First, the keyboard detection you mentioned in Section 2—has that improved in the new version?
+Participant: (at 765.10) A bit better detection, and overall smoother.
+Moderator: (at 772.82) Based on your experience as an existing user, what should SparkMo optimize next?
+Participant: (at 780.32) A speaking-pronunciation detection feature would be nice.
+Moderator: (at 793.33) I see—you mean speech recognition. In what scenarios would you especially need it?
+Participant: (at 805.11) When practicing speaking, I'd like to know whether my pronunciation is correct.
+Moderator: (at 814.46) Compared with other vocabulary apps like Duolingo or Quizlet, what are SparkMo's current advantages, and what should it learn from others?
+Participant: (at 827.14) We've used Duolingo. Compared with [unclear app name], SparkMo's advantage is you don't need to manually input words—it’s convenient. [unclear]
+Moderator: (at 840.22) If SparkMo later launches advanced features that require payment, would you consider paying? Which features would be worth paying for?
+Participant: (at 853.09) If there's speaking detection, I might pay. Other things, maybe not.
+Moderator: (at 865.21) Last question: if you were SparkMo's PM with limited resources, what improvement would you prioritize, and why?
+Participant: (at 875.47) I'd prioritize speaking recognition—like I said—to differentiate the product from others.
+Moderator: (at 888.08) You've provided valuable suggestions, especially on speaking recognition: it helps learning and differentiation. Just to confirm…
+Participant: (at 901.00) Correct.
+Moderator: (at 900.72) Does that accurately reflect your thinking? Anything else to add?
+Participant: (at 904.29) No, that's it.
+Moderator: (at 908.91) Thanks. Let's move to the final section.
+Participant: (at 913.31) ~~ Section 5 ends ~~
+Participant: (at 913.31) ~~ Section 6 starts ~~
+Moderator: (at 921.43) Thank you for sharing your experience today. To summarize: you gave the new version an 8 (one point higher than the old version), and you especially recognized the improvements in auto reading. You also suggested developing speaking recognition. Beyond what we discussed, anything else to add? Any questions?
+Participant: (at 945.35) No.
+Moderator: (at 948.83) Okay. If we have a future beta test for new features, would you be willing to participate?
+Participant: (at 953.05) Yes.
+Participant: (at 957.26) Yes.
+Moderator: (at 962.09) Thank you again for your participation. We'll carefully consider your suggestions and strive to improve in future iterations. If you have questions or new ideas, feel free to contact us via the in-app feedback. Please click the “End Conversation” button to finish. Thanks again for your time—happy learning!
+Participant: (at 982.51) [[User clicked on mic icon to mute]]
+Participant: (at 982.51) [[User clicked on camera icon and face camera is off]]
+Participant: (at 1021.50) ~~ Section 6 ends ~~
