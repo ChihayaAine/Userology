@@ -16,15 +16,12 @@ export interface Response {
 }
 
 export interface Analytics {
-  overallScore: number;
-  overallFeedback: string;
-  communication: { score: number; feedback: string };
-  generalIntelligence: string;
   softSkillSummary: string;
   questionSummaries: Array<{
     question: string;
     summary: string;
   }>;
+  mainInterviewQuestions?: string[];
 }
 
 export interface FeedbackData {
