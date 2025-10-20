@@ -53,8 +53,8 @@ export function InterviewerProvider({ children }: InterviewerProviderProps) {
     setInterviewersLoading(false);
   };
 
-  const createInterviewer = async (payload: any) => {
-    await InterviewerService.createInterviewer({ ...payload });
+  const createInterviewer = async (payload?: any) => {
+    await InterviewerService.createInterviewer();
     fetchInterviewers();
   };
 

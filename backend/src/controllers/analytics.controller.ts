@@ -4,6 +4,7 @@ import { ResponseService } from '@/services/responses.service';
 import { InterviewService } from '@/services/interviews.service';
 import { generateInterviewAnalytics } from '@/services/analytics.service';
 import { InterviewSummaryService } from '@/services/interview-summary.service';
+import { StudySummaryService } from '@/services/study-summary.service';
 import {
   SYSTEM_PROMPT,
   createUserPrompt,
