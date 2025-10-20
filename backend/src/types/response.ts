@@ -13,6 +13,8 @@ export interface Response {
   analytics: any;
   candidate_status: string;
   tab_switch_count: number;
+  key_insights?: KeyInsight[];
+  important_quotes?: ImportantQuote[];
 }
 
 export interface Analytics {
@@ -22,6 +24,20 @@ export interface Analytics {
     summary: string;
   }>;
   mainInterviewQuestions?: string[];
+}
+
+export interface KeyInsight {
+  id: string;
+  content: string;
+  category?: string;
+}
+
+export interface ImportantQuote {
+  id: string;
+  quote: string;
+  timestamp: number;
+  context?: string;
+  speaker?: 'user' | 'agent';
 }
 
 export interface FeedbackData {
