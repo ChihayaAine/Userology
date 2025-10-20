@@ -13,7 +13,6 @@ import { useRouter } from "next/navigation";
 import LoaderWithText from "@/components/loaders/loader-with-text/loaderWithText";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Skeleton } from "@/components/ui/skeleton";
-import { CircularProgress } from "@nextui-org/react";
 import QuestionAnswerCard from "@/components/dashboard/interview/questionAnswerCard";
 import { marked } from "marked";
 import {
@@ -58,7 +57,6 @@ function CallInfo({
   const [transcript, setTranscript] = useState("");
   const [candidateStatus, setCandidateStatus] = useState<string>("");
   const [interviewId, setInterviewId] = useState<string>("");
-  const [tabSwitchCount, setTabSwitchCount] = useState<number>();
 
   useEffect(() => {
     const fetchResponses = async () => {
@@ -91,7 +89,6 @@ function CallInfo({
         setName(response.name);
         setCandidateStatus(response.candidate_status);
         setInterviewId(response.interview_id);
-        setTabSwitchCount(response.tab_switch_count);
       } catch (error) {
         console.error(error);
       } finally {
@@ -178,11 +175,6 @@ function CallInfo({
                     <ArrowLeft className="mr-2" />
                     <p className="text-sm font-semibold">Back to Summary</p>
                   </div>
-                  {tabSwitchCount && tabSwitchCount > 0 && (
-                    <p className="text-sm font-semibold text-red-500 bg-red-200 rounded-sm px-2 py-1">
-                      Tab Switching Detected
-                    </p>
-                  )}
                 </div>
               </div>
               <div className="flex flex-col justify-between gap-3 w-full">
@@ -297,109 +289,11 @@ function CallInfo({
             {/* <div>{call.}</div> */}
           </div>
           <div className="bg-slate-200 rounded-2xl min-h-[120px] p-4 px-5 my-3">
-            <p className="font-semibold my-2">General Summary</p>
-
-            <div className="grid grid-cols-3 gap-4 my-2 mt-4 ">
-              {analytics?.overallScore !== undefined && (
-                <div className="flex flex-col gap-3 text-sm p-4 rounded-2xl bg-slate-50">
-                  <div className="flex flex-row gap-2 align-middle">
-                    <CircularProgress
-                      classNames={{
-                        svg: "w-28 h-28 drop-shadow-md",
-                        indicator: "stroke-indigo-600",
-                        track: "stroke-indigo-600/10",
-                        value: "text-3xl font-semibold text-indigo-600",
-                      }}
-                      value={analytics?.overallScore}
-                      strokeWidth={4}
-                      showValueLabel={true}
-                      formatOptions={{ signDisplay: "never" }}
-                    />
-                    <p className="font-medium my-auto text-xl">
-                      Overall Engagement Score
-                    </p>
-                  </div>
-                  <div className="">
-                    <div className="font-medium">
-                      <span className="font-normal">Feedback: </span>
-                      {analytics?.overallFeedback === undefined ? (
-                        <div className="inline-block">
-                          <Skeleton className="w-[200px] h-[20px]" />
-                        </div>
-                      ) : (
-                        <span>{analytics?.overallFeedback}</span>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              )}
-              {analytics?.communication && (
-                <div className="flex flex-col gap-3 text-sm p-4 rounded-2xl bg-slate-50">
-                  <div className="flex flex-row gap-2 align-middle">
-                    <CircularProgress
-                      classNames={{
-                        svg: "w-28 h-28 drop-shadow-md",
-                        indicator: "stroke-indigo-600",
-                        track: "stroke-indigo-600/10",
-                        value: "text-3xl font-semibold text-indigo-600",
-                      }}
-                      value={analytics?.communication.score}
-                      maxValue={10}
-                      minValue={0}
-                      strokeWidth={4}
-                      showValueLabel={true}
-                      valueLabel={
-                        <div className="flex items-baseline">
-                          {analytics?.communication.score ?? 0}
-                          <span className="text-xl ml-0.5">/10</span>
-                        </div>
-                      }
-                      formatOptions={{ signDisplay: "never" }}
-                    />
-                    <p className="font-medium my-auto text-xl">Communication</p>
-                  </div>
-                  <div className="">
-                    <div className="font-medium">
-                      <span className="font-normal">Feedback: </span>
-                      {analytics?.communication.feedback === undefined ? (
-                        <div className="inline-block">
-                          <Skeleton className="w-[200px] h-[20px]" />
-                        </div>
-                      ) : (
-                        <span>{analytics?.communication.feedback}</span>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              )}
+            <p className="font-semibold my-2">Call Summary</p>
+            <div className="my-2 mt-4">
               <div className="flex flex-col gap-3 text-sm p-4 rounded-2xl bg-slate-50">
-                <div className="flex flex-row gap-2  align-middle">
-                  <p className="my-auto">User Sentiment: </p>
-                  <div className="font-medium my-auto">
-                    {call?.call_analysis?.user_sentiment === undefined ? (
-                      <Skeleton className="w-[200px] h-[20px]" />
-                    ) : (
-                      <span>{call?.call_analysis?.user_sentiment}</span>
-                    )}
-                  </div>
-
-                  <div
-                    className={`${
-                      call?.call_analysis?.user_sentiment == "Neutral"
-                        ? "text-yellow-500"
-                        : call?.call_analysis?.user_sentiment == "Negative"
-                          ? "text-red-500"
-                          : call?.call_analysis?.user_sentiment == "Positive"
-                            ? "text-green-500"
-                            : "text-transparent"
-                    } text-xl`}
-                  >
-                    ●
-                  </div>
-                </div>
                 <div className="">
                   <div className="font-medium">
-                    <span className="font-normal">Call Summary: </span>
                     {call?.call_analysis?.call_summary === undefined ? (
                       <div className="inline-block">
                         <Skeleton className="w-[200px] h-[20px]" />
@@ -409,9 +303,6 @@ function CallInfo({
                     )}
                   </div>
                 </div>
-                <p className="font-medium ">
-                  {call?.call_analysis?.call_completion_rating_reason}
-                </p>
               </div>
             </div>
           </div>

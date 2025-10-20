@@ -1,9 +1,15 @@
 import { supabase } from '@/config/database';
 
 const createResponse = async (payload: any) => {
+  // Set default candidate_status to 'SELECTED' if not provided
+  const responsePayload = {
+    ...payload,
+    candidate_status: payload.candidate_status || 'SELECTED',
+  };
+
   const { error, data } = await supabase
     .from("response")
-    .insert({ ...payload })
+    .insert(responsePayload)
     .select("id");
 
   if (error) {
