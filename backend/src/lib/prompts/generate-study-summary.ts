@@ -110,12 +110,16 @@ A concise overview of the key findings and their implications for the product/bu
 ### 2. OBJECTIVE-DRIVEN DELIVERABLES
 ${deliverableInstructions}
 
-### 3. CROSS-INTERVIEW INSIGHTS (5-8 insights)
-Synthesize patterns and themes across all interviews. Each insight should:
-- Be supported by evidence from multiple interviews (at least 2)
+### 3. CROSS-INTERVIEW INSIGHTS
+Synthesize patterns and themes across all interviews. Generate as many insights as are meaningful and well-supported by the data (typically 1-8 depending on interview count and content richness).
+
+Each insight should:
+- Be supported by evidence from the interviews (multiple interviews if available)
 - Be specific and actionable
 - Include the number of users who mentioned this theme
 - Have a clear implication for product decisions
+
+**Note**: For studies with only 1-2 interviews, focus on quality over quantity. Even 1-2 strong insights are valuable.
 
 Format:
 - **title**: Short, descriptive title (max 10 words)
@@ -296,18 +300,52 @@ export const validateStudySummary = (summary: any): boolean => {
     return false;
   }
 
-  // Validate cross_interview_insights
-  if (!Array.isArray(summary.cross_interview_insights) || 
-      summary.cross_interview_insights.length < 5 || 
-      summary.cross_interview_insights.length > 8) {
-    console.warn('Invalid cross_interview_insights count:', summary.cross_interview_insights?.length);
+  // Validate cross_interview_insights (structure only, no count limit)
+  if (!Array.isArray(summary.cross_interview_insights)) {
+    console.warn('Invalid cross_interview_insights: not an array');
     return false;
+  }
+
+  // Validate each insight's structure
+  for (const insight of summary.cross_interview_insights) {
+    if (!insight.id || !insight.title || !insight.description || !insight.category || !insight.importance) {
+      console.warn('Invalid insight structure:', insight);
+      return false;
+    }
+
+    // Validate category
+    if (!['consensus', 'divergent', 'unexpected', 'critical'].includes(insight.category)) {
+      console.warn('Invalid insight category:', insight.category);
+      return false;
+    }
+
+    // Validate importance
+    if (!['high', 'medium', 'low'].includes(insight.importance)) {
+      console.warn('Invalid insight importance:', insight.importance);
+      return false;
+    }
   }
 
   // Validate evidence_bank
   if (!Array.isArray(summary.evidence_bank)) {
     console.warn('Invalid evidence_bank');
     return false;
+  }
+
+  // Validate each evidence entry
+  for (const evidence of summary.evidence_bank) {
+    if (!evidence.insight_id || !Array.isArray(evidence.quotes)) {
+      console.warn('Invalid evidence structure:', evidence);
+      return false;
+    }
+
+    // Validate each quote
+    for (const quote of evidence.quotes) {
+      if (!quote.user || !quote.quote) {
+        console.warn('Invalid quote structure:', quote);
+        return false;
+      }
+    }
   }
 
   return true;
