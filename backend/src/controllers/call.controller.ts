@@ -1,5 +1,8 @@
 import { Request, Response } from 'express';
 import { InterviewerService } from '@/services/interviewers.service';
+import { ResponseService } from '@/services/responses.service';
+import { InterviewSummaryService } from '@/services/interview-summary.service';
+import { generateInterviewAnalytics } from '@/services/analytics.service';
 import { retellClient } from '@/config/retell';
 
 export const registerCall = async (req: Request, res: Response) => {
@@ -106,10 +109,10 @@ export const registerCall = async (req: Request, res: Response) => {
 export const getCall = async (req: Request, res: Response) => {
   const requestId = Math.random().toString(36).substring(7);
   console.log(`🔍 [${requestId}] Getting call data for callId:`, req.params.callId);
-  
+
   try {
     const { callId } = req.params;
-    
+
     if (!callId) {
       console.error(`❌ [${requestId}] Call ID is required`);
       return res.status(400).json({
@@ -117,30 +120,85 @@ export const getCall = async (req: Request, res: Response) => {
       });
     }
 
+    console.log(`🚀 [${requestId}] Fetching response from database...`);
+
+    // 从数据库获取response记录
+    const response = await ResponseService.getResponseByCallId(callId);
+
+    if (!response) {
+      console.error(`❌ [${requestId}] Response not found for callId:`, callId);
+      return res.status(404).json({
+        error: "Response not found"
+      });
+    }
+
+    // 如果已经分析过，直接返回缓存的数据
+    if (response.is_analysed && response.details && response.analytics) {
+      console.log(`✅ [${requestId}] Returning cached analytics`);
+      return res.status(200).json({
+        callResponse: response.details,
+        analytics: response.analytics
+      });
+    }
+
     console.log(`🚀 [${requestId}] Fetching call data from Retell API...`);
-    
+
     // 从 Retell API 获取通话信息
     const callResponse = await retellClient.call.retrieve(callId);
-    console.log(`✅ [${requestId}] Retell call response:`, JSON.stringify(callResponse, null, 2));
+    console.log(`✅ [${requestId}] Retell call response received`);
 
-    // 模拟分析数据 - 在实际项目中这些数据可能来自数据库或其他分析服务
-    const analytics = {
-      overallScore: Math.floor(Math.random() * 100),
-      overallFeedback: "Based on the interview analysis, the candidate demonstrated strong communication skills and relevant experience.",
-      communication: {
-        score: Math.floor(Math.random() * 10),
-        feedback: "Clear articulation and good listening skills throughout the conversation."
+    const interviewId = response.interview_id;
+    const transcript = callResponse.transcript;
+    const duration = Math.round(
+      callResponse.end_timestamp / 1000 - callResponse.start_timestamp / 1000,
+    );
+
+    console.log(`📊 [${requestId}] Generating analytics and summary...`);
+
+    // 调用generateAnalytics生成分析和总结
+    const analyticsResult = await generateInterviewAnalytics({
+      callId,
+      interviewId,
+      transcript
+    });
+
+    if (analyticsResult.status !== 200) {
+      console.error(`❌ [${requestId}] Analytics generation failed:`, analyticsResult.error);
+      return res.status(analyticsResult.status).json(analyticsResult);
+    }
+
+    const analytics = analyticsResult.analytics;
+
+    console.log(`✅ [${requestId}] Analytics generated successfully`);
+
+    // 生成深度总结（key insights + important quotes）
+    console.log(`🔍 [${requestId}] Generating interview summary...`);
+    const summaryResult = await InterviewSummaryService.generateInterviewSummary({
+      callId,
+      interviewId,
+      transcript
+    });
+
+    if (summaryResult.status !== 200) {
+      console.warn(`⚠️ [${requestId}] Summary generation failed, but continuing:`, summaryResult.error);
+      // 不因为总结生成失败而中断整个请求
+    } else {
+      console.log(`✅ [${requestId}] Interview summary generated successfully`);
+    }
+
+    // 保存分析结果到数据库
+    await ResponseService.saveResponse(
+      {
+        details: callResponse,
+        is_analysed: true,
+        duration: duration,
+        analytics: analytics,
       },
-      questionSummaries: [
-        {
-          question: "Tell me about your experience",
-          summary: "Candidate provided detailed examples of previous work experience."
-        }
-      ]
-    };
+      callId,
+    );
 
-    console.log(`📊 [${requestId}] Generated analytics:`, analytics);
-    
+    console.log(`💾 [${requestId}] Analytics saved to database`);
+
     res.status(200).json({
       callResponse,
       analytics
@@ -148,7 +206,7 @@ export const getCall = async (req: Request, res: Response) => {
   } catch (error: any) {
     console.error(`❌ [${requestId}] Error fetching call:`, error);
     console.error(`❌ [${requestId}] Error details:`, error.message);
-    
+
     res.status(500).json({
       error: "Failed to fetch call data",
       details: error.message

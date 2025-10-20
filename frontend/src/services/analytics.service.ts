@@ -1,17 +1,5 @@
 import { apiClient } from './api';
 
-const generateInsights = async (interviewId: string) => {
-  try {
-    const response = await apiClient.post('/analytics/insights', {
-      interviewId
-    });
-    return response.data;
-  } catch (error) {
-    console.error('Error generating insights:', error);
-    throw error;
-  }
-};
-
 const generateAnalytics = async (payload: {
   callId: string;
   interviewId: string;
@@ -27,6 +15,5 @@ const generateAnalytics = async (payload: {
 };
 
 export const AnalyticsService = {
-  generateInsights,
   generateAnalytics,
 };
