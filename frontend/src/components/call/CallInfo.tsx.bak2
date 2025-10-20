@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Analytics, CallData, InsightWithEvidence } from "@/types/response";
+import { Analytics, CallData, KeyInsight, ImportantQuote } from "@/types/response";
 import { apiClient } from "@/services/api";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
 import ReactAudioPlayer from "react-audio-player";
@@ -14,7 +14,8 @@ import LoaderWithText from "@/components/loaders/loader-with-text/loaderWithText
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Skeleton } from "@/components/ui/skeleton";
 import QuestionAnswerCard from "@/components/dashboard/interview/questionAnswerCard";
-import { InsightsWithEvidenceCard } from "@/components/call/InsightsWithEvidenceCard";
+import KeyInsightsCard from "@/components/call/KeyInsightsCard";
+import ImportantQuotesCard from "@/components/call/ImportantQuotesCard";
 import { marked } from "marked";
 import {
   AlertDialog,
@@ -93,8 +94,11 @@ function CallInfo({
         setInterviewId(response.interview_id);
 
         // Set key insights and important quotes
-        if (response.insights_with_evidence) {
-          setInsightsWithEvidence(response.insights_with_evidence);
+        if (response.key_insights) {
+          setKeyInsights(response.key_insights);
+        }
+        if (response.important_quotes) {
+          setImportantQuotes(response.important_quotes);
         }
       } catch (error) {
         console.error(error);
