@@ -24,12 +24,13 @@ interface StudySummaryResult {
 export const generateStudySummary = async (payload: {
   interviewId: string;
   selectedCallIds?: string[]; // Optional: specific interviews to include
+  regenerate?: boolean; // Optional: force regeneration even if summary exists
 }): Promise<{
   summary: StudySummaryResult | null;
   status: number;
   error?: string;
 }> => {
-  const { interviewId, selectedCallIds } = payload;
+  const { interviewId, selectedCallIds, regenerate = false } = payload;
 
   try {
     console.log('🔍 [Study Summary] Starting generation for interview:', interviewId);
@@ -40,8 +41,9 @@ export const generateStudySummary = async (payload: {
       return { summary: null, status: 404, error: 'Interview not found' };
     }
 
-    // Check if summary already exists
+    // Check if summary already exists (skip if regenerate=true)
     if (
+      !regenerate &&
       interview.executive_summary &&
       interview.objective_deliverables &&
       interview.cross_interview_insights
@@ -56,6 +58,10 @@ export const generateStudySummary = async (payload: {
         },
         status: 200,
       };
+    }
+
+    if (regenerate) {
+      console.log('🔄 [Study Summary] Regenerating summary (regenerate=true)');
     }
 
     const studyObjective = interview.objective || 'General user research';
@@ -92,13 +98,36 @@ export const generateStudySummary = async (payload: {
     });
 
     // Prepare interview summaries
-    const interviewSummaries = responses.map((response: any) => ({
-      name: response.name || 'Anonymous',
-      email: response.email || '',
-      callSummary: response.analytics?.softSkillSummary || '',
-      keyInsights: response.key_insights || [],
-      importantQuotes: response.important_quotes || [],
-    }));
+    const interviewSummaries = responses.map((response: any) => {
+      // Extract insights and quotes from the new insights_with_evidence structure
+      const insightsWithEvidence = response.insights_with_evidence || [];
+      const keyInsights = insightsWithEvidence.map((item: any) => ({
+        category: item.category || 'general',
+        content: item.content || '',
+      }));
+      const importantQuotes = insightsWithEvidence.flatMap((item: any) =>
+        (item.supporting_quotes || []).map((quote: any) => ({
+          quote: quote.quote || '',
+          context: `[${item.category}] ${item.content}`,
+          timestamp: quote.timestamp,
+        }))
+      );
+
+      console.log('🔍 [Study Summary] Interview data:', {
+        name: response.name,
+        insightsCount: keyInsights.length,
+        quotesCount: importantQuotes.length,
+        firstQuote: importantQuotes[0]?.quote,
+      });
+
+      return {
+        name: response.name || 'Anonymous',
+        email: response.email || '',
+        callSummary: response.analytics?.softSkillSummary || '',
+        keyInsights,
+        importantQuotes,
+      };
+    });
 
     // Stage 1: Extract expected deliverables from objective
     console.log('🎯 [Study Summary] Stage 1: Extracting deliverables...');
@@ -164,6 +193,15 @@ export const generateStudySummary = async (payload: {
 
     const summaryData = JSON.parse(summaryContent);
 
+    // Debug: Log the raw AI response
+    console.log('🔍 [Study Summary] Raw AI response structure:', {
+      hasInsights: !!summaryData.cross_interview_insights,
+      insightsCount: summaryData.cross_interview_insights?.length,
+      firstInsightHasQuotes: !!summaryData.cross_interview_insights?.[0]?.supporting_quotes,
+      hasEvidenceBank: !!summaryData.evidence_bank,
+    });
+    console.log('🔍 [Study Summary] First insight:', JSON.stringify(summaryData.cross_interview_insights?.[0], null, 2));
+
     // Validate the generated summary
     if (!validateStudySummary(summaryData)) {
       console.error('❌ [Study Summary] Validation failed');
@@ -172,7 +210,7 @@ export const generateStudySummary = async (payload: {
 
     console.log('✅ [Study Summary] Generated successfully:', {
       insightsCount: summaryData.cross_interview_insights.length,
-      evidenceCount: summaryData.evidence_bank.length,
+      hasEvidenceBank: !!summaryData.evidence_bank,
       deliverableType: summaryData.objective_deliverables.type,
     });
 

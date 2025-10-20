@@ -114,7 +114,7 @@ export const regenerateInterviewSummary = async (req: Request, res: Response) =>
  */
 export const generateStudySummary = async (req: Request, res: Response) => {
   try {
-    const { interviewId, selectedCallIds } = req.body;
+    const { interviewId, selectedCallIds, regenerate } = req.body;
 
     if (!interviewId) {
       return res.status(400).json({
@@ -126,7 +126,8 @@ export const generateStudySummary = async (req: Request, res: Response) => {
 
     const result = await StudySummaryService.generateStudySummary({
       interviewId,
-      selectedCallIds
+      selectedCallIds,
+      regenerate
     });
 
     res.status(result.status).json(result);

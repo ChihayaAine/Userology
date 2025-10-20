@@ -168,7 +168,10 @@ Return a JSON object with this exact structure:
 }
 \`\`\`
 
-**IMPORTANT**: Do NOT include an "evidence_bank" field. All supporting quotes should be embedded directly in each insight's "supporting_quotes" array.
+**IMPORTANT**:
+- Do NOT include an "evidence_bank" field
+- All supporting quotes MUST be embedded directly in each insight's "supporting_quotes" array
+- Each insight MUST have at least 1 supporting quote
 
 Generate the JSON output now:`;
 };
