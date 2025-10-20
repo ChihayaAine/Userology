@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://47.93.101.73:8090/api';
+// 使用环境变量或默认本地地址
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8090/api';
 
 console.log('🔗 API Base URL:', API_BASE_URL);
 console.log('🔗 Environment API URL:', process.env.NEXT_PUBLIC_API_URL);
