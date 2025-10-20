@@ -1,0 +1,110 @@
+-- Migration: 合并evidence_bank到cross_interview_insights
+-- Date: 2025-01-20
+-- Description: 重构跨访谈总结数据结构，将supporting quotes直接嵌入到每个insight中
+
+-- ============================================================================
+-- IMPORTANT: 这是一个JSONB字段内部结构的变更，不需要ALTER TABLE
+-- ============================================================================
+
+-- 数据结构变更说明：
+-- 
+-- 旧结构 (已废弃):
+-- {
+--   "cross_interview_insights": [
+--     {
+--       "id": "insight_1",
+--       "title": "...",
+--       "description": "...",
+--       "category": "consensus",
+--       "importance": "high"
+--     }
+--   ],
+--   "evidence_bank": [
+--     {
+--       "insight_id": "insight_1",
+--       "quotes": [
+--         {"user": "张三", "quote": "...", "interview_id": "..."}
+--       ]
+--     }
+--   ]
+-- }
+--
+-- 新结构 (当前):
+-- {
+--   "cross_interview_insights": [
+--     {
+--       "id": "insight_1",
+--       "title": "...",
+--       "description": "...",
+--       "category": "consensus",
+--       "importance": "high",
+--       "user_count": "4 out of 5 users",
+--       "supporting_quotes": [
+--         {"user": "张三", "quote": "...", "interview_id": "..."},
+--         {"user": "李四", "quote": "...", "interview_id": "..."}
+--       ]
+--     }
+--   ]
+-- }
+
+-- ============================================================================
+-- 设计理念
+-- ============================================================================
+-- 
+-- 1. 数据内聚性：每个insight直接包含其supporting quotes，无需通过ID关联
+-- 2. 前端简化：前端不需要额外逻辑来匹配evidence和insight
+-- 3. 一致性：与单访谈总结的设计保持一致（insights_with_evidence）
+-- 4. 可读性：数据结构更直观，更容易理解和维护
+--
+-- ============================================================================
+-- 向后兼容性
+-- ============================================================================
+--
+-- - 旧数据仍然可以读取（如果存在evidence_bank字段）
+-- - 新生成的总结将使用新结构（supporting_quotes嵌入）
+-- - 前端应优先读取新格式，如果不存在则fallback到旧格式
+--
+-- ============================================================================
+-- 无需执行的SQL
+-- ============================================================================
+--
+-- 此migration仅记录数据结构变更，不需要执行任何ALTER TABLE语句
+-- 因为变更仅涉及JSONB字段的内部结构
+--
+-- 如需迁移历史数据，可以使用以下逻辑（示例，不自动执行）：
+--
+-- UPDATE interview
+-- SET cross_interview_insights = (
+--   SELECT jsonb_agg(
+--     insight || jsonb_build_object(
+--       'supporting_quotes',
+--       COALESCE(
+--         (
+--           SELECT quotes
+--           FROM jsonb_array_elements(evidence_bank) AS evidence
+--           WHERE evidence->>'insight_id' = insight->>'id'
+--         ),
+--         '[]'::jsonb
+--       )
+--     )
+--   )
+--   FROM jsonb_array_elements(cross_interview_insights) AS insight
+-- )
+-- WHERE evidence_bank IS NOT NULL;
+--
+-- ============================================================================
+
+-- 添加注释说明新的数据结构
+COMMENT ON COLUMN interview.cross_interview_insights IS 
+'Cross-interview insights with embedded supporting quotes. Each insight contains:
+- id: unique identifier
+- title: short descriptive title
+- description: detailed explanation
+- category: consensus | divergent | unexpected | critical
+- importance: high | medium | low
+- user_count: number of users who mentioned this
+- supporting_quotes: array of 2-4 quotes supporting this insight
+  - user: name of the user
+  - quote: exact quote text
+  - interview_id: email or identifier of the interview';
+

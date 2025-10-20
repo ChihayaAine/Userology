@@ -38,7 +38,7 @@ export interface InterviewDetails {
   executive_summary?: string;
   objective_deliverables?: ObjectiveDeliverables;
   cross_interview_insights?: CrossInterviewInsight[];
-  evidence_bank?: EvidenceItem[];
+  // evidence_bank is deprecated - quotes are now embedded in cross_interview_insights
 }
 
 export interface Interview extends InterviewBase, InterviewDetails {}
@@ -49,20 +49,25 @@ export interface ObjectiveDeliverables {
   content: any; // Dynamic structure based on type
 }
 
+export interface SupportingQuote {
+  user: string;
+  quote: string;
+  interview_id: string;
+  timestamp?: number;
+}
+
 export interface CrossInterviewInsight {
   id: string;
   title: string;
   description: string;
-  category?: string;
-  importance?: 'high' | 'medium' | 'low';
+  category: 'consensus' | 'divergent' | 'unexpected' | 'critical';
+  importance: 'high' | 'medium' | 'low';
+  user_count?: string; // e.g., "4 out of 5 users"
+  supporting_quotes: SupportingQuote[]; // 2-4 quotes that support this insight
 }
 
+// Deprecated: EvidenceItem is no longer used - quotes are embedded in CrossInterviewInsight
 export interface EvidenceItem {
   insight_id: string;
-  quotes: Array<{
-    user: string;
-    quote: string;
-    interview_id: string;
-    timestamp?: number;
-  }>;
+  quotes: SupportingQuote[];
 }

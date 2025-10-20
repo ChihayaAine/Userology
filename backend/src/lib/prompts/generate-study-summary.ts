@@ -118,22 +118,19 @@ Each insight should:
 - Be specific and actionable
 - Include the number of users who mentioned this theme
 - Have a clear implication for product decisions
+- **Include 2-4 supporting quotes directly in the insight** (from the Important Quotes provided above)
 
 **Note**: For studies with only 1-2 interviews, focus on quality over quantity. Even 1-2 strong insights are valuable.
 
 Format:
+- **id**: Unique identifier (e.g., "insight_1")
 - **title**: Short, descriptive title (max 10 words)
 - **description**: Detailed explanation (50-100 words)
 - **category**: One of: "consensus", "divergent", "unexpected", "critical"
 - **importance**: "high", "medium", or "low"
 - **user_count**: Number of users who mentioned this (e.g., "4 out of 5 users")
-
-### 4. EVIDENCE BANK
-For each cross-interview insight, provide supporting quotes from different users.
-
-Format:
-- **insight_id**: ID of the related insight
-- **quotes**: Array of {user, quote, interview_id}
+- **supporting_quotes**: Array of 2-4 quotes that directly support this insight
+  - Each quote should include: **user** (name), **quote** (exact text), **interview_id** (email)
 
 ## Output Format
 
@@ -153,23 +150,25 @@ Return a JSON object with this exact structure:
       "description": "Detailed description...",
       "category": "consensus",
       "importance": "high",
-      "user_count": "4 out of ${interviewSummaries.length} users"
-    }
-  ],
-  "evidence_bank": [
-    {
-      "insight_id": "insight_1",
-      "quotes": [
+      "user_count": "4 out of ${interviewSummaries.length} users",
+      "supporting_quotes": [
         {
           "user": "John Doe",
           "quote": "Exact quote from interview",
           "interview_id": "email@example.com"
+        },
+        {
+          "user": "Jane Smith",
+          "quote": "Another supporting quote",
+          "interview_id": "jane@example.com"
         }
       ]
     }
   ]
 }
 \`\`\`
+
+**IMPORTANT**: Do NOT include an "evidence_bank" field. All supporting quotes should be embedded directly in each insight's "supporting_quotes" array.
 
 Generate the JSON output now:`;
 };
@@ -324,27 +323,20 @@ export const validateStudySummary = (summary: any): boolean => {
       console.warn('Invalid insight importance:', insight.importance);
       return false;
     }
-  }
 
-  // Validate evidence_bank
-  if (!Array.isArray(summary.evidence_bank)) {
-    console.warn('Invalid evidence_bank');
-    return false;
-  }
-
-  // Validate each evidence entry
-  for (const evidence of summary.evidence_bank) {
-    if (!evidence.insight_id || !Array.isArray(evidence.quotes)) {
-      console.warn('Invalid evidence structure:', evidence);
+    // Validate supporting_quotes (each insight should have 2-4 quotes, but allow 1+ for flexibility)
+    if (!Array.isArray(insight.supporting_quotes) || insight.supporting_quotes.length < 1) {
+      console.warn('Invalid supporting_quotes for insight:', insight.id, insight.supporting_quotes?.length);
       return false;
     }
 
-    // Validate each quote
-    for (const quote of evidence.quotes) {
+    // Validate each quote structure
+    for (const quote of insight.supporting_quotes) {
       if (!quote.user || !quote.quote) {
-        console.warn('Invalid quote structure:', quote);
+        console.warn('Invalid quote structure in insight:', insight.id, quote);
         return false;
       }
+      // interview_id is optional but recommended
     }
   }
 

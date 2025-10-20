@@ -23,8 +23,19 @@ interface StudySummaryCardProps {
   summary: {
     executive_summary?: string;
     objective_deliverables?: any;
-    cross_interview_insights?: any[];
-    evidence_bank?: any[];
+    cross_interview_insights?: Array<{
+      id: string;
+      title: string;
+      description: string;
+      category?: string;
+      importance?: 'high' | 'medium' | 'low';
+      user_count?: string;
+      supporting_quotes?: Array<{
+        user: string;
+        quote: string;
+        interview_id?: string;
+      }>;
+    }>;
   } | null;
   onUpdate: (field: string, value: any) => Promise<void>;
 }
@@ -163,7 +174,7 @@ const StudySummaryCard: React.FC<StudySummaryCardProps> = ({
         </Card>
       )}
 
-      {/* Cross-Interview Insights */}
+      {/* Cross-Interview Insights with Supporting Quotes */}
       {summary.cross_interview_insights && summary.cross_interview_insights.length > 0 && (
         <Card className="bg-slate-50 border-l-4 border-l-green-500">
           <CardHeader>
@@ -175,11 +186,12 @@ const StudySummaryCard: React.FC<StudySummaryCardProps> = ({
             </div>
           </CardHeader>
           <CardContent>
-            <ScrollArea className="max-h-[500px]">
-              <div className="space-y-3 pr-4">
+            <ScrollArea className="max-h-[600px]">
+              <div className="space-y-4 pr-4">
                 {summary.cross_interview_insights.map((insight: any, index: number) => (
                   <Card key={insight.id || index} className="bg-white">
-                    <CardContent className="pt-4">
+                    <CardContent className="pt-4 space-y-3">
+                      {/* Insight Header */}
                       <div className="flex items-start justify-between mb-2">
                         <div className="flex items-center gap-2">
                           <Sparkles className="w-4 h-4 text-green-600" />
@@ -187,28 +199,69 @@ const StudySummaryCard: React.FC<StudySummaryCardProps> = ({
                             {insight.title || `Insight ${index + 1}`}
                           </h4>
                         </div>
-                        {insight.importance && (
-                          <Badge
-                            variant="outline"
-                            className={
-                              insight.importance === "high"
-                                ? "bg-red-100 text-red-800 border-red-300"
-                                : insight.importance === "medium"
-                                ? "bg-yellow-100 text-yellow-800 border-yellow-300"
-                                : "bg-gray-100 text-gray-800 border-gray-300"
-                            }
-                          >
-                            {insight.importance}
-                          </Badge>
-                        )}
+                        <div className="flex gap-2">
+                          {insight.importance && (
+                            <Badge
+                              variant="outline"
+                              className={
+                                insight.importance === "high"
+                                  ? "bg-red-100 text-red-800 border-red-300"
+                                  : insight.importance === "medium"
+                                  ? "bg-yellow-100 text-yellow-800 border-yellow-300"
+                                  : "bg-gray-100 text-gray-800 border-gray-300"
+                              }
+                            >
+                              {insight.importance}
+                            </Badge>
+                          )}
+                          {insight.category && (
+                            <Badge variant="outline" className="text-xs">
+                              {insight.category}
+                            </Badge>
+                          )}
+                        </div>
                       </div>
+
+                      {/* Insight Description */}
                       <p className="text-sm text-gray-700 leading-relaxed">
                         {insight.description}
                       </p>
-                      {insight.category && (
-                        <Badge variant="outline" className="mt-2 text-xs">
-                          {insight.category}
-                        </Badge>
+
+                      {/* User Count */}
+                      {insight.user_count && (
+                        <p className="text-xs text-gray-500 italic">
+                          {insight.user_count}
+                        </p>
+                      )}
+
+                      {/* Supporting Quotes */}
+                      {insight.supporting_quotes && insight.supporting_quotes.length > 0 && (
+                        <div className="mt-3 pt-3 border-t border-gray-200">
+                          <div className="flex items-center gap-2 mb-2">
+                            <Quote className="w-3.5 h-3.5 text-blue-600" />
+                            <span className="text-xs font-medium text-gray-600">
+                              Supporting Evidence
+                            </span>
+                          </div>
+                          <div className="space-y-2">
+                            {insight.supporting_quotes.map((quote: any, qIndex: number) => (
+                              <div
+                                key={qIndex}
+                                className="bg-blue-50 rounded-md p-2 border-l-2 border-blue-300"
+                              >
+                                <blockquote className="text-xs text-gray-700 italic">
+                                  "{quote.quote}"
+                                </blockquote>
+                                <p className="text-xs text-gray-600 mt-1">
+                                  — {quote.user}
+                                  {quote.interview_id && (
+                                    <span className="text-gray-400"> ({quote.interview_id})</span>
+                                  )}
+                                </p>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
                       )}
                     </CardContent>
                   </Card>
@@ -219,44 +272,7 @@ const StudySummaryCard: React.FC<StudySummaryCardProps> = ({
         </Card>
       )}
 
-      {/* Evidence Bank */}
-      {summary.evidence_bank && summary.evidence_bank.length > 0 && (
-        <Card className="bg-slate-50 border-l-4 border-l-blue-500">
-          <CardHeader>
-            <div className="flex items-center gap-2">
-              <div className="bg-blue-100 p-2 rounded-lg">
-                <Quote className="w-5 h-5 text-blue-600" />
-              </div>
-              <CardTitle className="text-lg">Supporting Evidence</CardTitle>
-            </div>
-          </CardHeader>
-          <CardContent>
-            <ScrollArea className="max-h-[400px]">
-              <div className="space-y-3 pr-4">
-                {summary.evidence_bank.map((evidence: any, index: number) => (
-                  <Card key={index} className="bg-white">
-                    <CardContent className="pt-4">
-                      {evidence.insight_id && (
-                        <p className="text-xs text-gray-500 mb-2">
-                          Related to: {evidence.insight_id}
-                        </p>
-                      )}
-                      <blockquote className="text-sm text-gray-700 italic border-l-2 border-gray-300 pl-3">
-                        "{evidence.quote}"
-                      </blockquote>
-                      {evidence.participant && (
-                        <p className="text-xs text-gray-600 mt-2">
-                          — {evidence.participant}
-                        </p>
-                      )}
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </ScrollArea>
-          </CardContent>
-        </Card>
-      )}
+
     </div>
   );
 };
