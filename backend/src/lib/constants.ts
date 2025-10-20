@@ -100,7 +100,7 @@ export const SUPPORTED_LANGUAGES = {
     voices: {
       lisa: '11labs-Chloe',
       bob: '11labs-Brian',
-      david: '11labs-Adam'
+      david: '11labs-Adrian'
     }
   },
   'zh-CN': {
