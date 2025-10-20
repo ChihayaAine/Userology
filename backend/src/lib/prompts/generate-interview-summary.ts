@@ -122,8 +122,8 @@ export const validateInterviewSummary = (summary: any): boolean => {
     return false;
   }
 
-  // Validate key_insights
-  if (!Array.isArray(summary.key_insights) || summary.key_insights.length < 3 || summary.key_insights.length > 5) {
+  // Validate key_insights (relaxed: allow 1-5 insights for short interviews)
+  if (!Array.isArray(summary.key_insights) || summary.key_insights.length < 1 || summary.key_insights.length > 5) {
     console.warn('Invalid key_insights count:', summary.key_insights?.length);
     return false;
   }
@@ -139,8 +139,8 @@ export const validateInterviewSummary = (summary: any): boolean => {
     }
   }
 
-  // Validate important_quotes
-  if (!Array.isArray(summary.important_quotes) || summary.important_quotes.length < 5 || summary.important_quotes.length > 10) {
+  // Validate important_quotes (relaxed: allow 2-10 quotes for short interviews)
+  if (!Array.isArray(summary.important_quotes) || summary.important_quotes.length < 2 || summary.important_quotes.length > 10) {
     console.warn('Invalid important_quotes count:', summary.important_quotes?.length);
     return false;
   }

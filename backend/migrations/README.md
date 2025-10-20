@@ -1,116 +1,92 @@
-# Database Migrations
+# 数据库Migration指南
 
-This directory contains SQL migration files for the FoloUp database schema.
+## 🚨 重要：需要执行Migration
 
-## How to Run Migrations
+当前系统需要执行数据库migration来添加新的字段。
 
-Since this project uses Supabase, you have two options to run migrations:
+## 📋 执行步骤
 
-### Option 1: Using Supabase Dashboard (Recommended)
+### 方法1：通过Supabase Dashboard（推荐）
 
-1. Go to your Supabase project dashboard
-2. Navigate to **SQL Editor**
-3. Copy the content of the migration file (e.g., `001_add_summary_fields.sql`)
-4. Paste it into the SQL Editor
-5. Click **Run** to execute the migration
+1. **打开Supabase Dashboard**
+   - 访问：https://supabase.com/dashboard
+   - 选择你的项目
 
-### Option 2: Using Supabase CLI
+2. **打开SQL Editor**
+   - 左侧菜单 → SQL Editor
+   - 点击 "New query"
 
-If you have the Supabase CLI installed:
+3. **复制并执行Migration**
+   - 打开文件：`backend/migrations/001_add_summary_fields.sql`
+   - 复制全部内容
+   - 粘贴到SQL Editor
+   - 点击 "Run" 按钮
 
-```bash
-# Navigate to project root
-cd /path/to/Userology-Foloup
+4. **验证执行结果**
+   - 应该看到 "Success. No rows returned"
+   - 检查是否有错误信息
 
-# Run the migration
-supabase db push --file backend/migrations/001_add_summary_fields.sql
-```
-
-### Option 3: Using psql (Direct Database Connection)
-
-If you have direct database access:
+### 方法2：通过命令行（需要Supabase CLI）
 
 ```bash
-# Connect to your Supabase database
-psql "postgresql://postgres:[YOUR-PASSWORD]@[YOUR-PROJECT-REF].supabase.co:5432/postgres"
+# 如果已安装Supabase CLI
+supabase db push
 
-# Run the migration
-\i backend/migrations/001_add_summary_fields.sql
+# 或者直接执行SQL文件
+psql $DATABASE_URL -f backend/migrations/001_add_summary_fields.sql
 ```
 
-## Migration Files
+## ✅ 验证Migration是否成功
 
-### 001_add_summary_fields.sql
-
-**Date**: 2025-01-20
-
-**Description**: Adds fields for enhanced interview analytics
-
-**Changes**:
-- **response table**:
-  - `key_insights` (JSONB): Stores 3-5 key insights per interview
-  - `important_quotes` (JSONB): Stores 5-10 important quotes with timestamps
-
-- **interview table**:
-  - `executive_summary` (TEXT): One-paragraph study summary
-  - `objective_deliverables` (JSONB): Dynamic deliverables based on study objective
-  - `cross_interview_insights` (JSONB): 5-8 insights across all interviews
-  - `evidence_bank` (JSONB): Links insights to supporting user quotes
-
-**Indexes**:
-- `idx_interview_has_summary`: For querying interviews with summaries
-- `idx_response_has_insights`: For querying responses with insights
-
-## Rollback
-
-If you need to rollback this migration, run:
+执行以下SQL查询来验证字段是否添加成功：
 
 ```sql
--- Remove new columns from response table
-ALTER TABLE response 
-DROP COLUMN IF EXISTS key_insights,
-DROP COLUMN IF EXISTS important_quotes;
-
--- Remove new columns from interview table
-ALTER TABLE interview 
-DROP COLUMN IF EXISTS executive_summary,
-DROP COLUMN IF EXISTS objective_deliverables,
-DROP COLUMN IF EXISTS cross_interview_insights,
-DROP COLUMN IF EXISTS evidence_bank;
-
--- Remove indexes
-DROP INDEX IF EXISTS idx_interview_has_summary;
-DROP INDEX IF EXISTS idx_response_has_insights;
-```
-
-## Verification
-
-After running the migration, verify the changes:
-
-```sql
--- Check response table columns
-SELECT column_name, data_type, column_default
-FROM information_schema.columns
-WHERE table_name = 'response'
+-- 检查response表的新字段
+SELECT column_name, data_type 
+FROM information_schema.columns 
+WHERE table_name = 'response' 
   AND column_name IN ('key_insights', 'important_quotes');
 
--- Check interview table columns
-SELECT column_name, data_type, column_default
-FROM information_schema.columns
-WHERE table_name = 'interview'
+-- 检查interview表的新字段
+SELECT column_name, data_type 
+FROM information_schema.columns 
+WHERE table_name = 'interview' 
   AND column_name IN ('executive_summary', 'objective_deliverables', 'cross_interview_insights', 'evidence_bank');
-
--- Check indexes
-SELECT indexname, indexdef
-FROM pg_indexes
-WHERE tablename IN ('response', 'interview')
-  AND indexname LIKE 'idx_%';
 ```
 
-## Notes
+应该返回所有6个字段。
 
-- All new fields are nullable or have default values, so existing data won't be affected
-- The migration includes data initialization for existing records
-- JSONB fields are used for flexible schema evolution
-- Indexes are created to optimize query performance
+## 🔄 执行完Migration后
+
+1. **重新运行生成脚本**
+   ```bash
+   cd backend
+   npx tsx src/scripts/find-and-backfill.ts
+   ```
+
+2. **刷新浏览器页面**
+   - 查看单访谈页面的Key Insights和Important Quotes
+   - 查看Study页面的Study Insights Tab
+
+## 📝 Migration内容说明
+
+这个migration添加了以下字段：
+
+### response表
+- `key_insights` (JSONB): 存储3-5条关键洞察
+- `important_quotes` (JSONB): 存储5-10条重要引用
+
+### interview表
+- `executive_summary` (TEXT): 研究的执行摘要
+- `objective_deliverables` (JSONB): 基于研究目标的可交付成果
+- `cross_interview_insights` (JSONB): 跨访谈的深度洞察
+- `evidence_bank` (JSONB): 洞察与用户引用的关联
+
+## ❓ 常见问题
+
+**Q: 如果migration已经执行过了怎么办？**
+A: 没关系，SQL中使用了`IF NOT EXISTS`，重复执行不会有问题。
+
+**Q: 如果执行失败怎么办？**
+A: 检查错误信息，可能是权限问题或数据库连接问题。联系数据库管理员。
 
