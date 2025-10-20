@@ -90,6 +90,7 @@ export const generateInterviewSessions = async (req: Request, res: Response) => 
   console.warn('【生成 Sessions - 配置】：>>>>>>>>>>>> questions.controller.ts', {
     researchType,
     language, // 记录语言参数
+    customInstructions: body.customInstructions || 'none', // 记录个性化备注
     apiKey: process.env.OPENAI_API_KEY ? 'exists' : 'missing',
     baseURL: process.env.OPENAI_API_BASE || "https://api.tu-zi.com/v1",
     requestBody: body

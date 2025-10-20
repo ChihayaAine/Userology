@@ -658,8 +658,8 @@ function DetailsPopup({
             </div>
             <Textarea
               value={customInstructions}
-              className="h-20 mt-2 border-2 border-gray-500 w-[33.2rem]"
-              placeholder="Example: 'My interviews target elderly users, please use very simple and clear language' or 'Focus on emotional experiences rather than technical features' or 'Keep all questions under 15 words'"
+              className="h-16 mt-2 border-2 border-gray-500 w-[33.2rem] resize-none overflow-y-auto"
+              placeholder="Example: 'My interviews target elderly users, please use very simple and clear language' or 'Focus on emotional experiences rather than technical features'"
               onChange={(e) => setCustomInstructions(e.target.value)}
               onBlur={(e) => setCustomInstructions(e.target.value.trim())}
             />
