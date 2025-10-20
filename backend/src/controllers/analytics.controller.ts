@@ -173,3 +173,62 @@ export const regenerateInterviewSummary = async (req: Request, res: Response) =>
     });
   }
 };
+
+/**
+ * Generate study-level summary (executive summary + objective deliverables + cross-interview insights)
+ */
+export const generateStudySummary = async (req: Request, res: Response) => {
+  try {
+    const { interviewId, selectedCallIds } = req.body;
+
+    if (!interviewId) {
+      return res.status(400).json({
+        error: "interviewId is required"
+      });
+    }
+
+    console.log('📊 [Generate Study Summary] Starting for interview:', interviewId);
+
+    const result = await StudySummaryService.generateStudySummary({
+      interviewId,
+      selectedCallIds
+    });
+
+    res.status(result.status).json(result);
+  } catch (error) {
+    console.error("❌ [Generate Study Summary] Error:", error);
+    res.status(500).json({
+      error: "Failed to generate study summary"
+    });
+  }
+};
+
+/**
+ * Regenerate study summary
+ */
+export const regenerateStudySummary = async (req: Request, res: Response) => {
+  try {
+    const { interviewId } = req.params;
+    const { selectedCallIds } = req.body;
+
+    if (!interviewId) {
+      return res.status(400).json({
+        error: "interviewId is required"
+      });
+    }
+
+    console.log('🔄 [Regenerate Study Summary] Starting for interview:', interviewId);
+
+    const result = await StudySummaryService.regenerateStudySummary(
+      interviewId,
+      selectedCallIds
+    );
+
+    res.status(result.status).json(result);
+  } catch (error) {
+    console.error("❌ [Regenerate Study Summary] Error:", error);
+    res.status(500).json({
+      error: "Failed to regenerate study summary"
+    });
+  }
+};
