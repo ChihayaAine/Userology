@@ -58,7 +58,7 @@ For each insight:
   - **timestamp**: Approximate timestamp in seconds (estimate based on position in transcript)
   - **speaker**: Either "user" or "agent"
 
-**CRITICAL**: Each insight MUST have 2-3 supporting quotes that directly support that specific insight. The quotes should be the strongest evidence for that particular insight.
+**CRITICAL**: Each insight MUST have 1-3 supporting quotes that directly support that specific insight. Prefer 2-3 quotes when possible, but 1 quote is acceptable for short interviews or when there's limited relevant content. The quotes should be the strongest evidence for that particular insight.
 
 ## Output Format
 
@@ -156,8 +156,8 @@ export const validateInterviewSummary = (summary: any): boolean => {
       return false;
     }
 
-    // Validate supporting_quotes (each insight must have 2-3 quotes)
-    if (!Array.isArray(insight.supporting_quotes) || insight.supporting_quotes.length < 2 || insight.supporting_quotes.length > 3) {
+    // Validate supporting_quotes (each insight should have 1-3 quotes, prefer 2-3)
+    if (!Array.isArray(insight.supporting_quotes) || insight.supporting_quotes.length < 1 || insight.supporting_quotes.length > 3) {
       console.warn('Invalid supporting_quotes count for insight:', insight.id, insight.supporting_quotes?.length);
       return false;
     }
