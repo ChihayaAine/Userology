@@ -88,6 +88,7 @@ function DetailsPopup({
   );
   const [duration, setDuration] = useState(interviewData.time_duration);
   const [uploadedDocumentContext, setUploadedDocumentContext] = useState("");
+  const [customInstructions, setCustomInstructions] = useState(""); // 个性化备注
 
   // 滑动函数优化
   const slide = (id: string, value: number) => {
@@ -142,6 +143,7 @@ function DetailsPopup({
         context: uploadedDocumentContext,
         researchType: researchType,
         language: selectedLanguage, // 添加访谈语言参数
+        customInstructions: customInstructions.trim(), // 添加个性化备注
       };
 
       // 检测选择的面试官是否是 David（深度访谈模式）
@@ -626,6 +628,43 @@ function DetailsPopup({
             setFileName={setFileName}
             setUploadedDocumentContext={setUploadedDocumentContext}
           />
+
+          {/* 个性化备注输入框 */}
+          <div className="mt-4">
+            <div className="flex items-center gap-2 relative">
+              <h3 className="text-sm font-medium">Custom Instructions:</h3>
+              <div className="relative">
+                <Info
+                  size={16}
+                  className="text-indigo-600 cursor-pointer hover:text-indigo-800"
+                  onClick={() => {
+                    const tooltip = document.getElementById('custom-instructions-tooltip');
+                    if (tooltip) {
+                      tooltip.style.display = tooltip.style.display === 'none' ? 'block' : 'none';
+                    }
+                  }}
+                />
+                <div
+                  id="custom-instructions-tooltip"
+                  className="absolute left-0 top-6 z-50 w-80 bg-white border border-gray-300 rounded-lg shadow-lg p-3"
+                  style={{ display: 'none' }}
+                >
+                  <p className="text-xs text-gray-700">
+                    <span className="font-semibold text-gray-900">Optional.</span>{' '}
+                    Add any special instructions for generating the interview guide. For example: "Use simple language suitable for elderly participants" or "Focus on emotional responses rather than technical details" or "Keep questions very brief and direct."
+                  </p>
+                </div>
+              </div>
+            </div>
+            <Textarea
+              value={customInstructions}
+              className="h-20 mt-2 border-2 border-gray-500 w-[33.2rem]"
+              placeholder="Example: 'My interviews target elderly users, please use very simple and clear language' or 'Focus on emotional experiences rather than technical features' or 'Keep all questions under 15 words'"
+              onChange={(e) => setCustomInstructions(e.target.value)}
+              onBlur={(e) => setCustomInstructions(e.target.value.trim())}
+            />
+          </div>
+
           <label className="flex-col mt-7 w-full">
             <div className="flex items-center cursor-pointer">
               <span className="text-sm font-medium">

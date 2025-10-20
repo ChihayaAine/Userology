@@ -20,6 +20,7 @@ export const generateProductResearchSessionsPrompt = (body: {
   number: number;
   context: string;
   language?: string;
+  customInstructions?: string;
 }) => {
   // 语言本地化配置
   const languageConfig: Record<string, { name: string; instructions: string }> = {
@@ -101,6 +102,8 @@ DO NOT mix languages. DO NOT use English if the target language is not English.
 ${body.objective}
 
 ${body.context ? `**Additional Product Documentation**:\n${body.context}\n` : ''}
+
+${body.customInstructions ? `**Custom Instructions from Researcher**:\n${body.customInstructions}\n\n⚠️ IMPORTANT: Please carefully follow these custom instructions when generating the interview guide. These are specific requirements from the researcher that should be prioritized.\n` : ''}
 
 **Number of Sessions**: ${Math.min(body.number, 10)} (maximum 10 sessions supported)
 
