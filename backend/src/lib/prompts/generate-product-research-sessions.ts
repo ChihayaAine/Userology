@@ -61,11 +61,13 @@ export const generateProductResearchSessionsPrompt = (body: {
 - Adapt to German cultural context`
     },
     'ja-JP': {
-      name: 'Japanese',
-      instructions: `**LANGUAGE REQUIREMENT**:
-- Generate ALL content in Japanese
-- Use Japanese interview conventions and communication styles (e.g., high-context, polite forms)
-- Adapt to Japanese cultural context (e.g., emphasis on harmony, indirect communication)`
+      name: '日本語 (Japanese)',
+      instructions: `**CRITICAL LANGUAGE REQUIREMENT - 日本語で生成してください**:
+- すべてのコンテンツを日本語で生成してください (Generate ALL content in Japanese)
+- 日本語の敬語と丁寧な表現を使用してください (Use Japanese polite forms and keigo)
+- 日本の面接慣習とコミュニケーションスタイルを使用してください (Use Japanese interview conventions)
+- 日本文化に適した質問表現を使用してください（間接的、関係構築的アプローチ）(Adapt to Japanese cultural context with indirect, relationship-building approach)
+- 和を重んじる表現を使用してください (Use expressions that emphasize harmony)`
     }
   };
 
@@ -76,7 +78,20 @@ export const generateProductResearchSessionsPrompt = (body: {
 
 ${langConfig.instructions}
 
-**IMPORTANT**: Regardless of the language used in the Research Objective or Additional Documentation below, you MUST generate the interview guide in ${langConfig.name}. The input language is for your understanding only - the output MUST be in ${langConfig.name}.
+**🚨 CRITICAL - OUTPUT LANGUAGE REQUIREMENT 🚨**:
+You MUST generate the ENTIRE interview guide in ${langConfig.name}.
+This includes:
+- ALL session titles
+- ALL questions
+- ALL interviewer notes
+- ALL background information
+- ALL instructions
+- The description field
+
+The language used in the Research Objective or Additional Documentation below is ONLY for your understanding.
+Your OUTPUT must be 100% in ${langConfig.name}.
+
+DO NOT mix languages. DO NOT use English if the target language is not English.
 
 ## Input Information
 
