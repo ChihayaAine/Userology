@@ -177,8 +177,10 @@ async function backfillInsights(interviewId: string) {
 
         if (result.status === 200) {
           console.log(`  ✅ 生成成功`);
-          console.log(`     - Key Insights: ${result.summary?.key_insights?.length || 0} 条`);
-          console.log(`     - Important Quotes: ${result.summary?.important_quotes?.length || 0} 条\n`);
+          const insights = result.summary?.insights_with_evidence || [];
+          const totalQuotes = insights.reduce((sum, insight) => sum + (insight.supporting_quotes?.length || 0), 0);
+          console.log(`     - Insights: ${insights.length} 条`);
+          console.log(`     - Total Supporting Quotes: ${totalQuotes} 条\n`);
           successCount++;
         } else {
           console.log(`  ❌ 生成失败: ${result.error}\n`);

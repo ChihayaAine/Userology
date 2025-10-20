@@ -1,17 +1,16 @@
 import { openaiClient } from '@/config/openai';
-import { 
-  INTERVIEW_SUMMARY_SYSTEM_PROMPT, 
+import {
+  INTERVIEW_SUMMARY_SYSTEM_PROMPT,
   getInterviewSummaryPrompt,
-  validateInterviewSummary 
+  validateInterviewSummary
 } from '@/lib/prompts/generate-interview-summary';
 import { ResponseService } from './responses.service';
 import { InterviewService } from './interviews.service';
-import { KeyInsight, ImportantQuote } from '@/types/response';
+import { InsightWithEvidence } from '@/types/response';
 import { Question } from '@/types/interview';
 
 interface InterviewSummaryResult {
-  key_insights: KeyInsight[];
-  important_quotes: ImportantQuote[];
+  insights_with_evidence: InsightWithEvidence[];
 }
 
 /**
@@ -32,16 +31,21 @@ export const generateInterviewSummary = async (payload: {
     const response = await ResponseService.getResponseByCallId(callId);
     const interview = await InterviewService.getInterviewById(interviewId);
 
-    // Check if summary already exists
-    if (response.key_insights && response.important_quotes) {
-      console.log('✅ [Interview Summary] Summary already exists, returning cached version');
+    // Check if summary already exists (new format)
+    if (response.insights_with_evidence) {
+      console.log('✅ [Interview Summary] Summary already exists (new format), returning cached version');
       return {
         summary: {
-          key_insights: response.key_insights,
-          important_quotes: response.important_quotes,
+          insights_with_evidence: response.insights_with_evidence,
         },
         status: 200,
       };
+    }
+
+    // Check if old format exists (for backward compatibility)
+    if (response.key_insights && response.important_quotes) {
+      console.log('⚠️ [Interview Summary] Old format detected, will regenerate in new format');
+      // Continue to generate new format
     }
 
     // Prepare data
@@ -102,15 +106,14 @@ export const generateInterviewSummary = async (payload: {
     }
 
     console.log('✅ [Interview Summary] Generated successfully:', {
-      insightsCount: summaryData.key_insights.length,
-      quotesCount: summaryData.important_quotes.length,
+      insightsCount: summaryData.insights_with_evidence.length,
+      totalQuotesCount: summaryData.insights_with_evidence.reduce((sum: number, insight: any) => sum + insight.supporting_quotes.length, 0),
     });
 
     // Save to database
     await ResponseService.saveResponse(
       {
-        key_insights: summaryData.key_insights,
-        important_quotes: summaryData.important_quotes,
+        insights_with_evidence: summaryData.insights_with_evidence,
       },
       callId,
     );
@@ -119,8 +122,7 @@ export const generateInterviewSummary = async (payload: {
 
     return {
       summary: {
-        key_insights: summaryData.key_insights,
-        important_quotes: summaryData.important_quotes,
+        insights_with_evidence: summaryData.insights_with_evidence,
       },
       status: 200,
     };
@@ -160,8 +162,9 @@ export const regenerateInterviewSummary = async (callId: string): Promise<{
     // Clear existing summary to force regeneration
     await ResponseService.saveResponse(
       {
-        key_insights: null,
-        important_quotes: null,
+        insights_with_evidence: null,
+        key_insights: null,  // Also clear old format
+        important_quotes: null,  // Also clear old format
       },
       callId,
     );

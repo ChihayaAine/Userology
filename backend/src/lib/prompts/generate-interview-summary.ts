@@ -40,33 +40,25 @@ ${transcript}
 
 Based on this interview, generate the following:
 
-### 1. KEY INSIGHTS (3-5 insights)
+### KEY INSIGHTS WITH EVIDENCE (3-5 insights)
 
-Extract 3-5 key insights that:
-- Directly address the study objective
-- Are specific and actionable (not generic observations)
-- Reveal user needs, behaviors, pain points, or preferences
-- Could inform product decisions or strategy
-- Are supported by evidence from the transcript
+Extract 3-5 key insights, each with 2-3 supporting quotes as evidence.
 
 For each insight:
 - **content**: The insight itself (1-2 sentences, max 50 words)
+  - Must be specific and actionable (not generic observations)
+  - Should directly address the study objective
+  - Must reveal user needs, behaviors, pain points, or preferences
+  - Should inform product decisions or strategy
+
 - **category**: One of: "need", "pain_point", "behavior", "preference", "mental_model", "unexpected"
 
-### 2. IMPORTANT QUOTES (5-10 quotes)
+- **supporting_quotes**: Array of 2-3 quotes that provide evidence for this insight
+  - **quote**: The exact words from the transcript (verbatim)
+  - **timestamp**: Approximate timestamp in seconds (estimate based on position in transcript)
+  - **speaker**: Either "user" or "agent"
 
-Extract 5-10 important quotes that:
-- Provide direct evidence for the key insights
-- Capture the user's voice and perspective
-- Are memorable and impactful
-- Represent different aspects of the user's experience
-- Include both positive and negative feedback
-
-For each quote:
-- **quote**: The exact words from the transcript (verbatim)
-- **timestamp**: Approximate timestamp in seconds (estimate based on position in transcript)
-- **context**: Brief context explaining why this quote is important (1 sentence, max 25 words)
-- **speaker**: Either "user" or "agent"
+**CRITICAL**: Each insight MUST have 2-3 supporting quotes that directly support that specific insight. The quotes should be the strongest evidence for that particular insight.
 
 ## Output Format
 
@@ -74,32 +66,44 @@ Return a JSON object with this exact structure:
 
 \`\`\`json
 {
-  "key_insights": [
+  "insights_with_evidence": [
     {
       "id": "insight_1",
       "content": "Users struggle with X because Y, leading to Z behavior",
-      "category": "pain_point"
+      "category": "pain_point",
+      "supporting_quotes": [
+        {
+          "id": "quote_1_1",
+          "quote": "Exact quote from user that supports this insight",
+          "timestamp": 120,
+          "speaker": "user"
+        },
+        {
+          "id": "quote_1_2",
+          "quote": "Another quote supporting the same insight",
+          "timestamp": 180,
+          "speaker": "user"
+        }
+      ]
     },
     {
       "id": "insight_2",
       "content": "Users prefer A over B when doing C",
-      "category": "preference"
-    }
-  ],
-  "important_quotes": [
-    {
-      "id": "quote_1",
-      "quote": "Exact words from the user",
-      "timestamp": 120,
-      "context": "Why this quote matters",
-      "speaker": "user"
-    },
-    {
-      "id": "quote_2",
-      "quote": "Another exact quote",
-      "timestamp": 240,
-      "context": "Context for this quote",
-      "speaker": "user"
+      "category": "preference",
+      "supporting_quotes": [
+        {
+          "id": "quote_2_1",
+          "quote": "Quote supporting this preference",
+          "timestamp": 240,
+          "speaker": "user"
+        },
+        {
+          "id": "quote_2_2",
+          "quote": "Another quote about this preference",
+          "timestamp": 300,
+          "speaker": "user"
+        }
+      ]
     }
   ]
 }
@@ -111,7 +115,7 @@ Return a JSON object with this exact structure:
 
 2. **Focus on Objective**: Prioritize insights that directly address: "${studyObjective}"
 
-3. **Evidence-Based**: Every insight should be supported by at least one quote
+3. **Evidence-Based**: Every insight MUST have 2-3 supporting quotes that directly support that specific insight
 
 4. **User Voice**: Quotes should be verbatim from the transcript, preserving the user's language
 
@@ -119,7 +123,9 @@ Return a JSON object with this exact structure:
 
 6. **Diverse Coverage**: Cover different aspects of the user experience (needs, pain points, behaviors, preferences)
 
-7. **Quality over Quantity**: Better to have 3 strong insights than 5 weak ones
+7. **Quality over Quantity**: Better to have 3 strong insights with solid evidence than 5 weak ones
+
+8. **Quote Relevance**: Each quote must be directly relevant to its parent insight. Don't reuse the same quote for multiple insights.
 
 Generate the JSON output now:${languageInstruction}`;
 };
@@ -132,41 +138,41 @@ export const validateInterviewSummary = (summary: any): boolean => {
     return false;
   }
 
-  // Validate key_insights (relaxed: allow 1-5 insights for short interviews)
-  if (!Array.isArray(summary.key_insights) || summary.key_insights.length < 1 || summary.key_insights.length > 5) {
-    console.warn('Invalid key_insights count:', summary.key_insights?.length);
+  // Validate insights_with_evidence (allow 1-5 insights for short interviews)
+  if (!Array.isArray(summary.insights_with_evidence) || summary.insights_with_evidence.length < 1 || summary.insights_with_evidence.length > 5) {
+    console.warn('Invalid insights_with_evidence count:', summary.insights_with_evidence?.length);
     return false;
   }
 
-  for (const insight of summary.key_insights) {
+  for (const insight of summary.insights_with_evidence) {
+    // Validate insight structure
     if (!insight.id || !insight.content || !insight.category) {
       console.warn('Invalid insight structure:', insight);
       return false;
     }
+
     if (insight.content.split(' ').length > 50) {
       console.warn('Insight too long:', insight.content);
       return false;
     }
-  }
 
-  // Validate important_quotes (relaxed: allow 2-10 quotes for short interviews)
-  if (!Array.isArray(summary.important_quotes) || summary.important_quotes.length < 2 || summary.important_quotes.length > 10) {
-    console.warn('Invalid important_quotes count:', summary.important_quotes?.length);
-    return false;
-  }
-
-  for (const quote of summary.important_quotes) {
-    if (!quote.id || !quote.quote || typeof quote.timestamp !== 'number' || !quote.context || !quote.speaker) {
-      console.warn('Invalid quote structure:', quote);
+    // Validate supporting_quotes (each insight must have 2-3 quotes)
+    if (!Array.isArray(insight.supporting_quotes) || insight.supporting_quotes.length < 2 || insight.supporting_quotes.length > 3) {
+      console.warn('Invalid supporting_quotes count for insight:', insight.id, insight.supporting_quotes?.length);
       return false;
     }
-    if (quote.context.split(' ').length > 25) {
-      console.warn('Quote context too long:', quote.context);
-      return false;
-    }
-    if (!['user', 'agent'].includes(quote.speaker)) {
-      console.warn('Invalid speaker:', quote.speaker);
-      return false;
+
+    // Validate each quote
+    for (const quote of insight.supporting_quotes) {
+      if (!quote.id || !quote.quote || typeof quote.timestamp !== 'number' || !quote.speaker) {
+        console.warn('Invalid quote structure:', quote);
+        return false;
+      }
+
+      if (!['user', 'agent'].includes(quote.speaker)) {
+        console.warn('Invalid speaker:', quote.speaker);
+        return false;
+      }
     }
   }
 

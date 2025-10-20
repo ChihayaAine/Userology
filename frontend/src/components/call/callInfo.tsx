@@ -319,11 +319,8 @@ function CallInfo({
             </div>
           </div>
 
-          {/* Key Insights Section */}
-          <KeyInsightsCard insights={keyInsights} />
-
-          {/* Important Quotes Section */}
-          <ImportantQuotesCard quotes={importantQuotes} />
+          {/* Key Insights with Evidence Section */}
+          <InsightsWithEvidenceCard insights={insightsWithEvidence} />
 
           {analytics &&
             analytics.questionSummaries &&
