@@ -40,10 +40,10 @@ export const getResponseByCallId = async (req: Request, res: Response) => {
       });
     }
     
-    res.status(200).json(response);
+    return res.status(200).json(response);
   } catch (error) {
     console.error("Error fetching response:", error);
-    res.status(500).json({
+    return res.status(500).json({
       error: "Failed to fetch response"
     });
   }

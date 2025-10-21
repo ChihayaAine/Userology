@@ -10,7 +10,7 @@ console.log('🔗 Environment API URL:', process.env.NEXT_PUBLIC_API_URL);
 
 export const apiClient = axios.create({
   baseURL: API_BASE_URL,
-  timeout: 120000, // 120 seconds timeout for OpenAI API calls (question generation can take 60+ seconds)
+  timeout: 30000, // 30秒超时（数据获取接口），生成问题时会单独设置更长超时
   headers: {
     'Content-Type': 'application/json',
   },

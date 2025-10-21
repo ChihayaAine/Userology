@@ -40,14 +40,14 @@ export const generateAnalytics = async (req: Request, res: Response) => {
       console.log('✅ [Generate Analytics] Deep summary generated');
     }
 
-    res.status(200).json({
+    return res.status(200).json({
       analytics: analyticsResult.analytics,
       summary: summaryResult.summary,
       status: 200
     });
   } catch (error) {
     console.error("❌ [Generate Analytics] Error:", error);
-    res.status(500).json({
+    return res.status(500).json({
       error: "Failed to generate analytics"
     });
   }
@@ -74,10 +74,10 @@ export const generateInterviewSummary = async (req: Request, res: Response) => {
       transcript
     });
 
-    res.status(result.status).json(result);
+    return res.status(result.status).json(result);
   } catch (error) {
     console.error("❌ [Generate Interview Summary] Error:", error);
-    res.status(500).json({
+    return res.status(500).json({
       error: "Failed to generate interview summary"
     });
   }
@@ -100,10 +100,10 @@ export const regenerateInterviewSummary = async (req: Request, res: Response) =>
 
     const result = await InterviewSummaryService.regenerateInterviewSummary(callId);
 
-    res.status(result.status).json(result);
+    return res.status(result.status).json(result);
   } catch (error) {
     console.error("❌ [Regenerate Interview Summary] Error:", error);
-    res.status(500).json({
+    return res.status(500).json({
       error: "Failed to regenerate interview summary"
     });
   }
@@ -130,10 +130,10 @@ export const generateStudySummary = async (req: Request, res: Response) => {
       regenerate
     });
 
-    res.status(result.status).json(result);
+    return res.status(result.status).json(result);
   } catch (error) {
     console.error("❌ [Generate Study Summary] Error:", error);
-    res.status(500).json({
+    return res.status(500).json({
       error: "Failed to generate study summary"
     });
   }
@@ -160,10 +160,10 @@ export const regenerateStudySummary = async (req: Request, res: Response) => {
       selectedCallIds
     );
 
-    res.status(result.status).json(result);
+    return res.status(result.status).json(result);
   } catch (error) {
     console.error("❌ [Regenerate Study Summary] Error:", error);
-    res.status(500).json({
+    return res.status(500).json({
       error: "Failed to regenerate study summary"
     });
   }

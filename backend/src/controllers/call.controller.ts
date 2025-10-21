@@ -89,7 +89,7 @@ export const registerCall = async (req: Request, res: Response) => {
     console.warn('【Retell API 响应】：>>>>>>>>>>>> controller.ts:47', registerCallResponse);
     console.log("Call registered successfully");
 
-    res.status(200).json({
+    return res.status(200).json({
       registerCallResponse,
     });
   } catch (error: any) {
@@ -99,7 +99,7 @@ export const registerCall = async (req: Request, res: Response) => {
       error: error
     });
     
-    res.status(500).json({
+    return res.status(500).json({
       error: "Internal server error", 
       details: error.message
     });
@@ -148,9 +148,9 @@ export const getCall = async (req: Request, res: Response) => {
     console.log(`✅ [${requestId}] Retell call response received`);
 
     const interviewId = response.interview_id;
-    const transcript = callResponse.transcript;
+    const transcript = callResponse.transcript ?? '';
     const duration = Math.round(
-      callResponse.end_timestamp / 1000 - callResponse.start_timestamp / 1000,
+      (callResponse.end_timestamp ?? 0) / 1000 - (callResponse.start_timestamp ?? 0) / 1000,
     );
 
     console.log(`📊 [${requestId}] Generating analytics and summary...`);
@@ -199,7 +199,7 @@ export const getCall = async (req: Request, res: Response) => {
 
     console.log(`💾 [${requestId}] Analytics saved to database`);
 
-    res.status(200).json({
+    return res.status(200).json({
       callResponse,
       analytics
     });
@@ -207,7 +207,7 @@ export const getCall = async (req: Request, res: Response) => {
     console.error(`❌ [${requestId}] Error fetching call:`, error);
     console.error(`❌ [${requestId}] Error details:`, error.message);
 
-    res.status(500).json({
+    return res.status(500).json({
       error: "Failed to fetch call data",
       details: error.message
     });

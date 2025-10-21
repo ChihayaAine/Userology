@@ -1,3 +1,6 @@
+import 'module-alias/register';
+import moduleAlias from 'module-alias';
+moduleAlias.addAlias('@', __dirname);
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
@@ -57,9 +60,20 @@ app.use('/api', questionsRoutes);
 app.use(notFoundHandler);
 app.use(errorHandler);
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
   console.log(`🚀 Backend server running on port ${PORT}`);
   console.log(`🔗 Frontend URL: ${process.env.FRONTEND_URL || 'http://localhost:3000'}`);
+  
+  // 数据库预热：异步执行，不阻塞服务启动
+  setImmediate(async () => {
+    try {
+      const { supabase } = await import('./config/database');
+      await supabase.from('interviewer').select('id').limit(1);
+      console.log('🔥 Database warmed up');
+    } catch (error) {
+      console.warn('⚠️  Database warm-up failed (non-critical)');
+    }
+  });
 });
 
 export default app;

@@ -10,6 +10,7 @@ export const createInterviewer = async (req: Request, res: Response) => {
   try {
     const newModel = await retellClient.llm.create({
       model: "gpt-4o",
+      start_speaker: 'user',
       general_prompt: RETELL_AGENT_GENERAL_PROMPT,
       general_tools: [
         {
@@ -57,6 +58,7 @@ export const createInterviewer = async (req: Request, res: Response) => {
     // 支持最多10个动态 sessions
     const davidModel = await retellClient.llm.create({
       model: "gpt-4o",
+      start_speaker: 'user',
       general_prompt: `You are conducting a systematic, session-based user research interview.
 
 Research Objective: {{objective}}

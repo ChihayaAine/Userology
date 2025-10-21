@@ -161,9 +161,11 @@ function DetailsPopup({
         ? "/generate-interview-sessions"  // David 使用 sessions
         : "/generate-interview-questions"; // Lisa/Bob 使用 questions
 
+      // 生成问题需要调用 OpenAI，可能需要 60+ 秒，所以单独设置更长超时
       const generatedQuestions = (await apiClient.post(
         apiEndpoint,
         data,
+        { timeout: 120000 } // 120秒超时，仅用于问题生成
       )) as any;
 
       console.log('✅ API response:', generatedQuestions.data);

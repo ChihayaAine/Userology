@@ -47,10 +47,22 @@ export function InterviewerProvider({ children }: InterviewerProviderProps) {
       });
       
       setInterviewers(response);
+      setInterviewersLoading(false);
     } catch (error) {
       console.error('【获取面试官失败】：>>>>>>>>>>>> interviewers.context.tsx:49', error);
+      // 失败后延迟重试（最多3次）
+      const retryCount = (error as any).__retryCount || 0;
+      if (retryCount < 3) {
+        console.log(`⏱️  将在 ${2 * (retryCount + 1)} 秒后重试 (${retryCount + 1}/3)`);
+        setTimeout(() => {
+          (error as any).__retryCount = retryCount + 1;
+          fetchInterviewers();
+        }, 2000 * (retryCount + 1)); // 指数退避：2s, 4s, 6s
+      } else {
+        console.error('❌ 重试3次后仍然失败，停止重试');
+        setInterviewersLoading(false);
+      }
     }
-    setInterviewersLoading(false);
   };
 
   const createInterviewer = async (payload?: any) => {

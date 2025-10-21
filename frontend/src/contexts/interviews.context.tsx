@@ -42,12 +42,23 @@ export function InterviewProvider({ children }: InterviewProviderProps) {
         organization?.id as string,
       );
       console.log('✅ Interviews fetched:', response.length, 'interviews');
-      setInterviewsLoading(false);
       setInterviews(response);
+      setInterviewsLoading(false);
     } catch (error) {
       console.error('❌ Error fetching interviews:', error);
+      // 失败后延迟重试（最多3次）
+      const retryCount = (error as any).__retryCount || 0;
+      if (retryCount < 3) {
+        console.log(`⏱️  将在 ${2 * (retryCount + 1)} 秒后重试 (${retryCount + 1}/3)`);
+        setTimeout(() => {
+          (error as any).__retryCount = retryCount + 1;
+          fetchInterviews();
+        }, 2000 * (retryCount + 1));
+      } else {
+        console.error('❌ 重试3次后仍然失败，停止重试');
+        setInterviewsLoading(false);
+      }
     }
-    setInterviewsLoading(false);
   };
 
   const getInterviewById = async (interviewId: string) => {

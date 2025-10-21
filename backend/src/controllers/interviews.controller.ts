@@ -88,10 +88,10 @@ export const getInterviewById = async (req: Request, res: Response) => {
       });
     }
     
-    res.status(200).json(interview);
+    return res.status(200).json(interview);
   } catch (error) {
     console.error("Error fetching interview:", error);
-    res.status(500).json({
+    return res.status(500).json({
       error: "Failed to fetch interview"
     });
   }
