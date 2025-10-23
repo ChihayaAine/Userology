@@ -194,7 +194,7 @@ function QuestionsPopup({ interviewData, setProceed, setOpen }: Props) {
         <Button
           disabled={
             isClicked ||
-            questions.length < interviewData.question_count ||
+            questions.length === 0 ||
             description.trim() === "" ||
             questions.some((question) => question.question.trim() === "")
           }

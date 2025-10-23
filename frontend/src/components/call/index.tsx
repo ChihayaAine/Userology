@@ -212,8 +212,8 @@ function Call({ interview }: InterviewProps) {
   const startConversation = async () => {
     // 🎤 优先请求麦克风权限（必须在用户交互的同步上下文中）
     if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-      toast.error("Browser not supported", {
-        description: "Please use Chrome, Firefox, or Safari with HTTPS.",
+      toast.error("浏览器不支持", {
+        description: "您的浏览器不支持麦克风功能，请升级到最新版本或更换浏览器。",
         position: "bottom-right",
         duration: 5000,
       });
@@ -226,8 +226,8 @@ function Call({ interview }: InterviewProps) {
       console.log('✅ Microphone permission granted');
     } catch (micError) {
       console.error('❌ Microphone permission denied:', micError);
-      toast.error("Microphone access required", {
-        description: "Please allow microphone access to start the interview.",
+      toast.error("需要麦克风权限", {
+        description: "请允许浏览器访问您的麦克风以开始访谈。",
         position: "bottom-right",
         duration: 5000,
       });
@@ -254,8 +254,8 @@ function Call({ interview }: InterviewProps) {
       // 保留原有questions变量（向后兼容）
       questions: interview?.questions.map((q) => q.question).join(", "),
       
-      // 新增：传递完整的 questions 数组（用于 multi-prompt agent）
-      questions_array: interview?.questions || [],
+      // 新增：传递完整的 questions 数组（转为 JSON 字符串，Retell 要求所有字段为字符串）
+      questions_array: JSON.stringify(interview?.questions || []),
     };
     setLoading(true);
 

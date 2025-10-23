@@ -17,10 +17,10 @@ CLERK_SECRET_KEY=your_clerk_secret_key_here
 
 # Server Configuration
 PORT=3000
-NODE_ENV=development
-FRONTEND_URL=http://localhost:3000
-NEXT_PUBLIC_API_URL=http://localhost:3001/api
-NEXT_PUBLIC_LIVE_URL=http://localhost:3000
+NODE_ENV=production
+FRONTEND_URL=https://userology.xin
+NEXT_PUBLIC_API_URL=https://userology.xin/api
+NEXT_PUBLIC_LIVE_URL=https://userology.xin
 
 # Logging
 LOG_LEVEL=info

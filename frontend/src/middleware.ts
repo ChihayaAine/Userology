@@ -21,8 +21,13 @@ const isProtectedRoute = createRouteMatcher([
 export default clerkMiddleware((auth, req) => {
   // For protected routes without authentication, redirect to sign-in
   if (isProtectedRoute(req) && !auth().userId) {
-    const signInUrl = new URL('/sign-in', req.url);
-    signInUrl.searchParams.set('redirect_url', req.url);
+    // 使用正确的域名构建 URL
+    const host = req.headers.get('host') || 'userology.xin';
+    const protocol = req.headers.get('x-forwarded-proto') || 'https';
+    const fullUrl = `${protocol}://${host}${req.nextUrl.pathname}${req.nextUrl.search}`;
+    
+    const signInUrl = new URL('/sign-in', `${protocol}://${host}`);
+    signInUrl.searchParams.set('redirect_url', fullUrl);
     return NextResponse.redirect(signInUrl);
   }
 

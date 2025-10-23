@@ -30,9 +30,9 @@ const PORT = process.env.BACKEND_PORT || process.env.PORT || 8090;
 app.use(helmet());
 app.use(cors({
   origin: [
-    process.env.FRONTEND_URL || 'http://localhost:8089',
+    process.env.FRONTEND_URL || 'https://userology.xin',
+    'https://userology.xin',
     'http://localhost:8089',
-    'http://47.93.101.73:8089',
     'http://127.0.0.1:8089'
   ],
   credentials: true
@@ -62,7 +62,7 @@ app.use(errorHandler);
 
 app.listen(PORT, async () => {
   console.log(`🚀 Backend server running on port ${PORT}`);
-  console.log(`🔗 Frontend URL: ${process.env.FRONTEND_URL || 'http://localhost:3000'}`);
+  console.log(`🔗 Frontend URL: ${process.env.FRONTEND_URL || 'https://userology.xin'}`);
   
   // 数据库预热：异步执行，不阻塞服务启动
   setImmediate(async () => {

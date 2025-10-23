@@ -45,7 +45,16 @@ export const registerCall = async (req: Request, res: Response) => {
       console.log('🔬 [Deep Dive Mode] Preparing session variables for multi-prompt agent...');
       
       // David 已经是 multi-prompt agent，根据实际 questions 数量动态填充
-      const questionsArray = body.dynamic_data.questions_array || [];
+      // questions_array 从前端传来时是 JSON 字符串，需要解析
+      let questionsArray = [];
+      try {
+        questionsArray = typeof body.dynamic_data.questions_array === 'string' 
+          ? JSON.parse(body.dynamic_data.questions_array) 
+          : (body.dynamic_data.questions_array || []);
+      } catch (error) {
+        console.error('❌ Failed to parse questions_array:', error);
+        questionsArray = [];
+      }
       const sessionCount = questionsArray.length;
       
       // 准备动态变量：实际的 sessions + 未使用的标记为 "No content"
@@ -73,6 +82,9 @@ export const registerCall = async (req: Request, res: Response) => {
       });
     } else {
       console.log('📋 [Standard Mode] Using original question format');
+      // 标准模式：移除 questions_array（因为它可能是数组，Retell 只接受字符串）
+      const { questions_array, ...restData } = dynamicVariables;
+      dynamicVariables = restData;
     }
 
     console.warn('【调用 Retell API】：>>>>>>>>>>>> controller.ts', {

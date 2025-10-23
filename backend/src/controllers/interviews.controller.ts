@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { nanoid } from 'nanoid';
 import { InterviewService } from '@/services/interviews.service';
 
-const base_url = process.env.FRONTEND_URL || 'http://localhost:8089';
+const base_url = process.env.FRONTEND_URL || 'https://userology.xin';
 
 export const createInterview = async (req: Request, res: Response) => {
   try {

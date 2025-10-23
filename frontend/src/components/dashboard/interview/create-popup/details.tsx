@@ -48,12 +48,19 @@ function DetailsPopup({
   const [selectedInterviewer, setSelectedInterviewer] = useState<bigint | number>(
     interviewData.interviewer_id,
   );
-  const [selectedLanguage, setSelectedLanguage] = useState<LanguageCode>('en-US');
+  const [selectedLanguage, setSelectedLanguage] = useState<LanguageCode | ''>('');
   const [researchType, setResearchType] = useState<'product' | 'market'>('product');
   const [showObjectiveTooltip, setShowObjectiveTooltip] = useState(false);
   const [showDocumentTooltip, setShowDocumentTooltip] = useState(false);
   const [showObjectiveExample, setShowObjectiveExample] = useState(false);
   const [showDocumentExample, setShowDocumentExample] = useState(false);
+
+  // 实时检测是否为深度访谈模式（David 面试官）
+  const selectedInterviewerData = interviewers.find(
+    (interviewer) => Number(interviewer.id) === Number(selectedInterviewer)
+  );
+  const isDeepDiveMode = selectedInterviewerData?.name?.includes('David') || 
+                         selectedInterviewerData?.name?.includes('Deep Dive');
 
   // 调试日志 - 移到状态变量声明之后
   console.warn('【interviewers】：>>>>>>>>>>>> details.tsx:41', {
@@ -142,16 +149,10 @@ function DetailsPopup({
         number: numQuestions,
         context: uploadedDocumentContext,
         researchType: researchType,
-        language: selectedLanguage, // 添加访谈语言参数
         customInstructions: customInstructions.trim(), // 添加个性化备注
       };
 
-      // 检测选择的面试官是否是 David（深度访谈模式）
-      const selectedInterviewerData = interviewers.find(
-        (interviewer) => Number(interviewer.id) === Number(selectedInterviewer)
-      );
-      const isDeepDiveMode = selectedInterviewerData?.name?.includes('David') || 
-                             selectedInterviewerData?.name?.includes('Deep Dive');
+      // 使用组件顶部已定义的 isDeepDiveMode 和 selectedInterviewerData
 
       console.log('🚀 Generating ' + (isDeepDiveMode ? 'SESSIONS' : 'questions') + ' with data:', data);
       console.log('🔍 Selected interviewer:', selectedInterviewerData?.name);
@@ -178,9 +179,14 @@ function DetailsPopup({
       console.log('📊 Questions array:', generatedQuestionsResponse.questions);
       console.log('📊 Questions array length:', generatedQuestionsResponse.questions?.length);
       console.log('📊 First question type:', typeof generatedQuestionsResponse.questions?.[0]);
-      console.log('📊 First question preview:', generatedQuestionsResponse.questions?.[0]?.substring(0, 200));
+      const firstQuestion = generatedQuestionsResponse.questions?.[0];
+      const firstQuestionPreview = typeof firstQuestion === 'string' 
+        ? firstQuestion.substring(0, 200) 
+        : firstQuestion?.question?.substring(0, 200) || 'N/A';
+      console.log('📊 First question preview:', firstQuestionPreview);
 
-    const updatedQuestions = generatedQuestionsResponse.questions.map(
+    // 将生成的问题映射为标准格式
+    let updatedQuestions = generatedQuestionsResponse.questions.map(
       (question: Question | string, index: number) => {
         const questionText = typeof question === 'string' ? question.trim() : question.question.trim();
         console.log(`📝 Processing question/session ${index + 1}:`, {
@@ -195,6 +201,23 @@ function DetailsPopup({
         };
       },
     );
+
+    // 确保生成的问题数量严格等于设定的数量
+    const requestedCount = Number(numQuestions);
+    if (updatedQuestions.length > requestedCount) {
+      console.warn(`⚠️ Generated ${updatedQuestions.length} questions, but only ${requestedCount} were requested. Trimming...`);
+      updatedQuestions = updatedQuestions.slice(0, requestedCount);
+    } else if (updatedQuestions.length < requestedCount) {
+      console.warn(`⚠️ Generated ${updatedQuestions.length} questions, but ${requestedCount} were requested. Adding placeholders...`);
+      const missing = requestedCount - updatedQuestions.length;
+      for (let i = 0; i < missing; i++) {
+        updatedQuestions.push({
+          id: uuidv4(),
+          question: "",
+          follow_up_count: 1,
+        });
+      }
+    }
 
     console.log('✅ Updated questions array:', updatedQuestions);
     console.log('✅ Total questions/sessions:', updatedQuestions.length);
@@ -224,13 +247,21 @@ function DetailsPopup({
   const onManual = () => {
     setLoading(true);
 
+    // 手动创建时，根据设定的数量生成空白问题
+    const requestedCount = Number(numQuestions);
+    const manualQuestions = Array.from({ length: requestedCount }, () => ({
+      id: uuidv4(),
+      question: "",
+      follow_up_count: 1,
+    }));
+
     const updatedInterviewData = {
       ...interviewData,
       name: name.trim(),
       objective: objective.trim(),
-      questions: [{ id: uuidv4(), question: "", follow_up_count: 1 }],
+      questions: manualQuestions,
       interviewer_id: BigInt(selectedInterviewer),
-      question_count: Number(numQuestions),
+      question_count: requestedCount,
       time_duration: String(duration),
       description: "",
       is_anonymous: isAnonymous,
@@ -327,15 +358,17 @@ function DetailsPopup({
                       const newInterviewerId = Number(item.id);
                       setSelectedInterviewer(newInterviewerId);
                       console.log('🚀 New selectedInterviewer should be:', newInterviewerId);
-                      // 立即应用当前选择的语言到新选择的面试官
-                      setTimeout(() => {
-                        const selectedInterviewerData = interviewers.find(
-                          (interviewer) => Number(interviewer.id) === newInterviewerId
-                        );
-                        if (selectedInterviewerData?.agent_id) {
-                          updateInterviewerLanguage(selectedLanguage);
-                        }
-                      }, 100);
+                      // 立即应用当前选择的语言到新选择的面试官（仅当已选择语言时）
+                      if (selectedLanguage) {
+                        setTimeout(() => {
+                          const selectedInterviewerData = interviewers.find(
+                            (interviewer) => Number(interviewer.id) === newInterviewerId
+                          );
+                          if (selectedInterviewerData?.agent_id) {
+                            updateInterviewerLanguage(selectedLanguage);
+                          }
+                        }, 100);
+                      }
                     }}
                   >
                     <Image
@@ -383,12 +416,15 @@ function DetailsPopup({
               onChange={(e) => {
                 const newLanguage = e.target.value as LanguageCode;
                 setSelectedLanguage(newLanguage);
-                if (selectedInterviewer && Number(selectedInterviewer) > 0) {
+                if (selectedInterviewer && Number(selectedInterviewer) > 0 && newLanguage) {
                   updateInterviewerLanguage(newLanguage);
                 }
               }}
               className="border-2 border-gray-500 rounded px-3 py-1.5 text-sm focus:outline-none focus:border-indigo-600 cursor-pointer"
             >
+              <option value="" disabled hidden>
+                Select Language
+              </option>
               {Object.entries(SUPPORTED_LANGUAGES).map(([code, lang]) => (
                 <option key={code} value={code}>
                   {lang.flag} {lang.name}
@@ -690,7 +726,9 @@ function DetailsPopup({
           </label>
           <div className="flex flex-row gap-3 justify-between w-full mt-3">
             <div className="flex flex-row justify-center items-center ">
-              <h3 className="text-sm font-medium ">Number of Questions:</h3>
+              <h3 className="text-sm font-medium ">
+                {isDeepDiveMode ? "Number of Sessions:" : "Number of Questions:"}
+              </h3>
               <input
                 type="number"
                 step="1"
@@ -739,7 +777,7 @@ function DetailsPopup({
                 onGenrateQuestions();
               }}
             >
-              Generate Questions
+              {isDeepDiveMode ? "Generate Sessions" : "Generate Questions"}
             </Button>
             <Button
               disabled={!isFormValid() || isClicked}
