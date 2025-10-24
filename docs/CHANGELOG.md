@@ -10,6 +10,44 @@
 
 ### 🐛 Bug 修复
 
+#### 修复访谈链接前缀问题 ✅
+
+**问题描述**:
+- 在本地开发时创建的访谈，链接前缀是 `http://47.93.101.73:8089/call/` 或 `http://localhost:8089/call/`
+- 期望：所有访谈链接都应该使用 `https://userology.xin/call/` 前缀
+- 原因：访谈链接是给受访者使用的，应该指向生产环境
+
+**根本原因**:
+- 后端使用 `process.env.FRONTEND_URL` 生成访谈链接
+- 在本地开发时，`FRONTEND_URL` 是 `http://localhost:8089` 或 `http://47.93.101.73:8089`
+- 生成的 URL 存储到数据库后，无法自动适配环境变化
+
+**解决方案**:
+1. **后端**：硬编码访谈链接前缀为 `https://userology.xin`
+   - 无论在什么环境，创建的访谈 URL 都是 `https://userology.xin/call/xxx`
+   - 即使在本地开发，创建的访谈也能在生产环境访问
+2. **前端**：直接使用数据库中的 `interview.url`，不重新构建
+   - 移除 Preview 和 Share 界面中的 URL 重新构建逻辑
+   - 删除未使用的 `base_url` 变量
+
+**修改文件**:
+- `backend/src/controllers/interviews.controller.ts` (Line 1-10)
+- `frontend/src/app/interviews/[interviewId]/page.tsx` (Line 47-81, 580-586)
+
+**技术细节**:
+```typescript
+// 后端
+const INTERVIEW_BASE_URL = 'https://userology.xin';
+const url = `${INTERVIEW_BASE_URL}/call/${url_id}`;
+
+// 前端
+const url = interview.url.startsWith("http")
+  ? interview.url
+  : `https://${interview.url}`;
+```
+
+---
+
 #### 修复大纲生成语言不正确问题 ✅
 
 **问题描述**:
