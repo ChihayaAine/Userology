@@ -15,6 +15,7 @@ interface QuestionCardProps {
   onQuestionChange: (id: string, question: Question) => void;
   onDelete: (id: string) => void;
   isDeepDiveMode?: boolean;
+  readOnly?: boolean;
 }
 
 const questionCard = ({
@@ -23,6 +24,7 @@ const questionCard = ({
   onQuestionChange,
   onDelete,
   isDeepDiveMode = false,
+  readOnly = false,
 }: QuestionCardProps) => {
   return (
     <>
@@ -44,11 +46,12 @@ const questionCard = ({
                           : "opacity-50"
                       } `}
                       onClick={() =>
-                        onQuestionChange(questionData.id, {
+                        !readOnly && onQuestionChange(questionData.id, {
                           ...questionData,
                           follow_up_count: 1,
                         })
                       }
+                      disabled={readOnly}
                     >
                       Low
                     </Button>
@@ -69,11 +72,12 @@ const questionCard = ({
                           : "opacity-50"
                       } `}
                       onClick={() =>
-                        onQuestionChange(questionData.id, {
+                        !readOnly && onQuestionChange(questionData.id, {
                           ...questionData,
                           follow_up_count: 2,
                         })
                       }
+                      disabled={readOnly}
                     >
                       Medium
                     </Button>
@@ -94,11 +98,12 @@ const questionCard = ({
                           : "opacity-50"
                       } `}
                       onClick={() =>
-                        onQuestionChange(questionData.id, {
+                        !readOnly && onQuestionChange(questionData.id, {
                           ...questionData,
                           follow_up_count: 3,
                         })
                       }
+                      disabled={readOnly}
                     >
                       High
                     </Button>
@@ -115,32 +120,35 @@ const questionCard = ({
               value={questionData?.question}
               className={`h-fit mt-3 pt-1 border-2 rounded-md w-full px-2 border-gray-400 ${
                 isDeepDiveMode ? 'min-h-[120px]' : ''
-              }`}
+              } ${readOnly ? 'bg-gray-100 cursor-not-allowed' : ''}`}
               placeholder={
-                isDeepDiveMode 
+                isDeepDiveMode
                   ? "e.g. Session 1: User Background & Context\n- Tell me about your role and daily responsibilities\n- What does a typical workday look like for you?\n- What tools and systems do you use regularly?\n- How long have you been in this position?"
                   : "e.g. Can you tell me about a challenging project you've worked on?"
               }
               rows={isDeepDiveMode ? 10 : 3}
               onChange={(e) =>
-                onQuestionChange(questionData.id, {
+                !readOnly && onQuestionChange(questionData.id, {
                   ...questionData,
                   question: e.target.value,
                 })
               }
               onBlur={(e) =>
-                onQuestionChange(questionData.id, {
+                !readOnly && onQuestionChange(questionData.id, {
                   ...questionData,
                   question: e.target.value.trim(),
                 })
               }
+              readOnly={readOnly}
             />
-            <Trash2
-              className="cursor-pointer ml-3"
-              color="red"
-              size={24}
-              onClick={() => onDelete(questionData.id)}
-            />
+            {!readOnly && (
+              <Trash2
+                className="cursor-pointer ml-3"
+                color="red"
+                size={24}
+                onClick={() => onDelete(questionData.id)}
+              />
+            )}
           </div>
         </CardContent>
       </Card>

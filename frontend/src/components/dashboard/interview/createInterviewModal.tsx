@@ -3,6 +3,7 @@ import LoaderWithLogo from "@/components/loaders/loader-with-logo/loaderWithLogo
 import DetailsPopup from "@/components/dashboard/interview/create-popup/details";
 import QuestionsPopup from "@/components/dashboard/interview/create-popup/questions";
 import { InterviewBase } from "@/types/interview";
+import { LanguageCode } from "@/lib/languages";
 
 interface Props {
   open: boolean;
@@ -34,6 +35,10 @@ function CreateInterviewModal({ open, setOpen }: Props) {
   const [isUploaded, setIsUploaded] = useState(false);
   const [fileName, setFileName] = useState("");
 
+  // 语言参数（从DetailsPopup传递过来）
+  const [selectedLanguage, setSelectedLanguage] = useState<LanguageCode | ''>('');
+  const [outlineDebugLanguage, setOutlineDebugLanguage] = useState<LanguageCode | ''>('');
+
   useEffect(() => {
     if (loading == true) {
       setLoading(false);
@@ -50,6 +55,9 @@ function CreateInterviewModal({ open, setOpen }: Props) {
       // Below for File Upload
       setIsUploaded(false);
       setFileName("");
+      // Reset language states
+      setSelectedLanguage("");
+      setOutlineDebugLanguage("");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
@@ -71,12 +79,19 @@ function CreateInterviewModal({ open, setOpen }: Props) {
           setIsUploaded={setIsUploaded}
           fileName={fileName}
           setFileName={setFileName}
+          // Language states
+          selectedLanguage={selectedLanguage}
+          setSelectedLanguage={setSelectedLanguage}
+          outlineDebugLanguage={outlineDebugLanguage}
+          setOutlineDebugLanguage={setOutlineDebugLanguage}
         />
       ) : (
         <QuestionsPopup
           interviewData={interviewData}
           setProceed={setProceed}
           setOpen={setOpen}
+          selectedLanguage={selectedLanguage}
+          outlineDebugLanguage={outlineDebugLanguage}
         />
       )}
     </>

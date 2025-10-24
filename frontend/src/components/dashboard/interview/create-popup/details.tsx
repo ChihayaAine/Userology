@@ -25,6 +25,10 @@ interface Props {
   setIsUploaded: (isUploaded: boolean) => void;
   fileName: string;
   setFileName: (fileName: string) => void;
+  selectedLanguage: LanguageCode | '';
+  setSelectedLanguage: (language: LanguageCode | '') => void;
+  outlineDebugLanguage: LanguageCode | '';
+  setOutlineDebugLanguage: (language: LanguageCode | '') => void;
 }
 
 function DetailsPopup({
@@ -36,6 +40,10 @@ function DetailsPopup({
   setIsUploaded,
   fileName,
   setFileName,
+  selectedLanguage,
+  setSelectedLanguage,
+  outlineDebugLanguage,
+  setOutlineDebugLanguage,
 }: Props) {
   const { interviewers, interviewersLoading } = useInterviewers();
   
@@ -48,7 +56,7 @@ function DetailsPopup({
   const [selectedInterviewer, setSelectedInterviewer] = useState<bigint | number>(
     interviewData.interviewer_id,
   );
-  const [selectedLanguage, setSelectedLanguage] = useState<LanguageCode | ''>('');
+  // selectedLanguage 和 outlineDebugLanguage 现在从 props 传入
   const [researchType, setResearchType] = useState<'product' | 'market'>('product');
   const [showObjectiveTooltip, setShowObjectiveTooltip] = useState(false);
   const [showDocumentTooltip, setShowDocumentTooltip] = useState(false);
@@ -150,6 +158,8 @@ function DetailsPopup({
         context: uploadedDocumentContext,
         researchType: researchType,
         customInstructions: customInstructions.trim(), // 添加个性化备注
+        language: selectedLanguage || undefined, // 访谈语言
+        outline_debug_language: outlineDebugLanguage || undefined, // 大纲调试语言
       };
 
       // 使用组件顶部已定义的 isDeepDiveMode 和 selectedInterviewerData
@@ -432,6 +442,42 @@ function DetailsPopup({
               ))}
             </select>
           </div>
+
+          {/* 大纲调试语言选择器 - 仅在深度访谈模式下显示 */}
+          {isDeepDiveMode && (
+            <div className="flex flex-row justify-between items-center w-[33.2rem] mt-3">
+              <div className="flex items-center gap-2">
+                <h3 className="text-sm font-medium">Outline Debug Language:</h3>
+                <div className="relative group">
+                  <Info className="w-4 h-4 text-gray-400 cursor-help" />
+                  <div className="absolute left-0 top-6 z-50 w-80 bg-white border border-gray-300 rounded-lg shadow-lg p-3 hidden group-hover:block">
+                    <p className="text-xs text-gray-700">
+                      <span className="font-semibold text-gray-900">大纲调试语言：</span>{' '}
+                      选择用于生成和调试访谈大纲的语言。生成后可以在此语言下调试优化，最后一键本地化到访谈语言。
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <select
+                value={outlineDebugLanguage}
+                onChange={(e) => {
+                  const newLanguage = e.target.value as LanguageCode;
+                  setOutlineDebugLanguage(newLanguage);
+                }}
+                className="border-2 border-gray-500 rounded px-3 py-1.5 text-sm focus:outline-none focus:border-indigo-600 cursor-pointer"
+              >
+                <option value="" disabled hidden>
+                  Select Debug Language
+                </option>
+                {Object.entries(SUPPORTED_LANGUAGES).map(([code, lang]) => (
+                  <option key={code} value={code}>
+                    {lang.flag} {lang.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+
           <div className="flex flex-row justify-between items-center w-[33.2rem] mt-3">
             <h3 className="text-sm font-medium">Research Type:</h3>
             <div className="flex gap-3">

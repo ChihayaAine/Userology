@@ -21,6 +21,11 @@ export interface InterviewBase {
   questions: Question[];
   description: string;
   response_count: bigint;
+  // Outline localization fields
+  draft_outline?: Question[];
+  localized_outline?: Question[];
+  outline_debug_language?: string;
+  outline_interview_language?: string;
 }
 
 export interface InterviewDetails {
