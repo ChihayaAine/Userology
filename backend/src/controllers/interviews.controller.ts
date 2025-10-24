@@ -5,12 +5,15 @@ import { InterviewService } from '@/services/interviews.service';
 import { InterviewerService } from '@/services/interviewers.service';
 import { SUPPORTED_LANGUAGES } from '@/lib/constants';
 
-const base_url = process.env.FRONTEND_URL || 'https://userology.xin';
+// 🔧 访谈链接始终使用生产环境域名
+// 原因：访谈链接是给受访者使用的，应该指向生产环境
+// 即使在本地开发，创建的访谈也应该能在生产环境访问
+const INTERVIEW_BASE_URL = 'https://userology.xin';
 
 export const createInterview = async (req: Request, res: Response) => {
   try {
     const url_id = nanoid();
-    const url = `${base_url}/call/${url_id}`;
+    const url = `${INTERVIEW_BASE_URL}/call/${url_id}`;
     const body = req.body;
 
     console.log("create-interview request received");
@@ -18,7 +21,7 @@ export const createInterview = async (req: Request, res: Response) => {
       body,
       url_id,
       url,
-      base_url
+      base_url: INTERVIEW_BASE_URL
     });
 
     const payload = body.interviewData;

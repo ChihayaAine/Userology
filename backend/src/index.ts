@@ -33,7 +33,9 @@ app.use(cors({
     process.env.FRONTEND_URL || 'https://userology.xin',
     'https://userology.xin',
     'http://localhost:8089',
-    'http://127.0.0.1:8089'
+    'http://127.0.0.1:8089',
+    'http://47.93.101.73:8089',  // 生产环境前端地址
+    'http://47.93.101.73'         // 不带端口的版本
   ],
   credentials: true
 }));

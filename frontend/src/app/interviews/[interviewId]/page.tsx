@@ -47,8 +47,6 @@ interface Props {
   };
 }
 
-const base_url = process.env.NEXT_PUBLIC_LIVE_URL;
-
 function InterviewHome({ params, searchParams }: Props) {
   const [interview, setInterview] = useState<Interview>();
   const [responses, setResponses] = useState<Response[]>();
@@ -68,13 +66,12 @@ function InterviewHome({ params, searchParams }: Props) {
   const [filterStatus, setFilterStatus] = useState<string>("ALL");
 
   const seeInterviewPreviewPage = () => {
-    const protocol = base_url?.includes("localhost") ? "http" : "https";
     if (interview?.url) {
-      const url = interview?.readable_slug
-        ? `${protocol}://${base_url}/call/${interview?.readable_slug}`
-        : interview.url.startsWith("http")
-          ? interview.url
-          : `https://${interview.url}`;
+      // 🔧 直接使用数据库中的 URL，不重新构建
+      // 数据库中的 URL 已经包含完整的域名和路径
+      const url = interview.url.startsWith("http")
+        ? interview.url
+        : `https://${interview.url}`;
       window.open(url, "_blank");
     } else {
       console.error("Interview URL is null or undefined.");
@@ -581,11 +578,7 @@ function InterviewHome({ params, searchParams }: Props) {
       {isSharePopupOpen && (
         <SharePopup
           open={isSharePopupOpen}
-          shareContent={
-            interview?.readable_slug
-              ? `${base_url}/call/${interview?.readable_slug}`
-              : (interview?.url as string)
-          }
+          shareContent={interview?.url as string}
           onClose={closeSharePopup}
         />
       )}

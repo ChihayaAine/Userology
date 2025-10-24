@@ -9,24 +9,31 @@ import { useInterviewers } from "@/contexts/interviewers.context";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import QuestionCard from "@/components/dashboard/interview/create-popup/questionCard";
 import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
+import { Plus, Globe } from "lucide-react";
 import { ChevronLeft } from "lucide-react";
+import { toast } from "sonner";
+import { LanguageCode } from "@/lib/languages";
 
 interface Props {
   interviewData: InterviewBase;
   setProceed: (proceed: boolean) => void;
   setOpen: (open: boolean) => void;
+  outlineDebugLanguage?: LanguageCode | ''; // 大纲调试语言
+  selectedLanguage?: LanguageCode | ''; // 访谈语言
 }
 
-function QuestionsPopup({ interviewData, setProceed, setOpen }: Props) {
+function QuestionsPopup({ interviewData, setProceed, setOpen, outlineDebugLanguage, selectedLanguage }: Props) {
   const { user } = useClerk();
   const { organization } = useOrganization();
   const { interviewers } = useInterviewers();
   const [isClicked, setIsClicked] = useState(false);
+  const [isLocalizing, setIsLocalizing] = useState(false);
 
   const [questions, setQuestions] = useState<Question[]>(
     interviewData.questions,
   );
+  const [localizedQuestions, setLocalizedQuestions] = useState<Question[] | null>(null); // 本地化版本
+  const [showLocalized, setShowLocalized] = useState(false); // 是否显示本地化版本
   const [description, setDescription] = useState<string>(
     interviewData.description.trim(),
   );
@@ -74,14 +81,89 @@ function QuestionsPopup({ interviewData, setProceed, setOpen }: Props) {
     }
   };
 
+  // 本地化大纲
+  const onLocalize = async () => {
+    if (!selectedLanguage || !outlineDebugLanguage) {
+      toast.error("请先选择访谈语言和大纲调试语言");
+      return;
+    }
+
+    if (selectedLanguage === outlineDebugLanguage) {
+      toast.info("访谈语言和调试语言相同，无需本地化");
+      return;
+    }
+
+    setIsLocalizing(true);
+    try {
+      console.log('🌐 Starting localization...', {
+        targetLanguage: selectedLanguage,
+        debugLanguage: outlineDebugLanguage,
+        draftOutline: questions
+      });
+
+      const response = await apiClient.post(
+        '/localize-outline',
+        {
+          draftOutline: questions,
+          targetLanguage: selectedLanguage,
+          researchObjective: interviewData.objective,
+          studyName: interviewData.name,
+          description: interviewData.description
+        },
+        { timeout: 120000 } // 120秒超时
+      );
+
+      console.log('✅ Localization response:', response.data);
+
+      const localizedData = JSON.parse(response.data.response);
+
+      // 详细日志：检查 OpenAI 返回的数据结构
+      console.log('📊 Localized Data Structure:', {
+        hasQuestions: !!localizedData.questions,
+        questionsCount: localizedData.questions?.length || 0,
+        hasDescription: !!localizedData.description,
+        descriptionValue: localizedData.description || 'MISSING'
+      });
+
+      // 保持ID一致，只更新question内容
+      const localizedQuestionsWithIds = localizedData.questions.map((q: any, index: number) => ({
+        id: questions[index]?.id || uuidv4(),
+        question: q.question,
+        follow_up_count: q.follow_up_count || 1
+      }));
+
+      setLocalizedQuestions(localizedQuestionsWithIds);
+
+      // 如果有本地化的 description，也更新
+      if (localizedData.description) {
+        console.log('✅ Updating description:', localizedData.description);
+        // 🔧 修复：同时更新状态变量和 interviewData
+        setDescription(localizedData.description); // 更新状态变量（用于保存）
+        interviewData.description = localizedData.description; // 更新 interviewData（用于显示）
+      } else {
+        console.warn('⚠️ No description in localized data, keeping original');
+      }
+
+      setShowLocalized(true);
+      toast.success("本地化完成！");
+    } catch (error: any) {
+      console.error('❌ Localization error:', error);
+      toast.error("本地化失败: " + (error.response?.data?.details || error.message));
+    } finally {
+      setIsLocalizing(false);
+    }
+  };
+
   const onSave = async () => {
     try {
       console.log('🚀 Starting interview save process...');
-      
+
       interviewData.user_id = user?.id || "";
       interviewData.organization_id = organization?.id || "";
 
-      interviewData.questions = questions;
+      // 如果有本地化版本，保存本地化版本到questions字段（用于实际访谈）
+      // 同时保存初稿和本地化版本到各自的字段
+      interviewData.questions = localizedQuestions || questions;
       interviewData.description = description;
 
       // Convert BigInts to strings if necessary
@@ -90,11 +172,18 @@ function QuestionsPopup({ interviewData, setProceed, setOpen }: Props) {
         interviewer_id: interviewData.interviewer_id.toString(),
         response_count: interviewData.response_count.toString(),
         logo_url: organization?.imageUrl || null, // 使用null而不是空字符串
+        // 添加大纲版本字段
+        draft_outline: questions, // 初稿（调试语言版本）
+        localized_outline: localizedQuestions || null, // 本地化版本（如果存在）
+        outline_debug_language: outlineDebugLanguage || null,
+        outline_interview_language: selectedLanguage || null,
       };
 
       console.log('📋 Interview data to save:', {
         organizationName: organization?.name,
-        interviewData: sanitizedInterviewData
+        interviewData: sanitizedInterviewData,
+        hasDraftOutline: !!questions,
+        hasLocalizedOutline: !!localizedQuestions,
       });
 
       const response = await apiClient.post("/interviews", {
@@ -136,19 +225,55 @@ function QuestionsPopup({ interviewData, setProceed, setOpen }: Props) {
           <h1 className="text-2xl font-semibold">Create Interview</h1>
         </div>
         <div className="my-3 text-left w-[96%] text-sm">
-          {isDeepDiveMode 
+          {isDeepDiveMode
             ? "We will be using these session outlines during the deep dive interviews. Each session will be explored thoroughly before moving to the next. Please make sure they are ok."
             : "We will be using these questions during the interviews. Please make sure they are ok."
           }
         </div>
+
+        {/* 版本切换和本地化按钮 */}
+        {isDeepDiveMode && outlineDebugLanguage && selectedLanguage && outlineDebugLanguage !== selectedLanguage && (
+          <div className="flex justify-between items-center w-full mb-3 px-2">
+            <div className="flex gap-2">
+              <Button
+                variant={!showLocalized ? "default" : "outline"}
+                size="sm"
+                onClick={() => setShowLocalized(false)}
+              >
+                初稿 ({outlineDebugLanguage})
+              </Button>
+              {localizedQuestions && (
+                <Button
+                  variant={showLocalized ? "default" : "outline"}
+                  size="sm"
+                  onClick={() => setShowLocalized(true)}
+                >
+                  本地化版本 ({selectedLanguage})
+                </Button>
+              )}
+            </div>
+            {!localizedQuestions && (
+              <Button
+                onClick={onLocalize}
+                disabled={isLocalizing}
+                className="bg-green-600 hover:bg-green-700"
+                size="sm"
+              >
+                <Globe className="w-4 h-4 mr-2" />
+                {isLocalizing ? "本地化中..." : "一键本地化"}
+              </Button>
+            )}
+          </div>
+        )}
+
         <ScrollArea className="flex flex-col justify-center items-center w-full mt-3">
-          {questions.map((question, index) => (
+          {(showLocalized && localizedQuestions ? localizedQuestions : questions).map((question, index) => (
             <QuestionCard
               key={question.id}
               questionNumber={index + 1}
               questionData={question}
-              onDelete={handleDeleteQuestion}
-              onQuestionChange={handleInputChange}
+              onDelete={showLocalized ? () => {} : handleDeleteQuestion} // 本地化版本不可删除
+              onQuestionChange={showLocalized ? () => {} : handleInputChange} // 本地化版本不可编辑
               isDeepDiveMode={isDeepDiveMode}
             />
           ))}

@@ -39,6 +39,12 @@ export interface InterviewDetails {
   objective_deliverables?: ObjectiveDeliverables;
   cross_interview_insights?: CrossInterviewInsight[];
   // evidence_bank is deprecated - quotes are now embedded in cross_interview_insights
+
+  // Outline localization fields
+  draft_outline?: Question[];  // 初稿大纲（调试语言版本）
+  localized_outline?: Question[];  // 本地化大纲（访谈语言版本）
+  outline_debug_language?: string;  // 大纲调试语言（如 'zh-CN', 'en-US', 'ja-JP'）
+  outline_interview_language?: string;  // 访谈语言（用于本地化目标）
 }
 
 export interface Interview extends InterviewBase, InterviewDetails {}
