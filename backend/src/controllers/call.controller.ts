@@ -26,16 +26,33 @@ export const registerCall = async (req: Request, res: Response) => {
       });
     }
 
-    if (!interviewer.agent_id) {
-      console.error('【面试官缺少 agent_id】：>>>>>>>>>>>> controller.ts:31', interviewer);
+    // 🆕 优先使用 interview 的专属 agent_id，如果没有则使用 interviewer 模板的 agent_id
+    const agentId = body.interview_agent_id || interviewer.agent_id;
+    
+    if (!agentId) {
+      console.error('【缺少 agent_id】：>>>>>>>>>>>> controller.ts:31', { 
+        interview_agent_id: body.interview_agent_id,
+        interviewer_agent_id: interviewer.agent_id 
+      });
       
       return res.status(400).json({
-        error: "Interviewer agent_id not found"
+        error: "Agent ID not found"
       });
     }
 
+    console.log('✅ Using agent_id:', agentId, body.interview_agent_id ? '(from interview)' : '(from template)');
+
     // 根据面试官类型动态调整数据格式
     let dynamicVariables = body.dynamic_data;
+    
+    // 🆕 添加语言参数（从 interview 的语言设置）
+    if (body.interview_language) {
+      dynamicVariables = {
+        ...dynamicVariables,
+        language: body.interview_language,
+      };
+      console.log('✅ Setting interview language:', body.interview_language);
+    }
     
     // 判断是否为深度访谈模式（通过名称识别 David 面试官）
     const isDeepDiveMode = interviewer.name?.includes('David') || 
@@ -88,13 +105,13 @@ export const registerCall = async (req: Request, res: Response) => {
     }
 
     console.warn('【调用 Retell API】：>>>>>>>>>>>> controller.ts', {
-      agent_id: interviewer.agent_id,
+      agent_id: agentId,
       mode: isDeepDiveMode ? 'Deep Dive (Multi-Prompt)' : 'Standard',
       dynamic_variables: dynamicVariables
     });
 
     const registerCallResponse = await retellClient.call.createWebCall({
-      agent_id: interviewer.agent_id,
+      agent_id: agentId,  // 🆕 使用 interview 专属的 agent
       retell_llm_dynamic_variables: dynamicVariables,
     });
 
