@@ -232,7 +232,7 @@ export const localizeOutline = async (req: Request, res: Response) => {
       console.error('❌ Failed to parse OpenAI response:', e);
     }
 
-    res.status(200).json({
+    return res.status(200).json({
       response: content,
     });
   } catch (error: any) {
@@ -245,7 +245,7 @@ export const localizeOutline = async (req: Request, res: Response) => {
       requestBody: body
     });
 
-    res.status(500).json({
+    return res.status(500).json({
       error: "internal server error",
       details: error.message || "Unknown error"
     });
