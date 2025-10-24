@@ -21,6 +21,9 @@ export interface InterviewBase {
   questions: Question[];
   description: string;
   response_count: bigint;
+  agent_id?: string;              // 🆕 该 interview 专属的 Retell Agent ID
+  language?: string;              // 🆕 语言设置 ('en', 'zh', 'es' 等)
+  interviewer_template?: string;  // 🆕 使用的面试官模板 ('bob', 'lisa', 'david')
 }
 
 export interface InterviewDetails {

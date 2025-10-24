@@ -298,7 +298,12 @@ function Call({ interview }: InterviewProps) {
     try {
       const registerCallResponse: registerCallResponseType = await apiClient.post(
         "/call/register",
-        { dynamic_data: data, interviewer_id: interview?.interviewer_id },
+        { 
+          dynamic_data: data, 
+          interviewer_id: interview?.interviewer_id,
+          interview_agent_id: interview?.agent_id,  // 🆕 传递 interview 的专属 agent_id
+          interview_language: interview?.language   // 🆕 传递 interview 的语言设置
+        },
       );
       
       console.log('✅ Register call response:', registerCallResponse.data);

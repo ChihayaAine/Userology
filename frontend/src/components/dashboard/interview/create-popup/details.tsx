@@ -116,28 +116,8 @@ function DetailsPopup({
     );
   };
 
-  // 更新面试官的语言配置
-  const updateInterviewerLanguage = async (language: LanguageCode) => {
-    const selectedInterviewerData = interviewers.find(
-      (interviewer) => Number(interviewer.id) === Number(selectedInterviewer)
-    );
-
-    if (!selectedInterviewerData?.agent_id) {
-      console.error('No agent_id found for selected interviewer');
-      return;
-    }
-
-    try {
-      console.log(`🌐 Updating interviewer language to: ${language}`);
-      await apiClient.post('/interviewers/update-language', {
-        agentId: selectedInterviewerData.agent_id,
-        language: language
-      });
-      console.log(`✅ Language updated successfully`);
-    } catch (error) {
-      console.error('❌ Error updating language:', error);
-    }
-  };
+  // ❌ 已删除：不再修改全局 agent 的语言配置
+  // 现在每个 interview 创建时会有自己专属的 agent，语言在创建时设置
 
   const onGenrateQuestions = async () => {
     setLoading(true);
@@ -232,6 +212,7 @@ function DetailsPopup({
       time_duration: duration,
       description: generatedQuestionsResponse.description,
       is_anonymous: isAnonymous,
+      language: selectedLanguage || 'en-US',  // 🆕 添加语言字段
     };
     setInterviewData(updatedInterviewData);
     console.log('✅ Interview data updated successfully');
@@ -265,6 +246,7 @@ function DetailsPopup({
       time_duration: String(duration),
       description: "",
       is_anonymous: isAnonymous,
+      language: selectedLanguage || 'en-US',  // 🆕 添加语言字段
     };
     setInterviewData(updatedInterviewData);
   };
@@ -358,17 +340,7 @@ function DetailsPopup({
                       const newInterviewerId = Number(item.id);
                       setSelectedInterviewer(newInterviewerId);
                       console.log('🚀 New selectedInterviewer should be:', newInterviewerId);
-                      // 立即应用当前选择的语言到新选择的面试官（仅当已选择语言时）
-                      if (selectedLanguage) {
-                        setTimeout(() => {
-                          const selectedInterviewerData = interviewers.find(
-                            (interviewer) => Number(interviewer.id) === newInterviewerId
-                          );
-                          if (selectedInterviewerData?.agent_id) {
-                            updateInterviewerLanguage(selectedLanguage);
-                          }
-                        }, 100);
-                      }
+                      // 🆕 不再立即修改 agent 语言，语言会在创建 interview 时设置
                     }}
                   >
                     <Image
@@ -416,9 +388,7 @@ function DetailsPopup({
               onChange={(e) => {
                 const newLanguage = e.target.value as LanguageCode;
                 setSelectedLanguage(newLanguage);
-                if (selectedInterviewer && Number(selectedInterviewer) > 0 && newLanguage) {
-                  updateInterviewerLanguage(newLanguage);
-                }
+                // 🆕 语言只在创建 interview 时使用，不再修改全局 agent
               }}
               className="border-2 border-gray-500 rounded px-3 py-1.5 text-sm focus:outline-none focus:border-indigo-600 cursor-pointer"
             >
