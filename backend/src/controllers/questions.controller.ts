@@ -128,9 +128,111 @@ export const generateInterviewSessions = async (req: Request, res: Response) => 
     });
 
     const basePromptOutput = baseCompletion.choices[0] || {};
-    const content = basePromptOutput.message?.content;
+    let content = basePromptOutput.message?.content;  // 🔧 改为 let，以便补全时更新
 
     console.log(`Interview sessions (${researchType}) generated successfully`);
+
+    // 🔍 验证 GPT 实际生成的数量
+    try {
+      let parsedContent = JSON.parse(content || '{}');
+      const actualCount = parsedContent.questions?.length || 0;
+      const requestedCount = Math.min(body.number, 10);
+      
+      console.log('📊 Session Count Verification:', {
+        requested: requestedCount,
+        actualGenerated: actualCount,
+        match: actualCount === requestedCount ? '✅' : '❌',
+        questions: parsedContent.questions?.map((q: string, i: number) => ({
+          index: i + 1,
+          preview: q.substring(0, 50) + '...'
+        }))
+      });
+      
+      if (actualCount !== requestedCount) {
+        console.error(`⚠️⚠️⚠️ COUNT MISMATCH: Requested ${requestedCount} but GPT generated ${actualCount} sessions!`);
+        console.error('📝 GPT 原始回复（完整内容）：');
+        console.error('==================== START ====================');
+        console.error(content);
+        console.error('==================== END ====================');
+        
+        // 🔧 智能补全：如果数量不足，让 GPT 继续补全
+        if (actualCount < requestedCount) {
+          const missing = requestedCount - actualCount;
+          console.log(`🔄 调用 GPT 补全剩余 ${missing} 个 sessions...`);
+          
+          try {
+            const complementPrompt = `You previously generated ${actualCount} sessions for an interview guide, but the user requested ${requestedCount} sessions in total.
+
+Here are the ${actualCount} sessions you already generated:
+${JSON.stringify(parsedContent.questions, null, 2)}
+
+**CRITICAL REQUIREMENT**:
+You MUST now generate EXACTLY ${missing} MORE sessions (Session ${actualCount + 1} to Session ${requestedCount}) to complete the interview guide.
+
+Requirements:
+1. Continue from where you left off (start with Session ${actualCount + 1})
+2. Generate EXACTLY ${missing} sessions - no more, no less
+3. Maintain the same format and quality as the previous sessions
+4. Ensure these new sessions naturally follow the previous ones
+5. Each session should follow the established structure
+
+Original research context:
+- Research Type: ${researchType}
+- Study Name: ${body.name}
+- Research Objective: ${body.objective}
+${body.context ? `- Additional Context: ${body.context}` : ''}
+
+Output ONLY a JSON object with a "questions" array containing EXACTLY ${missing} new session strings.
+Format: {"questions": ["session ${actualCount + 1} text", "session ${actualCount + 2} text", ...]}
+
+DO NOT include the previous ${actualCount} sessions in your response.
+ONLY generate the NEW ${missing} sessions.`;
+
+            const complementResponse = await openaiClient.chat.completions.create({
+              model: "gpt-4o",
+              messages: [
+                {
+                  role: "system",
+                  content: systemPrompt,
+                },
+                {
+                  role: "user",
+                  content: complementPrompt,
+                },
+              ],
+              response_format: { type: "json_object" },
+              temperature: 0.7,
+            });
+
+            const complementContent = complementResponse.choices[0]?.message?.content;
+            const complementParsed = JSON.parse(complementContent || '{}');
+            
+            if (complementParsed.questions && Array.isArray(complementParsed.questions)) {
+              console.log(`✅ GPT 补全了 ${complementParsed.questions.length} 个 sessions`);
+              // 合并原始和补全的 sessions
+              parsedContent.questions = [...parsedContent.questions, ...complementParsed.questions];
+              content = JSON.stringify(parsedContent);
+              console.log(`✅ 总计 ${parsedContent.questions.length} 个 sessions`);
+            } else {
+              console.error('❌ GPT 补全响应格式错误');
+            }
+          } catch (complementError: any) {
+            console.error('❌ GPT 补全失败:', complementError.message);
+          }
+        } else if (actualCount > requestedCount) {
+          // 如果生成多了，直接截断
+          console.log(`✂️ 截断到 ${requestedCount} 个 sessions`);
+          parsedContent.questions = parsedContent.questions.slice(0, requestedCount);
+          content = JSON.stringify(parsedContent);
+        }
+      }
+    } catch (e) {
+      console.error('❌ Failed to parse GPT response for verification:', e);
+      console.error('📝 GPT 原始回复（解析失败，输出原始内容）：');
+      console.error('==================== START ====================');
+      console.error(content);
+      console.error('==================== END ====================');
+    }
 
     res.status(200).json({
       response: content,

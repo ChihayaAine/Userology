@@ -192,23 +192,6 @@ function DetailsPopup({
       },
     );
 
-    // 确保生成的问题数量严格等于设定的数量
-    const requestedCount = Number(numQuestions);
-    if (updatedQuestions.length > requestedCount) {
-      console.warn(`⚠️ Generated ${updatedQuestions.length} questions, but only ${requestedCount} were requested. Trimming...`);
-      updatedQuestions = updatedQuestions.slice(0, requestedCount);
-    } else if (updatedQuestions.length < requestedCount) {
-      console.warn(`⚠️ Generated ${updatedQuestions.length} questions, but ${requestedCount} were requested. Adding placeholders...`);
-      const missing = requestedCount - updatedQuestions.length;
-      for (let i = 0; i < missing; i++) {
-        updatedQuestions.push({
-          id: uuidv4(),
-          question: "",
-          follow_up_count: 1,
-        });
-      }
-    }
-
     console.log('✅ Updated questions array:', updatedQuestions);
     console.log('✅ Total questions/sessions:', updatedQuestions.length);
 
@@ -218,7 +201,7 @@ function DetailsPopup({
       objective: objective.trim(),
       questions: updatedQuestions,
       interviewer_id: BigInt(selectedInterviewer),
-      question_count: Number(numQuestions),
+      question_count: updatedQuestions.length,  // 🔧 使用实际生成的数量，而不是用户请求的数量
       time_duration: duration,
       description: generatedQuestionsResponse.description,
       is_anonymous: isAnonymous,
