@@ -13,6 +13,13 @@ Research Objective: ${body.objective}
 
 Number of sessions to be generated: ${Math.min(body.number, 10)} (maximum 10 sessions supported)
 
+⚠️ **STRICT SESSION COUNT REQUIREMENT** ⚠️:
+You MUST generate EXACTLY ${Math.min(body.number, 10)} sessions - no more, no less.
+- ❌ Do NOT generate ${Math.min(body.number, 10) + 1} sessions (even if you think an extra session would be helpful)
+- ❌ Do NOT generate ${Math.min(body.number, 10) - 1} sessions (even if you think content can be merged)
+- ✅ Generate EXACTLY ${Math.min(body.number, 10)} complete sessions
+- If you generate the wrong number, the system will malfunction and the interview guide will be rejected.
+
 Each session should follow this structure (in English):
 
 ### **Session [N]: [Session Name]**
