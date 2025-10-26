@@ -1,21 +1,96 @@
 # Augment Memories - Userology-Foloup 项目
 
-> **版本**: 1.1.0  
-> **最后更新**: 2025-10-23  
+> **版本**: 1.3.5
+> **最后更新**: 2025-10-24
 > **项目**: AI驱动的用户研究访谈平台
 
 ---
 
-## 📋 当前任务进度 (v1.1.0)
+## 🎯 核心功能模块
 
-### ✅ 最近完成 (2025-10-23)
+### 访谈准备系统
 
-1. **大纲创建功能模块重塑** (v1.1.0) ✨ NEW
-   - 实现两步走流程：初版-调试定稿-本地化
-   - 支持调试语言选择（Deep Dive 模式）
-   - 一键本地化功能
-   - 版本切换和分离存储
-   - **核心价值**: 让研究员用熟悉的语言调试大纲，最后本地化到目标语言
+**大纲生成**:
+- 支持标准问题模式（Lisa/Bob）和深度访谈模式（David）
+- AI 自动生成访谈问题和 Sessions
+- 多语言支持（中文、英文、日文等）
+- 基于研究目标、上下文和个性化备注生成
+- API: `/api/generate-interview-questions` 和 `/api/generate-interview-sessions`
+
+**大纲本地化**:
+- 两步走流程：调试语言 → 访谈语言
+- AI 深度本地化（文化适配，非简单翻译）
+- 版本分离存储（draft_outline + localized_outline）
+- 只读保护本地化版本，防止误编辑
+- API: `/api/localize-outline`
+
+---
+
+### 访谈执行系统
+
+**Retell AI 语音交互**:
+- 实时语音识别（Speech-to-Text）
+- 实时语音合成（Text-to-Speech）
+- 智能对话管理（Conversation Flow）
+
+**三种面试官模式**:
+1. **Explorer Lisa**: 探索性访谈，友好开放
+2. **Empathetic Bob**: 同理心访谈，温和耐心
+3. **Deep Dive David**: 深度访谈，多阶段 Session 流程（最多 10 个 Sessions）
+
+**技术实现**:
+- 前端: RetellWebClient (浏览器端 SDK)
+- 后端: Retell SDK (Node.js)
+- AI Agent: Retell LLM (GPT-4o)
+- 语音引擎: 11labs
+
+---
+
+### 访谈分析系统
+
+**单访谈分析**:
+- **基础分析** (Analytics): 问题总结 + 访谈总结
+- **深度总结** (Summary): 关键洞察 + 重要引用
+- 两阶段分析架构，自动触发
+- 支持多语言输出（根据访谈语言）
+- API: `/api/analytics/generate`
+
+**数据结构**:
+```typescript
+{
+  analytics: {
+    questionSummaries: [...],
+    callSummary: string
+  },
+  insights_with_evidence: [{
+    content: string,
+    category: string,
+    supporting_quotes: [...]
+  }]
+}
+```
+
+---
+
+### 调研分析系统
+
+**跨访谈洞察生成**:
+- 从多个访谈中提取综合洞察
+- 识别模式和趋势
+- 两阶段 AI 生成架构
+
+**阶段 1**: 分析研究目标，提取预期交付物类型
+- action_plans（行动计划）
+- pricing_analysis（定价分析）
+- pain_points（痛点分析）
+- general（通用分析）
+
+**阶段 2**: 根据交付物类型生成定制化内容
+- Executive Summary（执行摘要）
+- Objective Deliverables（目标交付物）
+- Cross-Interview Insights（跨访谈洞察）
+
+**API**: `/api/analytics/study-summary`
 
 ---
 
@@ -52,51 +127,68 @@ Userology-Foloup/
 
 ## 🔑 关键决策记录
 
-### 1. 大纲本地化架构设计 (2025-10-23)
+### 1. 大纲本地化架构设计
 
-**背景**: 
-- 研究员需要用熟悉的语言调试大纲
-- 访谈需要用目标市场的语言进行
-- 简单翻译无法满足文化适配需求
+**核心理念**:
+- 研究员用熟悉的语言调试大纲
+- AI 深度本地化到目标语言（文化适配，非简单翻译）
 
-**决策**:
-1. **分离存储**: 初稿和本地化版本分别存储在 `draft_outline` 和 `localized_outline` 字段
-2. **优先级**: `questions` 字段优先使用本地化版本（如果存在）
-3. **只读保护**: 本地化版本为只读，防止误编辑破坏本地化质量
-4. **语言记录**: 记录调试语言和访谈语言，便于追溯
-
-**理由**:
-- 保留初稿便于审查本地化质量
-- 支持回溯和对比
-- 清晰的数据流向
+**技术实现**:
+1. **分离存储**: `draft_outline` 和 `localized_outline` 字段
+2. **优先级**: `questions` 字段优先使用本地化版本
+3. **只读保护**: 本地化版本为只读
+4. **语言记录**: `outline_debug_language` 和 `language` 字段
 
 ### 2. Prompt 工程策略
 
-**本地化 Prompt 设计**:
-- 结合素材G（基础本地化）和素材G1（专业优化）
-- 针对不同语言的文化特性配置
-- 强调"本土化"而非"翻译"
-
 **Temperature 设置**:
 - 分析类任务: 0.0（确定性）
-- 本地化任务: 0.7（自然表达）
+- 生成类任务: 0.7（自然表达）
+- 本地化任务: 0.7（文化适配）
+
+**Prompt 设计原则**:
+- 明确角色定位（专家身份）
+- 结构化输出（JSON 格式）
+- 语言特定指令（针对不同语言）
+- 强调质量标准（开放性、深度、相关性）
 
 ### 3. 前后端分离架构
 
-**原因**: 
-- 原项目编译 2000+ 组件，性能问题严重
-- 前后端独立部署和扩展
-
-**实现**:
-- 前端: Next.js (8089)
-- 后端: Express (8090)
+**当前架构**:
+- 前端: Next.js 14 (端口 8089)
+- 后端: Express.js (端口 8090)
 - API 通信: RESTful
+- 数据库: Supabase (PostgreSQL)
+
+**优势**:
+- 独立部署和扩展
+- 清晰的职责分离
+- 更好的性能和可维护性
 
 ---
 
 ## 🗄️ 数据库设计要点
 
-### interview 表核心字段
+### 核心表结构
+
+**interview 表**:
+- 存储研究基本信息（name, objective, description）
+- 问题/Sessions 数据（questions, draft_outline, localized_outline）
+- 语言配置（language, outline_debug_language）
+- 跨访谈分析结果（executive_summary, objective_deliverables, cross_interview_insights）
+
+**response 表**:
+- 存储单个访谈的响应数据
+- 基础分析（analytics）
+- 深度总结（insights_with_evidence）
+- 关联字段（interview_id, call_id）
+
+**interviewer 表**:
+- 存储面试官配置（Lisa/Bob/David）
+- Retell AI Agent ID
+- 语音和响应参数
+
+### 重要字段说明
 
 | 字段 | 类型 | 说明 |
 |------|------|------|
@@ -179,9 +271,27 @@ npm run dev  # 端口 8089
 ## 📚 重要文档
 
 ### 核心文档
-- `docs/PROJECT_OVERVIEW.md` - 项目全面概览
+- `docs/README.md` - 文档导航中心
 - `docs/CHANGELOG.md` - 版本变更历史
-- `docs/TESTING_OUTLINE_LOCALIZATION.md` - 本地化功能测试计划
+- `docs/Augment-Memories.md` - AI 助手核心记忆库
+- `docs/任务清单.md` - 任务管理和进度跟踪
+
+### 基础文档
+- `docs/00-项目概览.md` - 项目整体架构
+- `docs/01-技术架构.md` - 技术栈和系统架构
+- `docs/02-数据库设计.md` - 数据库表结构
+
+### 功能模块文档（按业务流程）
+**访谈准备阶段**:
+- `docs/03-大纲生成系统.md` - AI 问题生成（Lisa/Bob/David）
+- `docs/04-大纲本地化功能.md` - 两步走大纲创建流程
+
+**访谈执行阶段**:
+- `docs/05-访谈执行-Retell AI语音交互.md` - 实时语音对话系统
+
+**访谈分析阶段**:
+- `docs/06-访谈分析系统.md` - 单访谈深度分析
+- `docs/07-调研分析系统.md` - 跨访谈洞察生成
 
 ### 技术文档
 - `backend/migrations/` - 数据库迁移脚本
@@ -191,33 +301,34 @@ npm run dev  # 端口 8089
 
 ## ⚠️ 重要注意事项
 
-### 1. 数据库迁移
+### 数据库迁移
 - Supabase 不支持通过 API 直接执行 DDL
 - 需要在 Supabase Dashboard 的 SQL Editor 中手动执行
 - 使用 `backend/scripts/run-migration.js` 验证迁移状态
 
-### 2. Service Role Key 安全
+### Service Role Key 安全
 - `SUPABASE_SERVICE_ROLE_KEY` 拥有完全数据库权限
 - ❌ 不要提交到 Git
 - ❌ 不要在前端使用
 - ✅ 只在后端服务器环境使用
 
-### 3. 面试官类型
-- **Lisa/Bob**: 标准模式，使用 questions
-- **David**: Deep Dive 模式，使用 sessions
+### 面试官模式
+- **Lisa/Bob**: 标准问题模式，使用 `questions` 数组
+- **David**: 深度访谈模式，使用 `sessions` 数组（最多 10 个）
 - 大纲调试语言功能仅在 Deep Dive 模式下可用
 
-### 4. 本地化质量
-- 使用 GPT-4o 进行深度本地化
-- Temperature 0.7 保证自然表达
-- 强调文化适配而非简单翻译
-- 保留初稿便于质量审查
+### 访谈链接
+- 所有访谈链接统一使用 `https://userology.xin` 前缀
+- 无论在什么环境创建，都指向生产环境
+- 便于受访者访问和分享
+
+### AI 分析触发
+- 访谈结束后自动触发分析
+- 先生成基础分析（Analytics）
+- 再生成深度总结（Summary）
+- 支持手动重新生成
 
 ---
-
-## 🔄 下一步计划
-
-（待添加新功能时更新）
 
 ---
 
