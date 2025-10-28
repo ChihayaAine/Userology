@@ -1,0 +1,20 @@
+/* 强制移除所有select的默认样式 */
+select.custom-select {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  background-color: white !important;
+  padding-right: 2.5rem !important;
+}
+
+/* 移除IE的默认箭头 */
+select.custom-select::-ms-expand {
+  display: none;
+}
+
+/* 确保focus状态正确 */
+select.custom-select:focus {
+  outline: none !important;
+  border-color: #3b82f6 !important;
+}
+

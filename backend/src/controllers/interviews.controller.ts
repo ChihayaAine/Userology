@@ -131,7 +131,9 @@ export const createInterview = async (req: Request, res: Response) => {
     console.log("Interview created successfully");
 
     res.status(200).json({
-      response: "Interview created successfully"
+      response: "Interview created successfully",
+      id: url_id,  // 返回interview ID
+      interview: newInterview  // 返回完整的interview对象
     });
   } catch (err) {
     console.error("Error creating interview:", err);
@@ -184,13 +186,23 @@ export const updateInterview = async (req: Request, res: Response) => {
     const { id } = req.params;
     const payload = req.body;
     
+    console.log('🔄 Controller: Updating interview', { 
+      id, 
+      payloadKeys: Object.keys(payload),
+      hasQuestions: !!payload.questions,
+      hasDraftOutline: !!payload.draft_outline,
+      hasLocalizedOutline: !!payload.localized_outline
+    });
+    
     const result = await InterviewService.updateInterview(payload, id);
     
+    console.log('✅ Controller: Update successful');
     res.status(200).json(result);
-  } catch (error) {
-    console.error("Error updating interview:", error);
+  } catch (error: any) {
+    console.error("❌ Controller: Error updating interview:", error);
     res.status(500).json({
-      error: "Failed to update interview"
+      error: "Failed to update interview",
+      details: error.message
     });
   }
 };

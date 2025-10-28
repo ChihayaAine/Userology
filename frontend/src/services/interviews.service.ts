@@ -24,11 +24,14 @@ const getInterviewById = async (id: string) => {
 
 const updateInterview = async (payload: any, id: string) => {
   try {
+    console.log('🔄 InterviewService: Updating interview', { id, payloadKeys: Object.keys(payload) });
     const response = await apiClient.put(`/interviews/${id}`, payload);
+    console.log('✅ InterviewService: Update successful', response.data);
     return response.data;
-  } catch (error) {
-    console.error('Error updating interview:', error);
-    return [];
+  } catch (error: any) {
+    console.error('❌ InterviewService: Error updating interview:', error);
+    console.error('Error details:', error.response?.data);
+    throw error; // 抛出错误而不是返回空数组
   }
 };
 

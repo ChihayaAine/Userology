@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import LoaderWithLogo from "@/components/loaders/loader-with-logo/loaderWithLogo";
 import DetailsPopup from "@/components/dashboard/interview/create-popup/details";
 import QuestionsPopup from "@/components/dashboard/interview/create-popup/questions";
+import DistributePopup from "@/components/dashboard/interview/create-popup/distribute";
 import { InterviewBase } from "@/types/interview";
 import { LanguageCode } from "@/lib/languages";
 
@@ -26,7 +27,7 @@ const CreateEmptyInterviewData = (): InterviewBase => ({
 
 function CreateInterviewModal({ open, setOpen }: Props) {
   const [loading, setLoading] = useState(false);
-  const [proceed, setProceed] = useState(false);
+  const [step, setStep] = useState<'details' | 'questions' | 'distribute'>('details');
   const [interviewData, setInterviewData] = useState<InterviewBase>(
     CreateEmptyInterviewData(),
   );
@@ -38,11 +39,15 @@ function CreateInterviewModal({ open, setOpen }: Props) {
   // 语言参数（从DetailsPopup传递过来）
   const [selectedLanguage, setSelectedLanguage] = useState<LanguageCode | ''>('');
   const [outlineDebugLanguage, setOutlineDebugLanguage] = useState<LanguageCode | ''>('');
+  
+  // 存储问题的状态（用于在分发页面选择版本）
+  const [draftQuestions, setDraftQuestions] = useState<any[]>([]);
+  const [localizedQuestions, setLocalizedQuestions] = useState<any[] | null>(null);
 
   useEffect(() => {
     if (loading == true) {
       setLoading(false);
-      setProceed(true);
+      setStep('questions');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [interviewData]);
@@ -50,7 +55,7 @@ function CreateInterviewModal({ open, setOpen }: Props) {
   useEffect(() => {
     if (!open) {
       setLoading(false);
-      setProceed(false);
+      setStep('details');
       setInterviewData(CreateEmptyInterviewData());
       // Below for File Upload
       setIsUploaded(false);
@@ -58,6 +63,9 @@ function CreateInterviewModal({ open, setOpen }: Props) {
       // Reset language states
       setSelectedLanguage("");
       setOutlineDebugLanguage("");
+      // Reset questions states
+      setDraftQuestions([]);
+      setLocalizedQuestions(null);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
@@ -68,7 +76,7 @@ function CreateInterviewModal({ open, setOpen }: Props) {
         <div className="w-[38rem] h-[35.3rem]">
           <LoaderWithLogo />
         </div>
-      ) : !proceed ? (
+      ) : step === 'details' ? (
         <DetailsPopup
           open={open}
           setLoading={setLoading}
@@ -85,13 +93,27 @@ function CreateInterviewModal({ open, setOpen }: Props) {
           outlineDebugLanguage={outlineDebugLanguage}
           setOutlineDebugLanguage={setOutlineDebugLanguage}
         />
-      ) : (
+      ) : step === 'questions' ? (
         <QuestionsPopup
           interviewData={interviewData}
-          setProceed={setProceed}
+          setStep={setStep}
           setOpen={setOpen}
           selectedLanguage={selectedLanguage}
           outlineDebugLanguage={outlineDebugLanguage}
+          draftQuestions={draftQuestions}
+          setDraftQuestions={setDraftQuestions}
+          localizedQuestions={localizedQuestions}
+          setLocalizedQuestions={setLocalizedQuestions}
+        />
+      ) : (
+        <DistributePopup
+          interviewData={interviewData}
+          setProceed={(back) => setStep(back ? 'questions' : 'distribute')}
+          setOpen={setOpen}
+          selectedLanguage={selectedLanguage}
+          outlineDebugLanguage={outlineDebugLanguage}
+          draftQuestions={draftQuestions}
+          localizedQuestions={localizedQuestions}
         />
       )}
     </>
@@ -99,3 +121,4 @@ function CreateInterviewModal({ open, setOpen }: Props) {
 }
 
 export default CreateInterviewModal;
+

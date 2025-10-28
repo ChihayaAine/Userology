@@ -4,7 +4,7 @@ import { Interview } from "@/types/interview";
 import { Interviewer } from "@/types/interviewer";
 import { Response } from "@/types/response";
 import React, { useEffect, useState } from "react";
-import { Info, Sparkles, RefreshCw } from "lucide-react";
+import { Info, Sparkles, RefreshCw, ArrowLeft, Download, FileText, Clock, CheckCircle } from "lucide-react";
 import { useInterviewers } from "@/contexts/interviewers.context";
 import { convertSecondstoMMSS } from "@/lib/utils";
 import Image from "next/image";
@@ -23,6 +23,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import StudySummaryCard from "@/components/dashboard/interview/StudySummaryCard";
 import { apiClient } from "@/services/api";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 type SummaryProps = {
   responses: Response[];
@@ -48,6 +49,7 @@ function InfoTooltip({ content }: { content: string }) {
 }
 
 function SummaryInfo({ responses, interview }: SummaryProps) {
+  const router = useRouter();
   const { interviewers } = useInterviewers();
   const [interviewer, setInterviewer] = useState<Interviewer>();
   const [totalDuration, setTotalDuration] = useState<number>(0);
@@ -163,98 +165,170 @@ function SummaryInfo({ responses, interview }: SummaryProps) {
   return (
     <div className="h-screen z-[10] mx-2">
       {responses.length > 0 ? (
-        <div className="bg-slate-200 rounded-2xl min-h-[120px] p-4">
-          <div className="flex flex-row gap-2 justify-between items-center mb-4">
-            <div className="flex flex-row gap-2 items-center">
-              <p className="font-semibold text-lg">Study Analysis</p>
-            </div>
-            <div className="flex items-center gap-3">
-              <p className="text-sm">
-                Interviewer: <span className="font-medium">{interviewer?.name}</span>
-              </p>
-              <Button
-                onClick={handleGenerateInsights}
-                disabled={isGenerating}
-                className="bg-indigo-600 hover:bg-indigo-700"
-              >
-                {isGenerating ? (
-                  <>
-                    <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
-                    Generating...
-                  </>
-                ) : (
-                  <>
-                    <Sparkles className="w-4 h-4 mr-2" />
-                    Generate Insights
-                  </>
-                )}
-              </Button>
+        <div className="bg-gray-50 rounded-2xl min-h-[120px] p-6">
+          {/* Header Section */}
+          <div className="mb-6">
+            <div className="flex flex-row gap-4 justify-between items-start mb-3">
+              <div>
+                <h1 className="text-3xl font-bold text-gray-900 mb-2">整体调研总结</h1>
+                <p className="text-sm text-gray-600">
+                  AI对所有访谈结果进行的综合性总结，包含文字分析、带有图表的数据分析，并根据调研目标提供下一步行动建议
+                </p>
+              </div>
+              <div className="flex items-center gap-3">
+                <Button
+                  variant="outline"
+                  onClick={() => router.push('/dashboard')}
+                  className="flex items-center gap-2"
+                >
+                  <ArrowLeft className="w-4 h-4" />
+                  返回我的调研
+                </Button>
+                <Button
+                  className="bg-blue-600 hover:bg-blue-700 text-white flex items-center gap-2"
+                >
+                  <Download className="w-4 h-4" />
+                  导出完整报告
+                </Button>
+              </div>
             </div>
           </div>
 
           <Tabs value={selectedTab} onValueChange={setSelectedTab} className="w-full">
-            <TabsList className="grid w-full grid-cols-2 mb-4">
-              <TabsTrigger value="overview">Overview</TabsTrigger>
-              <TabsTrigger value="insights">Study Insights</TabsTrigger>
-            </TabsList>
-
-            <TabsContent value="overview" className="space-y-4">
-              <p className="text-sm text-gray-700">
-                <span className="font-semibold">Study Objective:</span>{" "}
-                {interview?.objective || "Not specified"}
-              </p>
-              <p className="text-sm text-gray-700">
-                <span className="font-semibold">Description:</span>{" "}
-                {interview?.description || "No description"}
-              </p>
-
-              <div className="flex flex-col gap-1 p-4 rounded-2xl bg-slate-50 shadow-md">
-                <ScrollArea className="h-[250px]">
-                  <DataTable data={tableData} interviewId={interview?.id || ""} />
-                </ScrollArea>
+            <div className="bg-white rounded-lg border border-gray-200 mb-4">
+              <div className="flex items-center justify-between p-4 border-b border-gray-200">
+                <TabsList className="bg-transparent border-none">
+                  <TabsTrigger 
+                    value="overview" 
+                    className="data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:border-b-2 data-[state=active]:border-blue-600 rounded-none px-6"
+                  >
+                    Overview
+                  </TabsTrigger>
+                  <TabsTrigger 
+                    value="insights"
+                    className="data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:border-b-2 data-[state=active]:border-blue-600 rounded-none px-6"
+                  >
+                    Study Insights
+                  </TabsTrigger>
+                </TabsList>
+                <div className="flex items-center gap-3">
+                  <p className="text-sm text-gray-600">
+                    Interviewer: <span className="font-medium text-gray-900">{interviewer?.name}</span>
+                  </p>
+                  <Button
+                    onClick={handleGenerateInsights}
+                    disabled={isGenerating}
+                    className="bg-blue-600 hover:bg-blue-700"
+                    size="sm"
+                  >
+                    {isGenerating ? (
+                      <>
+                        <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
+                        生成中...
+                      </>
+                    ) : (
+                      <>
+                        <Sparkles className="w-4 h-4 mr-2" />
+                        生成洞察
+                      </>
+                    )}
+                  </Button>
+                </div>
               </div>
 
-              <div className="flex flex-row gap-4 justify-center">
-                <div className="flex flex-col gap-1 p-3 rounded-2xl bg-slate-50 shadow-md max-w-[400px]">
-                  <div className="flex flex-row items-center justify-center gap-1 font-semibold mb-1 text-[15px]">
-                    Average Duration
-                    <InfoTooltip content="Average time users took to complete an interview" />
+              <TabsContent value="overview" className="p-6 space-y-6 mt-0">
+                {/* Study Info Section */}
+                <div className="space-y-3">
+                  <div className="flex items-start gap-2">
+                    <span className="text-sm font-semibold text-gray-900 min-w-[120px]">Study Objective:</span>
+                    <span className="text-sm text-gray-700">{interview?.objective || "Not specified"}</span>
                   </div>
-                  <div className="flex items-center justify-center">
-                    <p className="text-2xl font-semibold text-indigo-600 w-fit p-1 px-2 bg-indigo-100 rounded-md">
-                      {convertSecondstoMMSS(totalDuration / responses.length)}
+                  <div className="flex items-start gap-2">
+                    <span className="text-sm font-semibold text-gray-900 min-w-[120px]">Description:</span>
+                    <span className="text-sm text-gray-700">{interview?.description || "No description"}</span>
+                  </div>
+                </div>
+
+                {/* Individual Interview Summaries Table */}
+                <div className="bg-gray-50 rounded-lg border border-gray-200 p-4">
+                  <div className="flex items-center gap-2 mb-3">
+                    <FileText className="w-5 h-5 text-blue-600" />
+                    <h3 className="font-semibold text-gray-900">个人访谈总结</h3>
+                  </div>
+                  <ScrollArea className="h-[250px]">
+                    <DataTable data={tableData} interviewId={interview?.id || ""} />
+                  </ScrollArea>
+                </div>
+
+                {/* Statistics Cards */}
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-blue-300 transition-colors">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex items-center gap-2">
+                        <Clock className="w-5 h-5 text-blue-600" />
+                        <span className="font-semibold text-gray-900">Average Duration</span>
+                      </div>
+                      <InfoTooltip content="Average time users took to complete an interview" />
+                    </div>
+                    <div className="text-center">
+                      <p className="text-4xl font-bold text-blue-600">
+                        {convertSecondstoMMSS(totalDuration / responses.length)}
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-blue-300 transition-colors">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex items-center gap-2">
+                        <CheckCircle className="w-5 h-5 text-blue-600" />
+                        <span className="font-semibold text-gray-900">Interview Completion Rate</span>
+                      </div>
+                      <InfoTooltip content="Percentage of interviews completed successfully" />
+                    </div>
+                    <div className="text-center">
+                      <p className="text-4xl font-bold text-blue-600">
+                        {Math.round((completedInterviews / responses.length) * 10000) / 100}%
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </TabsContent>
+
+              <TabsContent value="insights" className="p-6 space-y-6 mt-0">
+                {studySummary ? (
+                  <StudySummaryCard
+                    interviewId={interview?.id || ""}
+                    summary={studySummary}
+                    onUpdate={handleUpdateSummary}
+                  />
+                ) : (
+                  <div className="bg-white rounded-xl border-2 border-dashed border-gray-300 p-12 text-center">
+                    <Sparkles className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2">暂未生成洞察</h3>
+                    <p className="text-sm text-gray-600 mb-4">
+                      点击"生成洞察"按钮，AI将分析所有访谈并提取关键发现
                     </p>
+                    <Button
+                      onClick={handleGenerateInsights}
+                      disabled={isGenerating}
+                      className="bg-blue-600 hover:bg-blue-700 mx-auto"
+                    >
+                      {isGenerating ? (
+                        <>
+                          <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
+                          生成中...
+                        </>
+                      ) : (
+                        <>
+                          <Sparkles className="w-4 h-4 mr-2" />
+                          生成洞察
+                        </>
+                      )}
+                    </Button>
                   </div>
-                </div>
-                <div className="flex flex-col items-center justify-center gap-1 p-3 rounded-2xl bg-slate-50 shadow-md max-w-[360px]">
-                  <div className="flex flex-row gap-1 font-semibold mb-1 text-[15px] mx-auto text-center">
-                    Interview Completion Rate
-                    <InfoTooltip content="Percentage of interviews completed successfully" />
-                  </div>
-                  <p className="w-fit text-2xl font-semibold text-indigo-600 p-1 px-2 bg-indigo-100 rounded-md">
-                    {Math.round((completedInterviews / responses.length) * 10000) / 100}%
-                  </p>
-                </div>
-              </div>
-            </TabsContent>
-
-            <TabsContent value="insights" className="space-y-4">
-              {studySummary ? (
-                <StudySummaryCard
-                  interviewId={interview?.id || ""}
-                  summary={studySummary}
-                  onUpdate={handleUpdateSummary}
-                />
-              ) : (
-                <div className="bg-slate-50 rounded-2xl p-8 text-center">
-                  <Sparkles className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                  <p className="text-gray-600 mb-2">No insights generated yet</p>
-                  <p className="text-sm text-gray-500">
-                    Click "Generate Insights" to analyze all interviews and extract key findings
-                  </p>
-                </div>
-              )}
-            </TabsContent>
+                )}
+              </TabsContent>
+            </div>
           </Tabs>
         </div>
       ) : (

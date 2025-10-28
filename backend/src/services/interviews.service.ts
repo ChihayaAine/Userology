@@ -52,16 +52,21 @@ const getInterviewById = async (id: string) => {
 };
 
 const updateInterview = async (payload: any, id: string) => {
+  console.log('📝 Updating interview:', { id, payloadKeys: Object.keys(payload) });
+  
   const { error, data } = await supabase
     .from("interview")
     .update({ ...payload })
-    .eq("id", id);
+    .eq("id", id)
+    .select() // 添加 select() 来返回更新后的数据
+    .single(); // 只返回一条记录
+    
   if (error) {
-    console.log(error);
-
-    return [];
+    console.error('❌ Error updating interview:', error);
+    throw new Error(`Failed to update interview: ${error.message}`);
   }
 
+  console.log('✅ Interview updated successfully:', { id, updated: !!data });
   return data;
 };
 

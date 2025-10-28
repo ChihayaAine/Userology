@@ -5,6 +5,7 @@ import { Switch } from "@/components/ui/switch";
 import React, { useState, useEffect } from "react";
 import { useOrganization } from "@clerk/nextjs";
 import { useInterviews } from "@/contexts/interviews.context";
+import { useInterviewStore } from "@/store/interview-store";
 import { Share2, Filter, Pencil, UserIcon, Eye, Palette } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useRouter } from "next/navigation";
@@ -64,6 +65,9 @@ function InterviewHome({ params, searchParams }: Props) {
   const [iconColor, seticonColor] = useState<string>("#4F46E5");
   const { organization } = useOrganization();
   const [filterStatus, setFilterStatus] = useState<string>("ALL");
+  
+  // 从store获取创建流程状态
+  const { completedSteps, interviewId: storeInterviewId, setInterviewId, addCompletedStep, setCompletedSteps } = useInterviewStore();
 
   const seeInterviewPreviewPage = () => {
     if (interview?.url) {
@@ -100,6 +104,27 @@ function InterviewHome({ params, searchParams }: Props) {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [getInterviewById, params.interviewId, isGeneratingInsights]);
+
+  // 恢复创建流程状态，以便显示侧边栏和支持编辑大纲
+  useEffect(() => {
+    // 保存当前访谈ID到store（如果不同）
+    if (storeInterviewId !== params.interviewId) {
+      console.log('📝 Setting interview ID in store:', params.interviewId);
+      setInterviewId(params.interviewId);
+    }
+
+    // 如果是从创建流程进入的（completedSteps已有内容），只需标记analysis
+    if (completedSteps.length > 0 && !completedSteps.includes('analysis')) {
+      console.log('✅ From creation flow, marking analysis as completed');
+      addCompletedStep('analysis');
+    }
+    // 如果是从首页进入的（completedSteps为空），恢复所有前置步骤
+    else if (completedSteps.length === 0) {
+      console.log('🔄 From homepage, restoring all steps for existing interview');
+      // 标记所有前置步骤为已完成，以便显示侧边栏和支持编辑
+      setCompletedSteps(['define', 'generate', 'edit', 'distribute', 'analysis']);
+    }
+  }, [params.interviewId, storeInterviewId, completedSteps.length, addCompletedStep, setInterviewId, setCompletedSteps]);
 
   useEffect(() => {
     const fetchOrganizationData = async () => {
