@@ -6,6 +6,651 @@
 
 ---
 
+## [1.3.11] - 2025-10-26
+
+### 🐛 Bug 修复
+
+#### 修复大纲生成 Prompt 的 Output Format 不一致问题 🔧
+
+**问题**:
+- 用户测试发现即使添加了 Session 1 Opening 要求和问题深度要求，生成的大纲仍然不符合要求
+- 根本原因：**Output Format 中的示例与新要求不一致**
+  - Opening 部分仍然是 `[Brief warm transition]`（太简略）
+  - 问题数量仍然是 `[Continue for 3-5 questions per session]`（应该 4-6 个）
+  - 没有明确展示 Session 1 Opening 的 6 个关键元素
+
+**解决方案**:
+
+**1. 更新 Output Format 中的 Opening 示例** 📋:
+
+**旧版本**（太简略）:
+```
+**[Opening]**
+[Brief warm transition]
+```
+
+**新版本**（明确要求）:
+```
+**[Opening]**
+[CRITICAL FOR SESSION 1: Must include ALL 6 elements - Warm Greeting + Interview Introduction + Scope Clarification + Time Setting + Expectation Setting + Readiness Check. Example: 'Hello! It's great to connect with you. Thank you for taking the time to participate in our interview. Today, I'd like to chat with you about [topic]. We'll be focusing on [areas]. This interview will take about [X] minutes, and I'm really interested in understanding your genuine experiences. There are no standard answers - just share what comes to mind. Are you ready to get started?']
+
+[For Session 2+: Brief warm transition]
+```
+
+---
+
+**2. 更新 Output Format 中的问题数量示例** 📊:
+
+**旧版本**:
+```
+Q1.2 [Similar structure]
+[Continue for 3-5 questions per session]
+```
+
+**新版本**:
+```
+Q1.2 [Similar structure]
+
+Q1.3 [Similar structure]
+
+Q1.4 [Similar structure]
+
+[CONTINUE for 4-6 questions per session - use funnel approach: start broad, gradually narrow down]
+```
+
+---
+
+**3. 强化 Quality Checklist** ✅:
+
+在 Quality Checklist 中新增专门的检查项：
+
+**Session 1 Opening (CRITICAL)**:
+- ✅ Does Session 1 Opening include ALL 6 elements?
+- ✅ Is the opening warm, natural, and welcoming?
+- ✅ Does it set proper expectations?
+
+**Question Depth and Quantity (CRITICAL)**:
+- ✅ Does EACH session have 4-6 questions (not just 2-3)?
+- ✅ Do questions follow the funnel approach (broad → specific)?
+- ✅ Does Session 1 start with self-introduction/background?
+
+---
+
+**预期效果**:
+
+**Output Format 一致性**:
+- ✅ AI 在生成时会看到明确的示例
+- ✅ 示例与要求完全一致
+- ✅ 减少 AI 自由发挥的空间
+
+**质量检查强化**:
+- ✅ AI 在生成后会自我检查关键要求
+- ✅ 明确的检查清单确保不遗漏
+- ✅ 提高生成质量的一致性
+
+**影响的文件**:
+- `backend/src/lib/prompts/generate-market-research-sessions.ts` (337 lines → 350 lines)
+- `backend/src/lib/prompts/generate-product-research-sessions.ts` (337 lines → 350 lines)
+
+---
+
+## [1.3.10] - 2025-10-26
+
+### 🎨 优化
+
+#### 大纲生成 Prompt 优化 - Intro 铺垫和问题深度 📋
+
+**背景**:
+- 用户测试发现生成的大纲存在两个问题：
+  1. Session 1 的 Intro 过于直接，缺乏铺垫和引导
+  2. 每个 Session 的问题数量太少（2-3个），缺乏深度挖掘
+
+**核心变更**:
+
+**1. Session 1 Opening 要求优化** 🎯:
+
+**问题**:
+- 旧版本生成的 Intro 过于直接：
+  ```
+  ❌ "谢谢您参与我们的面试。为了更好地理解您的需求，我们想先了解您当前的备考经历。"
+  ```
+- 缺少打招呼、访谈介绍、时长说明、期望设定
+
+**解决方案**:
+
+新增 **"CRITICAL: Session 1 Opening Requirements"** 章节，明确要求 Session 1 的 Intro 必须包含：
+
+1. **Warm Greeting**: 友好的问候和感谢
+2. **Interview Introduction**: 解释访谈主题和目的
+3. **Scope Clarification**: 简要说明将要讨论的主要话题
+4. **Time Setting**: 告知访谈时长
+5. **Expectation Setting**: 强调没有标准答案，鼓励真实分享
+6. **Readiness Check**: 确认参与者准备好开始
+
+**优秀示例**:
+```
+Hello! It's great to connect with you. Thank you for taking the time to participate in our interview. Today, I'd like to chat with you about [main topic related to research objective]. We'll be focusing on [specific areas]. This interview will take about [X] minutes, and I'm really interested in understanding your genuine experiences and thoughts. There are no standard answers - just share what comes to mind. Are you ready to get started?
+```
+
+**糟糕示例**（过于直接）:
+```
+❌ "Thank you for participating. Let's start by understanding your current situation."
+```
+
+**效果**:
+- ✅ 建立温暖、友好的访谈氛围
+- ✅ 让参与者了解访谈目的和流程
+- ✅ 设定正确的期望（无标准答案）
+- ✅ 减少参与者的紧张感
+
+---
+
+**2. 问题深度和数量要求** 📊:
+
+**问题**:
+- 旧版本生成的 Session 只有 2-3 个问题
+- 缺乏深度挖掘，无法充分探索主题
+
+**解决方案**:
+
+新增 **"QUESTION DEPTH AND QUANTITY (CRITICAL)"** 章节，明确要求：
+
+**每个 Session 必须有 4-6 个问题**，逐步建立深度：
+
+- **Q1**: 广泛、易于回答的问题（建立舒适感和信任）
+- **Q2-3**: 探索行为、经验、背景（建立理解）
+- **Q4-5**: 深入挖掘具体痛点、需求或关键领域（建立洞察）
+- **Q6**（如需要）: 综合学习或过渡到下一主题
+
+**问题递进策略 - 使用漏斗方法**:
+
+从 **广泛** → 逐渐 **聚焦** 到具体洞察
+
+**Session 1 示例（背景建立）**:
+1. 自我介绍 / 当前角色（广泛、舒适）
+2. 当前情况 / 日常背景（中等具体性）
+3. 相关行为 / 实践（更具体）
+4. 与研究目标的联系（有针对性）
+
+**Session 2 示例（痛点发现）**:
+1. 对主题的总体感受（广泛）
+2. 遇到的具体挑战（中等）
+3. 这些挑战的影响（更深）
+4. 尝试的解决方案或变通方法（最深）
+
+**Session 3 示例（解决方案探索）**:
+1. 当前使用的工具/方法（广泛）
+2. 哪些有效（中等）
+3. 哪些无效 / 挫折（更深）
+4. 理想解决方案的特征（最深）
+
+**效果**:
+- ✅ 每个 Session 有足够的问题深度
+- ✅ 从浅到深逐步建立信任和洞察
+- ✅ 避免过于直接或突兀的提问
+- ✅ 充分探索每个主题
+
+---
+
+**3. 同步更新两个 Prompt** 📁:
+
+**A. Market Research Sessions**:
+- 添加 Session 1 Opening 要求
+- 添加问题深度和数量要求
+- 提供具体的问题递进示例
+
+**B. Product Research Sessions**:
+- 同步添加 Session 1 Opening 要求
+- 同步添加问题深度和数量要求
+- 提供产品研究场景的问题递进示例
+
+---
+
+**预期效果**:
+
+**访谈开场**:
+- ✅ 更自然、更温暖的开场
+- ✅ 参与者更清楚访谈目的和流程
+- ✅ 减少紧张感，提高参与意愿
+
+**问题深度**:
+- ✅ 每个 Session 有 4-6 个问题（而非 2-3 个）
+- ✅ 从浅到深逐步建立洞察
+- ✅ 充分探索每个主题
+- ✅ 避免遗漏关键信息
+
+**整体质量**:
+- ✅ 生成的大纲更接近专业访谈标准
+- ✅ 更好的信息收集效果
+- ✅ 更高的参与者满意度
+
+**影响的文件**:
+- `backend/src/lib/prompts/generate-market-research-sessions.ts` (272 lines → 337 lines)
+- `backend/src/lib/prompts/generate-product-research-sessions.ts` (272 lines → 337 lines)
+
+---
+
+## [1.3.9] - 2025-10-26
+
+### 🔄 同步更新
+
+#### Retell AI 深度访谈 System Prompt 同步 🎙️
+
+**背景**:
+- 在 Retell AI 平台上优化了深度访谈模式（David）的 system prompt
+- 需要将优化后的 prompt 同步到代码库，确保代码和平台配置一致
+
+**核心变更**:
+
+**1. 优化的 Prompt 结构** 📋:
+
+新的 prompt 分为四个清晰的模块：
+
+**A. SETUP（设置信息）**:
+```
+- Objective: {{objective}}
+- Participant: {{name}}
+- Time: {{mins}} minutes
+- Structure: {{session_count}} sequential sessions
+```
+
+**B. COMMUNICATION（沟通策略）**:
+- 多样化的确认语（避免重复）
+- 同理心表达
+- 建立连接（引用之前的回答）
+
+**C. PROBING STRATEGY（追问策略）**:
+- 🎯 **HIGH-VALUE signals**（立即深挖）：
+  - 意外行为或变通方法
+  - 强烈情绪反应
+  - 与之前陈述的矛盾
+  - 与研究目标相关的具体痛点
+  - "啊哈"时刻或惊喜洞察
+
+- 💡 **MEDIUM-VALUE signals**（快速追问一次）：
+  - 需要澄清的模糊陈述
+  - 值得探索的有趣细节
+  - 不完整的流程描述
+
+- ⏭️ **SKIP additional probing**（跳过追问）：
+  - 答案清晰完整
+  - 话题与研究目标无关
+  - 已经充分探索
+  - 时间紧迫
+
+**D. HANDLING ISSUES（问题处理）**:
+- 沉默/无回应：换个角度重新表述
+- 简短/不清晰的回答：澄清、提示、反馈确认、添加上下文
+- **关键原则**：永远不要重复完全相同的问题，总是换个角度重新表述
+
+**E. SESSION FLOW（Session 流程）**:
+- 完全完成当前 session 后再过渡到下一个
+- 在 session 内提问并探索追问
+- 仅在当前 session 充分探索后使用过渡工具
+- 不要混合或跳跃 sessions
+- 如果 session 内容为空或显示 "No content"，结束访谈
+
+**2. 关键优化点** ✨:
+
+**A. 更清晰的追问分级**:
+- 旧版本：笼统的 "use follow-up questions"
+- 新版本：明确的 HIGH/MEDIUM/SKIP 三级分类，帮助 Agent 判断何时深挖、何时跳过
+
+**B. 更自然的沟通**:
+- 旧版本：没有具体的确认语指导
+- 新版本：提供多样化的确认语示例，避免机械重复
+
+**C. 更好的问题处理**:
+- 旧版本：没有处理沉默或不清晰回答的指导
+- 新版本：明确的处理策略（重新表述、澄清、反馈确认）
+
+**D. 强调对话性**:
+- 新增：`Keep {{name}} engaged. Make it conversational, not interrogational.`
+- 强调访谈应该是对话，而非审问
+
+**3. 同步的文件** 📁:
+
+**A. `backend/src/lib/constants.ts`**:
+- 更新 `RETELL_AGENT_DEEP_DIVE_PROMPT`
+- 虽然这个常量目前未被直接使用，但保留作为参考和备份
+
+**B. `backend/src/controllers/interviewers.controller.ts`**:
+- 更新 David agent 创建时的 `general_prompt`
+- 这是实际使用的 prompt
+- 移除未使用的 `RETELL_AGENT_DEEP_DIVE_PROMPT` 导入
+
+**预期效果**:
+- ✅ 代码库与 Retell AI 平台配置保持一致
+- ✅ Agent 有更清晰的追问判断标准
+- ✅ 访谈更自然、更像对话
+- ✅ 更好地处理沉默和不清晰的回答
+- ✅ 避免机械重复的确认语
+
+---
+
+## [1.3.8] - 2025-10-26
+
+### 🎨 优化
+
+#### 追问生成逻辑优化 - 更灵活、更自然 🎯
+
+**优化目标**:
+- 移除即兴追问相关内容（系统自动处理，无需在大纲中体现）
+- 追问改为方向性指示而非固定句子（给访谈执行 Agent 更多灵活性）
+- Session 案例改为更抽象的描述（避免过度具象化导致生成偏向）
+- 删除过拟合的特定规则（如 AI/Technology Expectations）
+
+**核心变更**:
+
+**1. 移除即兴追问指导** 🧹:
+- ❌ 删除 "Standard Impromptu Instructions" 章节
+- ❌ 删除 "Impromptu Follow-up Guidance" 内容
+- ✅ 原因：访谈执行系统（Retell AI）已内置即兴追问能力，无需在大纲中重复指导
+
+**2. 追问改为方向性指示** 🎯:
+
+**旧格式**（固定句子，过于僵硬）:
+```
+**Follow-up Strategy:**
+[If user mentions friction] "Can you tell me more about that? What exactly happened?"
+[If user describes usage] "How often do you use it? In what situations?"
+```
+
+**新格式**（方向性指示，灵活自然）:
+```
+**Follow-up Directions:**
+[If user mentions friction] → Probe for: specific examples, impact, attempted solutions
+[If user describes usage] → Probe for: frequency, triggers, context
+```
+
+**优势**:
+- 给访谈执行 Agent 更多灵活性，可根据实际对话语境调整措辞
+- 避免机械式提问，访谈更自然
+- 保留关键探索方向，确保不遗漏重要维度
+
+**3. Session 案例抽象化** 📋:
+
+**旧格式**（过于具象）:
+```
+Typical market research session flow:
+- Session 1: Ice-breaking + Current behavior and context understanding
+- Session 2: Pain points and frustration deep dive
+- Session 3: Current solution exploration (workarounds, existing tools)
+- Session 4: Ideal solution imagination (unconstrained vision)
+- Session 5: AI/Technology expectations and concerns (if relevant)
+- Session 6: Priority confirmation and willingness to pay (if relevant)
+```
+
+**新格式**（抽象原则）:
+```
+Session Flow Principles:
+Each session follows: Intro → Open Exploration → Targeted Collection → Closure
+
+Typical Session Themes (adapt to research objectives):
+- Early Sessions: Context building, current behaviors, existing experiences
+- Middle Sessions: Deep exploration of critical areas identified in objectives
+- Later Sessions: Synthesis, prioritization, forward-looking perspectives
+```
+
+**优势**:
+- 避免生成时过度模仿具体案例
+- 更灵活适配不同研究目标
+- 强调流程原则而非固定模板
+
+**4. 删除过拟合规则** 🧹:
+
+**删除的内容**:
+- ❌ "AI/Technology Expectations (if relevant to study)" 章节
+  - 这是逆向工程时过拟合的特定案例
+  - 如果研究目标需要探索 AI 相关内容，应该自然融入，而非作为固定章节
+
+**删除的具体指导**:
+```
+❌ 删除:
+#### AI/Technology Expectations (if relevant to study):
+- Explore user's current understanding and experience with AI
+- Identify concerns and trust barriers naturally (don't assume they exist)
+- Understand acceptable AI intervention boundaries
+```
+
+**保留的通用原则**:
+```
+✅ 保留:
+- Pain Point Discovery (NOT Assumption)
+- Ideal Solution Exploration
+- Feature Discovery (NOT Assumption)
+```
+
+**5. 更新 Output Format** 📝:
+
+**旧格式**:
+```
+- **Interviewer Instructions:** [Must include standard impromptu follow-up guidance + ...]
+[ONLY IF CRITICAL QUESTION:]
+**Follow-up Strategy:** [Conditional follow-ups with specific triggers]
+[IF GENERAL QUESTION:]
+[Rely on impromptu follow-ups - no hard-coded follow-ups needed]
+```
+
+**新格式**:
+```
+- **Interviewer Instructions:** [Session-specific guidance and context]
+[ONLY IF CRITICAL QUESTION with specific dimensions to explore:]
+**Follow-up Directions:**
+[If user mentions X] → Probe for: [dimension 1, dimension 2, dimension 3]
+**Skip if:** [Conditions when to skip]
+```
+
+**6. 更新质量检查清单** ✅:
+
+**新增检查项**:
+- ✅ Are follow-ups written as directional probes (not word-by-word scripts)?
+- ✅ Does each session follow Intro → Open Exploration → Targeted Collection → Closure?
+
+**更新原则**:
+- **Directional Follow-ups**: Follow-ups should be directional probes (e.g., "Probe for: impact, frequency, workarounds"), NOT word-by-word scripts
+- **Session Flow**: Each session follows Intro → Open Exploration → Targeted Collection → Closure pattern
+
+**影响的文件**:
+- `backend/src/lib/prompts/generate-market-research-sessions.ts` (279 lines → 272 lines)
+- `backend/src/lib/prompts/generate-product-research-sessions.ts` (279 lines → 272 lines)
+
+**预期效果**:
+- ✅ 访谈执行更灵活、更自然（追问不再僵硬）
+- ✅ 生成的大纲更适配具体研究目标（不被具体案例束缚）
+- ✅ 减少冗余指导（即兴追问由系统自动处理）
+- ✅ 保持关键探索方向（方向性指示确保不遗漏重要维度）
+
+---
+
+## [1.3.7] - 2025-10-26
+
+### 🎨 优化
+
+#### 深度访谈大纲生成 Prompt 全面优化 ✨
+
+**优化目标**:
+- 强化开放性问题设计原则（避免引导性、暗示性问题）
+- 添加 Study Objective 必问项识别逻辑
+- 优化追问设计策略（关键问题硬编码追问 vs 一般问题即兴追问）
+- 清理本地化相关内容（已拆分到独立的 `localize-outline.ts`）
+
+**优化内容**:
+
+**1. 开放性问题设计原则** 🎯:
+- ❌ 避免引导性问题：如 "How difficult is it to..." (假设存在困难)
+- ❌ 避免暗示性问题：如 "What features would you like?" (假设需要功能)
+- ✅ 使用真正开放的问题：如 "Tell me about your experience with..."
+- ✅ 聚焦行为和具体案例，而非假设和意见
+
+**示例对比**:
+```
+❌ 引导性: "How often do you struggle with task management?"
+✅ 开放性: "Tell me about how you currently manage your tasks."
+
+❌ 暗示性: "What improvements would you suggest for [Feature]?"
+✅ 开放性: "What's your experience been like using [Feature]?"
+```
+
+**2. Study Objective 必问项识别** 🔑:
+- 自动识别研究目标中明确要求的必问问题或数据收集项
+- 在合适的 Session 中自然融入这些必问项
+- 在 Interviewer Notes 中标记 `[MUST-ASK per Study Objective]`
+- 确保关键研究目标不会被遗漏
+
+**3. 智能追问策略** 🎯:
+
+**A. 硬编码追问（仅用于关键问题）**:
+- 仅当问题直接关联核心研究目标时使用
+- 仅当缺失追问会导致关键洞察缺失时使用
+- 包含条件化追问逻辑和跳过条件
+
+**B. 即兴追问（用于一般问题）**:
+- 对于非关键问题，不预设硬编码追问
+- 依赖 Retell AI 的即兴追问能力
+- 在 Interviewer Notes 中标记 `[Rely on impromptu follow-ups]`
+- 避免过度脚本化导致访谈僵硬
+
+**C. 标准即兴追问指令**:
+- 每个 Session 都包含标准的即兴追问指导
+- 指导面试官何时深挖、何时跳过、如何自然回应
+
+**4. 本地化内容清理** 🧹:
+- 移除详细的文化适配指令（已在 `localize-outline.ts` 中处理）
+- 简化语言配置（仅保留基本语言要求）
+- 添加说明：文化适配和深度本地化在独立步骤中处理
+
+**5. 市场调研特定优化**:
+- 痛点发现（而非假设）：先问当前流程，让用户自然揭示痛点
+- 理想解决方案探索：使用 "magic wand" 问法，避免直接问功能需求
+- AI/技术期望收集：探索理解和体验，不假设顾虑存在
+
+**6. 产品调研特定优化**:
+- 功能发现（而非假设）：先问实际使用模式，不假设用户已发现功能
+- 竞品对比策略：问之前使用的工具，而非直接问竞品
+- 体验探索：聚焦实际体验，不假设满意或不满
+
+**影响的文件**:
+- `backend/src/lib/prompts/generate-market-research-sessions.ts` (248 lines → 279 lines)
+- `backend/src/lib/prompts/generate-product-research-sessions.ts` (241 lines → 274 lines)
+
+**质量检查清单更新**:
+```
+✅ 所有问题是否真正开放且无引导性？
+✅ 是否识别并融入了 Study Objective 的必问项？
+✅ 硬编码追问是否仅用于关键问题？
+✅ 一般问题是否依赖即兴追问？
+✅ 问题是否聚焦行为和体验（而非意见或假设）？
+✅ 是否在探索当前行为后再假设痛点？
+```
+
+**设计理念**:
+1. **开放性优先**：让参与者定义自己的体验，不预设立场
+2. **目标驱动**：确保核心研究目标的关键信息不遗漏
+3. **智能追问**：关键问题深挖，一般问题灵活
+4. **行为聚焦**：问人们做什么，而非想什么
+5. **自然发现**：让洞察自然涌现，不强加假设
+
+**预期效果**:
+- 生成的访谈大纲更加开放、无偏见
+- 关键研究目标的必问项不会遗漏
+- 访谈流程更自然、更像真实对话
+- 减少引导性问题导致的偏见数据
+- 提高洞察质量和研究有效性
+
+---
+
+## [1.3.6] - 2025-10-26
+
+### 🐛 Bug 修复
+
+#### Session 数量智能补全机制 ✅
+
+**问题描述**:
+- 在深度访谈模式（David）中，GPT 有时会生成错误数量的 Sessions
+- 用户请求 10 个 Sessions，GPT 可能只生成 8 个或 11 个
+- 导致访谈大纲不完整或超出预期
+
+**解决方案**:
+
+**1. Prompt 强化（预防）**:
+- 在所有 Session 生成 Prompt 中添加严格的数量要求警告
+- 明确告知 GPT 生成错误数量会导致系统故障
+- 文件：
+  - `backend/src/lib/prompts/generate-sessions.ts`
+  - `backend/src/lib/prompts/generate-market-research-sessions.ts`
+  - `backend/src/lib/prompts/generate-product-research-sessions.ts`
+
+**2. 智能补全（修复）**:
+- 自动检测生成的 Session 数量
+- 如果数量不足，调用 GPT 补全缺失的 Sessions
+- 如果数量过多，自动截断多余的 Sessions
+- 文件：`backend/src/controllers/questions.controller.ts`
+
+**3. 详细日志（调试）**:
+- 记录请求数量 vs 实际生成数量
+- 输出完整的 GPT 响应内容
+- 便于追踪和调试问题
+
+**技术细节**:
+```typescript
+// 验证数量
+const actualCount = parsedContent.questions?.length || 0;
+const requestedCount = Math.min(body.number, 10);
+
+// 智能补全
+if (actualCount < requestedCount) {
+  const missing = requestedCount - actualCount;
+  // 调用 GPT 补全剩余 Sessions
+  const complementResponse = await openaiClient.chat.completions.create({...});
+  parsedContent.questions = [...original, ...complement];
+}
+
+// 智能截断
+if (actualCount > requestedCount) {
+  parsedContent.questions = parsedContent.questions.slice(0, requestedCount);
+}
+```
+
+**效果**:
+- ✅ 100% 保证生成正确数量的 Sessions
+- ✅ 补全的 Sessions 质量与原始 Sessions 一致
+- ✅ 自然衔接，无缝集成
+
+**相关文档**:
+- 更新 `docs/03-大纲生成系统.md`（添加智能补全机制章节）
+
+---
+
+### 🎨 优化
+
+#### 前端数量验证逻辑移除 ✅
+
+**变更说明**:
+- 移除前端的 Session 数量验证和补全逻辑
+- 将数量保障完全交给后端智能补全机制
+- 简化前端代码，提高可维护性
+
+**修改文件**:
+- `frontend/src/components/dashboard/interview/create-popup/details.tsx`
+
+**变更内容**:
+```typescript
+// ❌ 移除前端的数量验证逻辑
+// if (updatedQuestions.length > requestedCount) { ... }
+// if (updatedQuestions.length < requestedCount) { ... }
+
+// ✅ 使用实际生成的数量
+question_count: updatedQuestions.length
+```
+
+**理由**:
+- 后端已经保证数量正确，前端无需重复验证
+- 避免前端和后端逻辑冲突
+- 提高代码可维护性
+
+---
+
 ## [1.3.5] - 2025-10-24
 
 ### 🐛 Bug 修复
