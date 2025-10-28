@@ -72,5 +72,15 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), require("tailwind-scrollbar-hide")],
+  plugins: [
+    require("tailwindcss-animate"), 
+    require("tailwind-scrollbar-hide"),
+    require("daisyui")
+  ],
+  daisyui: {
+    themes: ["light"], // 使用light主题
+    base: true,
+    styled: true,
+    utils: true,
+  },
 };

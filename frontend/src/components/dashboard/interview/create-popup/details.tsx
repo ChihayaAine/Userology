@@ -15,6 +15,8 @@ import Modal from "@/components/dashboard/Modal";
 import InterviewerDetailsModal from "@/components/dashboard/interviewer/interviewerDetailsModal";
 import { Interviewer } from "@/types/interviewer";
 import { SUPPORTED_LANGUAGES, LanguageCode } from "@/lib/languages";
+import "@/styles/custom-select.css";
+import { useInterviewStore } from "@/store/interview-store";
 
 interface Props {
   open: boolean;
@@ -46,6 +48,7 @@ function DetailsPopup({
   setOutlineDebugLanguage,
 }: Props) {
   const { interviewers, interviewersLoading } = useInterviewers();
+  const { setDraftQuestions } = useInterviewStore();
   
   // 状态变量声明
   const [isClicked, setIsClicked] = useState(false);
@@ -118,9 +121,8 @@ function DetailsPopup({
     return (
       name.trim() !== "" &&
       objective.trim() !== "" &&
-      numQuestions !== "" &&
-      duration !== "" &&
-      Number(selectedInterviewer) > 0
+      Number(selectedInterviewer) > 0 &&
+      selectedLanguage !== ""
     );
   };
 
@@ -128,7 +130,8 @@ function DetailsPopup({
   // 现在每个 interview 创建时会有自己专属的 agent，语言在创建时设置
 
   const onGenrateQuestions = async () => {
-    setLoading(true);
+    // 先设置本地loading状态，但不触发导航
+    setIsClicked(true);
 
     try {
       const data = {
@@ -208,13 +211,17 @@ function DetailsPopup({
       language: selectedLanguage || 'en-US',  // 🆕 添加语言字段
     };
     setInterviewData(updatedInterviewData);
+    setDraftQuestions(updatedQuestions); // 同步到store的draftQuestions
     console.log('✅ Interview data updated successfully');
     console.log('✅ Updated interview data:', updatedInterviewData);
-    console.log('✅ Loading state remains true, parent component should handle the transition');
-    // 不在这里设置 setLoading(false)，让父组件的 useEffect 来处理
+    
+    // ✅ API调用成功完成，现在触发导航
+    setIsClicked(false);
+    setLoading(true);
   } catch (error) {
     console.error('❌ Error generating questions:', error);
-    setLoading(false); // 只在错误时设置 loading 为 false
+    setIsClicked(false);
+    // 不需要调用 setLoading，因为我们从未将它设为true
   }
 };
 
@@ -258,25 +265,45 @@ function DetailsPopup({
 
   return (
     <>
-      <div className="text-center w-[38rem]">
-        <h1 className="text-xl font-semibold">Create a Research Study</h1>
-        <div className="flex flex-col justify-center items-start mt-4 ml-10 mr-8">
-          <div className="flex flex-row justify-center items-center">
-            <h3 className="text-sm font-medium">Research Study Name:</h3>
+      <div className="w-full bg-transparent">
+        {/* Page Header */}
+        <div className="mb-6">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">定义调研</h1>
+          <p className="text-sm text-gray-600">定义您的调研目标，选择访谈员，AI将根据您的输入信息生成访谈内容。</p>
+        </div>
+
+        {/* Main Card */}
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8 space-y-6">
+          <h2 className="text-xl font-semibold text-gray-900 mb-6">调研信息</h2>
+          
+          {/* Research Study Name */}
+          <div className="form-control w-full">
+            <label className="label pb-2">
+              <span className="label-text text-sm font-medium text-gray-700">调研名称</span>
+            </label>
             <input
               type="text"
-              className="border-b-2 focus:outline-none border-gray-500 px-2 w-96 py-0.5 ml-3"
-              placeholder="e.g. User Onboarding Experience Study"
+              className="w-full px-4 py-3 border-2 border-gray-300 bg-white rounded-lg focus:border-blue-500 focus:outline-none transition-all"
+              placeholder="例如：智能家居产品用户体验优化调研"
               value={name}
               onChange={(e) => setName(e.target.value)}
               onBlur={(e) => setName(e.target.value.trim())}
             />
           </div>
-          <h3 className="text-sm mt-3 font-medium">Select a Research Assistant:</h3>
-          <div className="relative flex items-center mt-1 overflow-hidden">
+          {/* Select Research Assistant */}
+          <div className="form-control w-full">
+            <label className="label pb-3">
+              <span className="label-text text-sm font-medium text-gray-700 flex items-center gap-2">
+                选择访谈员
+                <div className="tooltip tooltip-right" data-tip="选择合适的AI访谈员">
+                  <Info size={16} className="text-gray-400 hover:text-blue-600 cursor-pointer" />
+                </div>
+              </span>
+            </label>
+            <div className="grid grid-cols-3 gap-6">
             <div
               id="slider-3"
-              className=" h-36 pt-1 overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide w-[27.5rem]"
+              className="contents"
             >
               {interviewersLoading ? (
                 // 加载状态
@@ -308,39 +335,26 @@ function DetailsPopup({
                 // 正常显示面试官列表
                 interviewers.map((item) => (
                 <div
-                  className=" p-0 inline-block cursor-pointer ml-1 mr-5 rounded-xl shrink-0 overflow-hidden"
                   key={item.id}
-                >
-                  <button
-                    className="absolute ml-9"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setInterviewerDetails(item);
-                      setOpenInterviewerDetails(true);
-                    }}
-                  >
-                    <Info size={18} color="#4f46e5" strokeWidth={2.2} />
-                  </button>
-                  <div
-                    className={`w-[96px] overflow-hidden rounded-full cursor-pointer ${
+                  className={`relative bg-gray-50 hover:bg-gray-100 cursor-pointer transition-all rounded-lg border-2 p-6 ${
                       Number(selectedInterviewer) === Number(item.id)
-                        ? "border-4 border-indigo-600"
-                        : "border-2 border-transparent"
+                      ? "border-blue-500 bg-blue-50"
+                      : "border-gray-200 hover:border-gray-300"
                     }`}
                     onClick={() => {
                       console.log('🚀 Selecting interviewer:', item.id, item.name);
-                      console.log('🚀 Previous selectedInterviewer:', selectedInterviewer);
                       const newInterviewerId = Number(item.id);
                       setSelectedInterviewer(newInterviewerId);
-                      console.log('🚀 New selectedInterviewer should be:', newInterviewerId);
-                      // 🆕 不再立即修改 agent 语言，语言会在创建 interview 时设置
-                    }}
-                  >
+                  }}
+                >
+                  <div className="flex flex-col items-center text-center space-y-3">
+                    <div className="avatar">
+                      <div className="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gray-200">
                     <Image
                       src={item.image}
                       alt={`Picture of ${item.name}`}
-                      width={70}
-                      height={70}
+                          width={80}
+                          height={80}
                       className="w-full h-full object-cover"
                       onError={() => {
                         console.error('❌ Failed to load image:', item.image);
@@ -350,120 +364,85 @@ function DetailsPopup({
                       }}
                     />
                   </div>
-                  <CardTitle className="mt-0 text-xs text-center">
-                    {item.name}
-                  </CardTitle>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-base text-gray-900">{item.name}</h3>
+                      <p className="text-xs text-gray-500 mt-1">
+                        {item.name.includes('Lisa') ? '标准模式·平衡型' : 
+                         item.name.includes('Bob') ? '快速模式·高效型' : 
+                         '深度模式·探索型'}
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    className="absolute top-2 right-2 p-1 hover:bg-gray-200 rounded"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setInterviewerDetails(item);
+                      setOpenInterviewerDetails(true);
+                    }}
+                  >
+                    <Info size={14} className="text-gray-400" />
+                  </button>
                 </div>
                 ))
               )}
             </div>
-            {interviewers.length > 4 ? (
-              <div className="flex-row justify-center ml-3 mb-1 items-center space-y-6">
-                <ChevronRight
-                  className="opacity-50 cursor-pointer hover:opacity-100"
-                  size={27}
-                  onClick={() => slide("slider-3", 115)}
-                />
-                <ChevronLeft
-                  className="opacity-50 cursor-pointer hover:opacity-100"
-                  size={27}
-                  onClick={() => slide("slider-3", -115)}
-                />
               </div>
-            ) : (
-              <></>
-            )}
-          </div>
-          <div className="flex flex-row justify-between items-center w-[33.2rem] mt-3">
-            <h3 className="text-sm font-medium">Interview Language:</h3>
-            <select
-              value={selectedLanguage}
-              onChange={(e) => {
-                const newLanguage = e.target.value as LanguageCode;
-                setSelectedLanguage(newLanguage);
-                // 🆕 语言只在创建 interview 时使用，不再修改全局 agent
-              }}
-              className="border-2 border-gray-500 rounded px-3 py-1.5 text-sm focus:outline-none focus:border-indigo-600 cursor-pointer"
-            >
-              <option value="" disabled hidden>
-                Select Language
-              </option>
-              {Object.entries(SUPPORTED_LANGUAGES).map(([code, lang]) => (
-                <option key={code} value={code}>
-                  {lang.flag} {lang.name}
-                </option>
-              ))}
-            </select>
           </div>
 
-          {/* 大纲调试语言选择器 - 仅在深度访谈模式下显示 */}
-          {isDeepDiveMode && (
-            <div className="flex flex-row justify-between items-center w-[33.2rem] mt-3">
-              <div className="flex items-center gap-2">
-                <h3 className="text-sm font-medium">Outline Debug Language:</h3>
-                <div className="relative group">
-                  <Info className="w-4 h-4 text-gray-400 cursor-help" />
-                  <div className="absolute left-0 top-6 z-50 w-80 bg-white border border-gray-300 rounded-lg shadow-lg p-3 hidden group-hover:block">
-                    <p className="text-xs text-gray-700">
-                      <span className="font-semibold text-gray-900">大纲调试语言：</span>{' '}
-                      选择用于生成和调试访谈大纲的语言。生成后可以在此语言下调试优化，最后一键本地化到访谈语言。
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <select
-                value={outlineDebugLanguage}
-                onChange={(e) => {
-                  const newLanguage = e.target.value as LanguageCode;
-                  setOutlineDebugLanguage(newLanguage);
-                }}
-                className="border-2 border-gray-500 rounded px-3 py-1.5 text-sm focus:outline-none focus:border-indigo-600 cursor-pointer"
-              >
-                <option value="" disabled hidden>
-                  Select Debug Language
-                </option>
-                {Object.entries(SUPPORTED_LANGUAGES).map(([code, lang]) => (
-                  <option key={code} value={code}>
-                    {lang.flag} {lang.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-          )}
-
-          <div className="flex flex-row justify-between items-center w-[33.2rem] mt-3">
-            <h3 className="text-sm font-medium">Research Type:</h3>
-            <div className="flex gap-3">
-              <button
-                type="button"
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+          {/* Research Type */}
+          <div className="form-control w-full">
+            <label className="label pb-2">
+              <span className="label-text text-sm font-medium text-gray-700 flex items-center gap-2">
+                调研类型
+                <div className="tooltip tooltip-right" data-tip="选择调研类型">
+                  <Info size={16} className="text-gray-400 hover:text-blue-600 cursor-pointer" />
+          </div>
+              </span>
+            </label>
+            <div className="grid grid-cols-2 gap-4">
+              <label className={`flex items-center cursor-pointer border-2 rounded-lg p-4 transition-all ${
                   researchType === 'product'
-                    ? 'bg-indigo-600 text-white'
-                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                }`}
-                onClick={() => setResearchType('product')}
-              >
-                Product Research
-              </button>
-              <button
-                type="button"
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                  ? 'border-blue-500 bg-blue-50' 
+                  : 'border-gray-300 hover:border-gray-400'
+              }`}>
+                <input
+                  type="radio"
+                  name="researchType"
+                  value="product"
+                  checked={researchType === 'product'}
+                  onChange={() => setResearchType('product')}
+                  className="radio radio-primary radio-sm"
+                />
+                <span className="ml-3 text-sm font-medium text-gray-700">产品调研</span>
+              </label>
+              <label className={`flex items-center cursor-pointer border-2 rounded-lg p-4 transition-all ${
                   researchType === 'market'
-                    ? 'bg-indigo-600 text-white'
-                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                }`}
-                onClick={() => setResearchType('market')}
-              >
-                Market Research
-              </button>
+                  ? 'border-blue-500 bg-blue-50' 
+                  : 'border-gray-300 hover:border-gray-400'
+              }`}>
+                <input
+                  type="radio"
+                  name="researchType"
+                  value="market"
+                  checked={researchType === 'market'}
+                  onChange={() => setResearchType('market')}
+                  className="radio radio-primary radio-sm"
+                />
+                <span className="ml-3 text-sm font-medium text-gray-700">市场调研</span>
+              </label>
             </div>
           </div>
-          <div className="mt-3 flex items-center gap-2 relative">
-            <h3 className="text-sm font-medium">Research Objective:</h3>
-            <div className="relative">
+          {/* Research Objective */}
+          <div className="form-control w-full">
+            <label className="label pb-2">
+              <span className="label-text text-sm font-medium text-gray-700 flex items-center gap-2">
+                调研目的
+              <div className="relative ml-1">
               <Info
                 size={16}
-                className="text-indigo-600 cursor-pointer hover:text-indigo-800"
+                className="text-gray-400 hover:text-blue-600 cursor-pointer"
                 onClick={() => setShowObjectiveTooltip(!showObjectiveTooltip)}
               />
               {showObjectiveTooltip && !showObjectiveExample && (
@@ -554,19 +533,25 @@ function DetailsPopup({
                 </div>
               )}
             </div>
-          </div>
+              </span>
+            </label>
           <Textarea
             value={objective}
-            className="h-24 mt-2 border-2 border-gray-500 w-[33.2rem]"
+              className="h-48 border-2 border-gray-300 w-full rounded-lg focus:border-blue-500 focus:outline-none transition-all resize-none bg-white"
             placeholder={researchType === 'product'
-              ? "Product Info:\n- Name: [Product Name]\n- Positioning: [One-sentence product positioning]\n- Core Features: [3-5 core features]\n- Target Users: [Main user groups]\n\nResearch Background:\n- Trigger: [Why conduct this research]\n- Core Questions: [1-3 core questions to solve]\n- Decision Need: [What decisions will the research inform]\n- Must Collect: [Required data points, e.g., \"Top 3 highlights and 3 pain points\"]\n- Ideal Output: [Expected research outcomes]"
-              : "Business Context:\n- Domain: [Business domain]\n- Opportunity: [Market opportunity hypothesis]\n- Strategic Goal: [Strategic objectives]\n\nCore Questions to Validate:\n- Market Need: [Real pain points?]\n- Solution Gap: [What's missing in existing solutions?]\n- Product Direction: [User expectations?]\n- Commercial Viability: [Willingness to pay?]\n\nTarget Users:\n- Core: [Primary user segment]\n- Geography: [Geographic scope]\n- Characteristics: [User characteristics]\n\nSuccess Criteria:\n- Decision: [Key decision to make]\n- Ideal Output: [Expected validation outcomes]\n- Must Collect: [Required data points]"}
+                ? "产品信息：\n- 产品名称：[产品名称]\n- 定位：[一句话产品定位]\n- 核心功能：[3-5个核心功能]\n- 目标用户：[主要用户群体]\n\n调研背景：\n- 触发点：[为什么要做这次调研]\n- 核心问题：[1-3个需要解决的核心问题]\n- 决策需求：[调研结果将支持什么决策]\n- 必须收集：[必需的数据点]\n- 理想输出：[期望的调研成果]"
+                : "商业背景：\n- 领域：[业务领域]\n- 机会：[市场机会假设]\n- 战略目标：[战略目标]\n\n需要验证的核心问题：\n- 市场需求：[真实痛点？]\n- 解决方案缺口：[现有方案缺失什么？]\n- 产品方向：[用户期望？]\n- 商业可行性：[付费意愿？]\n\n目标用户：\n- 核心：[主要用户细分]\n- 地理范围：[地理范围]\n- 特征：[用户特征]\n\n成功标准：\n- 决策：[需要做出的关键决策]\n- 理想输出：[期望的验证结果]\n- 必须收集：[必需的数据点]"}
             onChange={(e) => setObjective(e.target.value)}
             onBlur={(e) => setObjective(e.target.value.trim())}
           />
-          <div className="mt-2 flex items-center gap-2 relative">
-            <h3 className="text-sm font-medium">Additional Documents:</h3>
-            <div className="relative">
+          </div>
+
+          {/* Additional Documents */}
+          <div className="form-control w-full">
+            <label className="label pb-2">
+              <span className="label-text text-sm font-medium text-gray-700 flex items-center gap-2">
+                上传背景资料（可选）
+                <div className="relative ml-1">
               <Info
                 size={16}
                 className="text-indigo-600 cursor-pointer hover:text-indigo-800"
@@ -657,7 +642,8 @@ function DetailsPopup({
                 </div>
               )}
             </div>
-          </div>
+              </span>
+            </label>
           <FileUpload
             isUploaded={isUploaded}
             setIsUploaded={setIsUploaded}
@@ -665,11 +651,12 @@ function DetailsPopup({
             setFileName={setFileName}
             setUploadedDocumentContext={setUploadedDocumentContext}
           />
+          </div>
 
           {/* 个性化备注输入框 */}
-          <div className="mt-4">
-            <div className="flex items-center gap-2 relative">
-              <h3 className="text-sm font-medium">Custom Instructions:</h3>
+          <div className="form-control w-full">
+            <label className="label">
+              <span className="label-text font-semibold text-gray-700">Custom Instructions:</span>
               <div className="relative">
                 <Info
                   size={16}
@@ -692,101 +679,93 @@ function DetailsPopup({
                   </p>
                 </div>
               </div>
-            </div>
+            </label>
             <Textarea
               value={customInstructions}
-              className="h-16 mt-2 border-2 border-gray-500 w-[33.2rem] resize-none overflow-y-auto"
+              className="h-16 mt-2 border-2 border-gray-300 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all resize-none"
               placeholder="Example: 'My interviews target elderly users, please use very simple and clear language' or 'Focus on emotional experiences rather than technical features'"
               onChange={(e) => setCustomInstructions(e.target.value)}
               onBlur={(e) => setCustomInstructions(e.target.value.trim())}
             />
           </div>
 
-          <label className="flex-col mt-7 w-full">
-            <div className="flex items-center cursor-pointer">
-              <span className="text-sm font-medium">
+          {/* Interview Language */}
+          <div className="form-control w-full">
+            <label className="label pb-2">
+              <span className="label-text text-sm font-medium text-gray-700 flex items-center gap-2">
+                <Globe size={16} className="text-blue-600" />
+                访谈语言
+              </span>
+            </label>
+            <select
+              className="custom-select w-full px-4 py-3 border-2 border-gray-300 bg-white rounded-lg focus:border-blue-500 focus:outline-none transition-all cursor-pointer text-gray-900"
+              value={selectedLanguage}
+              onChange={(e) => setSelectedLanguage(e.target.value as LanguageCode)}
+              style={{
+                appearance: 'none',
+                WebkitAppearance: 'none',
+                MozAppearance: 'none',
+                backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")`,
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'right 0.75rem center',
+                backgroundSize: '1.25em 1.25em',
+                paddingRight: '2.5rem',
+              }}
+            >
+              <option value="">选择访谈语言</option>
+              {Object.entries(SUPPORTED_LANGUAGES).map(([code, langConfig]) => (
+                <option key={code} value={code}>
+                  {langConfig.name}
+                </option>
+              ))}
+            </select>
+            <span className="text-xs text-gray-500 mt-2">
+              选择与受访者进行访谈的语言
+            </span>
+          </div>
+
+          {/* Anonymous Switch */}
+          <div className="form-control">
+            <label className="label cursor-pointer">
+              <span className="label-text font-semibold text-gray-700">
                 Do you prefer the participants&apos; responses to be anonymous?
               </span>
               <Switch
                 checked={isAnonymous}
-                className={`ml-4 mt-1 ${
-                  isAnonymous ? "bg-indigo-600" : "bg-[#E6E7EB]"
+                className={`ml-4 ${
+                  isAnonymous ? "bg-blue-600" : "bg-gray-300"
                 }`}
                 onCheckedChange={(checked) => setIsAnonymous(checked)}
               />
-            </div>
-            <span
-              style={{ fontSize: "0.7rem", lineHeight: "0.66rem" }}
-              className="font-light text-xs italic w-full text-left block"
-            >
-              Note: If not anonymous, the participant&apos;s email and name will
-              be collected.
+            </label>
+            <span className="text-xs text-gray-500 italic mt-1">
+              Note: If not anonymous, the participant&apos;s email and name will be collected.
             </span>
-          </label>
-          <div className="flex flex-row gap-3 justify-between w-full mt-3">
-            <div className="flex flex-row justify-center items-center ">
-              <h3 className="text-sm font-medium ">
-                {isDeepDiveMode ? "Number of Sessions:" : "Number of Questions:"}
-              </h3>
-              <input
-                type="number"
-                step="1"
-                max="300"
-                min="1"
-                className="border-b-2 text-center focus:outline-none  border-gray-500 w-14 px-2 py-0.5 ml-3"
-                value={numQuestions}
-                onChange={(e) => {
-                  let value = e.target.value;
-                  if (
-                    value === "" ||
-                    (Number.isInteger(Number(value)) && Number(value) > 0)
-                  ) {
-                    setNumQuestions(value);
-                  }
-                }}
-              />
-            </div>
-            <div className="flex flex-row justify-center items-center">
-              <h3 className="text-sm font-medium ">Duration (mins):</h3>
-              <input
-                type="number"
-                step="1"
-                max="300"
-                min="1"
-                className="border-b-2 text-center focus:outline-none  border-gray-500 w-14 px-2 py-0.5 ml-3"
-                value={duration}
-                onChange={(e) => {
-                  let value = e.target.value;
-                  if (
-                    value === "" ||
-                    (Number.isInteger(Number(value)) && Number(value) > 0)
-                  ) {
-                    setDuration(value);
-                  }
-                }}
-              />
-            </div>
           </div>
-          <div className="flex flex-row w-full justify-center items-center space-x-24 mt-5">
+
+          {/* Action Buttons */}
+          <div className="flex flex-row w-full justify-center items-center gap-4 pt-6 mt-6 border-t border-gray-200">
             <Button
-              disabled={!isFormValid() || isClicked}
-              className="bg-indigo-600 hover:bg-indigo-800  w-40"
+              disabled={!isFormValid()}
+              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 rounded-lg font-medium transition-all disabled:opacity-50 disabled:cursor-not-allowed h-12 text-base shadow-sm"
               onClick={() => {
-                setIsClicked(true);
-                onGenrateQuestions();
+                // 保存基本信息到store，包括访谈语言和研究类型
+                const updatedInterviewData: any = {
+                  ...interviewData,
+                  name: name.trim(),
+                  objective: objective.trim(),
+                  interviewer_id: BigInt(selectedInterviewer),
+                  is_anonymous: isAnonymous,
+                  language: selectedLanguage || 'zh-CN', // 保存访谈语言
+                  researchType: researchType, // 保存研究类型（product/market）
+                };
+                setInterviewData(updatedInterviewData);
+                setSelectedLanguage(selectedLanguage || 'zh-CN'); // 同步到store
+                // 标记第一步完成并导航
+                setLoading(true);
               }}
             >
-              {isDeepDiveMode ? "Generate Sessions" : "Generate Questions"}
-            </Button>
-            <Button
-              disabled={!isFormValid() || isClicked}
-              className="bg-indigo-600 w-40 hover:bg-indigo-800"
-              onClick={() => {
-                setIsClicked(true);
-                onManual();
-              }}
-            >
-              I&apos;ll do it myself
+              下一步 →
             </Button>
           </div>
         </div>

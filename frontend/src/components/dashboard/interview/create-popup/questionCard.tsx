@@ -1,7 +1,7 @@
 import { Question } from "@/types/interview";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Trash2 } from "lucide-react";
+import { Trash2, Pencil, Sparkles } from "lucide-react";
 import {
   Tooltip,
   TooltipContent,
@@ -27,106 +27,27 @@ const questionCard = ({
   readOnly = false,
 }: QuestionCardProps) => {
   return (
-    <>
-      <Card className={`shadow-md mb-5 pb-3 ${isDeepDiveMode ? 'min-h-[200px]' : ''}`}>
-        <CardContent className="p-2 mx-5">
-          <div className="flex flex-row justify-between mt-3 items-baseline ">
-            <CardTitle className="text-lg">
-              {isDeepDiveMode ? `Session ${questionNumber}` : `Question ${questionNumber}`}
-            </CardTitle>
-            <div className="flex flex-row items-start space-x-1">
-              <h3 className="text-base font-semibold mr-2">Depth Level: </h3>
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button
-                      className={`text-xs h-7  hover:bg-indigo-800  ${
-                        questionData?.follow_up_count == 1
-                          ? "bg-indigo-600"
-                          : "opacity-50"
-                      } `}
-                      onClick={() =>
-                        !readOnly && onQuestionChange(questionData.id, {
-                          ...questionData,
-                          follow_up_count: 1,
-                        })
-                      }
-                      disabled={readOnly}
-                    >
-                      Low
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent className="bg-zinc-200">
-                    <p className="text-zinc-800">Brief follow-up</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button
-                      className={`text-xs h-7  hover:bg-indigo-800 ${
-                        questionData?.follow_up_count == 2
-                          ? "bg-indigo-600"
-                          : "opacity-50"
-                      } `}
-                      onClick={() =>
-                        !readOnly && onQuestionChange(questionData.id, {
-                          ...questionData,
-                          follow_up_count: 2,
-                        })
-                      }
-                      disabled={readOnly}
-                    >
-                      Medium
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent className="bg-zinc-200">
-                    <p className="text-zinc-800">Moderate follow-up</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button
-                      className={`text-xs h-7 hover:bg-indigo-800  ${
-                        questionData?.follow_up_count == 3
-                          ? "bg-indigo-600"
-                          : "opacity-50"
-                      } `}
-                      onClick={() =>
-                        !readOnly && onQuestionChange(questionData.id, {
-                          ...questionData,
-                          follow_up_count: 3,
-                        })
-                      }
-                      disabled={readOnly}
-                    >
-                      High
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent className="bg-zinc-200">
-                    <p className="text-zinc-800">In-depth follow-up</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-            </div>
+    <div className="card bg-white border-2 border-gray-200 hover:shadow-md transition-all">
+      <div className="card-body p-5">
+        <div className="flex items-start gap-4">
+          {/* Question Number Badge */}
+          <div className="badge badge-primary badge-lg font-bold text-base min-w-[2.5rem] h-8 flex items-center justify-center">
+            {questionNumber}
           </div>
-          <div className="flex flex-row items-center">
+
+          {/* Question Content */}
+          <div className="flex-1">
             <textarea
               value={questionData?.question}
-              className={`h-fit mt-3 pt-1 border-2 rounded-md w-full px-2 border-gray-400 ${
-                isDeepDiveMode ? 'min-h-[120px]' : ''
+              className={`textarea textarea-bordered w-full border-2 border-gray-300 bg-white focus:border-blue-500 focus:outline-none resize-none ${
+                isDeepDiveMode ? 'min-h-[120px]' : 'min-h-[80px]'
               } ${readOnly ? 'bg-gray-100 cursor-not-allowed' : ''}`}
               placeholder={
                 isDeepDiveMode
-                  ? "e.g. Session 1: User Background & Context\n- Tell me about your role and daily responsibilities\n- What does a typical workday look like for you?\n- What tools and systems do you use regularly?\n- How long have you been in this position?"
-                  : "e.g. Can you tell me about a challenging project you've worked on?"
+                  ? "请输入Session内容..."
+                  : "请输入问题内容..."
               }
-              rows={isDeepDiveMode ? 10 : 3}
+              rows={isDeepDiveMode ? 5 : 2}
               onChange={(e) =>
                 !readOnly && onQuestionChange(questionData.id, {
                   ...questionData,
@@ -141,18 +62,57 @@ const questionCard = ({
               }
               readOnly={readOnly}
             />
-            {!readOnly && (
-              <Trash2
-                className="cursor-pointer ml-3"
-                color="red"
-                size={24}
-                onClick={() => onDelete(questionData.id)}
-              />
-            )}
           </div>
-        </CardContent>
-      </Card>
-    </>
+
+          {/* Action Buttons */}
+          {!readOnly && (
+            <div className="flex flex-col gap-2">
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <button className="btn btn-ghost btn-sm btn-square">
+                      <Pencil size={16} className="text-gray-600" />
+                    </button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>编辑</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <button className="btn btn-ghost btn-sm btn-square">
+                      <Sparkles size={16} className="text-blue-600" />
+                    </button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>AI优化</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <button 
+                      className="btn btn-ghost btn-sm btn-square"
+                      onClick={() => onDelete(questionData.id)}
+                    >
+                      <Trash2 size={16} className="text-red-600" />
+                    </button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>删除</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
   );
 };
 export default questionCard;
