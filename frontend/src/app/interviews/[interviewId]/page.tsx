@@ -67,7 +67,16 @@ function InterviewHome({ params, searchParams }: Props) {
   const [filterStatus, setFilterStatus] = useState<string>("ALL");
   
   // 从store获取创建流程状态
-  const { completedSteps, interviewId: storeInterviewId, setInterviewId, addCompletedStep, setCompletedSteps } = useInterviewStore();
+  const { 
+    completedSteps, 
+    interviewId: storeInterviewId, 
+    setInterviewId, 
+    addCompletedStep, 
+    setCompletedSteps,
+    setDraftQuestions,
+    setLocalizedQuestions,
+    setInterviewData,
+  } = useInterviewStore();
 
   const seeInterviewPreviewPage = () => {
     if (interview?.url) {
@@ -109,22 +118,36 @@ function InterviewHome({ params, searchParams }: Props) {
   useEffect(() => {
     // 保存当前访谈ID到store（如果不同）
     if (storeInterviewId !== params.interviewId) {
-      console.log('📝 Setting interview ID in store:', params.interviewId);
+      console.log('📝 Different interview detected, clearing old data and setting new ID:', params.interviewId);
+      
+      // 清空旧的访谈数据，避免显示上一个访谈的内容
+      setDraftQuestions([]);
+      setLocalizedQuestions(null);
+      setInterviewData({
+        name: '',
+        objective: '',
+        interviewer_id: BigInt(0),
+        is_anonymous: false,
+      } as any);
+      
+      // 设置新的访谈ID
       setInterviewId(params.interviewId);
+      
+      // 恢复所有前置步骤，以便显示侧边栏和支持编辑
+      setCompletedSteps(['define', 'generate', 'edit', 'distribute', 'analysis']);
     }
-
-    // 如果是从创建流程进入的（completedSteps已有内容），只需标记analysis
-    if (completedSteps.length > 0 && !completedSteps.includes('analysis')) {
+    // 如果是同一个访谈，但从创建流程进入的（completedSteps已有内容但不包括analysis）
+    else if (completedSteps.length > 0 && !completedSteps.includes('analysis')) {
       console.log('✅ From creation flow, marking analysis as completed');
       addCompletedStep('analysis');
     }
-    // 如果是从首页进入的（completedSteps为空），恢复所有前置步骤
+    // 如果是同一个访谈，但从首页进入的（completedSteps为空）
     else if (completedSteps.length === 0) {
       console.log('🔄 From homepage, restoring all steps for existing interview');
       // 标记所有前置步骤为已完成，以便显示侧边栏和支持编辑
       setCompletedSteps(['define', 'generate', 'edit', 'distribute', 'analysis']);
     }
-  }, [params.interviewId, storeInterviewId, completedSteps.length, addCompletedStep, setInterviewId, setCompletedSteps]);
+  }, [params.interviewId, storeInterviewId, completedSteps.length, addCompletedStep, setInterviewId, setCompletedSteps, setDraftQuestions, setLocalizedQuestions, setInterviewData]);
 
   useEffect(() => {
     const fetchOrganizationData = async () => {
@@ -297,7 +320,8 @@ function InterviewHome({ params, searchParams }: Props) {
               {String(responses?.length)}
             </div>
 
-            <TooltipProvider>
+            {/* 暂时注释掉这些按钮，功能已在前几步实现 */}
+            {/* <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Button
@@ -321,8 +345,8 @@ function InterviewHome({ params, searchParams }: Props) {
                   <span className="text-black flex flex-row gap-4">Share</span>
                 </TooltipContent>
               </Tooltip>
-            </TooltipProvider>
-            <TooltipProvider>
+            </TooltipProvider> */}
+            {/* <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Button
@@ -345,8 +369,8 @@ function InterviewHome({ params, searchParams }: Props) {
                   </span>
                 </TooltipContent>
               </Tooltip>
-            </TooltipProvider>
-            <TooltipProvider>
+            </TooltipProvider> */}
+            {/* <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Button
@@ -369,8 +393,8 @@ function InterviewHome({ params, searchParams }: Props) {
                   </span>
                 </TooltipContent>
               </Tooltip>
-            </TooltipProvider>
-            <TooltipProvider>
+            </TooltipProvider> */}
+            {/* <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Button
@@ -392,7 +416,7 @@ function InterviewHome({ params, searchParams }: Props) {
                   <span className="text-black flex flex-row gap-4">Edit</span>
                 </TooltipContent>
               </Tooltip>
-            </TooltipProvider>
+            </TooltipProvider> */}
 
             <label className="inline-flex cursor-pointer">
               {currentPlan == "free_trial_over" ? (

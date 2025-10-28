@@ -101,7 +101,7 @@ DO NOT mix languages. DO NOT use English if the target language is not English.
 **Research Objective**:
 ${body.objective}
 
-${body.context ? `**Additional Product Documentation**:\n${body.context}\n` : ''}
+${body.context ? `**Reference Outline and Additional Context**:\n${body.context}\n\n⚠️ **CRITICAL INSTRUCTION**: The researcher has provided reference material above. You MUST carefully review and incorporate this information when generating the interview guide:\n- If it contains a suggested outline structure or session topics, use them as the foundation for your session design\n- If it contains specific questions or themes, integrate them into your generated questions\n- If it provides additional context about the product/market, use it to enrich your question design and background information\n- Maintain the overall structure and focus suggested by the reference material while expanding it with professional interview techniques\n\n` : ''}
 
 ${body.customInstructions ? `**Custom Instructions from Researcher**:\n${body.customInstructions}\n\n⚠️ IMPORTANT: Please carefully follow these custom instructions when generating the interview guide. These are specific requirements from the researcher that should be prioritized.\n` : ''}
 

@@ -469,7 +469,9 @@ function Call({ interview }: InterviewProps) {
                     </div>
                   )}
                   <div className="p-2 font-normal text-sm mb-4 whitespace-pre-line">
-                    {interview?.description}
+                    {interview?.draft === 'localized' && interview?.local_description
+                      ? interview.local_description
+                      : interview?.description}
                     <p className="font-bold text-sm">
                       {"\n"}Ensure your volume is up and grant microphone access
                       when prompted. Additionally, please make sure you are in a

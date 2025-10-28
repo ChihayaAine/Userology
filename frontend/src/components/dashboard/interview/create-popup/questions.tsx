@@ -28,6 +28,8 @@ interface Props {
   setDraftQuestions: (questions: any[]) => void;
   localizedQuestions: any[] | null;
   setLocalizedQuestions: (questions: any[] | null) => void;
+  localizedDescription?: string; // 本地化的description
+  setLocalizedDescription?: (description: string) => void;
   mode?: 'generate' | 'edit'; // 显示模式：生成或编辑
 }
 
@@ -41,6 +43,8 @@ function QuestionsPopup({
   setDraftQuestions,
   localizedQuestions,
   setLocalizedQuestions,
+  localizedDescription: externalLocalizedDescription,
+  setLocalizedDescription: externalSetLocalizedDescription,
   mode = 'generate'
 }: Props) {
   const { user } = useClerk();
@@ -107,15 +111,20 @@ function QuestionsPopup({
       console.log('🚀 Starting outline generation...');
       
       // 根据模式构建不同的payload
-      // 如果用户手动填写了session主题，构建context
-      let contextWithTopics = "";
+      // 构建完整的context：包含上传的文档 + 用户填写的session主题
+      let fullContext = interviewData.context || ""; // 从第一步上传的文档内容
+      
       if (isDeepDiveMode && manualSessions.length > 0) {
         const filledTopics = manualSessions
           .filter(s => s.content.trim())
           .map((s, idx) => `Session ${idx + 1}: ${s.content}`);
         
         if (filledTopics.length > 0) {
-          contextWithTopics = "用户希望涵盖以下Session主题：\n" + filledTopics.join("\n");
+          const topicsContext = "用户希望涵盖以下Session主题：\n" + filledTopics.join("\n");
+          // 合并文档内容和主题
+          fullContext = fullContext 
+            ? `${fullContext}\n\n${topicsContext}`
+            : topicsContext;
         }
       }
 
@@ -128,8 +137,9 @@ function QuestionsPopup({
         time_duration: String(duration),
         language: localOutlineDebugLanguage, // 初稿语言（控制大纲生成语言）
         outline_debug_language: localOutlineDebugLanguage,
-        context: contextWithTopics, // sessions API使用 'context'，包含用户填写的主题
+        context: fullContext, // 包含上传的文档 + 用户填写的主题
         researchType: researchType, // 使用用户选择的研究类型（product/market）
+        customInstructions: interviewData.custom_instructions || '', // 添加个性化备注
       } : {
         // 普通模式 - 使用questions API的参数格式
         name: interviewData.name,
@@ -139,6 +149,8 @@ function QuestionsPopup({
         time_duration: String(duration),
         language: localOutlineDebugLanguage,
         outlineDebugLanguage: localOutlineDebugLanguage,
+        context: interviewData.context || '', // 🆕 添加上传的文档内容作为context
+        customInstructions: interviewData.custom_instructions || '', // 🆕 添加个性化备注
         isDeepDiveMode: false,
       };
 
@@ -235,6 +247,11 @@ function QuestionsPopup({
     }
   };
 
+  // 本地化的description状态（优先使用外部传入的值）
+  const [internalLocalizedDescription, setInternalLocalizedDescription] = useState<string>(externalLocalizedDescription || "");
+  const localizedDescription = externalLocalizedDescription !== undefined ? externalLocalizedDescription : internalLocalizedDescription;
+  const setLocalizedDescription = externalSetLocalizedDescription || setInternalLocalizedDescription;
+
   // 本地化函数
   const onLocalize = async () => {
     if (!selectedLanguage || !localOutlineDebugLanguage) {
@@ -252,7 +269,8 @@ function QuestionsPopup({
       console.log('🌐 Starting localization...', {
         targetLanguage: selectedLanguage,
         debugLanguage: localOutlineDebugLanguage,
-        draftOutline: questions
+        draftOutline: questions,
+        description: description
       });
 
       const response = await apiClient.post(
@@ -270,14 +288,30 @@ function QuestionsPopup({
       console.log('✅ Localization response:', response.data);
       const localizedData = JSON.parse(response.data.response);
 
+      console.log('📝 Localized data structure:', {
+        hasQuestions: !!localizedData.questions,
+        questionsCount: localizedData.questions?.length,
+        hasDescription: !!localizedData.description,
+        descriptionPreview: localizedData.description?.substring(0, 100)
+      });
+
       const localizedQuestionsWithIds = localizedData.questions.map((q: any, index: number) => ({
         ...q,
         id: questions[index]?.id || uuidv4(),
       }));
 
       setLocalizedQuestions(localizedQuestionsWithIds);
+      
+      // 保存本地化的description
+      if (localizedData.description) {
+        setLocalizedDescription(localizedData.description);
+        console.log('✅ Localized description saved');
+      } else {
+        console.warn('⚠️ No localized description in response');
+      }
+      
       setShowLocalized(true);
-      toast.success("本地化完成！");
+      toast.success("大纲和简介本地化完成！");
     } catch (error: any) {
       console.error('❌ Localization error:', error);
       toast.error("本地化失败: " + (error.response?.data?.details || error.message));
@@ -340,12 +374,22 @@ function QuestionsPopup({
         sanitizedInterviewData.localized_outline = localizedQuestions;
         // 同时也保存初稿
         sanitizedInterviewData.draft_outline = questions;
+        // 保存本地化的description
+        if (localizedDescription) {
+          sanitizedInterviewData.local_description = localizedDescription;
+          console.log('💾 Saving localized description:', localizedDescription.substring(0, 100) + '...');
+        }
       } else {
         // 如果显示的是初稿，保存到 draft_outline
         sanitizedInterviewData.draft_outline = questions;
         // 如果有本地化版本，也一起保存
         if (localizedQuestions) {
           sanitizedInterviewData.localized_outline = localizedQuestions;
+          // 如果有本地化的description，也一起保存
+          if (localizedDescription) {
+            sanitizedInterviewData.local_description = localizedDescription;
+            console.log('💾 Saving localized description:', localizedDescription.substring(0, 100) + '...');
+          }
         }
       }
       
@@ -722,22 +766,30 @@ function QuestionsPopup({
               questionData={question}
               isDeepDiveMode={isDeepDiveMode}
                 onQuestionChange={(id: string, updatedQuestion: Question) => {
-                  const updatedQuestions = questions.map((q) =>
-                    q.id === id ? updatedQuestion : q
-                  );
-                  setQuestions(updatedQuestions);
+                  // 只更新当前正在显示的版本
                   if (showLocalized && localizedQuestions) {
+                    // 当前显示本地化版本，只更新本地化数组
                     const updatedLocalizedQuestions = localizedQuestions.map((q) =>
                       q.id === id ? updatedQuestion : q
                     );
                     setLocalizedQuestions(updatedLocalizedQuestions);
+                  } else {
+                    // 当前显示初稿版本，只更新初稿数组
+                    const updatedQuestions = questions.map((q) =>
+                      q.id === id ? updatedQuestion : q
+                    );
+                    setQuestions(updatedQuestions);
                   }
                 }}
                 onDelete={(id: string) => {
-                  const updatedQuestions = questions.filter((q) => q.id !== id);
-                  setQuestions(updatedQuestions);
+                  // 只删除当前正在显示的版本
                   if (showLocalized && localizedQuestions) {
+                    // 当前显示本地化版本，只删除本地化数组中的项
                     setLocalizedQuestions(localizedQuestions.filter((q) => q.id !== id));
+                  } else {
+                    // 当前显示初稿版本，只删除初稿数组中的项
+                    const updatedQuestions = questions.filter((q) => q.id !== id);
+                    setQuestions(updatedQuestions);
                   }
                 }}
             />
@@ -756,7 +808,12 @@ function QuestionsPopup({
               question: "",
               follow_up_count: 1,
             };
-            setQuestions([...questions, newQuestion]);
+            // 只添加到当前正在显示的版本
+            if (showLocalized && localizedQuestions) {
+              setLocalizedQuestions([...localizedQuestions, newQuestion]);
+            } else {
+              setQuestions([...questions, newQuestion]);
+            }
           }}
         >
           <Plus className="w-4 h-4 mr-2" />
@@ -767,14 +824,20 @@ function QuestionsPopup({
         <div className="form-control w-full mt-6 pt-6 border-t border-gray-200">
           <label className="label pb-2">
             <span className="label-text text-sm font-medium text-gray-700">
-              访谈简介
+              访谈简介 {showLocalized && localizedDescription && "(本地化版本)"}
             </span>
           </label>
           <textarea
             className="w-full px-4 py-3 border-2 border-gray-300 bg-white rounded-lg focus:border-blue-500 focus:outline-none transition-all min-h-[120px] resize-y"
             placeholder="请输入访谈简介，这将显示在访谈开始前..."
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            value={showLocalized && localizedDescription ? localizedDescription : description}
+            onChange={(e) => {
+              if (showLocalized && localizedDescription) {
+                setLocalizedDescription(e.target.value);
+              } else {
+                setDescription(e.target.value);
+              }
+            }}
           />
         </div>
 
