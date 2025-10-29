@@ -45,6 +45,11 @@ export interface InterviewDetails {
   localized_outline?: Question[];  // 本地化大纲（访谈语言版本）
   outline_debug_language?: string;  // 大纲调试语言（如 'zh-CN', 'en-US', 'ja-JP'）
   outline_interview_language?: string;  // 访谈语言（用于本地化目标）
+
+  // Outline skeleton fields (two-step generation)
+  outline_skeleton?: OutlineSkeleton;  // 大纲骨架（Session 主题、目标、背景信息）
+  outline_generation_status?: OutlineGenerationStatus;  // 大纲生成状态
+  skeleton_generated_at?: Date;  // 骨架生成时间
 }
 
 export interface Interview extends InterviewBase, InterviewDetails {}
@@ -77,3 +82,38 @@ export interface EvidenceItem {
   insight_id: string;
   quotes: SupportingQuote[];
 }
+
+// ============================================
+// Outline Skeleton Types (Two-Step Generation)
+// ============================================
+
+/**
+ * 大纲骨架 - 包含 Session 主题、目标、背景信息
+ */
+export interface OutlineSkeleton {
+  sessions: SkeletonSession[];
+  metadata: {
+    total_sessions: number;
+    estimated_duration_minutes: number;
+    draft_language: string;
+  };
+}
+
+/**
+ * 单个 Session 的骨架信息
+ */
+export interface SkeletonSession {
+  session_number: number;
+  session_title: string;
+  session_goal: string;
+  background_information: string[];
+}
+
+/**
+ * 大纲生成状态
+ */
+export type OutlineGenerationStatus =
+  | 'draft'                // 初始状态（用户填写了 objective）
+  | 'skeleton_generated'   // 骨架已生成（用户可以 review）
+  | 'draft_generated'      // 初稿大纲已生成
+  | 'localized';           // 已本地化

@@ -47,6 +47,11 @@ export interface InterviewDetails {
   objective_deliverables?: ObjectiveDeliverables;
   cross_interview_insights?: CrossInterviewInsight[];
   evidence_bank?: EvidenceItem[];
+
+  // Outline skeleton fields (two-step generation)
+  outline_skeleton?: OutlineSkeleton;
+  outline_generation_status?: OutlineGenerationStatus;
+  skeleton_generated_at?: Date;
 }
 
 export interface Interview extends InterviewBase, InterviewDetails {}
@@ -74,3 +79,38 @@ export interface EvidenceItem {
     timestamp?: number;
   }>;
 }
+
+// ============================================
+// Outline Skeleton Types (Two-Step Generation)
+// ============================================
+
+/**
+ * 大纲骨架 - 包含 Session 主题、目标、背景信息
+ */
+export interface OutlineSkeleton {
+  sessions: SkeletonSession[];
+  metadata: {
+    total_sessions: number;
+    estimated_duration_minutes: number;
+    draft_language: string;
+  };
+}
+
+/**
+ * 单个 Session 的骨架信息
+ */
+export interface SkeletonSession {
+  session_number: number;
+  session_title: string;
+  session_goal: string;
+  background_information: string[];
+}
+
+/**
+ * 大纲生成状态
+ */
+export type OutlineGenerationStatus =
+  | 'draft'                // 初始状态（用户填写了 objective）
+  | 'skeleton_generated'   // 骨架已生成（用户可以 review）
+  | 'draft_generated'      // 初稿大纲已生成
+  | 'localized';           // 已本地化

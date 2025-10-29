@@ -2,7 +2,10 @@ import { Router } from 'express';
 import {
   generateInterviewQuestions,
   generateInterviewSessions,
-  localizeOutline
+  localizeOutline,
+  generateOutlineSkeleton,
+  updateOutlineSkeleton,
+  generateFullOutlineFromSkeleton
 } from '@/controllers/questions.controller';
 
 const router = Router();
@@ -11,5 +14,10 @@ const router = Router();
 router.post('/generate-interview-questions', generateInterviewQuestions);
 router.post('/generate-interview-sessions', generateInterviewSessions);
 router.post('/localize-outline', localizeOutline);
+
+// Two-step outline generation routes
+router.post('/outlines/skeleton', generateOutlineSkeleton);
+router.patch('/outlines/:id/skeleton', updateOutlineSkeleton);
+router.post('/outlines/:id/full-outline', generateFullOutlineFromSkeleton);
 
 export default router;
