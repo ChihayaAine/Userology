@@ -43,6 +43,16 @@ app.use(morgan('combined'));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
+// 为长访谈设置更长的超时时间（10分钟）
+app.use((req, res, next) => {
+  // 对于 call retrieve endpoint，设置更长的超时（长访谈需要更多处理时间）
+  if (req.path.includes('/api/call/') && req.method === 'GET') {
+    req.setTimeout(600000); // 10分钟
+    res.setTimeout(600000); // 10分钟
+  }
+  next();
+});
+
 // Health check
 app.get('/health', (req, res) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() });

@@ -37,7 +37,7 @@ function DistributePopup({
   const [isCreating, setIsCreating] = useState(false);
   const [copiedLink, setCopiedLink] = useState(false);
   const [selectedVersion, setSelectedVersion] = useState<'draft' | 'localized'>(
-    localizedQuestions ? 'localized' : 'draft'
+    localizedQuestions && localizedQuestions.length > 0 ? 'localized' : 'draft'
   );
 
   // 生成访谈链接（使用真实的interview ID）
@@ -221,7 +221,7 @@ function DistributePopup({
           </label>
 
           {/* Localized Version */}
-          {localizedQuestions && (
+          {localizedQuestions && localizedQuestions.length > 0 && (
             <label className={`card cursor-pointer transition-all ${
               selectedVersion === 'localized' 
                 ? 'bg-blue-50 border-2 border-blue-500' 
