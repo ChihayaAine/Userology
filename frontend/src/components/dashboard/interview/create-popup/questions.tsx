@@ -125,6 +125,16 @@ function QuestionsPopup({
     try {
       console.log('🎯 Generating skeleton...');
 
+      // 准备用户预设的 Session 主题
+      const filledManualSessions = manualSessions
+        .filter(s => s.content.trim())
+        .map((s, idx) => ({
+          session_number: idx + 1,
+          theme: s.content.trim()
+        }));
+
+      console.log('📝 Manual sessions:', filledManualSessions);
+
       // 生成骨架（不需要 interview_id）
       const result = await OutlineService.generateSkeleton({
         name: interviewData.name,
@@ -133,7 +143,8 @@ function QuestionsPopup({
         session_count: Number(numQuestions),
         duration_minutes: Number(duration),
         draft_language: localOutlineDebugLanguage,
-        researchType: researchType
+        researchType: researchType,
+        manualSessions: filledManualSessions.length > 0 ? filledManualSessions : undefined
       });
 
       console.log('✅ Skeleton generated:', result.skeleton);

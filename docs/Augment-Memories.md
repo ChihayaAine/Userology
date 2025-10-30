@@ -1,7 +1,7 @@
 # Augment Memories - Userology-Foloup 项目
 
-> **版本**: 1.3.5
-> **最后更新**: 2025-10-24
+> **版本**: 1.4.0
+> **最后更新**: 2025-10-30
 > **项目**: AI驱动的用户研究访谈平台
 
 ---
@@ -10,7 +10,26 @@
 
 ### 访谈准备系统
 
-**大纲生成**:
+**两步大纲生成** (v1.4.0 新增):
+- **Step 1: 生成骨架** - 生成 Session 主题、目标、背景信息
+  - 不需要 interview_id，可在创建 interview 前生成
+  - 支持用户预设 Session 主题（AI 严格遵循）
+  - 输出包含 must_ask_questions 字段
+- **Step 2: 用户 Review** - 用户可编辑骨架的所有字段
+  - 编辑 Session 标题、目标、背景信息
+  - 添加必问问题（自然融入访谈流程）
+  - 实时保存到 Zustand Store
+- **Step 3: 生成完整大纲** - 基于审核后的骨架生成 4-6 个具体问题
+  - 为关键问题生成追问策略
+  - 生成 Session 1 Opening（6 个元素）
+  - 必问问题标记为 [MUST-ASK per User Requirement]
+- **数据库字段**: `outline_skeleton`, `outline_generation_status`, `skeleton_generated_at`
+- **API**:
+  - `POST /api/outlines/skeleton` - 生成骨架
+  - `PATCH /api/outlines/:id/skeleton` - 更新骨架
+  - `POST /api/outlines/:id/full-outline` - 生成完整大纲
+
+**大纲生成（旧流程，保留向后兼容）**:
 - 支持标准问题模式（Lisa/Bob）和深度访谈模式（David）
 - AI 自动生成访谈问题和 Sessions
 - 多语言支持（中文、英文、日文等）

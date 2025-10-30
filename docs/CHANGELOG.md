@@ -6,48 +6,86 @@
 
 ---
 
-## [1.3.11] - 2025-10-26
+## [1.4.0] - 2025-10-30
 
-### 🐛 Bug 修复
+### 🚀 新功能
 
-#### 修复大纲生成 Prompt 的 Output Format 不一致问题 🔧
+#### 两步大纲生成系统完整实现 ✨
 
-**问题**:
-- 用户测试发现即使添加了 Session 1 Opening 要求和问题深度要求，生成的大纲仍然不符合要求
-- 根本原因：**Output Format 中的示例与新要求不一致**
-  - Opening 部分仍然是 `[Brief warm transition]`（太简略）
-  - 问题数量仍然是 `[Continue for 3-5 questions per session]`（应该 4-6 个）
-  - 没有明确展示 Session 1 Opening 的 6 个关键元素
+**核心功能**:
+1. **Step 1: 生成骨架** - 生成 Session 主题、目标、背景信息
+2. **Step 2: 用户 Review** - 用户可编辑骨架的所有字段
+3. **Step 3: 生成完整大纲** - 基于审核后的骨架生成 4-6 个具体问题
 
-**解决方案**:
+**数据库变更**:
+- 新增字段：`outline_skeleton` (JSONB)
+- 新增字段：`outline_generation_status` (VARCHAR)
+- 新增字段：`skeleton_generated_at` (TIMESTAMP)
+- 执行迁移：`backend/migrations/005_add_outline_skeleton_fields.sql`
 
-**1. 更新 Output Format 中的 Opening 示例** 📋:
+**Session 配置传导优化**:
+- 用户在 Session 配置中输入的主题会被传递到骨架生成 Prompt
+- AI 会严格遵循用户指定的 Session 主题
+- Prompt 中添加 "🎯 User-Specified Session Themes (MUST FOLLOW)" 部分
 
-**旧版本**（太简略）:
+**必问问题功能**:
+- 在骨架 Review 中，每个 Session 可添加"必问问题"
+- UI 位置：Background Information 下方，样式一致
+- 支持添加、编辑、删除必问问题
+- 生成完整大纲时，必问问题会被自然融入访谈流程（Q3-Q5）
+- 在 Interviewer Notes 中标记为 "[MUST-ASK per User Requirement]"
+
+**类型定义**:
+```typescript
+interface SkeletonSession {
+  session_number: number;
+  session_title: string;
+  session_goal: string;
+  background_information: string[];
+  must_ask_questions: string[]; // 新增
+}
 ```
-**[Opening]**
-[Brief warm transition]
-```
 
-**新版本**（明确要求）:
-```
-**[Opening]**
-[CRITICAL FOR SESSION 1: Must include ALL 6 elements - Warm Greeting + Interview Introduction + Scope Clarification + Time Setting + Expectation Setting + Readiness Check. Example: 'Hello! It's great to connect with you. Thank you for taking the time to participate in our interview. Today, I'd like to chat with you about [topic]. We'll be focusing on [areas]. This interview will take about [X] minutes, and I'm really interested in understanding your genuine experiences. There are no standard answers - just share what comes to mind. Are you ready to get started?']
+**API 端点**:
+- `POST /api/outlines/skeleton` - 生成骨架（不需要 interview_id）
+- `PATCH /api/outlines/:id/skeleton` - 更新骨架（用户编辑）
+- `POST /api/outlines/:id/full-outline` - 生成完整大纲
 
-[For Session 2+: Brief warm transition]
-```
+**前端组件**:
+- `SessionCard.tsx` - 显示和编辑单个 Session（包括必问问题）
+- `SkeletonReview.tsx` - 骨架预览和编辑
+- `questions.tsx` - 两步生成流程的主要逻辑
+
+**状态管理**:
+- Zustand Store 中添加 `outlineSkeleton` 状态
+- 支持跨页面保存骨架状态
+
+**Prompt 优化**:
+- 骨架生成 Prompt：接收 `manualSessions`，严格遵循用户输入
+- 完整大纲生成 Prompt：处理 `must_ask_questions`，自然融入访谈流程
 
 ---
 
-**2. 更新 Output Format 中的问题数量示例** 📊:
+### 🔧 技术细节
 
-**旧版本**:
-```
-Q1.2 [Similar structure]
-[Continue for 3-5 questions per session]
-```
+**修改的文件**:
+- `backend/src/types/interview.ts` - 添加 `must_ask_questions` 字段
+- `backend/src/lib/prompts/generate-outline-skeleton.ts` - 接收 `manualSessions`
+- `backend/src/lib/prompts/generate-full-outline-from-skeleton.ts` - 处理 `must_ask_questions`
+- `backend/src/controllers/questions.controller.ts` - 三个新 API 端点
+- `backend/src/routes/questions.routes.ts` - 路由配置
+- `frontend/src/types/interview.ts` - 类型定义同步
+- `frontend/src/services/outline.service.ts` - API 调用封装
+- `frontend/src/store/interview-store.ts` - 状态管理
+- `frontend/src/components/dashboard/interview/create-popup/questions.tsx` - 主要逻辑
+- `frontend/src/components/dashboard/interview/create-popup/SessionCard.tsx` - Session 编辑
+- `frontend/src/components/dashboard/interview/create-popup/SkeletonReview.tsx` - 骨架预览
 
-**新版本**:
+**数据库迁移**:
+- `backend/migrations/005_add_outline_skeleton_fields.sql` ✅ 已执行
+
+---
+
 ```
 Q1.2 [Similar structure]
 

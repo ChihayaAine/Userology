@@ -22,6 +22,7 @@ export const generateSkeletonPrompt = (body: {
   duration_minutes: number;
   language: string;
   researchType: 'market' | 'product';
+  manualSessions?: Array<{ session_number: number; theme: string }>; // 用户预设的 Session 主题
 }) => {
   // 语言配置
   const languageConfig: Record<string, { name: string; instructions: string }> = {
@@ -70,12 +71,25 @@ ${selectedLanguage.instructions}
 **Estimated Duration**: ${body.duration_minutes} minutes
 **Additional Context**: ${body.context || 'None provided'}
 
+${body.manualSessions && body.manualSessions.length > 0 ? `
+**🎯 User-Specified Session Themes** (MUST FOLLOW):
+The researcher has pre-defined the following session themes. You MUST use these themes as the foundation for your session structure:
+
+${body.manualSessions.map(s => `- **Session ${s.session_number}**: ${s.theme}`).join('\n')}
+
+⚠️ **CRITICAL REQUIREMENT**:
+- Use the user-specified themes EXACTLY or with minimal refinement for clarity
+- Build session goals and background information around these themes
+- Maintain the session order as specified by the user
+- If a theme is vague, you may refine it slightly for clarity, but keep the core intent
+` : ''}
+
 ---
 
 ## Your Task
 
 Generate a structured interview outline skeleton with ${body.session_count} sessions. Each session should have:
-1. **Session Title** - Clear, descriptive title
+1. **Session Title** - Clear, descriptive title${body.manualSessions && body.manualSessions.length > 0 ? ' (use user-specified themes)' : ''}
 2. **Session Goal** - What this session aims to achieve
 3. **Background Information** - SPECIFIC, ACTIONABLE context (see requirements below)
 
@@ -207,7 +221,8 @@ Generate a JSON object with the following structure:
         "Specific fact or insight #1",
         "Specific fact or insight #2",
         "Specific fact or insight #3"
-      ]
+      ],
+      "must_ask_questions": []
     }
     // ... continue for all ${body.session_count} sessions
   ],

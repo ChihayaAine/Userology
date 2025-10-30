@@ -51,6 +51,8 @@ export const generateFullOutlinePrompt = (body: {
 - Goal: ${s.session_goal}
 - Background Information:
 ${s.background_information.map(info => `  • ${info}`).join('\n')}
+${s.must_ask_questions && s.must_ask_questions.length > 0 ? `- 🔑 MUST-ASK Questions (User-Specified):
+${s.must_ask_questions.map(q => `  • ${q}`).join('\n')}` : ''}
 `).join('\n');
 
   return `
@@ -83,6 +85,13 @@ For each session in the skeleton, generate:
 2. **4-6 Questions** following the funnel approach (broad → specific)
 3. **Follow-up Directions** (ONLY for critical questions tied to core objectives)
 4. **Transition to Next Session** (natural summary + confirmation)
+
+🔑 **MUST-ASK Questions Handling**:
+- If a session has user-specified MUST-ASK questions, you MUST incorporate them into the interview outline
+- Place them in the most natural position within the session flow (usually Q3-Q5)
+- Mark them clearly in Interviewer Notes as "[MUST-ASK per User Requirement]"
+- Ensure they fit naturally into the funnel approach
+- You may refine the wording for clarity, but preserve the core intent
 
 ---
 
@@ -182,7 +191,7 @@ Generate a JSON object with this EXACT structure:
 \`\`\`json
 {
   "questions": [
-    "### **Session 1: [Use session_title from skeleton]**\\n\\n**Session Goal:** [Use session_goal from skeleton]\\n\\n**Section Notes:**\\n- **Interviewer Instructions:** [Session-specific guidance]\\n- **Background Information:**\\n[Use background_information from skeleton - format as bullet points]\\n\\n**Interview Outline:**\\n\\n**[Opening]**\\n[6-element opening for Session 1]\\n\\nQ1.1 [Interviewer notes: [Purpose/focus]] [Relevant context: [Key background]] \\nQuestion: [OPEN-ENDED question]\\n\\n[ONLY IF CRITICAL:]\\n**Follow-up Directions:**\\n[Directional probes]\\n**Skip if:** [Conditions]\\n\\nQ1.2 [Similar structure]\\n\\n[... 4-6 questions total]\\n\\n**[Transition to Next Session]**\\n[Natural transition + confirmation]\\n\\n---",
+    "### **Session 1: [Use session_title from skeleton]**\\n\\n**Session Goal:** [Use session_goal from skeleton]\\n\\n**Section Notes:**\\n- **Interviewer Instructions:** [Session-specific guidance]\\n- **Background Information:**\\n[Use background_information from skeleton - format as bullet points]\\n${skeleton.sessions.some(s => s.must_ask_questions && s.must_ask_questions.length > 0) ? '\\n- **Must-Ask Questions:** [If session has must_ask_questions, incorporate them naturally into Q3-Q5 and mark with [MUST-ASK per User Requirement]]' : ''}\\n\\n**Interview Outline:**\\n\\n**[Opening]**\\n[6-element opening for Session 1]\\n\\nQ1.1 [Interviewer notes: [Purpose/focus]] [Relevant context: [Key background]] \\nQuestion: [OPEN-ENDED question]\\n\\n[ONLY IF CRITICAL:]\\n**Follow-up Directions:**\\n[Directional probes]\\n**Skip if:** [Conditions]\\n\\nQ1.2 [Similar structure]\\n\\n[... 4-6 questions total, incorporating must_ask_questions if present]\\n\\n**[Transition to Next Session]**\\n[Natural transition + confirmation]\\n\\n---",
     "### **Session 2: [Use session_title from skeleton]**\\n\\n[Similar structure]..."
   ],
   "description": "50-word or less second-person description about the research study"
@@ -215,6 +224,7 @@ Before finalizing, verify:
 - ✅ Used session_title from skeleton
 - ✅ Used session_goal from skeleton
 - ✅ Used background_information from skeleton (formatted as bullets)
+- ✅ Incorporated must_ask_questions naturally (if present) and marked with [MUST-ASK per User Requirement]
 - ✅ Generated ${skeleton.metadata.total_sessions} sessions
 
 ---

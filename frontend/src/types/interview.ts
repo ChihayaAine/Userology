@@ -104,6 +104,7 @@ export interface SkeletonSession {
   session_title: string;
   session_goal: string;
   background_information: string[];
+  must_ask_questions: string[]; // 用户指定的必问问题
 }
 
 /**

@@ -371,7 +371,7 @@ export const localizeOutline = async (req: Request, res: Response) => {
  */
 export const generateOutlineSkeleton = async (req: Request, res: Response) => {
   console.log("🎯 generate-outline-skeleton request received");
-  const { name, objective, context = '', session_count, duration_minutes, draft_language, researchType = 'product' } = req.body;
+  const { name, objective, context = '', session_count, duration_minutes, draft_language, researchType = 'product', manualSessions } = req.body;
 
   console.log("📋 Generating skeleton:", {
     name,
@@ -379,7 +379,8 @@ export const generateOutlineSkeleton = async (req: Request, res: Response) => {
     session_count,
     duration_minutes,
     draft_language,
-    researchType
+    researchType,
+    manualSessions: manualSessions?.length || 0
   });
 
   try {
@@ -400,7 +401,8 @@ export const generateOutlineSkeleton = async (req: Request, res: Response) => {
             session_count,
             duration_minutes,
             language: draft_language,
-            researchType: researchType || 'product'
+            researchType: researchType || 'product',
+            manualSessions: manualSessions || []
           }),
         },
       ],

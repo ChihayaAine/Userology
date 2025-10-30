@@ -109,8 +109,11 @@ export const createInterview = async (req: Request, res: Response) => {
     }
 
     // 处理空的 user_id 和 organization_id
+    // 移除不属于数据库的字段（如 researchType）
+    const { researchType, ...payloadWithoutResearchType } = payload;
+
     const finalPayload = {
-      ...payload,
+      ...payloadWithoutResearchType,
       url: url,
       id: url_id,
       readable_slug: readableSlug,
@@ -121,6 +124,10 @@ export const createInterview = async (req: Request, res: Response) => {
       agent_id: agentId,
       language: payload.language || 'en-US',
       interviewer_template: interviewer?.name?.toLowerCase() || null,
+      // 🆕 保留骨架相关字段（如果存在）
+      outline_skeleton: payload.outline_skeleton || null,
+      outline_generation_status: payload.outline_generation_status || 'draft',
+      skeleton_generated_at: payload.skeleton_generated_at || null,
     };
     
     console.warn('【最终创建负载】：>>>>>>>>>>>> controller.ts:35', finalPayload);

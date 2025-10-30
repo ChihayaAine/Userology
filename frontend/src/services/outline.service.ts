@@ -20,6 +20,7 @@ export class OutlineService {
     duration_minutes: number;
     draft_language: string;
     researchType: 'market' | 'product';
+    manualSessions?: Array<{ session_number: number; theme: string }>; // 用户预设的 Session 主题
   }): Promise<{ skeleton: OutlineSkeleton; status: string }> {
     const response = await apiClient.post('/outlines/skeleton', params, {
       timeout: 120000 // 2分钟超时

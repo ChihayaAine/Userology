@@ -31,17 +31,15 @@ COMMENT ON COLUMN interview.skeleton_generated_at IS '骨架生成时间';
 -- ============================================
 
 -- 为已有的 draft_outline 设置状态为 'draft_generated'
-UPDATE interview 
-SET outline_generation_status = 'draft_generated',
-    draft_generated_at = created_at
-WHERE draft_outline IS NOT NULL 
+UPDATE interview
+SET outline_generation_status = 'draft_generated'
+WHERE draft_outline IS NOT NULL
   AND outline_generation_status IS NULL;
 
 -- 为已有的 localized_outline 设置状态为 'localized'
-UPDATE interview 
-SET outline_generation_status = 'localized',
-    localized_at = created_at
-WHERE localized_outline IS NOT NULL 
+UPDATE interview
+SET outline_generation_status = 'localized'
+WHERE localized_outline IS NOT NULL
   AND outline_generation_status IS NULL;
 
 -- ============================================
