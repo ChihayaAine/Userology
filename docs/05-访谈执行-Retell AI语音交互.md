@@ -1,7 +1,7 @@
 # Retell AI 语音交互系统
 
-> **版本**: 1.3.5  
-> **最后更新**: 2025-10-24
+> **版本**: 1.4.5
+> **最后更新**: 2025-10-31
 
 ---
 
@@ -100,6 +100,7 @@ Retell AI 平台
 - 支持最多 10 个 Sessions
 - 每个 Session 独立的 Prompt
 - Session 间自动过渡
+- **Session Depth Level 支持** (v1.4.2+): 传递 `depth_level_1` 到 `depth_level_10` 变量
 
 ---
 
@@ -196,15 +197,18 @@ export const registerCall = async (req: Request, res: Response) => {
     // David: 填充 session_1 到 session_10
     const questionsArray = JSON.parse(dynamic_data.questions_array);
     const sessionCount = questionsArray.length;
-    
+
     for (let i = 0; i < sessionCount; i++) {
       const session = questionsArray[i];
       dynamicVariables[`session${i + 1}`] = formatSessionPrompt(session);
+      // v1.4.2+: 传递 depth_level
+      dynamicVariables[`depth_level_${i + 1}`] = session.depth_level || 'medium';
     }
-    
+
     // 填充空 sessions
     for (let i = sessionCount; i < 10; i++) {
       dynamicVariables[`session${i + 1}`] = "This session is not used.";
+      dynamicVariables[`depth_level_${i + 1}`] = "medium";
     }
   }
   
@@ -436,13 +440,24 @@ if (interviewer.name?.includes('Lisa')) {
 ```typescript
 {
   session1: "Session 1 Prompt...",
+  depth_level_1: "high",  // v1.4.2+
   session2: "Session 2 Prompt...",
-  // ... 最多 session10
+  depth_level_2: "medium",  // v1.4.2+
+  // ... 最多 session10 和 depth_level_10
   study_name: "...",
   study_objective: "...",
   study_description: "..."
 }
 ```
+
+**Depth Level 使用** (v1.4.2+):
+- Retell AI Prompt 中可使用 `{{depth_level_1}}` 等变量
+- AI 根据 depth_level 调整时间分配和追问深度
+- high: 8-10 分钟，深度追问
+- medium: 6-8 分钟，标准追问
+- low: 4-5 分钟，简洁高效
+
+详见: [Session Depth Level 完整实现总结](./Session-Depth-Level-完整实现总结.md)
 
 ---
 
@@ -542,6 +557,6 @@ console.warn('【Retell API 响应】：>>>>>>>>>>>> controller.ts', registerCal
 
 ---
 
-**维护者**: Userology 开发团队  
-**最后更新**: 2025-10-24
+**维护者**: Userology 开发团队
+**最后更新**: 2025-10-31
 
