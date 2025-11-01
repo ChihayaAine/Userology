@@ -4,14 +4,15 @@ export const SYSTEM_PROMPT =
 export const generateQuestionsPrompt = (body: {
   name: string;
   objective: string;
-  number: number;
+  number?: number;
+  question_count?: number;
   context: string;
 }) => `Imagine you are a user researcher specialized in designing interview questions to help product teams understand user needs, behaviors, pain points, and experiences with products or services.
               
 Research Study Title: ${body.name}
 Research Objective: ${body.objective}
 
-Number of questions to be generated: ${body.number}
+Number of questions to be generated: ${body.question_count || body.number || 5}
 
 Follow these detailed guidelines when crafting the questions:
 - Focus on uncovering deep user insights through behavioral, emotional, and contextual exploration. Questions should reveal user motivations, mental models, and unmet needs.

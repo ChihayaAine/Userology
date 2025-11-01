@@ -37,7 +37,7 @@ function DistributePopup({
   const [isCreating, setIsCreating] = useState(false);
   const [copiedLink, setCopiedLink] = useState(false);
   const [selectedVersion, setSelectedVersion] = useState<'draft' | 'localized'>(
-    localizedQuestions ? 'localized' : 'draft'
+    localizedQuestions && localizedQuestions.length > 0 ? 'localized' : 'draft'
   );
 
   // 生成访谈链接（使用真实的interview ID）
@@ -65,32 +65,38 @@ function DistributePopup({
       return;
     }
 
-    // 如果用户选择了不同的版本，更新访谈的questions字段
-    if (selectedVersion === 'localized' && localizedQuestions) {
-      try {
-        setIsCreating(true);
-        console.log('📝 Updating interview with localized version...');
-        
-        await apiClient.patch(`/interviews/${interviewId}`, {
-          questions: localizedQuestions,
-        });
-        
-        console.log('✅ Interview updated with localized version');
-      } catch (error) {
-        console.error("Error updating interview:", error);
-        toast.warning("未能更新为本地化版本，但访谈已创建");
-      } finally {
-        setIsCreating(false);
+    try {
+      setIsCreating(true);
+      
+      // 根据选择的版本更新 questions 和 draft 字段
+      const updatePayload: any = {
+        draft: selectedVersion, // 保存选择的版本：'draft' 或 'localized'
+      };
+      
+      if (selectedVersion === 'localized' && localizedQuestions) {
+        // 本地化版本：使用本地化的问题
+        updatePayload.questions = localizedQuestions;
+        console.log('📝 Using localized version (questions + description)');
+      } else {
+        // 初稿版本：使用初稿问题
+        updatePayload.questions = draftQuestions;
+        console.log('📝 Using draft version (questions + description)');
       }
+      
+      await apiClient.patch(`/interviews/${interviewId}`, updatePayload);
+      
+      console.log('✅ Interview updated with draft field:', selectedVersion);
+      toast.success("访谈已准备就绪，可以分发了！");
+    } catch (error) {
+      console.error("Error updating interview:", error);
+      toast.error("更新访谈失败");
+      return;
+    } finally {
+      setIsCreating(false);
     }
 
-    toast.success("访谈已准备就绪，可以分发了！");
     fetchInterviews();
-    
-    // 标记访谈分析步骤为已完成
     addCompletedStep('analysis');
-    
-    // 跳转到interview详情页
     router.push(`/interviews/${interviewId}`);
   };
 
@@ -216,7 +222,7 @@ function DistributePopup({
           </label>
 
           {/* Localized Version */}
-          {localizedQuestions && (
+          {localizedQuestions && localizedQuestions.length > 0 && (
             <label className={`card cursor-pointer transition-all ${
               selectedVersion === 'localized' 
                 ? 'bg-blue-50 border-2 border-blue-500' 

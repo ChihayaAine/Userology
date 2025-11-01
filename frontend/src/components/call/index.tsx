@@ -6,7 +6,7 @@ import {
   XCircleIcon,
   CheckCircleIcon,
 } from "lucide-react";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { Card, CardHeader, CardTitle } from "../ui/card";
 import { Button } from "../ui/button";
 import { useResponses } from "@/contexts/responses.context";
@@ -17,6 +17,7 @@ import MiniLoader from "../loaders/mini-loader/miniLoader";
 import { toast } from "sonner";
 import { isLightColor, testEmail } from "@/lib/utils";
 import { ResponseService } from "@/services/responses.service";
+import { CallService } from "@/services/call.service";
 import { Interview } from "@/types/interview";
 import { FeedbackData } from "@/types/response";
 import { FeedbackService } from "@/services/feedback.service";
@@ -217,6 +218,35 @@ function Call({ interview }: InterviewProps) {
     }
   };
 
+  // 监听页面关闭，自动结束访谈
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      if (isStarted && !isEnded) {
+        console.log('🔄 Page closing, auto-ending interview...');
+        
+        // 1. 停止通话
+        webClient.stopCall();
+        
+        // 2. 标记访谈结束（使用 keepalive 确保请求能发出）
+        fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/response/${callId}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ is_ended: true, tab_switch_count: tabSwitchCount }),
+          keepalive: true
+        }).catch(err => console.error('Failed to save on page close:', err));
+        
+        // 3. 获取转录和分析（使用 keepalive 确保请求能发出）
+        fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/call/${callId}`, {
+          method: 'GET',
+          keepalive: true
+        }).catch(err => console.error('Failed to fetch transcript on page close:', err));
+      }
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload);
+  }, [isStarted, isEnded, callId, tabSwitchCount]);
+
   const startConversation = async () => {
     // 🎤 优先请求麦克风权限（必须在用户交互的同步上下文中）
     if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
@@ -402,10 +432,46 @@ function Call({ interview }: InterviewProps) {
   useEffect(() => {
     if (isEnded) {
       const updateInterview = async () => {
-        await ResponseService.saveResponse(
-          { is_ended: true, tab_switch_count: tabSwitchCount },
-          callId,
-        );
+        try {
+          // 1. 标记访谈结束
+          await ResponseService.saveResponse(
+            { is_ended: true, tab_switch_count: tabSwitchCount },
+            callId,
+          );
+
+          // 2. 获取转录和分析（可能需要较长时间）
+          console.log(`🔄 Fetching transcript and analytics for call: ${callId}`);
+          toast.info("Processing interview recording...", {
+            description: "Please wait while we analyze your interview. This may take a few minutes for longer interviews.",
+            position: "bottom-right",
+            duration: 10000,
+          });
+
+          const callData = await CallService.getCall(callId);
+          
+          if (callData) {
+            console.log('✅ Transcript and analytics retrieved successfully');
+            toast.success("Interview processed successfully!", {
+              description: "Your interview has been analyzed and saved.",
+              position: "bottom-right",
+              duration: 5000,
+            });
+          } else {
+            console.warn('⚠️ No call data returned');
+            toast.warning("Interview saved, processing in background", {
+              description: "Your interview was saved. The analysis will be available shortly.",
+              position: "bottom-right",
+              duration: 7000,
+            });
+          }
+        } catch (error: any) {
+          console.error('❌ Error processing interview:', error);
+          toast.error("Error processing interview", {
+            description: "Your interview was saved, but there was an error analyzing it. Please refresh the page.",
+            position: "bottom-right",
+            duration: 8000,
+          });
+        }
       };
 
       updateInterview();
@@ -477,7 +543,9 @@ function Call({ interview }: InterviewProps) {
                     </div>
                   )}
                   <div className="p-2 font-normal text-sm mb-4 whitespace-pre-line">
-                    {interview?.description}
+                    {interview?.draft === 'localized' && interview?.local_description
+                      ? interview.local_description
+                      : interview?.description}
                     <p className="font-bold text-sm">
                       {"\n"}Ensure your volume is up and grant microphone access
                       when prompted. Additionally, please make sure you are in a

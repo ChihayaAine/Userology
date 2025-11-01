@@ -53,11 +53,16 @@ function SideMenu() {
 
   // 处理步骤点击
   const handleStepClick = (step: { id: string; path: string }) => {
+    console.log('🔘 Step clicked:', step.id);
+    console.log('🔘 InterviewId in store:', interviewId);
+    console.log('🔘 Can access?', canAccessStep(step.id));
+    
     if (canAccessStep(step.id)) {
       // 如果是访谈分析步骤，需要使用 interviewId
       if (step.id === 'analysis' && interviewId) {
         router.push(`/interviews/${interviewId}`);
       } else if (step.path) {
+        console.log('🔘 Navigating to:', step.path);
         router.push(step.path);
       }
     }
@@ -74,11 +79,9 @@ function SideMenu() {
               : "hover:bg-gray-100 text-gray-700"
           }`}
           onClick={() => {
-            // 如果已完成访谈分析，说明上一个访谈流程已完成，回到主页时重置store
-            if (completedSteps.includes('analysis')) {
-              console.log('🔄 Completed interview detected, resetting store');
-              resetStore();
-            }
+            // 点击首页时，无论在哪个步骤都重置store并返回首页
+            console.log('🏠 Navigating to home, resetting store');
+            resetStore();
             router.push("/dashboard");
           }}
         >

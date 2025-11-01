@@ -112,10 +112,20 @@ export const generateInterviewSessions = async (req: Request, res: Response) => 
     debugLanguage, // 记录调试语言
     interviewLanguage: body.language || 'N/A', // 记录访谈语言
     customInstructions: body.customInstructions || 'none', // 记录个性化备注
+    context: body.context || 'none', // 🆕 记录 context
+    contextLength: body.context ? body.context.length : 0, // 🆕 记录 context 长度
     apiKey: process.env.OPENAI_API_KEY ? 'exists' : 'missing',
     baseURL: process.env.OPENAI_API_BASE || "https://api.tu-zi.com/v1",
     requestBody: body
   });
+
+  // 🆕 输出实际发送给 OpenAI 的完整 prompt
+  console.log('==================== 📝 PROMPT SENT TO OPENAI 📝 ====================');
+  console.log('🤖 SYSTEM PROMPT:');
+  console.log(systemPrompt);
+  console.log('\n👤 USER PROMPT:');
+  console.log(userPrompt);
+  console.log('==================== 📝 END OF PROMPT 📝 ====================\n');
 
   try {
     const baseCompletion = await openaiClient.chat.completions.create({

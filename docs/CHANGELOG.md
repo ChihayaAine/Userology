@@ -397,6 +397,48 @@ interface SkeletonSession {
 
 ---
 
+## [1.3.11] - 2025-10-26
+
+### 🐛 Bug 修复
+
+#### 修复大纲生成 Prompt 的 Output Format 不一致问题 🔧
+
+**问题**:
+- 用户测试发现即使添加了 Session 1 Opening 要求和问题深度要求，生成的大纲仍然不符合要求
+- 根本原因：**Output Format 中的示例与新要求不一致**
+  - Opening 部分仍然是 `[Brief warm transition]`（太简略）
+  - 问题数量仍然是 `[Continue for 3-5 questions per session]`（应该 4-6 个）
+  - 没有明确展示 Session 1 Opening 的 6 个关键元素
+
+**解决方案**:
+
+**1. 更新 Output Format 中的 Opening 示例** 📋:
+
+**旧版本**（太简略）:
+```
+**[Opening]**
+[Brief warm transition]
+```
+
+**新版本**（明确要求）:
+```
+**[Opening]**
+[CRITICAL FOR SESSION 1: Must include ALL 6 elements - Warm Greeting + Interview Introduction + Scope Clarification + Time Setting + Expectation Setting + Readiness Check. Example: 'Hello! It's great to connect with you. Thank you for taking the time to participate in our interview. Today, I'd like to chat with you about [topic]. We'll be focusing on [areas]. This interview will take about [X] minutes, and I'm really interested in understanding your genuine experiences. There are no standard answers - just share what comes to mind. Are you ready to get started?']
+
+[For Session 2+: Brief warm transition]
+```
+
+---
+
+**2. 更新 Output Format 中的问题数量示例** 📊:
+
+**旧版本**:
+```
+Q1.2 [Similar structure]
+[Continue for 3-5 questions per session]
+```
+
+**新版本**:
 ```
 Q1.2 [Similar structure]
 

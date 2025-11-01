@@ -209,6 +209,8 @@ function DetailsPopup({
       description: generatedQuestionsResponse.description,
       is_anonymous: isAnonymous,
       language: selectedLanguage || 'en-US',  // 🆕 添加语言字段
+      context: uploadedDocumentContext,  // 🆕 保存上传的文档内容
+      custom_instructions: customInstructions.trim(),  // 🆕 保存个性化备注
     };
     setInterviewData(updatedInterviewData);
     setDraftQuestions(updatedQuestions); // 同步到store的draftQuestions

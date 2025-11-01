@@ -20,12 +20,16 @@ export interface InterviewBase {
   is_anonymous: boolean;
   questions: Question[];
   description: string;
+  local_description?: string;     // 🆕 本地化版本的访谈简介
   response_count: bigint;
   // Outline localization fields
   draft_outline?: Question[];
   localized_outline?: Question[];
   outline_debug_language?: string;
   outline_interview_language?: string;
+  draft?: string;                 // 当前使用的版本：'draft' 表示初稿，'localized' 表示本地化版本
+  context?: string;               // 上传的文档内容，用于生成大纲时提供参考
+  custom_instructions?: string;   // 用户的个性化备注/指令
   agent_id?: string;              // 🆕 该 interview 专属的 Retell Agent ID
   language?: string;              // 🆕 语言设置 ('en', 'zh', 'es' 等)
   interviewer_template?: string;  // 🆕 使用的面试官模板 ('bob', 'lisa', 'david')
