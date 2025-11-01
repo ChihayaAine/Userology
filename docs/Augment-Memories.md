@@ -1,7 +1,7 @@
 # Augment Memories - Userology-Foloup 项目
 
-> **版本**: 1.4.0
-> **最后更新**: 2025-10-30
+> **版本**: 1.4.5
+> **最后更新**: 2025-10-31
 > **项目**: AI驱动的用户研究访谈平台
 
 ---
@@ -10,16 +10,19 @@
 
 ### 访谈准备系统
 
-**两步大纲生成** (v1.4.0 新增):
-- **Step 1: 生成骨架** - 生成 Session 主题、目标、背景信息
+**两步大纲生成** (v1.4.0):
+- **Step 1: 生成骨架** - 生成 Session 主题、目标、背景信息、深度等级
   - 不需要 interview_id，可在创建 interview 前生成
   - 支持用户预设 Session 主题（AI 严格遵循）
+  - AI 自动分配 depth_level（high/medium/low）
   - 输出包含 must_ask_questions 字段
 - **Step 2: 用户 Review** - 用户可编辑骨架的所有字段
   - 编辑 Session 标题、目标、背景信息
+  - 调整 Session 深度等级（depth_level）
   - 添加必问问题（自然融入访谈流程）
   - 实时保存到 Zustand Store
-- **Step 3: 生成完整大纲** - 基于审核后的骨架生成 4-6 个具体问题
+- **Step 3: 生成完整大纲** - 基于审核后的骨架生成具体问题
+  - 根据 depth_level 生成不同数量的问题（high: 5-6, medium: 4-5, low: 2-4）
   - 为关键问题生成追问策略
   - 生成 Session 1 Opening（6 个元素）
   - 必问问题标记为 [MUST-ASK per User Requirement]
@@ -28,6 +31,25 @@
   - `POST /api/outlines/skeleton` - 生成骨架
   - `PATCH /api/outlines/:id/skeleton` - 更新骨架
   - `POST /api/outlines/:id/full-outline` - 生成完整大纲
+
+**Session Depth Level 系统** (v1.4.5):
+- **三个深度等级**:
+  - `high`: 5-6 个问题（核心目标、痛点、竞品分析）
+  - `medium`: 4-5 个问题（上下文构建、行为探索）
+  - `low`: 2-4 个问题（暖场、收尾）
+- **影响维度**:
+  - 问题数量（high 最多，low 最少）
+  - 追问深度（high 3-4 层，medium 2-3 层，low 1-2 层）
+  - 时间分配（high 占比最大）
+  - AI 优先级（high 优先生成详细追问）
+- **用户体验**:
+  - AI 自动建议 depth_level（保存在 `ai_suggested_depth_level`）
+  - 用户可手动调整（保存在 `depth_level`）
+  - 骨架编辑界面显示 AI 建议和当前设置
+- **技术实现**:
+  - Prompt 明确要求生成 EXACTLY N sessions（避免跳过中间 sessions）
+  - skeleton.metadata.draft_language 确保语言一致性
+  - 前端更新 skeleton 后再生成完整大纲（避免使用旧数据）
 
 **大纲生成（旧流程，保留向后兼容）**:
 - 支持标准问题模式（Lisa/Bob）和深度访谈模式（David）
@@ -351,7 +373,7 @@ npm run dev  # 端口 8089
 
 ---
 
-**维护者**: Userology 开发团队  
-**创建日期**: 2025-10-23  
-**最后更新**: 2025-10-23
+**维护者**: Userology 开发团队
+**创建日期**: 2025-10-23
+**最后更新**: 2025-10-31
 
