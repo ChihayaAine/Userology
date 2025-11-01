@@ -51,6 +51,11 @@ export interface InterviewDetails {
   objective_deliverables?: ObjectiveDeliverables;
   cross_interview_insights?: CrossInterviewInsight[];
   evidence_bank?: EvidenceItem[];
+
+  // Outline skeleton fields (two-step generation)
+  outline_skeleton?: OutlineSkeleton;
+  outline_generation_status?: OutlineGenerationStatus;
+  skeleton_generated_at?: Date;
 }
 
 export interface Interview extends InterviewBase, InterviewDetails {}
@@ -78,3 +83,49 @@ export interface EvidenceItem {
     timestamp?: number;
   }>;
 }
+
+// ============================================
+// Outline Skeleton Types (Two-Step Generation)
+// ============================================
+
+/**
+ * 大纲骨架 - 包含 Session 主题、目标、背景信息
+ */
+export interface OutlineSkeleton {
+  sessions: SkeletonSession[];
+  metadata: {
+    total_sessions: number;
+    estimated_duration_minutes: number;
+    draft_language: string;
+  };
+}
+
+/**
+ * 单个 Session 的骨架信息
+ */
+/**
+ * Session 深度等级
+ * - high: 核心目标、痛点发现、竞品分析、功能验证 (5-6 questions)
+ * - medium: 背景构建、行为探索、一般体验 (4-5 questions)
+ * - low: 热身、收尾 (4 questions)
+ */
+export type SessionDepthLevel = 'high' | 'medium' | 'low';
+
+export interface SkeletonSession {
+  session_number: number;
+  session_title: string;
+  session_goal: string;
+  background_information: string[];
+  must_ask_questions: string[]; // 用户指定的必问问题
+  depth_level?: SessionDepthLevel; // AI 判断的深度等级（用户可调整）- 可选字段，默认 'medium'
+  ai_suggested_depth_level?: SessionDepthLevel; // AI 最初建议的深度等级（不可变）- 用于显示 "AI suggested"
+}
+
+/**
+ * 大纲生成状态
+ */
+export type OutlineGenerationStatus =
+  | 'draft'                // 初始状态（用户填写了 objective）
+  | 'skeleton_generated'   // 骨架已生成（用户可以 review）
+  | 'draft_generated'      // 初稿大纲已生成
+  | 'localized';           // 已本地化

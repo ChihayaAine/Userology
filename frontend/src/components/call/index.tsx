@@ -84,6 +84,7 @@ function Call({ interview }: InterviewProps) {
   const [currentTimeDuration, setCurrentTimeDuration] = useState<string>("0");
 
   const lastUserResponseRef = useRef<HTMLDivElement | null>(null);
+  const lastInterviewerResponseRef = useRef<HTMLDivElement | null>(null);
 
   const handleFeedbackSubmit = async (
     formData: Omit<FeedbackData, "interview_id">,
@@ -113,6 +114,13 @@ function Call({ interview }: InterviewProps) {
       current.scrollTop = current.scrollHeight;
     }
   }, [lastUserResponse]);
+
+  useEffect(() => {
+    if (lastInterviewerResponseRef.current) {
+      const { current } = lastInterviewerResponseRef;
+      current.scrollTop = current.scrollHeight;
+    }
+  }, [lastInterviewerResponse]);
 
   useEffect(() => {
     let intervalId: any;
@@ -618,7 +626,8 @@ function Call({ interview }: InterviewProps) {
                 <div className="border-x-2 border-grey w-[50%] my-auto min-h-[70%]">
                   <div className="flex flex-col justify-evenly">
                     <div
-                      className={`text-[22px] w-[80%] md:text-[26px] mt-4 min-h-[250px] mx-auto px-6`}
+                      ref={lastInterviewerResponseRef}
+                      className={`text-[22px] w-[80%] md:text-[26px] mt-4 h-[250px] mx-auto px-6 overflow-y-auto`}
                     >
                       {lastInterviewerResponse}
                     </div>

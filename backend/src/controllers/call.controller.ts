@@ -60,21 +60,21 @@ export const registerCall = async (req: Request, res: Response) => {
     
     if (isDeepDiveMode) {
       console.log('🔬 [Deep Dive Mode] Preparing session variables for multi-prompt agent...');
-      
+
       // David 已经是 multi-prompt agent，根据实际 questions 数量动态填充
       // questions_array 从前端传来时是 JSON 字符串，需要解析
       let questionsArray = [];
       try {
-        questionsArray = typeof body.dynamic_data.questions_array === 'string' 
-          ? JSON.parse(body.dynamic_data.questions_array) 
+        questionsArray = typeof body.dynamic_data.questions_array === 'string'
+          ? JSON.parse(body.dynamic_data.questions_array)
           : (body.dynamic_data.questions_array || []);
       } catch (error) {
         console.error('❌ Failed to parse questions_array:', error);
         questionsArray = [];
       }
       const sessionCount = questionsArray.length;
-      
-      // 准备动态变量：实际的 sessions + 未使用的标记为 "No content"
+
+      // 准备动态变量：实际的 sessions + depth_level + 未使用的标记为 "No content"
       dynamicVariables = {
         mins: body.dynamic_data.mins,
         objective: body.dynamic_data.objective,
@@ -90,12 +90,24 @@ export const registerCall = async (req: Request, res: Response) => {
         session8: questionsArray[7]?.question || "No content",
         session9: questionsArray[8]?.question || "No content",
         session10: questionsArray[9]?.question || "No content",
+        // 🆕 添加 depth_level 变量（用于 Retell AI 系统提示词）
+        depth_level_1: questionsArray[0]?.depth_level || "medium",
+        depth_level_2: questionsArray[1]?.depth_level || "medium",
+        depth_level_3: questionsArray[2]?.depth_level || "medium",
+        depth_level_4: questionsArray[3]?.depth_level || "medium",
+        depth_level_5: questionsArray[4]?.depth_level || "medium",
+        depth_level_6: questionsArray[5]?.depth_level || "medium",
+        depth_level_7: questionsArray[6]?.depth_level || "medium",
+        depth_level_8: questionsArray[7]?.depth_level || "medium",
+        depth_level_9: questionsArray[8]?.depth_level || "medium",
+        depth_level_10: questionsArray[9]?.depth_level || "medium",
       };
-      
+
       console.log('🔬 [Deep Dive] Session variables prepared:', {
         totalSessions: sessionCount,
         actualSessions: questionsArray.map((_: any, i: number) => `session_${i + 1}`),
-        emptySessions: Array.from({ length: 10 - sessionCount }, (_: any, i: number) => `session_${sessionCount + i + 1}`)
+        emptySessions: Array.from({ length: 10 - sessionCount }, (_: any, i: number) => `session_${sessionCount + i + 1}`),
+        depthLevels: questionsArray.map((q: any) => q.depth_level || 'medium')
       });
     } else {
       console.log('📋 [Standard Mode] Using original question format');

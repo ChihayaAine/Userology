@@ -5,10 +5,6 @@ import {
   generateQuestionsPrompt,
 } from '@/lib/prompts/generate-questions';
 import {
-  SYSTEM_PROMPT_SESSIONS,
-  generateSessionsPrompt,
-} from '@/lib/prompts/generate-sessions';
-import {
   SYSTEM_PROMPT_PRODUCT_RESEARCH,
   generateProductResearchSessionsPrompt,
 } from '@/lib/prompts/generate-product-research-sessions';
@@ -20,6 +16,16 @@ import {
   SYSTEM_PROMPT_LOCALIZATION,
   generateLocalizeOutlinePrompt,
 } from '@/lib/prompts/localize-outline';
+import {
+  SYSTEM_PROMPT_SKELETON,
+  generateSkeletonPrompt,
+} from '@/lib/prompts/generate-outline-skeleton';
+import {
+  SYSTEM_PROMPT_FULL_OUTLINE_MARKET,
+  SYSTEM_PROMPT_FULL_OUTLINE_PRODUCT,
+  generateFullOutlinePrompt,
+} from '@/lib/prompts/generate-full-outline-from-skeleton';
+import { InterviewService } from '@/services/interviews.service';
 
 export const generateInterviewQuestions = async (req: Request, res: Response) => {
   console.log("generate-interview-questions request received");
@@ -90,15 +96,15 @@ export const generateInterviewSessions = async (req: Request, res: Response) => 
   let systemPrompt;
   let userPrompt;
 
+  // 根据研究类型选择对应的 Prompt
+  // 注意：researchType 只能是 'market' 或 'product'（前端类型限制 + 后端默认值）
   if (researchType === 'market') {
     systemPrompt = SYSTEM_PROMPT_MARKET_RESEARCH;
     userPrompt = generateMarketResearchSessionsPrompt(promptBody);
-  } else if (researchType === 'product') {
+  } else {
+    // 默认使用 Product Research Prompt
     systemPrompt = SYSTEM_PROMPT_PRODUCT_RESEARCH;
     userPrompt = generateProductResearchSessionsPrompt(promptBody);
-  } else {
-    systemPrompt = SYSTEM_PROMPT_SESSIONS;
-    userPrompt = generateSessionsPrompt(promptBody);
   }
 
   console.warn('【生成 Sessions - 配置】：>>>>>>>>>>>> questions.controller.ts', {
@@ -358,6 +364,251 @@ export const localizeOutline = async (req: Request, res: Response) => {
     });
 
     return res.status(500).json({
+      error: "internal server error",
+      details: error.message || "Unknown error"
+    });
+  }
+};
+
+// ============================================
+// Two-Step Outline Generation APIs
+// ============================================
+
+/**
+ * Step 1: Generate Outline Skeleton
+ * POST /api/outlines/skeleton
+ * 注意：这个 API 不需要 interview_id，只需要基本信息即可生成骨架
+ */
+export const generateOutlineSkeleton = async (req: Request, res: Response) => {
+  console.log("🎯 generate-outline-skeleton request received");
+  const { name, objective, context = '', session_count, duration_minutes, draft_language, researchType = 'product', manualSessions } = req.body;
+
+  console.log("📋 Generating skeleton:", {
+    name,
+    objective: objective?.substring(0, 100) + '...',
+    session_count,
+    duration_minutes,
+    draft_language,
+    researchType,
+    manualSessions: manualSessions?.length || 0
+  });
+
+  try {
+    // 调用 Step 1 Prompt 生成骨架（不需要 interview_id）
+    const completion = await openaiClient.chat.completions.create({
+      model: "gpt-4o",
+      temperature: 0.7,
+      messages: [
+        {
+          role: "system",
+          content: SYSTEM_PROMPT_SKELETON,
+        },
+        {
+          role: "user",
+          content: generateSkeletonPrompt({
+            objective: objective || '',
+            context: context || '',
+            session_count,
+            duration_minutes,
+            language: draft_language,
+            researchType: researchType || 'product',
+            manualSessions: manualSessions || []
+          }),
+        },
+      ],
+      response_format: { type: "json_object" },
+    });
+
+    const content = completion.choices[0]?.message?.content;
+    if (!content) {
+      throw new Error("No content returned from OpenAI");
+    }
+
+    const skeleton = JSON.parse(content);
+
+    // 🆕 为每个 session 添加 ai_suggested_depth_level（保存 AI 最初建议的 depth_level）
+    if (skeleton.sessions && Array.isArray(skeleton.sessions)) {
+      skeleton.sessions = skeleton.sessions.map((session: any) => ({
+        ...session,
+        ai_suggested_depth_level: session.depth_level || 'medium' // 保存 AI 建议的 depth_level
+      }));
+    }
+
+    // 🆕 确保 metadata.draft_language 存在（如果 AI 没有生成，手动添加）
+    if (!skeleton.metadata) {
+      skeleton.metadata = {};
+    }
+    if (!skeleton.metadata.draft_language) {
+      skeleton.metadata.draft_language = draft_language;
+      console.log('⚠️ AI did not include draft_language in metadata, manually added:', draft_language);
+    }
+
+    console.log("✅ Skeleton generated successfully:", {
+      total_sessions: skeleton.metadata?.total_sessions,
+      draft_language: skeleton.metadata?.draft_language
+    });
+
+    res.status(200).json({
+      skeleton,
+      status: 'skeleton_generated'
+    });
+
+  } catch (error: any) {
+    console.error("❌ Error generating skeleton:", error);
+    res.status(500).json({
+      error: "internal server error",
+      details: error.message || "Unknown error"
+    });
+  }
+};
+
+/**
+ * Step 2: Update Skeleton (User edits)
+ * PATCH /api/outlines/:id/skeleton
+ */
+export const updateOutlineSkeleton = async (req: Request, res: Response) => {
+  console.log("📝 update-outline-skeleton request received");
+  const { id } = req.params;
+  const { skeleton } = req.body;
+
+  try {
+    await InterviewService.updateInterview({
+      outline_skeleton: skeleton
+    }, id);
+
+    console.log("✅ Skeleton updated successfully");
+
+    res.status(200).json({
+      skeleton,
+      status: 'skeleton_generated'
+    });
+
+  } catch (error: any) {
+    console.error("❌ Error updating skeleton:", error);
+    res.status(500).json({
+      error: "internal server error",
+      details: error.message || "Unknown error"
+    });
+  }
+};
+
+/**
+ * Step 3: Generate Full Outline from Skeleton
+ * POST /api/outlines/:id/full-outline
+ */
+export const generateFullOutlineFromSkeleton = async (req: Request, res: Response) => {
+  console.log("🚀 generate-full-outline-from-skeleton request received");
+  const { id } = req.params;
+
+  try {
+    // 1. 获取骨架和 interview 信息
+    const interview = await InterviewService.getInterviewById(id);
+
+    if (!interview) {
+      return res.status(404).json({ error: "Interview not found" });
+    }
+
+    if (!interview.outline_skeleton) {
+      return res.status(400).json({ error: "Skeleton not found. Please generate skeleton first." });
+    }
+
+    console.log("📋 Generating full outline from skeleton:", {
+      interview_id: id,
+      skeleton_sessions: interview.outline_skeleton.sessions.length,
+      draft_language: interview.outline_skeleton.metadata?.draft_language,
+      outline_debug_language: (interview as any).outline_debug_language
+    });
+
+    // 2. 调用 Step 2 Prompt 生成完整大纲
+    const researchType = (interview as any).researchType || 'product';
+    const systemPrompt = researchType === 'market'
+      ? SYSTEM_PROMPT_FULL_OUTLINE_MARKET
+      : SYSTEM_PROMPT_FULL_OUTLINE_PRODUCT;
+
+    const completion = await openaiClient.chat.completions.create({
+      model: "gpt-4o",
+      temperature: 0.7,
+      messages: [
+        {
+          role: "system",
+          content: systemPrompt,
+        },
+        {
+          role: "user",
+          content: generateFullOutlinePrompt({
+            skeleton: interview.outline_skeleton,
+            objective: interview.objective || '',
+            context: (interview as any).context || '',
+            researchType: researchType
+          }),
+        },
+      ],
+      response_format: { type: "json_object" },
+    });
+
+    const content = completion.choices[0]?.message?.content;
+    if (!content) {
+      throw new Error("No content returned from OpenAI");
+    }
+
+    console.log("📄 Raw OpenAI response:", content.substring(0, 500) + '...');
+
+    const fullOutline = JSON.parse(content);
+
+    console.log("📊 Parsed fullOutline:", {
+      questionsCount: fullOutline.questions?.length || 0,
+      descriptionLength: fullOutline.description?.length || 0,
+      firstQuestion: fullOutline.questions?.[0],
+      lastQuestion: fullOutline.questions?.[fullOutline.questions?.length - 1]
+    });
+
+    // 3. 处理新的数据结构（兼容旧格式）
+    let questionsToSave;
+    if (Array.isArray(fullOutline.questions) && fullOutline.questions.length > 0) {
+      // 检查是否为新格式（对象数组）
+      if (typeof fullOutline.questions[0] === 'object' && fullOutline.questions[0].session_text) {
+        // 新格式：保存完整对象（包含 depth_level）
+        questionsToSave = fullOutline.questions;
+        console.log('✅ Using new format with depth_level:', fullOutline.questions.map((q: any) => q.depth_level));
+      } else {
+        // 旧格式：字符串数组，转换为新格式（默认 medium）
+        questionsToSave = fullOutline.questions.map((sessionText: string) => ({
+          session_text: sessionText,
+          depth_level: 'medium'
+        }));
+        console.log('⚠️ Converting old format to new format (default depth_level: medium)');
+      }
+    } else {
+      questionsToSave = [];
+    }
+
+    console.log("💾 Questions to save:", {
+      count: questionsToSave.length,
+      sessions: questionsToSave.map((q: any, idx: number) => ({
+        index: idx,
+        session_text_preview: q.session_text?.substring(0, 50) + '...',
+        depth_level: q.depth_level
+      }))
+    });
+
+    // 4. 保存完整大纲
+    await InterviewService.updateInterview({
+      draft_outline: questionsToSave,
+      description: fullOutline.description,
+      outline_generation_status: 'draft_generated'
+    }, id);
+
+    console.log("✅ Full outline generated successfully");
+
+    res.status(200).json({
+      draft_outline: questionsToSave,
+      description: fullOutline.description,
+      status: 'draft_generated'
+    });
+
+  } catch (error: any) {
+    console.error("❌ Error generating full outline:", error);
+    res.status(500).json({
       error: "internal server error",
       details: error.message || "Unknown error"
     });

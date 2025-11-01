@@ -59,6 +59,7 @@ function DistributePopup({
 
   // 确认并完成分发
   const onConfirmAndDistribute = async () => {
+    // 访谈已经在前一步保存，这里只需确认并关闭
     if (!interviewId) {
       toast.error("访谈ID不存在，请返回重新保存");
       return;
@@ -120,7 +121,7 @@ function DistributePopup({
           </div>
           <div>
             <div className="text-sm font-medium text-gray-600 mb-1">调研目标</div>
-            <div className="text-base font-semibold text-gray-900">
+            <div className="text-base font-semibold text-gray-900 max-h-[120px] overflow-y-auto">
               {interviewData.objective || "无"}
             </div>
           </div>

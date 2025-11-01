@@ -17,6 +17,9 @@ import { toast } from "sonner";
 import "@/styles/custom-select.css";
 import { LanguageCode, SUPPORTED_LANGUAGES } from "@/lib/languages";
 import { InterviewService } from "@/services/interviews.service";
+import { OutlineService } from "@/services/outline.service";
+import { OutlineSkeleton } from "@/types/interview";
+import { SkeletonReview } from "./SkeletonReview";
 
 interface Props {
   interviewData: InterviewBase;
@@ -51,7 +54,18 @@ function QuestionsPopup({
   const { organization } = useOrganization();
   const { interviewers } = useInterviewers();
   const { fetchInterviews } = useInterviews();
-  const { setInterviewData, setSelectedLanguage, setOutlineDebugLanguage, interviewId, setInterviewId, addCompletedStep, setCompletedSteps, completedSteps } = useInterviewStore();
+  const {
+    setInterviewData,
+    setSelectedLanguage,
+    setOutlineDebugLanguage,
+    interviewId,
+    setInterviewId,
+    addCompletedStep,
+    setCompletedSteps,
+    completedSteps,
+    outlineSkeleton: storeOutlineSkeleton,
+    setOutlineSkeleton: setStoreOutlineSkeleton,
+  } = useInterviewStore();
   const router = useRouter();
 
   // 检测是否为深度访谈模式（David 面试官）
@@ -78,6 +92,13 @@ function QuestionsPopup({
   
   // 用户手动输入的sessions（可选）
   const [manualSessions, setManualSessions] = useState<Array<{ id: string; content: string }>>([]);
+  const [isSessionConfigExpanded, setIsSessionConfigExpanded] = useState(false); // Session配置展开状态
+
+  // ===== 两步生成流程的状态 =====
+  // 从 store 恢复骨架，或使用本地状态
+  const [skeleton, setSkeleton] = useState<OutlineSkeleton | null>(storeOutlineSkeleton);
+  const [isGeneratingSkeleton, setIsGeneratingSkeleton] = useState(false);
+  const [isGeneratingFullOutline, setIsGeneratingFullOutline] = useState(false);
 
   // ===== 编辑大纲阶段的状态 =====
   const [questions, setQuestions] = useState<Question[]>(
@@ -93,7 +114,190 @@ function QuestionsPopup({
   const endOfListRef = useRef<null | HTMLDivElement>(null);
   const prevQuestionLengthRef = useRef(questions.length);
 
-  // 生成大纲函数
+  // ===== 两步生成流程函数 =====
+
+  /**
+   * Step 1: 生成大纲骨架
+   */
+  const onGenerateSkeleton = async () => {
+    if (!numQuestions || !duration) {
+      toast.error("请填写问题数量和访谈时长");
+      return;
+    }
+
+    setIsGeneratingSkeleton(true);
+    try {
+      console.log('🎯 Generating skeleton with language:', localOutlineDebugLanguage);
+
+      // 准备用户预设的 Session 主题
+      const filledManualSessions = manualSessions
+        .filter(s => s.content.trim())
+        .map((s, idx) => ({
+          session_number: idx + 1,
+          theme: s.content.trim()
+        }));
+
+      console.log('📝 Manual sessions:', filledManualSessions);
+
+      // 生成骨架（不需要 interview_id）
+      const result = await OutlineService.generateSkeleton({
+        name: interviewData.name,
+        objective: interviewData.objective,
+        context: (interviewData as any).context || '',
+        session_count: Number(numQuestions),
+        duration_minutes: Number(duration),
+        draft_language: localOutlineDebugLanguage,
+        researchType: researchType,
+        manualSessions: filledManualSessions.length > 0 ? filledManualSessions : undefined
+      });
+
+      console.log('✅ Skeleton generated:', result.skeleton);
+      console.log('📋 Skeleton metadata.draft_language:', result.skeleton.metadata?.draft_language);
+      setSkeleton(result.skeleton);
+      setStoreOutlineSkeleton(result.skeleton); // 保存到 store
+      toast.success("骨架生成成功！请 review 后确认");
+
+    } catch (error: any) {
+      console.error('❌ Error generating skeleton:', error);
+      toast.error("生成骨架失败: " + (error.response?.data?.details || error.message));
+    } finally {
+      setIsGeneratingSkeleton(false);
+    }
+  };
+
+  /**
+   * Step 2: 更新骨架（用户编辑）
+   */
+  const onUpdateSkeleton = async (updatedSkeleton: OutlineSkeleton) => {
+    setSkeleton(updatedSkeleton);
+    setStoreOutlineSkeleton(updatedSkeleton); // 同步到 store
+
+    // 可选：自动保存到后端
+    if (interviewId) {
+      try {
+        await OutlineService.updateSkeleton(interviewId, updatedSkeleton);
+        console.log('✅ Skeleton updated in backend');
+      } catch (error) {
+        console.error('❌ Error updating skeleton:', error);
+        // 不显示错误提示，因为这是自动保存
+      }
+    }
+  };
+
+  /**
+   * Step 3: 确认骨架并生成完整大纲
+   */
+  const onConfirmSkeletonAndGenerateFullOutline = async () => {
+    if (!skeleton) {
+      toast.error("Skeleton not found");
+      return;
+    }
+
+    setIsGeneratingFullOutline(true);
+    try {
+      console.log('🚀 Generating full outline from skeleton...');
+
+      // 如果还没有 interviewId，先创建 interview
+      let currentInterviewId = interviewId;
+      if (!currentInterviewId) {
+        console.log('📝 Creating interview first...');
+
+        // 准备 interview 数据
+        const sanitizedInterviewData = {
+          ...interviewData,
+          user_id: user?.id || "",
+          organization_id: organization?.id || "",
+          interviewer_id: interviewData.interviewer_id.toString(),
+          response_count: interviewData.response_count?.toString() || "0",
+          logo_url: organization?.imageUrl || "",
+          question_count: Number(numQuestions),
+          time_duration: String(duration),
+          outline_debug_language: localOutlineDebugLanguage,
+          outline_skeleton: skeleton, // 保存骨架
+          outline_generation_status: 'skeleton_generated',
+        };
+
+        // 创建 interview
+        const createResponse = await apiClient.post("/interviews", {
+          organizationName: organization?.name,
+          interviewData: sanitizedInterviewData,
+        });
+
+        currentInterviewId = createResponse.data.id;
+        setInterviewId(currentInterviewId);
+        console.log('✅ Interview created:', currentInterviewId);
+      } else {
+        // 如果 interviewId 已存在，先更新 skeleton（用户可能重新生成了骨架）
+        console.log('📝 Updating skeleton before generating full outline...');
+        await OutlineService.updateSkeleton(currentInterviewId, skeleton);
+        console.log('✅ Skeleton updated');
+      }
+
+      // 生成完整大纲
+      const result = await OutlineService.generateFullOutline(currentInterviewId);
+
+      console.log('✅ Full outline generated:', result);
+
+      // 解析生成的问题（兼容新旧格式）
+      const generatedQuestions = result.draft_outline.map((item: any, index: number) => {
+        // 新格式：{ session_text, depth_level }
+        if (typeof item === 'object' && item.session_text) {
+          return {
+            id: uuidv4(),
+            question: item.session_text,
+            follow_up_count: 1,
+            depth_level: item.depth_level || 'medium'
+          };
+        }
+        // 旧格式：字符串
+        return {
+          id: uuidv4(),
+          question: item,
+          follow_up_count: 1,
+          depth_level: 'medium'
+        };
+      });
+
+      // 更新状态
+      setQuestions(generatedQuestions);
+      setDescription(result.description || "");
+      setDraftQuestions(generatedQuestions);
+
+      // 更新store
+      setOutlineDebugLanguage(localOutlineDebugLanguage);
+
+      const updatedInterviewData = {
+        ...interviewData,
+        questions: generatedQuestions,
+        description: result.description || "",
+        question_count: generatedQuestions.length,
+        time_duration: String(duration),
+        language: selectedLanguage || 'zh-CN',
+        outline_debug_language: localOutlineDebugLanguage,
+      };
+      setInterviewData(updatedInterviewData);
+
+      // 清除骨架（已经生成完整大纲）
+      setSkeleton(null);
+      setStoreOutlineSkeleton(null);
+
+      // 标记生成和编辑步骤完成
+      addCompletedStep('generate');
+      addCompletedStep('edit');
+      toast.success("完整大纲生成成功！");
+
+      // 导航到编辑大纲页面
+      router.push('/dashboard/create-interview/edit-outline');
+
+    } catch (error: any) {
+      console.error('❌ Error generating full outline:', error);
+      toast.error("生成完整大纲失败: " + (error.response?.data?.details || error.message));
+    } finally {
+      setIsGeneratingFullOutline(false);
+    }
+  };
+
+  // 生成大纲函数（旧流程，保留向后兼容）
   const onGenerateOutline = async () => {
     if (!numQuestions || !duration) {
       toast.error("请填写问题数量和访谈时长");
@@ -676,6 +880,206 @@ function QuestionsPopup({
     );
   }
 
+        {/* Main Card */}
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
+          <div className="flex items-center gap-2 mb-6">
+            <Settings className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl font-semibold text-gray-900">访谈配置</h2>
+          </div>
+
+          <div className="space-y-6">
+            {/* 三个选项放在一行 */}
+            <div className="grid grid-cols-3 gap-6">
+              {/* 问题数量/Session数量 */}
+              <div className="form-control">
+                <label className="label pb-2">
+                  <span className="label-text text-sm font-medium text-gray-700">
+                    {isDeepDiveMode ? "Session数量" : "问题数量"}
+                  </span>
+                </label>
+                <input
+                  type="number"
+                  className="w-full px-4 py-3 border-2 border-gray-300 bg-white rounded-lg focus:border-blue-500 focus:outline-none transition-all text-lg font-semibold"
+                  placeholder={isDeepDiveMode ? "5" : "10"}
+                  value={numQuestions}
+                  onChange={(e) => setNumQuestions(e.target.value)}
+                  min="1"
+                />
+              </div>
+
+              {/* 访谈时长 */}
+              <div className="form-control">
+                <label className="label pb-2">
+                  <span className="label-text text-sm font-medium text-gray-700">
+                    访谈时长 (分钟)
+                  </span>
+                </label>
+                <select
+                  className="custom-select w-full px-4 py-3 border-2 border-gray-300 bg-white rounded-lg focus:border-blue-500 focus:outline-none transition-all cursor-pointer text-lg font-semibold"
+                  value={duration}
+                  onChange={(e) => setDuration(e.target.value)}
+                  style={{
+                    appearance: 'none',
+                    WebkitAppearance: 'none',
+                    MozAppearance: 'none',
+                    backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")`,
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: 'right 0.75rem center',
+                    backgroundSize: '1.25em 1.25em',
+                    paddingRight: '2.5rem',
+                  }}
+                >
+                  <option value="">选择时长</option>
+                  <option value="15">15分钟</option>
+                  <option value="30">30分钟</option>
+                  <option value="45">45分钟</option>
+                  <option value="60">60分钟</option>
+                  <option value="90">90分钟</option>
+                  <option value="120">120分钟</option>
+                </select>
+              </div>
+
+              {/* 初稿语言 */}
+              <div className="form-control">
+                <label className="label pb-2">
+                  <span className="label-text text-sm font-medium text-gray-700 flex items-center gap-2">
+                    <Globe size={16} className="text-blue-600" />
+                    初稿语言
+                  </span>
+                </label>
+                <select
+                  className="custom-select w-full px-4 py-3 border-2 border-gray-300 bg-white rounded-lg focus:border-blue-500 focus:outline-none transition-all cursor-pointer text-lg font-semibold"
+                  value={localOutlineDebugLanguage}
+                  onChange={(e) => setLocalOutlineDebugLanguage(e.target.value as LanguageCode)}
+                  style={{
+                    appearance: 'none',
+                    WebkitAppearance: 'none',
+                    MozAppearance: 'none',
+                    backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")`,
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: 'right 0.75rem center',
+                    backgroundSize: '1.25em 1.25em',
+                    paddingRight: '2.5rem',
+                  }}
+                >
+                  {Object.entries(SUPPORTED_LANGUAGES).map(([code, langConfig]) => (
+                    <option key={code} value={code}>
+                      {langConfig.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            {/* Session配置（可选，仅深度访谈模式） */}
+            {isDeepDiveMode && numQuestions && Number(numQuestions) > 0 && (
+              <div className="form-control w-full">
+                <button
+                  type="button"
+                  onClick={() => setIsSessionConfigExpanded(!isSessionConfigExpanded)}
+                  className="w-full flex items-center justify-between p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition-all border-2 border-gray-200"
+                >
+                  <div className="flex items-center gap-2">
+                    <span className="label-text text-sm font-medium text-gray-700">
+                      Session配置（可选）
+                    </span>
+                    <span className="text-xs text-gray-500">
+                      可以提前填写session主题，AI将基于这些主题生成详细内容
+                    </span>
+                  </div>
+                  <ChevronLeft
+                    className={`w-5 h-5 text-gray-600 transition-transform ${
+                      isSessionConfigExpanded ? '-rotate-90' : 'rotate-180'
+                    }`}
+                  />
+                </button>
+
+                {isSessionConfigExpanded && (
+                  <div className="space-y-3 mt-4">
+                    {manualSessions.map((session, index) => (
+                      <div key={session.id} className="flex items-start gap-3">
+                        <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-semibold">
+                          {index + 1}
+                        </div>
+                        <input
+                          type="text"
+                          className="flex-1 px-4 py-2 border-2 border-gray-300 bg-white rounded-lg focus:border-blue-500 focus:outline-none transition-all"
+                          placeholder={`Session ${index + 1} 主题（可选）`}
+                          value={session.content}
+                          onChange={(e) => {
+                            const newSessions = [...manualSessions];
+                            newSessions[index].content = e.target.value;
+                            setManualSessions(newSessions);
+                          }}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+
+          {/* 骨架 Review 区域（放在白色背景板内） */}
+          {skeleton && (
+            <div className="mt-6 pt-6 border-t border-gray-200">
+              <SkeletonReview
+                skeleton={skeleton}
+                onUpdate={onUpdateSkeleton}
+              />
+            </div>
+          )}
+
+          {/* Action Buttons */}
+          <div className="flex justify-center items-center gap-4 pt-6 mt-6 border-t border-gray-200">
+            <Button
+              variant="outline"
+              className="px-8 py-6 h-12 text-base"
+              onClick={() => setStep('details')}
+            >
+              <ChevronLeft className="w-4 h-4 mr-2" />
+              上一步
+            </Button>
+            {/* 如果还没有生成骨架，显示"生成骨架"按钮 */}
+            {!skeleton && (
+              <Button
+                disabled={!numQuestions || !duration || isGeneratingSkeleton}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 h-12 text-base shadow-sm"
+                onClick={onGenerateSkeleton}
+              >
+                {isGeneratingSkeleton ? (
+                  <>
+                    <span className="loading loading-spinner loading-sm mr-2"></span>
+                    生成骨架中...
+                  </>
+                ) : (
+                  "生成大纲骨架"
+                )}
+              </Button>
+            )}
+            {/* 如果已经生成骨架，显示"生成完整大纲初稿"按钮 */}
+            {skeleton && (
+              <Button
+                disabled={isGeneratingFullOutline}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 h-12 text-base shadow-sm"
+                onClick={onConfirmSkeletonAndGenerateFullOutline}
+              >
+                {isGeneratingFullOutline ? (
+                  <>
+                    <span className="loading loading-spinner loading-sm mr-2"></span>
+                    生成完整大纲中...
+                  </>
+                ) : (
+                  "生成完整大纲初稿"
+                )}
+              </Button>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   // ===== 渲染：编辑大纲视图 =====
   return (
     <div className="w-full bg-transparent">
@@ -766,9 +1170,11 @@ function QuestionsPopup({
               questionData={question}
               isDeepDiveMode={isDeepDiveMode}
                 onQuestionChange={(id: string, updatedQuestion: Question) => {
-                  // 只更新当前正在显示的版本
+                  const updatedQuestions = questions.map((q) =>
+                    q.id === id ? updatedQuestion : q
+                  );
+                  setQuestions(updatedQuestions);
                   if (showLocalized && localizedQuestions) {
-                    // 当前显示本地化版本，只更新本地化数组
                     const updatedLocalizedQuestions = localizedQuestions.map((q) =>
                       q.id === id ? updatedQuestion : q
                     );
