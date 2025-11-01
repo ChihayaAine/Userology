@@ -102,12 +102,22 @@ export interface OutlineSkeleton {
 /**
  * 单个 Session 的骨架信息
  */
+/**
+ * Session 深度等级
+ * - high: 核心目标、痛点发现、竞品分析、功能验证 (5-6 questions)
+ * - medium: 背景构建、行为探索、一般体验 (4-5 questions)
+ * - low: 热身、收尾 (4 questions)
+ */
+export type SessionDepthLevel = 'high' | 'medium' | 'low';
+
 export interface SkeletonSession {
   session_number: number;
   session_title: string;
   session_goal: string;
   background_information: string[];
   must_ask_questions: string[]; // 用户指定的必问问题
+  depth_level?: SessionDepthLevel; // AI 判断的深度等级（用户可调整）- 可选字段，默认 'medium'
+  ai_suggested_depth_level?: SessionDepthLevel; // AI 最初建议的深度等级（不可变）- 用于显示 "AI suggested"
 }
 
 /**

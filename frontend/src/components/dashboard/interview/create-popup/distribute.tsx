@@ -115,7 +115,7 @@ function DistributePopup({
           </div>
           <div>
             <div className="text-sm font-medium text-gray-600 mb-1">调研目标</div>
-            <div className="text-base font-semibold text-gray-900">
+            <div className="text-base font-semibold text-gray-900 max-h-[120px] overflow-y-auto">
               {interviewData.objective || "无"}
             </div>
           </div>

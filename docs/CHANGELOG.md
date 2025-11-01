@@ -6,6 +6,317 @@
 
 ---
 
+## [1.4.5] - 2025-10-30
+
+### 🐛 Bug 修复 (v5 - 最终版本)
+
+**修复两个核心问题（温和、稳妥的方式）**
+
+1. **修复 AI 只生成首尾 session 的问题** ✅
+   - 在 Prompt 中添加明确的警告和 Session 2 示例
+   - 要求 AI 生成 EXACTLY N sessions
+   - 修正 low depth level 问题数量（2-4）
+
+2. **修复重新生成初稿时语言不更新的问题** ✅
+   - 后端：确保 skeleton.metadata.draft_language 存在（如果 AI 没生成，手动添加）
+   - 前端：当 interviewId 已存在时，先更新 skeleton 再生成完整大纲
+   - 使用 `OutlineService.updateSkeleton` API（已有的、稳定的 API）
+
+3. **简化页面验证逻辑** ✅
+   - `outline/page.tsx` 只检查 `name`（不检查 `interviewer_id`）
+   - 避免 BigInt(0) 导致的误判
+
+### 🔄 回退修改 (v4)
+
+**回退不必要的修改，恢复稳定性**
+- ✅ 回退了 v3 中过于激进的修改
+- ✅ 保留有用的调试日志和 Prompt 修复
+
+### 🐛 Bug 修复 (v1-v3)
+
+**初稿生成问题修复**
+- ✅ 修复 AI 只生成 Session 1 和最后一个 Session 的问题
+- ✅ 在 Prompt 中明确要求生成所有 sessions（不跳过任何 session）
+- ✅ 添加详细的调试日志，便于排查问题
+
+**Depth Level 问题数量修正**
+- ✅ Low depth level 问题数量从固定 4 个调整为 2-4 个（更灵活）
+- ✅ 更新 Prompt 中的说明：low (2-4), medium (4-5), high (5-6)
+
+**重新生成初稿时语言更新问题修复**
+- ✅ 修复用户重新生成骨架（改变初稿语言）后，生成的初稿依然使用旧语言的问题
+- ✅ 在生成完整大纲前，先更新后端的 skeleton 和 outline_debug_language
+- ✅ 添加详细日志，便于排查语言设置问题
+
+### 🔧 技术细节
+
+**修改文件**:
+1. `backend/src/lib/prompts/generate-full-outline-from-skeleton.ts`
+   - 在输出格式说明中添加 "MUST generate EXACTLY N sessions" 警告
+   - 添加 Session 2 示例，避免 AI 误以为只需要生成首尾两个 session
+   - 修正 low depth level 的问题数量显示（2-4）
+
+2. `backend/src/controllers/questions.controller.ts`
+   - 添加详细的调试日志（OpenAI 响应、解析结果、保存数据、语言设置）
+   - 确保 skeleton.metadata.draft_language 存在（如果 AI 没生成，手动添加）
+   - 移除 `updated_at` 字段（Supabase 自动管理）
+
+3. `frontend/src/components/dashboard/interview/create-popup/questions.tsx`
+   - 当 interviewId 已存在时，先调用 `updateSkeleton` 再生成完整大纲
+   - 添加语言设置日志
+
+4. `frontend/src/app/dashboard/create-interview/outline/page.tsx`
+   - 简化验证逻辑（只检查 name）
+
+---
+
+## [1.4.5] - 2025-10-30
+
+### 🎨 UI/UX 优化
+
+**Depth Level 信息提示**
+- ✅ 在骨架 review 界面的 Depth Level 选择器旁添加信息按钮（ℹ️）
+- ✅ 点击后展开详细说明，解释 Depth Level 不仅关乎问题数量，更影响：
+  - 追问深度（High: L1→L2→L3，Low: 基础追问）
+  - 时间分配（AI 在 High 优先级 Session 上分配更多时间）
+  - 重视程度（High 优先级会更深入探索用户痛点）
+
+**访谈执行界面字幕滚动优化**
+- ✅ 修复 AI 主持人字幕超出框的问题
+- ✅ 固定访谈框高度（250px）
+- ✅ 添加垂直滚动功能（`overflow-y-auto`）
+- ✅ 实现自动滚动到最新内容（字幕向上顶）
+- ✅ 用户可以上下滚动查看历史字幕
+
+**访谈分发界面 Study Objective 显示优化**
+- ✅ 设置 Study Objective 显示框最大高度（120px）
+- ✅ 超出部分可在框内滚动查看
+- ✅ 避免超长文本撑开页面布局
+
+### 🔧 技术细节
+
+**修改文件**:
+1. `frontend/src/components/dashboard/interview/create-popup/SessionCard.tsx`
+   - 添加 `Info` 图标导入
+   - 添加 `showDepthLevelInfo` 状态
+   - 添加信息按钮和可展开的描述框
+2. `frontend/src/components/call/index.tsx`
+   - 添加 `lastInterviewerResponseRef` ref
+   - 修改 AI 主持人字幕容器：`min-h-[250px]` → `h-[250px]`，添加 `overflow-y-auto`
+   - 添加自动滚动逻辑（useEffect）
+3. `frontend/src/components/dashboard/interview/create-popup/distribute.tsx`
+   - 添加 `max-h-[120px] overflow-y-auto` 到 Study Objective 显示框
+
+---
+
+## [1.4.4] - 2025-10-30
+
+### 🚀 新功能
+
+**骨架生成 Context 深度强化**
+- ✅ **多视角覆盖**：Background Information 现在包含用户视角、专业人士视角、机构视角等多个维度
+- ✅ **深度场景化**：提供具体的量化数据、真实用户行为模式和痛点描述
+- ✅ **可操作性增强**：为 AI 提供具体的追问线索（"当用户说X时，应该追问Y"）
+- ✅ **竞品生态理解**：详细的竞品分析，包含定位、优劣势、用户认知
+- ✅ **Background Information 数量提升**：从 3-5 项提升到 5-8 项，覆盖更全面
+
+**参考素材B和素材C的结构**：
+- 需求调研：包含市场趋势、竞品分析、用户行为模式、本地化细节
+- 产品调研：包含产品功能、用户群体、使用场景、竞品对比
+
+**AI Suggested Depth Level 固定显示**
+- ✅ 新增 `ai_suggested_depth_level` 字段，保存 AI 最初建议的 depth_level
+- ✅ UI 中的 "AI suggested" 标签不再随用户调整而改变
+- ✅ 用户可以清楚看到 AI 的原始建议和自己的调整
+
+### 🎨 优化
+
+**Low Depth Level 问题数量调整**
+- ✅ 从固定 4 个问题调整为 2-4 个问题（更灵活）
+- ✅ 根据 session 复杂度调整（warm-up: 2-3，wrap-up: 3-4）
+
+### 🔧 技术细节
+
+**修改文件**:
+1. `backend/src/lib/prompts/generate-outline-skeleton.ts`
+   - 增强 Background Information Requirements（多视角、深度场景化、可操作性、竞品生态）
+   - 更新 Session Structure Guidelines（需求调研和产品调研的详细示例）
+   - Background Information 数量从 3-5 项提升到 5-8 项
+2. `backend/src/lib/prompts/generate-full-outline-from-skeleton.ts`
+   - Low depth level 问题数量从 4 调整为 2-4
+3. `frontend/src/components/dashboard/interview/create-popup/SessionCard.tsx`
+   - 更新 UI 显示（Low: 2-4 Qs）
+   - 修复 "AI suggested" 显示逻辑（使用 `ai_suggested_depth_level`）
+4. `backend/src/types/interview.ts` & `frontend/src/types/interview.ts`
+   - 添加 `ai_suggested_depth_level` 字段到 `SkeletonSession` 接口
+5. `backend/src/controllers/questions.controller.ts`
+   - 骨架生成时保存 `ai_suggested_depth_level`
+
+---
+
+## [1.4.3] - 2025-10-30
+
+### 🚀 新功能
+
+**Session Depth Level 系统优化**
+- ✅ **Depth Level 语义增强**：在初稿生成 Prompt 中，根据 depth_level 给出不同的质量要求
+  - high: 深度参考 Study Objective、充分利用 Background Information、多层次追问（L1→L2→L3）
+  - medium: 适度参考、基础追问
+  - low: 简单对话、最小追问
+- ✅ **Depth Level 传递到 Retell AI**：在访谈执行时，Retell AI 可以根据 depth_level 调整时间分配和追问策略
+  - high session: 分配更多时间（8-10分钟）、深度追问
+  - medium session: 标准时间、基础追问
+  - low session: 简洁高效（4-5分钟）
+- ✅ **数据结构优化**：`draft_outline` 从字符串数组改为对象数组 `{session_text, depth_level}`
+
+### 🐛 Bug 修复
+
+- 修复用户修改 depth_level 后生成的问题数量不对应的问题
+- 修复 Prompt 中反引号未转义导致的编译错误
+
+### 🔧 技术细节
+
+**修改文件**:
+1. `backend/src/lib/prompts/generate-full-outline-from-skeleton.ts`
+   - 增强 depth_level 的语义说明（问题数量 + 问题质量）
+   - 修改输出格式为对象数组（包含 depth_level）
+2. `backend/src/controllers/questions.controller.ts`
+   - 兼容新旧数据格式
+   - 保存 depth_level 到 draft_outline
+3. `frontend/src/components/dashboard/interview/create-popup/questions.tsx`
+   - 解析新格式的 draft_outline
+4. `backend/src/controllers/call.controller.ts`
+   - 传递 `depth_level_1` 到 `depth_level_10` 变量到 Retell AI
+5. `backend/src/lib/constants.ts`
+   - 更新 `RETELL_AGENT_DEEP_DIVE_PROMPT`，添加 depth_level 使用说明
+
+---
+
+## [1.4.2] - 2025-10-30
+
+### 🚀 新功能
+
+#### Session Depth Level 系统 ✨
+
+**核心功能**:
+- **骨架生成阶段**：AI 自动判断每个 Session 的深度等级（`depth_level`）
+- **用户 Review 阶段**：显示 AI 建议的 depth level，用户可调整
+- **完整大纲生成**：严格遵循 depth level 分配问题数量
+- **（未来）Retell AI 执行**：可传递 depth level 到系统提示词
+
+**Depth Level 定义**:
+- **high**: 核心目标、痛点发现、竞品分析、功能验证 (5-6 questions)
+- **medium**: 背景构建、行为探索、一般体验 (4-5 questions)
+- **low**: 热身、收尾 (4 questions)
+
+**AI 判断逻辑**:
+- 分析研究目标，识别哪些 Session 直接解决核心研究问题
+- 探索"why"、"pain points"、"alternatives"的 Session → high
+- 探索"what"、"how"、"when"的 Session → medium
+- 第一个和最后一个 Session 通常 → low（除非研究专注于 onboarding/offboarding）
+- 典型分配：2-3 high, 2-3 medium, 1-2 low
+
+**UI 设计**:
+- 在 SessionCard 中显示 Depth Level 选择器
+- 三个按钮：Low (4 Qs) / Medium (4-5 Qs) / High (5-6 Qs)
+- 颜色编码：灰色（Low）/ 蓝色（Medium）/ 紫色（High）
+- 显示 AI 建议："(AI suggested: high)"
+
+**数据结构**:
+```typescript
+export type SessionDepthLevel = 'high' | 'medium' | 'low';
+
+export interface SkeletonSession {
+  session_number: number;
+  session_title: string;
+  session_goal: string;
+  background_information: string[];
+  must_ask_questions: string[];
+  depth_level: SessionDepthLevel; // 新增
+}
+```
+
+**Prompt 更新**:
+- 骨架生成 Prompt：添加 "Session Depth Level Assignment" 部分
+- 完整大纲生成 Prompt：更新为"STRICTLY follow the `depth_level`"
+
+### 🔧 技术细节
+
+**修改文件**:
+- `backend/src/types/interview.ts` - 添加 `SessionDepthLevel` 类型和 `depth_level` 字段
+- `frontend/src/types/interview.ts` - 同步类型定义
+- `backend/src/lib/prompts/generate-outline-skeleton.ts`
+  - 添加 "Session Depth Level Assignment" 部分
+  - 更新 Output Format（添加 `depth_level` 字段）
+  - 更新 Quality Checklist
+- `backend/src/lib/prompts/generate-full-outline-from-skeleton.ts`
+  - 更新 skeleton summary 显示 depth level
+  - 更新 "Question Depth and Quantity Requirements"（严格遵循 depth_level）
+- `frontend/src/components/dashboard/interview/create-popup/SessionCard.tsx`
+  - 添加 Depth Level 选择器 UI
+  - 支持用户调整 depth level
+
+---
+
+## [1.4.1] - 2025-10-30
+
+### 🎨 优化
+
+#### 大纲生成 Prompt 优化 - 用户体验提升 ✨
+
+**1. 结束访谈提示**:
+- 在最后一个 Session 的 Closing 中添加明确提示
+- 提醒参与者点击"结束访谈"按钮提交回答
+- 示例：⚠️ **CRITICAL REMINDER**: "Please remember to click the 'End Interview' button to submit your responses. Thank you so much for your time and valuable insights!"
+
+**2. 多层次追问策略** 🔥:
+- **问题背景**：当前所有追问都是一层，无法深挖关键信息
+  - 例如：用户提到竞品"得分 6 分，因为使用不便"，追问后得到"无法在学校使用"，但没有继续追问"为什么无法在学校使用"
+- **解决方案**：设计分层追问机制（L1 → L2 → L3）
+  - **L1 (Surface Exploration)**: 澄清模糊陈述，获取初步细节
+    - 例如："What makes it inconvenient?" / "Why can't it be used at school?"
+  - **L2 (Concrete Examples)**: 请求具体场景，揭示真实行为
+    - 例如："Can you walk me through a specific time when this happened?"
+  - **L3 (Impact & Root Cause)**: 理解后果，识别潜在需求
+    - 例如："How did that affect your study plan?" / "What would an ideal solution look like?"
+- **应用场景**：痛点分析、竞品分析、功能验证等关键问题
+- **效果**：从表面回答深挖到可执行洞察
+
+**3. 智能问题数量分配** 🎯:
+- **问题背景**：当前所有 Session 都是 4 个问题，没有根据重要性调整
+- **解决方案**：根据 Session 目标和重要性动态分配 4-6 个问题
+  - **高优先级 Session** (核心目标、痛点发现、解决方案探索): **5-6 个问题**
+    - 需要更深入的探索和更细粒度的洞察
+    - 例如：痛点发现、竞品分析、功能验证
+  - **中优先级 Session** (背景构建、行为探索): **4-5 个问题**
+    - 提供必要背景但不需要极端深度
+    - 例如：背景构建、使用模式、一般体验
+  - **低优先级 Session** (热身、收尾): **4 个问题**
+    - 对流程重要但不需要大量提问
+    - 例如：破冰、最终想法、感谢
+- **效果**：AI 会真正思考哪些 Session 需要更多问题深入挖掘
+
+### 🐛 Bug 修复
+
+- 修复创建 interview 时 `researchType` 字段导致的 500 错误
+  - 问题：前端传递了数据库不存在的 `researchType` 字段
+  - 解决：在后端 controller 中过滤掉该字段
+
+### 🔧 技术细节
+
+**修改文件**:
+- `backend/src/lib/prompts/generate-full-outline-from-skeleton.ts`
+  - 更新 "Your Task" 部分，添加多层次追问和结束提示
+  - 更新 "Question Depth and Quantity Requirements"，添加智能分配策略
+  - 重写 "Follow-up Strategy" 为 "Multi-Level Follow-up Strategy"
+  - 更新 Output Format，添加 L1/L2/L3 示例和结束提示
+  - 更新 Quality Checklist，添加新的验证项
+  - 更新 Important Principles，添加新原则
+- `backend/src/controllers/interviews.controller.ts`
+  - 过滤 `researchType` 字段，保留骨架相关字段
+
+---
+
 ## [1.4.0] - 2025-10-30
 
 ### 🚀 新功能

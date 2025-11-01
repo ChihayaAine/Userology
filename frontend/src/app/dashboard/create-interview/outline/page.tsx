@@ -24,11 +24,12 @@ export default function GenerateOutlinePage() {
 
   useEffect(() => {
     // 如果没有访谈数据，重定向到第一步
-    if (!interviewData.name || !interviewData.interviewer_id) {
+    if (!interviewData.name) {
+      console.log('⚠️ Missing interview name, redirecting to first step');
       router.push('/dashboard/create-interview');
       return;
     }
-    
+
     // 标记生成大纲步骤为已访问（可返回）
     addCompletedStep('generate');
   }, [interviewData, router, addCompletedStep]);

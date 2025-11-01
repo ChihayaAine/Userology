@@ -10,8 +10,8 @@
  */
 
 import React, { useState } from 'react';
-import { ChevronDown, ChevronUp, Edit2, Check, X, Plus, Trash2 } from 'lucide-react';
-import { SkeletonSession } from '@/types/interview';
+import { ChevronDown, ChevronUp, Edit2, Check, X, Plus, Trash2, Info } from 'lucide-react';
+import { SkeletonSession, SessionDepthLevel } from '@/types/interview';
 
 interface SessionCardProps {
   session: SkeletonSession;
@@ -28,6 +28,7 @@ export const SessionCard: React.FC<SessionCardProps> = ({
 }) => {
   const [isEditingTitle, setIsEditingTitle] = useState(false);
   const [isEditingGoal, setIsEditingGoal] = useState(false);
+  const [showDepthLevelInfo, setShowDepthLevelInfo] = useState(false);
   const [editedTitle, setEditedTitle] = useState(session.session_title);
   const [editedGoal, setEditedGoal] = useState(session.session_goal);
   const [editingBackgroundIndex, setEditingBackgroundIndex] = useState<number | null>(null);
@@ -222,6 +223,65 @@ export const SessionCard: React.FC<SessionCardProps> = ({
                 </button>
               </div>
             )}
+
+            {/* Depth Level Selector */}
+            <div className="mt-3">
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-medium text-gray-500">Depth Level:</span>
+                <div className="flex gap-1">
+                  {(['low', 'medium', 'high'] as SessionDepthLevel[]).map((level) => {
+                    const currentDepthLevel = session.depth_level || 'medium'; // 默认 medium
+                    const isSelected = currentDepthLevel === level;
+                    const colors = {
+                      low: isSelected ? 'bg-gray-200 text-gray-800 border-gray-300' : 'bg-gray-50 text-gray-600 border-gray-200 hover:bg-gray-100',
+                      medium: isSelected ? 'bg-blue-200 text-blue-800 border-blue-300' : 'bg-blue-50 text-blue-600 border-blue-200 hover:bg-blue-100',
+                      high: isSelected ? 'bg-purple-200 text-purple-800 border-purple-300' : 'bg-purple-50 text-purple-600 border-purple-200 hover:bg-purple-100'
+                    };
+                    const labels = {
+                      low: '2-4 Qs',
+                      medium: '4-5 Qs',
+                      high: '5-6 Qs'
+                    };
+
+                    return (
+                      <button
+                        key={level}
+                        onClick={() => onUpdate({ ...session, depth_level: level })}
+                        className={`px-2.5 py-1 text-xs font-medium rounded border transition-colors ${colors[level]}`}
+                        title={`${level.charAt(0).toUpperCase() + level.slice(1)} priority - ${labels[level]}`}
+                      >
+                        {level.charAt(0).toUpperCase() + level.slice(1)} ({labels[level]})
+                      </button>
+                    );
+                  })}
+                </div>
+                <span className="text-xs text-gray-400 ml-1">
+                  (AI suggested: {session.ai_suggested_depth_level || session.depth_level || 'medium'})
+                </span>
+                {/* Info Button */}
+                <button
+                  onClick={() => setShowDepthLevelInfo(!showDepthLevelInfo)}
+                  className="p-1 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors"
+                  title="了解 Depth Level 的作用"
+                >
+                  <Info size={14} />
+                </button>
+              </div>
+
+              {/* Depth Level Info Tooltip */}
+              {showDepthLevelInfo && (
+                <div className="mt-2 p-3 bg-blue-50 border border-blue-200 rounded-lg text-xs text-gray-700">
+                  <p className="font-semibold text-blue-900 mb-1">💡 Depth Level 不仅关乎问题数量</p>
+                  <p className="mb-2">Depth Level 会影响访谈执行时的多个维度：</p>
+                  <ul className="space-y-1 ml-4 list-disc">
+                    <li><strong>问题数量</strong>：High (5-6), Medium (4-5), Low (2-4)</li>
+                    <li><strong>追问深度</strong>：High 会进行多层次追问（L1→L2→L3），Low 仅基础追问</li>
+                    <li><strong>时间分配</strong>：AI 会在 High 优先级 Session 上分配更多时间</li>
+                    <li><strong>重视程度</strong>：High 优先级的 Session 会更深入探索用户痛点和需求</li>
+                  </ul>
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Expand/Collapse Button */}

@@ -123,7 +123,7 @@ function QuestionsPopup({
 
     setIsGeneratingSkeleton(true);
     try {
-      console.log('🎯 Generating skeleton...');
+      console.log('🎯 Generating skeleton with language:', localOutlineDebugLanguage);
 
       // 准备用户预设的 Session 主题
       const filledManualSessions = manualSessions
@@ -148,6 +148,7 @@ function QuestionsPopup({
       });
 
       console.log('✅ Skeleton generated:', result.skeleton);
+      console.log('📋 Skeleton metadata.draft_language:', result.skeleton.metadata?.draft_language);
       setSkeleton(result.skeleton);
       setStoreOutlineSkeleton(result.skeleton); // 保存到 store
       toast.success("骨架生成成功！请 review 后确认");
@@ -221,6 +222,11 @@ function QuestionsPopup({
         currentInterviewId = createResponse.data.id;
         setInterviewId(currentInterviewId);
         console.log('✅ Interview created:', currentInterviewId);
+      } else {
+        // 如果 interviewId 已存在，先更新 skeleton（用户可能重新生成了骨架）
+        console.log('📝 Updating skeleton before generating full outline...');
+        await OutlineService.updateSkeleton(currentInterviewId, skeleton);
+        console.log('✅ Skeleton updated');
       }
 
       // 生成完整大纲
@@ -228,12 +234,25 @@ function QuestionsPopup({
 
       console.log('✅ Full outline generated:', result);
 
-      // 解析生成的问题
-      const generatedQuestions = result.draft_outline.map((sessionText: string, index: number) => ({
-        id: uuidv4(),
-        question: sessionText,
-        follow_up_count: 1,
-      }));
+      // 解析生成的问题（兼容新旧格式）
+      const generatedQuestions = result.draft_outline.map((item: any, index: number) => {
+        // 新格式：{ session_text, depth_level }
+        if (typeof item === 'object' && item.session_text) {
+          return {
+            id: uuidv4(),
+            question: item.session_text,
+            follow_up_count: 1,
+            depth_level: item.depth_level || 'medium'
+          };
+        }
+        // 旧格式：字符串
+        return {
+          id: uuidv4(),
+          question: item,
+          follow_up_count: 1,
+          depth_level: 'medium'
+        };
+      });
 
       // 更新状态
       setQuestions(generatedQuestions);

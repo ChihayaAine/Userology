@@ -416,7 +416,27 @@ export const generateOutlineSkeleton = async (req: Request, res: Response) => {
 
     const skeleton = JSON.parse(content);
 
-    console.log("✅ Skeleton generated successfully");
+    // 🆕 为每个 session 添加 ai_suggested_depth_level（保存 AI 最初建议的 depth_level）
+    if (skeleton.sessions && Array.isArray(skeleton.sessions)) {
+      skeleton.sessions = skeleton.sessions.map((session: any) => ({
+        ...session,
+        ai_suggested_depth_level: session.depth_level || 'medium' // 保存 AI 建议的 depth_level
+      }));
+    }
+
+    // 🆕 确保 metadata.draft_language 存在（如果 AI 没有生成，手动添加）
+    if (!skeleton.metadata) {
+      skeleton.metadata = {};
+    }
+    if (!skeleton.metadata.draft_language) {
+      skeleton.metadata.draft_language = draft_language;
+      console.log('⚠️ AI did not include draft_language in metadata, manually added:', draft_language);
+    }
+
+    console.log("✅ Skeleton generated successfully:", {
+      total_sessions: skeleton.metadata?.total_sessions,
+      draft_language: skeleton.metadata?.draft_language
+    });
 
     res.status(200).json({
       skeleton,
@@ -443,8 +463,7 @@ export const updateOutlineSkeleton = async (req: Request, res: Response) => {
 
   try {
     await InterviewService.updateInterview({
-      outline_skeleton: skeleton,
-      updated_at: new Date()
+      outline_skeleton: skeleton
     }, id);
 
     console.log("✅ Skeleton updated successfully");
@@ -485,7 +504,9 @@ export const generateFullOutlineFromSkeleton = async (req: Request, res: Respons
 
     console.log("📋 Generating full outline from skeleton:", {
       interview_id: id,
-      skeleton_sessions: interview.outline_skeleton.sessions.length
+      skeleton_sessions: interview.outline_skeleton.sessions.length,
+      draft_language: interview.outline_skeleton.metadata?.draft_language,
+      outline_debug_language: (interview as any).outline_debug_language
     });
 
     // 2. 调用 Step 2 Prompt 生成完整大纲
@@ -520,11 +541,49 @@ export const generateFullOutlineFromSkeleton = async (req: Request, res: Respons
       throw new Error("No content returned from OpenAI");
     }
 
+    console.log("📄 Raw OpenAI response:", content.substring(0, 500) + '...');
+
     const fullOutline = JSON.parse(content);
 
-    // 3. 保存完整大纲
+    console.log("📊 Parsed fullOutline:", {
+      questionsCount: fullOutline.questions?.length || 0,
+      descriptionLength: fullOutline.description?.length || 0,
+      firstQuestion: fullOutline.questions?.[0],
+      lastQuestion: fullOutline.questions?.[fullOutline.questions?.length - 1]
+    });
+
+    // 3. 处理新的数据结构（兼容旧格式）
+    let questionsToSave;
+    if (Array.isArray(fullOutline.questions) && fullOutline.questions.length > 0) {
+      // 检查是否为新格式（对象数组）
+      if (typeof fullOutline.questions[0] === 'object' && fullOutline.questions[0].session_text) {
+        // 新格式：保存完整对象（包含 depth_level）
+        questionsToSave = fullOutline.questions;
+        console.log('✅ Using new format with depth_level:', fullOutline.questions.map((q: any) => q.depth_level));
+      } else {
+        // 旧格式：字符串数组，转换为新格式（默认 medium）
+        questionsToSave = fullOutline.questions.map((sessionText: string) => ({
+          session_text: sessionText,
+          depth_level: 'medium'
+        }));
+        console.log('⚠️ Converting old format to new format (default depth_level: medium)');
+      }
+    } else {
+      questionsToSave = [];
+    }
+
+    console.log("💾 Questions to save:", {
+      count: questionsToSave.length,
+      sessions: questionsToSave.map((q: any, idx: number) => ({
+        index: idx,
+        session_text_preview: q.session_text?.substring(0, 50) + '...',
+        depth_level: q.depth_level
+      }))
+    });
+
+    // 4. 保存完整大纲
     await InterviewService.updateInterview({
-      draft_outline: fullOutline.questions,
+      draft_outline: questionsToSave,
       description: fullOutline.description,
       outline_generation_status: 'draft_generated'
     }, id);
@@ -532,7 +591,7 @@ export const generateFullOutlineFromSkeleton = async (req: Request, res: Respons
     console.log("✅ Full outline generated successfully");
 
     res.status(200).json({
-      draft_outline: fullOutline.questions,
+      draft_outline: questionsToSave,
       description: fullOutline.description,
       status: 'draft_generated'
     });
